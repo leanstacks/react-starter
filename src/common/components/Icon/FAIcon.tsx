@@ -94,8 +94,7 @@ export type FAIconName =
  * @see {@link FontAwesomeIcon}
  */
 export interface FAIconProps
-  extends BaseComponentProps,
-    Omit<ComponentPropsWithoutRef<typeof FontAwesomeIcon>, 'icon'> {
+  extends BaseComponentProps, Omit<ComponentPropsWithoutRef<typeof FontAwesomeIcon>, 'icon'> {
   icon: FAIconName;
 }
 

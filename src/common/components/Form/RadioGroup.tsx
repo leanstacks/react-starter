@@ -59,7 +59,8 @@ const radioGroupOptionsVariants = cva('flex', {
  * @see {@link InputHTMLAttributes}
  */
 export interface RadioGroupProps<T extends FieldValues>
-  extends Pick<InputHTMLAttributes<HTMLInputElement>, 'children' | 'className' | 'disabled' | 'required'>,
+  extends
+    Pick<InputHTMLAttributes<HTMLInputElement>, 'children' | 'className' | 'disabled' | 'required'>,
     PropsWithTestId {
   control: Control<T>;
   label?: string;
@@ -138,7 +139,8 @@ const radioGroupItemVariants = cva('flex items-center', {
  * @see {@link InputHTMLAttributes}
  */
 interface RadioGroupItemProps
-  extends Pick<InputHTMLAttributes<HTMLInputElement>, 'className' | 'disabled' | 'value'>,
+  extends
+    Pick<InputHTMLAttributes<HTMLInputElement>, 'className' | 'disabled' | 'value'>,
     Required<Pick<InputHTMLAttributes<HTMLInputElement>, 'id'>>,
     PropsWithTestId {
   label: string;

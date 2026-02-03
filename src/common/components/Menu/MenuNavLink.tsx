@@ -16,10 +16,7 @@ import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
  * @see {@link PropsWithTestId}
  */
 export interface MenuNavLinkProps
-  extends Omit<NavLinkProps, 'children'>,
-    Partial<Pick<FAIconProps, 'icon'>>,
-    PropsWithChildren,
-    PropsWithTestId {
+  extends Omit<NavLinkProps, 'children'>, Partial<Pick<FAIconProps, 'icon'>>, PropsWithChildren, PropsWithTestId {
   iconClassName?: string;
   styleActive?: boolean;
 }

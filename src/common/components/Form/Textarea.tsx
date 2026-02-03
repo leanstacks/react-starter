@@ -18,8 +18,7 @@ import HelpText from '../Text/HelpText';
  * @see {@link InputHTMLAttributes}
  */
 export interface TextareaProps<T extends FieldValues>
-  extends BaseComponentProps,
-    TextareaHTMLAttributes<HTMLTextAreaElement> {
+  extends BaseComponentProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
   control: Control<T>;
   label?: string;
   name: Path<T>;

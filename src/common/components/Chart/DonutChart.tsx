@@ -20,7 +20,8 @@ export type DonutChartData = Pick<CellProps, 'fill'> & {
  * @see {@link PieProps}
  */
 export interface DonutChartProps
-  extends BaseComponentProps,
+  extends
+    BaseComponentProps,
     Pick<CategoricalChartProps, 'height' | 'width'>,
     Pick<PieProps, 'innerRadius' | 'outerRadius' | 'paddingAngle'> {
   data: DonutChartData[];
