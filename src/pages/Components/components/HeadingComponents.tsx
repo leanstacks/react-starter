@@ -10,10 +10,7 @@ import Heading from 'common/components/Text/Heading';
  * The `HeadingComponents` React component renders a set of examples illustrating
  * the use of the `Heading` component.
  */
-const HeadingComponents = ({
-  className,
-  testId = 'components-heading',
-}: BaseComponentProps): JSX.Element => {
+const HeadingComponents = ({ className, testId = 'components-heading' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -35,9 +32,7 @@ const HeadingComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -54,8 +49,8 @@ const HeadingComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">Heading</span> component displays blocks of text
-          as HTML heading elements.
+          The <span className="font-mono font-bold">Heading</span> component displays blocks of text as HTML heading
+          elements.
         </div>
 
         <div className="my-8">

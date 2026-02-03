@@ -23,7 +23,7 @@ const Footer = ({ className, testId = 'footer' }: FooterProps): JSX.Element => {
   const year = dayjs().format('YYYY');
 
   return (
-    <footer className={cn('px-4 pb-8 pt-16', className)} data-testid={testId}>
+    <footer className={cn('px-4 pt-16 pb-8', className)} data-testid={testId}>
       <div className="flex flex-wrap items-center justify-center text-xs">
         <div className="mx-2">&copy; {year} LeanStacks</div>
         <div className="mx-2">

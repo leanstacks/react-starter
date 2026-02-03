@@ -17,9 +17,7 @@ interface AppearanceSettingsProps extends PropsWithTestId {}
  * @param {AppearanceSettingsProps} props - Component properties, `AppearanceSettingsProps`.
  * @returns {JSX.Element} JSX
  */
-const AppearanceSettings = ({
-  testId = 'settings-appearance',
-}: AppearanceSettingsProps): JSX.Element => {
+const AppearanceSettings = ({ testId = 'settings-appearance' }: AppearanceSettingsProps): JSX.Element => {
   const settings = useSettings();
   const { mutate: setSettings } = useSetSettings();
 

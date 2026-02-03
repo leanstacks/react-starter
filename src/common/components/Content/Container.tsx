@@ -26,10 +26,7 @@ const containerVariants = cva('mx-auto container', {
 /**
  * Properties for the `Container` component.
  */
-export interface ContainerProps
-  extends BaseComponentProps,
-    PropsWithChildren,
-    VariantProps<typeof containerVariants> {}
+export interface ContainerProps extends BaseComponentProps, PropsWithChildren, VariantProps<typeof containerVariants> {}
 
 /**
  * The `Container` component renders a block which fixes the maximum width
@@ -48,12 +45,7 @@ export interface ContainerProps
   </Container>
  * ```
  */
-const Container = ({
-  children,
-  className,
-  size = 'default',
-  testId = 'container',
-}: ContainerProps): JSX.Element => {
+const Container = ({ children, className, size = 'default', testId = 'container' }: ContainerProps): JSX.Element => {
   return (
     <div className={cn(containerVariants({ size, className }))} data-testid={testId}>
       {children}

@@ -16,10 +16,7 @@ import Button from 'common/components/Button/Button';
  * The `InputComponents` component renders a set of examples illustrating
  * the use of the `Input` component.
  */
-const InputComponents = ({
-  className,
-  testId = 'components-input',
-}: BaseComponentProps): JSX.Element => {
+const InputComponents = ({ className, testId = 'components-input' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -49,9 +46,7 @@ const InputComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -86,13 +81,13 @@ const InputComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Input</span> component renders a HTML input
-          element. It is used to capture a single line of text input. The Input component internally
-          uses the Label, HelpText, and FieldError components.
+          The <span className="font-mono font-bold">Input</span> component renders a HTML input element. It is used to
+          capture a single line of text input. The Input component internally uses the Label, HelpText, and FieldError
+          components.
         </div>
         <div className="mb-4">
-          In addition to the custom properties listed below, the Input component also accepts all
-          standard HTML input element attribute React properties.
+          In addition to the custom properties listed below, the Input component also accepts all standard HTML input
+          element attribute React properties.
         </div>
 
         <div className="my-8">
@@ -110,26 +105,20 @@ const InputComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Input component. It has no label or supporting text. It
-          is integrated with React Hook Form through the "control" and "reset" values obtained from
-          the "useForm" hook (see the React Hook Form documentation for more information).
+          This is the most basic use of the Input component. It has no label or supporting text. It is integrated with
+          React Hook Form through the "control" and "reset" values obtained from the "useForm" hook (see the React Hook
+          Form documentation for more information).
         </div>
         <div className="mb-4 opacity-85">
-          To view an example validation error message, click or tab into the Last Name input and
-          then exit the field without entering a value.
+          To view an example validation error message, click or tab into the Last Name input and then exit the field
+          without entering a value.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <Input control={control} name="firstName" className="mb-4" />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-1"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-1">
                 Reset
               </Button>
             </form>
@@ -149,28 +138,16 @@ const InputComponents = ({
           Labels
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "label" property to associate a HTML label with the input. When the input is
-          required, the label is styled to indicate.
+          Use the "label" property to associate a HTML label with the input. When the input is required, the label is
+          styled to indicate.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <Input control={control} name="firstName" label="First Name" className="mb-4" />
-              <Input
-                control={control}
-                name="lastName"
-                label="Last Name"
-                required
-                className="mb-4"
-              />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-2"
-              >
+              <Input control={control} name="lastName" label="Last Name" required className="mb-4" />
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-2">
                 Reset
               </Button>
             </form>
@@ -197,8 +174,8 @@ const InputComponents = ({
           Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "supportingText" property to add helpful information below the input containing
-          instructions, validation requirements, or other tips for entering information.
+          Use the "supportingText" property to add helpful information below the input containing instructions,
+          validation requirements, or other tips for entering information.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -219,13 +196,7 @@ const InputComponents = ({
                 required
                 className="mb-4"
               />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-3"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-3">
                 Reset
               </Button>
             </form>
@@ -259,8 +230,8 @@ const InputComponents = ({
           HTML input attributes
         </Heading>
         <div className="mb-4 opacity-85">
-          You may use standard HTML input element attributes; however, take caution that you do not
-          conflict with attributes supplied by React Hook Form such as "onChange" and "onBlur".
+          You may use standard HTML input element attributes; however, take caution that you do not conflict with
+          attributes supplied by React Hook Form such as "onChange" and "onBlur".
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -285,13 +256,7 @@ const InputComponents = ({
                 required
                 className="mb-4"
               />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-4"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-4">
                 Reset
               </Button>
             </form>

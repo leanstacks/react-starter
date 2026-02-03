@@ -23,10 +23,7 @@ const alertVariants = cva('relative rounded-md p-3 *:data-icon:absolute [&>svg~*
 /**
  * Properties for the `Alert` component.
  */
-export interface AlertProps
-  extends BaseComponentProps,
-    PropsWithChildren,
-    VariantProps<typeof alertVariants> {}
+export interface AlertProps extends BaseComponentProps, PropsWithChildren, VariantProps<typeof alertVariants> {}
 
 /**
  * The `Alert` component formats and renders a styled message. Use the
@@ -43,12 +40,7 @@ export interface AlertProps
   </Alert>
  * ```
  */
-const Alert = ({
-  children,
-  className,
-  variant = 'info',
-  testId = 'alert',
-}: AlertProps): JSX.Element => {
+const Alert = ({ children, className, variant = 'info', testId = 'alert' }: AlertProps): JSX.Element => {
   return (
     <div className={cn(alertVariants({ variant, className }))} role="alert" data-testid={testId}>
       {children}

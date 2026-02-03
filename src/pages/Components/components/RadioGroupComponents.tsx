@@ -16,10 +16,7 @@ import RadioGroup from 'common/components/Form/RadioGroup';
  * The `RadioGroupComponents` component renders a set of examples illustrating
  * the use of the `RadioGroup` component.
  */
-const RadioGroupComponents = ({
-  className,
-  testId = 'components-radio-group',
-}: BaseComponentProps): JSX.Element => {
+const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -61,9 +58,7 @@ const RadioGroupComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -102,13 +97,13 @@ const RadioGroupComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">RadioGroup</span> component renders a HTML input
-          element of type "radio". It is used to capture a single choice from a group of options.
-          The RadioGroup component internally uses the Label, HelpText, and FieldError components.
+          The <span className="font-mono font-bold">RadioGroup</span> component renders a HTML input element of type
+          "radio". It is used to capture a single choice from a group of options. The RadioGroup component internally
+          uses the Label, HelpText, and FieldError components.
         </div>
         <div className="mb-4">
-          In addition to the custom properties listed below, the RadioGroup component also accepts
-          most standard HTML input element attribute React properties.
+          In addition to the custom properties listed below, the RadioGroup component also accepts most standard HTML
+          input element attribute React properties.
         </div>
 
         <div className="my-8">
@@ -126,35 +121,21 @@ const RadioGroupComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the RadioGroup component. It has no label or supporting
-          text. It is integrated with React Hook Form through the "control" and "reset" values
-          obtained from the "useForm" hook (see the React Hook Form documentation for more
-          information).
+          This is the most basic use of the RadioGroup component. It has no label or supporting text. It is integrated
+          with React Hook Form through the "control" and "reset" values obtained from the "useForm" hook (see the React
+          Hook Form documentation for more information).
         </div>
-        <div className="mb-4 opacity-85">
-          To view an example validation error message, select "Green".
-        </div>
+        <div className="mb-4 opacity-85">To view an example validation error message, select "Green".</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <RadioGroup name="color" control={control} className="mb-4" testId="radio-group-1">
                 <RadioGroup.Item id="color-red" value="red" label="Red" />
-                <RadioGroup.Item
-                  id="color-green"
-                  value="green"
-                  label="Green"
-                  testId="color-green-1"
-                />
+                <RadioGroup.Item id="color-green" value="green" label="Green" testId="color-green-1" />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-1"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-1">
                 Reset
               </Button>
             </form>
@@ -184,9 +165,8 @@ const RadioGroupComponents = ({
           Labels
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "label" property to add a label to the RadioGroup component. The label will be
-          displayed above the RadioGroup. When the RadioGroup is required, the label is styuled to
-          indicate.
+          Use the "label" property to add a label to the RadioGroup component. The label will be displayed above the
+          RadioGroup. When the RadioGroup is required, the label is styuled to indicate.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -197,13 +177,7 @@ const RadioGroupComponents = ({
                 <RadioGroup.Item id="color-green" value="green" label="Green" />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-2"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-2">
                 Reset
               </Button>
             </form>
@@ -233,9 +207,8 @@ const RadioGroupComponents = ({
           Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "supportingText" property to add helpful information, validation requirements, or
-          other tips for entering information to the RadioGroup component. The supporting text will
-          be displayed below the RadioGroup.
+          Use the "supportingText" property to add helpful information, validation requirements, or other tips for
+          entering information to the RadioGroup component. The supporting text will be displayed below the RadioGroup.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -253,13 +226,7 @@ const RadioGroupComponents = ({
                 <RadioGroup.Item id="color-green" value="green" label="Green" />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-3"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-3">
                 Reset
               </Button>
             </form>
@@ -296,9 +263,8 @@ const RadioGroupComponents = ({
           Orientation
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "orientation" property to set the orientation of the RadioGroup component. The
-          default orientation is "vertical". The "horizontal" orientation displays the RadioGroup
-          items in a single row.
+          Use the "orientation" property to set the orientation of the RadioGroup component. The default orientation is
+          "vertical". The "horizontal" orientation displays the RadioGroup items in a single row.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -317,13 +283,7 @@ const RadioGroupComponents = ({
                 <RadioGroup.Item id="color-green" value="green" label="Green" />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-4"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-4">
                 Reset
               </Button>
             </form>
@@ -361,9 +321,8 @@ const RadioGroupComponents = ({
           Disabled Group
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "disabled" property to disable the RadioGroup component. The disabled RadioGroup
-          will not respond to user input. The disabled state is styled to indicate that the
-          RadioGroup is not interactive.
+          Use the "disabled" property to disable the RadioGroup component. The disabled RadioGroup will not respond to
+          user input. The disabled state is styled to indicate that the RadioGroup is not interactive.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -381,13 +340,7 @@ const RadioGroupComponents = ({
                 <RadioGroup.Item id="color-green" value="green" label="Green" />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-5"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-5">
                 Reset
               </Button>
             </form>
@@ -424,9 +377,8 @@ const RadioGroupComponents = ({
           Disabled Item
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "disabled" property to disable individual RadioGroup.Item components. The disabled
-          Item will not respond to user input. The disabled state is styled to indicate that the
-          Item is not interactive.
+          Use the "disabled" property to disable individual RadioGroup.Item components. The disabled Item will not
+          respond to user input. The disabled state is styled to indicate that the Item is not interactive.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -444,13 +396,7 @@ const RadioGroupComponents = ({
                 <RadioGroup.Item id="color-green" value="green" label="Green" />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" disabled />
               </RadioGroup>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-6"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-6">
                 Reset
               </Button>
             </form>

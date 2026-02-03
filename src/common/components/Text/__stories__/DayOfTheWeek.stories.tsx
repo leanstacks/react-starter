@@ -13,8 +13,7 @@ const meta = {
   argTypes: {
     className: { description: 'Additional CSS classes.' },
     date: {
-      description:
-        'The date value expressed as an ISO 8601 date string or as a number of milliseconds.',
+      description: 'The date value expressed as an ISO 8601 date string or as a number of milliseconds.',
     },
     relative: {
       description:

@@ -32,10 +32,7 @@ const columnsVariants = cva('grid grid-cols-1', {
 /**
  * Properties for the `Columns` component.
  */
-export interface ColumnsProps
-  extends BaseComponentProps,
-    PropsWithChildren,
-    VariantProps<typeof columnsVariants> {}
+export interface ColumnsProps extends BaseComponentProps, PropsWithChildren, VariantProps<typeof columnsVariants> {}
 
 /**
  * The `Columns` component renders a responsive grid column layout. Use the 
@@ -75,11 +72,7 @@ const Columns = ({
 /**
  * The `Column` component renders an individual column.
  */
-const Column = ({
-  children,
-  className,
-  testId = 'column',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Column = ({ children, className, testId = 'column' }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}

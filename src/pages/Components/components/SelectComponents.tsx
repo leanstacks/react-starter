@@ -16,10 +16,7 @@ import Select from 'common/components/Form/Select';
  * The `SelectComponents` component renders a set of examples illustrating
  * the use of the `Select` component.
  */
-const SelectComponents = ({
-  className,
-  testId = 'components-select',
-}: BaseComponentProps): JSX.Element => {
+const SelectComponents = ({ className, testId = 'components-select' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -49,9 +46,7 @@ const SelectComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -90,8 +85,8 @@ const SelectComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Select</span> component displays a list of
-          options from which the user may choose.
+          The <span className="font-mono font-bold">Select</span> component displays a list of options from which the
+          user may choose.
         </div>
 
         <div className="my-8">
@@ -109,9 +104,9 @@ const SelectComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Select component. It has no label or supporting text. It
-          is integrated with React Hook Form through the "control" value obtained from the "useForm"
-          hook (see the React Hook Form documentation for more information).
+          This is the most basic use of the Select component. It has no label or supporting text. It is integrated with
+          React Hook Form through the "control" value obtained from the "useForm" hook (see the React Hook Form
+          documentation for more information).
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -136,13 +131,7 @@ const SelectComponents = ({
                   <Select.Option value="purple">Purple</Select.Option>
                 </Select.Options>
               </Select>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-1"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-1">
                 Reset
               </Button>
             </form>
@@ -184,8 +173,8 @@ const SelectComponents = ({
           Labels
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "label" property to associate a HTML label with the textarea. When the textarea is
-          required, the label is styled to indicate.
+          Use the "label" property to associate a HTML label with the textarea. When the textarea is required, the label
+          is styled to indicate.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -208,13 +197,7 @@ const SelectComponents = ({
                   <Select.Option value="purple">Purple</Select.Option>
                 </Select.Options>
               </Select>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-2"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-2">
                 Reset
               </Button>
             </form>
@@ -256,8 +239,8 @@ const SelectComponents = ({
           Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "supportingText" property to add helpful information below the textarea containing
-          instructions, validation requirements, or other tips for entering information.
+          Use the "supportingText" property to add helpful information below the textarea containing instructions,
+          validation requirements, or other tips for entering information.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -287,13 +270,7 @@ const SelectComponents = ({
                   <Select.Option value="purple">Purple</Select.Option>
                 </Select.Options>
               </Select>
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-3"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-3">
                 Reset
               </Button>
             </form>

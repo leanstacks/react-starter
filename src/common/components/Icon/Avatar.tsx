@@ -56,12 +56,7 @@ const BACKGROUND_COLORS = [
  * @param {AvatarProps} props - Component properties, `AvatarProps`.
  * @returns {JSX.Element} JSX
  */
-const Avatar = ({
-  className,
-  picture,
-  testId = 'icon-avatar',
-  value,
-}: AvatarProps): JSX.Element => {
+const Avatar = ({ className, picture, testId = 'icon-avatar', value }: AvatarProps): JSX.Element => {
   if (picture) {
     // 'picture' is available
     return (
@@ -82,11 +77,7 @@ const Avatar = ({
   const backgroundColor = BACKGROUND_COLORS[trimmedValue.length % BACKGROUND_COLORS.length];
   return (
     <div
-      className={cn(
-        'flex size-8 items-center justify-center font-bold text-neutral-100',
-        backgroundColor,
-        className,
-      )}
+      className={cn('flex size-8 items-center justify-center font-bold text-neutral-100', backgroundColor, className)}
       title={value}
       data-testid={testId}
     >

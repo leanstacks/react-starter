@@ -137,9 +137,7 @@ const Content = ({
         testId={`${testId}-backdrop`}
       >
         <div
-          className={cn(
-            'bg-light-bg dark:bg-dark-bg m-4 flex max-w-[560px] min-w-72 flex-col gap-4 rounded-md p-6',
-          )}
+          className={cn('bg-light-bg dark:bg-dark-bg m-4 flex max-w-[560px] min-w-72 flex-col gap-4 rounded-md p-6')}
           onClick={(e) => e.stopPropagation()}
           data-testid={`${testId}-content`}
         >
@@ -171,11 +169,7 @@ Dialog.Header = Header;
 /**
  * The `Body` is a block which encloses the main content of the `Dialog`.
  */
-const Body = ({
-  children,
-  className,
-  testId = 'dialog-body',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Body = ({ children, className, testId = 'dialog-body' }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -231,10 +225,7 @@ const Subtitle = ({
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
     <div
-      className={cn(
-        'line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed',
-        className,
-      )}
+      className={cn('line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed', className)}
       data-testid={testId}
     >
       {children}
@@ -288,12 +279,7 @@ export interface ButtonProps extends Omit<CommonButtonProps, 'variant'>, ButtonV
  * A dialog `Button` is a button which is styles for presentation within a
  * `Dialog`.
  */
-const Button = ({
-  className,
-  variant = 'secondary',
-  testId = 'dialog-button',
-  ...props
-}: ButtonProps): JSX.Element => {
+const Button = ({ className, variant = 'secondary', testId = 'dialog-button', ...props }: ButtonProps): JSX.Element => {
   return (
     <CommonButton
       variant="text"

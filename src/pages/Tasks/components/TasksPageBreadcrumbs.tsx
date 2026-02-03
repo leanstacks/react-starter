@@ -10,10 +10,7 @@ import Skeleton from 'common/components/Loader/Skeleton';
  * The `TasksPageBreadcrumbs` component renders the `Breadcrumbs` for the tasks
  * family of pages.
  */
-const TasksPageBreadcrumbs = ({
-  className,
-  testId = 'page-tasks-breadcrumbs',
-}: BaseComponentProps): JSX.Element => {
+const TasksPageBreadcrumbs = ({ className, testId = 'page-tasks-breadcrumbs' }: BaseComponentProps): JSX.Element => {
   const location = useLocation();
   const params = useParams();
   const pathElements = location.pathname.split('/');
@@ -55,9 +52,7 @@ const TasksPageBreadcrumbs = ({
                   {task.title}
                 </Breadcrumbs.Link>
               )}
-              {isLoadingTask && (
-                <Skeleton className="h-4 w-30" testId={`${testId}-item-task-loader`} />
-              )}
+              {isLoadingTask && <Skeleton className="h-4 w-30" testId={`${testId}-item-task-loader`} />}
             </Breadcrumbs.Item>
           </>
         )}

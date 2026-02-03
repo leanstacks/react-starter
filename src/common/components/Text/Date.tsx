@@ -21,12 +21,7 @@ export interface DateProps extends BaseComponentProps {
  * @param {Date} props - Component properties, `DateProps`.
  * @returns {JSX.Element} JSX
  */
-const Date = ({
-  className,
-  date,
-  testId = 'date',
-  format = DateFormat.DATE,
-}: DateProps): JSX.Element => {
+const Date = ({ className, date, testId = 'date', format = DateFormat.DATE }: DateProps): JSX.Element => {
   return (
     <span className={className} data-testid={testId}>
       {dayjs(date).format(format)}

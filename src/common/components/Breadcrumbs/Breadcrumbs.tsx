@@ -48,11 +48,7 @@ export interface BreadcrumbsProps extends BaseComponentProps, PropsWithChildren 
   </Breadcrumbs>
  * ```
  */
-const Breadcrumbs = ({
-  children,
-  className,
-  testId = 'breadcrumbs',
-}: BreadcrumbsProps): JSX.Element => {
+const Breadcrumbs = ({ children, className, testId = 'breadcrumbs' }: BreadcrumbsProps): JSX.Element => {
   return (
     <nav className={cn(className)} aria-label="breadcrumbs" data-testid={testId}>
       {children}
@@ -105,12 +101,7 @@ Breadcrumbs.Item = Item;
  * a child of an `Item`.  Use the `to` property to specify the relative path for
  * the link.
  */
-const Link = ({
-  children,
-  className,
-  testId = 'breadcrumbs-link',
-  ...props
-}: CommonLinkProps): JSX.Element => {
+const Link = ({ children, className, testId = 'breadcrumbs-link', ...props }: CommonLinkProps): JSX.Element => {
   return (
     <CommonLink
       className={cn('text-light-text dark:text-dark-text block max-w-40 truncate', className)}
@@ -152,9 +143,7 @@ const Separator = ({
   size = 'sm',
   testId = 'breadcrumbs-separator',
   ...iconProps
-}: BaseComponentProps &
-  Omit<FAIconProps, 'icon'> &
-  Partial<Pick<FAIconProps, 'icon'>>): JSX.Element => {
+}: BaseComponentProps & Omit<FAIconProps, 'icon'> & Partial<Pick<FAIconProps, 'icon'>>): JSX.Element => {
   return (
     <li className={cn(className)} data-testid={testId}>
       <FAIcon icon={icon} size={size} className="size-4" {...iconProps} testId={`${testId}-icon`} />
@@ -171,10 +160,7 @@ Breadcrumbs.Separator = Separator;
  * a `DropdownMenu` within the breadcrumbs to allow navigation to those routes
  * which have been omitted for brevity.
  */
-const Ellipsis = ({
-  className,
-  testId = 'breadcrumbs-ellipsis',
-}: BaseComponentProps): JSX.Element => {
+const Ellipsis = ({ className, testId = 'breadcrumbs-ellipsis' }: BaseComponentProps): JSX.Element => {
   return (
     <span className={cn('hover:opacity-75', className)} data-testid={testId}>
       <FAIcon icon="ellipsis" className="size-4" />

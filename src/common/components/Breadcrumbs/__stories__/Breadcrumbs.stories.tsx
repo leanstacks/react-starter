@@ -42,9 +42,7 @@ export const Basic: Story = {
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/tasks/97">
-            dolorum laboriosam eos qui iure aliquam
-          </Breadcrumbs.Link>
+          <Breadcrumbs.Link to="/app/tasks/97">dolorum laboriosam eos qui iure aliquam</Breadcrumbs.Link>
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>
@@ -80,9 +78,7 @@ export const WithDropdownMenu: Story = {
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/tasks/97">
-            dolorum laboriosam eos qui iure aliquam
-          </Breadcrumbs.Link>
+          <Breadcrumbs.Link to="/app/tasks/97">dolorum laboriosam eos qui iure aliquam</Breadcrumbs.Link>
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>

@@ -76,12 +76,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
-        <ErrorAlert
-          title="Authentication failed"
-          description={error}
-          className="mb-4"
-          testId={`${testId}-error`}
-        />
+        <ErrorAlert title="Authentication failed" description={error} className="mb-4" testId={`${testId}-error`} />
       )}
 
       <form onSubmit={handleSubmit(onFormSubmit)} noValidate>

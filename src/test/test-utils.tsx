@@ -1,11 +1,4 @@
-import {
-  queries,
-  Queries,
-  render,
-  renderHook,
-  RenderHookOptions,
-  RenderOptions,
-} from '@testing-library/react';
+import { queries, Queries, render, renderHook, RenderHookOptions, RenderOptions } from '@testing-library/react';
 
 import 'common/utils/i18n';
 import WithAllProviders from './wrappers/WithAllProviders';
@@ -22,10 +15,7 @@ function customRenderHook<
   Q extends Queries = typeof queries,
   Container extends Element | DocumentFragment = HTMLElement,
   BaseElement extends Element | DocumentFragment = Container,
->(
-  render: (initialProps: Props) => Result,
-  options?: RenderHookOptions<Props, Q, Container, BaseElement>,
-) {
+>(render: (initialProps: Props) => Result, options?: RenderHookOptions<Props, Q, Container, BaseElement>) {
   return renderHook(render, { wrapper: WithAllProviders, ...options });
 }
 

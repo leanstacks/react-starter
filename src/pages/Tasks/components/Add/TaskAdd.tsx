@@ -68,9 +68,7 @@ const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps): JSX.Element 
   return (
     <div className={className} data-testid={testId}>
       {/* heading */}
-      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">
-        {t('addTask', { ns: 'tasks' })}
-      </h2>
+      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">{t('addTask', { ns: 'tasks' })}</h2>
 
       {/* error state */}
       {!!taskCreateError && (
@@ -82,9 +80,7 @@ const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps): JSX.Element 
       )}
 
       {/* form */}
-      {!!user && (
-        <TaskForm task={{ userId: user.id }} onCancel={onFormCancel} onSubmit={onFormSubmit} />
-      )}
+      {!!user && <TaskForm task={{ userId: user.id }} onCancel={onFormCancel} onSubmit={onFormSubmit} />}
     </div>
   );
 };

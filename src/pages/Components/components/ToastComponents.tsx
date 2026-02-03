@@ -14,10 +14,7 @@ import { useToasts } from 'common/hooks/useToasts';
  * The `ToastComponents` component renders a set of examples illustrating
  * the use of the `Toast` component.
  */
-const ToastComponents = ({
-  className,
-  testId = 'components-toast',
-}: BaseComponentProps): JSX.Element => {
+const ToastComponents = ({ className, testId = 'components-toast' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -39,9 +36,7 @@ const ToastComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -61,21 +56,20 @@ const ToastComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Toast</span> component displays a small,
-          dismissible message to the user.
+          The <span className="font-mono font-bold">Toast</span> component displays a small, dismissible message to the
+          user.
         </div>
 
         <div className="mb-4">
-          Toast messages are typically used to inform the user of something that happened in the
-          background such as saving information. Or they may be used when some adverse action
-          happens, such as an error.
+          Toast messages are typically used to inform the user of something that happened in the background such as
+          saving information. Or they may be used when some adverse action happens, such as an error.
         </div>
 
         <div className="mb-4">
           An application uses the <span className="font-mono font-bold">ToastsContext</span> and{' '}
-          <span className="font-mono font-bold">ToastsProvider</span> to display Toasts for the
-          application in a standardized way. Toasts are created programmatically in React components
-          using the <span className="font-mono font-bold">useToasts</span> hook.
+          <span className="font-mono font-bold">ToastsProvider</span> to display Toasts for the application in a
+          standardized way. Toasts are created programmatically in React components using the{' '}
+          <span className="font-mono font-bold">useToasts</span> hook.
         </div>
 
         <CodeSnippet
@@ -104,10 +98,9 @@ createToast({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Toast component. This example illustrates how a toast
-          detail object passed to the Toast component is rendered. When using the "createToast"
-          function, the "id" and "createdAt" properties are automatically generated. The default
-          variant is "info".
+          This is the most basic use of the Toast component. This example illustrates how a toast detail object passed
+          to the Toast component is rendered. When using the "createToast" function, the "id" and "createdAt" properties
+          are automatically generated. The default variant is "info".
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -140,8 +133,8 @@ createToast({
           Colors
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "variant" property to adjust the color of the Toast component. The available
-          variants are "info", "danger", and "success".
+          Use the "variant" property to adjust the color of the Toast component. The available variants are "info",
+          "danger", and "success".
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -220,9 +213,8 @@ createToast({
           Auto Dismiss
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "isAutoDismiss" property to automatically dismiss the Toast after a set period of
-          time. The default time is 5 seconds. The default timeout can be adjusted in the
-          application configuration.
+          Use the "isAutoDismiss" property to automatically dismiss the Toast after a set period of time. The default
+          time is 5 seconds. The default timeout can be adjusted in the application configuration.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -255,10 +247,9 @@ createToast({
           Hooks Example
         </Heading>
         <div className="mb-4 opacity-85">
-          This example demonstrates how to use the "useToasts" hook to create a Toast. In most
-          situations, this is how you will actually create toast messages. The "createToast"
-          function is used to create a new Toast. Simply pass a partial toast detail object
-          containing the text, auto-dismiss, and variant properties.
+          This example demonstrates how to use the "useToasts" hook to create a Toast. In most situations, this is how
+          you will actually create toast messages. The "createToast" function is used to create a new Toast. Simply pass
+          a partial toast detail object containing the text, auto-dismiss, and variant properties.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">

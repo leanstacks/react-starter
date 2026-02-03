@@ -49,8 +49,6 @@ describe('useToasts', () => {
 
   it('should throw error when not within provider', async () => {
     // ASSERT
-    expect(() => renderHookWithoutWrapper(() => useToasts())).toThrow(
-      /useToasts hook must be used within/,
-    );
+    expect(() => renderHookWithoutWrapper(() => useToasts())).toThrow(/useToasts hook must be used within/);
   });
 });

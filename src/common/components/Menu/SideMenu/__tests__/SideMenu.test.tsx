@@ -34,9 +34,7 @@ describe('SideMenu', () => {
 
   it('should render headerContent', async () => {
     // ARRANGE
-    render(
-      <SideMenu headerContent={<div data-testid="custom-header-content">HeaderContent</div>} />,
-    );
+    render(<SideMenu headerContent={<div data-testid="custom-header-content">HeaderContent</div>} />);
     await screen.findByTestId('custom-header-content');
 
     // ASSERT

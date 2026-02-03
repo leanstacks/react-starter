@@ -11,10 +11,7 @@ import Skeleton from 'common/components/Loader/Skeleton';
  * The `SkeletonComponents` component renders a set of examples illustrating
  * the use of the `Skeleton` component.
  */
-const SelectComponents = ({
-  className,
-  testId = 'components-skeleton',
-}: BaseComponentProps): JSX.Element => {
+const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -28,9 +25,7 @@ const SelectComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -47,9 +42,8 @@ const SelectComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Skeleton</span> component displays an animated
-          loader which pulses faintly. The skeleton component is typically used when initially
-          loading data asynchronously.
+          The <span className="font-mono font-bold">Skeleton</span> component displays an animated loader which pulses
+          faintly. The skeleton component is typically used when initially loading data asynchronously.
         </div>
 
         <div className="my-8">
@@ -78,9 +72,7 @@ const SelectComponents = ({
         <Heading level={4} className="my-2">
           Dimensions
         </Heading>
-        <div className="mb-4 opacity-85">
-          Use Tailwind classes to adjust the dimensions of the component.
-        </div>
+        <div className="mb-4 opacity-85">Use Tailwind classes to adjust the dimensions of the component.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
@@ -105,9 +97,7 @@ const SelectComponents = ({
         <Heading level={4} className="my-2">
           Colors
         </Heading>
-        <div className="mb-4 opacity-85">
-          Use Tailwind classes to adjust the colors of the component.
-        </div>
+        <div className="mb-4 opacity-85">Use Tailwind classes to adjust the colors of the component.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
@@ -133,8 +123,8 @@ const SelectComponents = ({
           Composition
         </Heading>
         <div className="mb-4 opacity-85">
-          Combine multiple Skeleton components to create more complex shapes that represent the
-          layout of the component being loaded.
+          Combine multiple Skeleton components to create more complex shapes that represent the layout of the component
+          being loaded.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">

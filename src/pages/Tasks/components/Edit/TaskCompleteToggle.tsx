@@ -34,9 +34,7 @@ const TaskCompleteToggle = ({
   const { mutate: updateTask, isPending } = useUpdateTask();
   const { createToast } = useToasts();
 
-  const buttonTitle = task.completed
-    ? t('markIncomplete', { ns: 'tasks' })
-    : t('markComplete', { ns: 'tasks' });
+  const buttonTitle = task.completed ? t('markIncomplete', { ns: 'tasks' }) : t('markComplete', { ns: 'tasks' });
 
   const showCompleted = (task.completed && !isHovering) || (!task.completed && isHovering);
 
@@ -54,9 +52,7 @@ const TaskCompleteToggle = ({
       {
         onSuccess: (data) => {
           createToast({
-            text: data.completed
-              ? t('markedComplete', { ns: 'tasks' })
-              : t('markedIncomplete', { ns: 'tasks' }),
+            text: data.completed ? t('markedComplete', { ns: 'tasks' }) : t('markedIncomplete', { ns: 'tasks' }),
             isAutoDismiss: true,
             variant: 'success',
           });

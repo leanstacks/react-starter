@@ -24,17 +24,9 @@ export interface SideMenuHeaderProps extends BaseComponentProps, PropsWithChildr
  * @param {SideMenuHeaderProps} props - Component properties, `SideMenuHeaderProps`.
  * @returns {JSX.Element} JSX
  */
-const SideMenuHeader = ({
-  children,
-  className,
-  close,
-  testId = 'menu-header',
-}: SideMenuHeaderProps): JSX.Element => {
+const SideMenuHeader = ({ children, className, close, testId = 'menu-header' }: SideMenuHeaderProps): JSX.Element => {
   return (
-    <div
-      className={cn('flex h-14 items-center justify-between px-2 pt-2', className)}
-      data-testid={testId}
-    >
+    <div className={cn('flex h-14 items-center justify-between px-2 pt-2', className)} data-testid={testId}>
       <div className="mx-2">{children}</div>
       <MenuCloseButton className="mx-2" close={close} testId={`${testId}-close-button`} />
     </div>

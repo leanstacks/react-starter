@@ -37,13 +37,7 @@ export interface TaskFormProps extends BaseComponentProps {
  * @param {TaskFormProps} props - Component properties.
  * @returns JSX
  */
-const TaskForm = ({
-  className,
-  onCancel,
-  onSubmit,
-  task,
-  testId = 'task-form',
-}: TaskFormProps): JSX.Element => {
+const TaskForm = ({ className, onCancel, onSubmit, task, testId = 'task-form' }: TaskFormProps): JSX.Element => {
   const { t } = useTranslation();
 
   /**

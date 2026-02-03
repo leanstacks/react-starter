@@ -12,10 +12,7 @@ import Link from 'common/components/Link/Link';
  * The `SpinnerComponents` component renders a set of examples illustrating
  * the use of the `Spinner` component.
  */
-const SpinnerComponents = ({
-  className,
-  testId = 'components-spinner',
-}: BaseComponentProps): JSX.Element => {
+const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -37,9 +34,7 @@ const SpinnerComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -56,9 +51,8 @@ const SpinnerComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Spinner</span> component displays an animated,
-          spinning loader icon with optional accompanying text. The Spinner is typically used when a
-          process is running, such as an API call.
+          The <span className="font-mono font-bold">Spinner</span> component displays an animated, spinning loader icon
+          with optional accompanying text. The Spinner is typically used when a process is running, such as an API call.
         </div>
 
         <div className="my-8">
@@ -87,9 +81,7 @@ const SpinnerComponents = ({
         <Heading level={4} className="my-2">
           Sizes
         </Heading>
-        <div className="mb-4 opacity-85">
-          Adjust the size of the spinner using the "icon" property.
-        </div>
+        <div className="mb-4 opacity-85">Adjust the size of the spinner using the "icon" property.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
@@ -118,9 +110,7 @@ const SpinnerComponents = ({
         <Heading level={4} className="my-2">
           Colors
         </Heading>
-        <div className="mb-4 opacity-85">
-          Use Tailwind classes to adjust the color of the spinner.
-        </div>
+        <div className="mb-4 opacity-85">Use Tailwind classes to adjust the color of the spinner.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
@@ -150,8 +140,8 @@ const SpinnerComponents = ({
           Alternative icons
         </Heading>
         <div className="mb-4 opacity-85">
-          By default, the spinner uses the "circle notch" icon. You can use any icon from the
-          FontAwesome library. For a list of available icons, see the{' '}
+          By default, the spinner uses the "circle notch" icon. You can use any icon from the FontAwesome library. For a
+          list of available icons, see the{' '}
           <Link to="https://fontawesome.com/search?ic=free" target="_blank" rel="noreferrer">
             FontAwesome icon gallery
           </Link>
@@ -162,18 +152,13 @@ const SpinnerComponents = ({
             {/* Example */}
             <Spinner icon={{ icon: 'circleXmark', size: '2x' }} />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Spinner icon={{ icon: 'circleXmark', size: '2x' }} />`}
-          />
+          <CodeSnippet className="my-2" code={`<Spinner icon={{ icon: 'circleXmark', size: '2x' }} />`} />
         </div>
 
         <Heading level={4} className="my-2">
           Composition
         </Heading>
-        <div className="mb-4 opacity-85">
-          Add text to the spinner using the "Spinner.Text" component.
-        </div>
+        <div className="mb-4 opacity-85">Add text to the spinner using the "Spinner.Text" component.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}

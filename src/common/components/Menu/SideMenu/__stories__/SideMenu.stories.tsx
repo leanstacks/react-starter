@@ -31,8 +31,7 @@ const meta = {
       description: 'Optional. A `ReactNode` containing the content of the menu header.',
     },
     side: {
-      description:
-        'Optional. The side of the viewport where the menu should display when shown. Default: left',
+      description: 'Optional. The side of the viewport where the menu should display when shown. Default: left',
     },
     testId: { description: 'The test identifier.' },
   },

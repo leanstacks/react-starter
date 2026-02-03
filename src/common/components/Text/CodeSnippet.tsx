@@ -48,11 +48,7 @@ export interface CodeSnippetProps extends BaseComponentProps {
  * @param {CodeSnippetProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const CodeSnippet = ({
-  className,
-  code,
-  testId = 'code-snippet',
-}: CodeSnippetProps): JSX.Element => {
+const CodeSnippet = ({ className, code, testId = 'code-snippet' }: CodeSnippetProps): JSX.Element => {
   const { theme } = useSettings();
   const files = {
     '/App.js': code,
@@ -60,11 +56,7 @@ const CodeSnippet = ({
 
   return (
     <div className={className} data-testid={testId}>
-      <SandpackProvider
-        template="react"
-        theme={theme === 'light' ? themeLight : 'dark'}
-        files={files}
-      >
+      <SandpackProvider template="react" theme={theme === 'light' ? themeLight : 'dark'} files={files}>
         <SandpackLayout>
           <SandpackCodeEditor
             className="h-fit! rounded-lg"

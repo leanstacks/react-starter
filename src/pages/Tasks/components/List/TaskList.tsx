@@ -80,11 +80,7 @@ const TaskList = ({
       )}
 
       {isError && (
-        <ErrorAlert
-          description={t('errors.unable-to-retrieve')}
-          className="mb-4"
-          testId={`${testId}-error`}
-        />
+        <ErrorAlert description={t('errors.unable-to-retrieve')} className="mb-4" testId={`${testId}-error`} />
       )}
 
       {isLoading && (

@@ -62,11 +62,7 @@ Card.Header = Header;
 /**
  * The `Body` is a block which encloses the main content of the card.
  */
-const Body = ({
-  children,
-  className,
-  testId = 'card-body',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Body = ({ children, className, testId = 'card-body' }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -109,11 +105,7 @@ Card.Image = Image;
  * A `Title` for a `Card`.  Typically used within the card `Header`, but not
  * required.
  */
-const Title = ({
-  children,
-  className,
-  testId = 'card-title',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Title = ({ children, className, testId = 'card-title' }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
     <h5 className={cn('line-clamp-2 text-2xl', className)} data-testid={testId}>
       {children}
@@ -133,10 +125,7 @@ const Subtitle = ({
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
     <div
-      className={cn(
-        'line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed',
-        className,
-      )}
+      className={cn('line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed', className)}
       data-testid={testId}
     >
       {children}

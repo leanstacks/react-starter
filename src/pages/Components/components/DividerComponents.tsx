@@ -11,10 +11,7 @@ import Divider from 'common/components/Divider/Divider';
  * The `DividerComponents` component renders a set of examples illustrating
  * the use of the `Divider` component.
  */
-const DividerComponents = ({
-  className,
-  testId = 'components-divider',
-}: BaseComponentProps): JSX.Element => {
+const DividerComponents = ({ className, testId = 'components-divider' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -28,9 +25,7 @@ const DividerComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -47,8 +42,8 @@ const DividerComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Divider</span> component renders a horizontal
-          line to create visual separation of content.
+          The <span className="font-mono font-bold">Divider</span> component renders a horizontal line to create visual
+          separation of content.
         </div>
 
         <div className="my-8">

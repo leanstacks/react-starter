@@ -20,8 +20,7 @@ const meta = {
   argTypes: {
     columns: { description: 'An array of `ColumnDef`, column definition, objects.' },
     data: {
-      description:
-        'An array of data objects, of type `TData`, which are used to populate the rows of the table.',
+      description: 'An array of data objects, of type `TData`, which are used to populate the rows of the table.',
     },
     testId: { description: 'The test identifier.' },
   },
@@ -69,9 +68,7 @@ export const Simple: Story = {
     data: myTableData,
   },
   render: ({ columns, data }) => {
-    return (
-      <Table<TableData> columns={columns as ColumnDef<TableData>[]} data={data as TableData[]} />
-    );
+    return <Table<TableData> columns={columns as ColumnDef<TableData>[]} data={data as TableData[]} />;
   },
 };
 
@@ -82,8 +79,6 @@ export const DecoratedColumns: Story = {
     data: myTableData,
   },
   render: ({ columns, data }) => {
-    return (
-      <Table<TableData> columns={columns as ColumnDef<TableData>[]} data={data as TableData[]} />
-    );
+    return <Table<TableData> columns={columns as ColumnDef<TableData>[]} data={data as TableData[]} />;
   },
 };

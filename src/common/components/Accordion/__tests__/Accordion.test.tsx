@@ -65,9 +65,7 @@ describe('Accordion', () => {
 
     // ACT
     await user.click(screen.getByTestId('trigger-section-1-button'));
-    await waitFor(() =>
-      expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'open'),
-    );
+    await waitFor(() => expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'open'));
 
     // ASSERT
     expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'open');
@@ -93,9 +91,7 @@ describe('Accordion', () => {
 
     // ACT
     await user.click(screen.getByTestId('trigger-section-1-button'));
-    await waitFor(() =>
-      expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'closed'),
-    );
+    await waitFor(() => expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'closed'));
 
     // ASSERT
     expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'closed');
@@ -123,9 +119,7 @@ describe('Accordion', () => {
     // ACT
     await user.click(screen.getByTestId('trigger-section-1-button'));
     await user.click(screen.getByTestId('trigger-section-2-button'));
-    await waitFor(() =>
-      expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'open'),
-    );
+    await waitFor(() => expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'open'));
 
     // ASSERT
     expect(screen.getByTestId('content-section-1')).toHaveAttribute('data-state', 'open');

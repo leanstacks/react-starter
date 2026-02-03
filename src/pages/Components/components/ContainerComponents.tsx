@@ -12,10 +12,7 @@ import Container from 'common/components/Content/Container';
  * The `ContainerComponents` component renders a set of examples illustrating
  * the use of the `Container` component.
  */
-const ContainerComponents = ({
-  className,
-  testId = 'components-container',
-}: BaseComponentProps): JSX.Element => {
+const ContainerComponents = ({ className, testId = 'components-container' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -37,9 +34,7 @@ const ContainerComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -49,9 +44,7 @@ const ContainerComponents = ({
   ] as ColumnDef<ComponentProperty>[];
 
   const Block = ({ children }: PropsWithChildren) => (
-    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">
-      {children}
-    </div>
+    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">{children}</div>
   );
 
   return (
@@ -62,14 +55,11 @@ const ContainerComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Container</span> component renders a block which
-          fixes the maximum width of content to a breakpoint and centers the content within the
-          viewport. By default, a Container sets the maximum width of the content to the minimum
-          width of the current breakpoint.
+          The <span className="font-mono font-bold">Container</span> component renders a block which fixes the maximum
+          width of content to a breakpoint and centers the content within the viewport. By default, a Container sets the
+          maximum width of the content to the minimum width of the current breakpoint.
         </div>
-        <div className="mb-4">
-          Use the "size" property to specify a fixed maximum width for all viewport sizes.
-        </div>
+        <div className="mb-4">Use the "size" property to specify a fixed maximum width for all viewport sizes.</div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
             Properties

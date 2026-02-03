@@ -74,9 +74,7 @@ const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Eleme
   return (
     <div className={cn(className)} data-testid={testId}>
       {/* heading */}
-      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">
-        {t('editTask', { ns: 'tasks' })}
-      </h2>
+      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">{t('editTask', { ns: 'tasks' })}</h2>
 
       {/* loading state */}
       {isLoading && <Skeleton className="h-10" testId={`${testId}-loading`} />}

@@ -28,9 +28,7 @@ interface UseGetUserTasksProps {
  * @param {UseGetUserTasksProps} props - Hook properties.
  * @returns Returns a `UseQueryResult` with `Task` collection data.
  */
-export const useGetUserTasks = ({
-  userId,
-}: UseGetUserTasksProps): UseQueryResult<Task[], Error> => {
+export const useGetUserTasks = ({ userId }: UseGetUserTasksProps): UseQueryResult<Task[], Error> => {
   const axios = useAxios();
   const config = useConfig();
 

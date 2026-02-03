@@ -12,10 +12,7 @@ import Columns from 'common/components/Content/Columns';
  * The `ColumnsComponents` component renders a set of examples illustrating
  * the use of the `Columns` component.
  */
-const ColumnsComponents = ({
-  className,
-  testId = 'components-columns',
-}: BaseComponentProps): JSX.Element => {
+const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -41,9 +38,7 @@ const ColumnsComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -53,9 +48,7 @@ const ColumnsComponents = ({
   ] as ColumnDef<ComponentProperty>[];
 
   const Block = ({ children }: PropsWithChildren) => (
-    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">
-      {children}
-    </div>
+    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">{children}</div>
   );
 
   return (
@@ -66,9 +59,9 @@ const ColumnsComponents = ({
 
       <div className="my-8">
         <div>
-          The <span className="font-mono font-bold">Columns</span> component renders a responsive
-          grid column layout. Use the "layout" property to specify the number of columns and their
-          relative widths. Use the "gap" property to specify the spacing between columns.
+          The <span className="font-mono font-bold">Columns</span> component renders a responsive grid column layout.
+          Use the "layout" property to specify the number of columns and their relative widths. Use the "gap" property
+          to specify the spacing between columns.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">

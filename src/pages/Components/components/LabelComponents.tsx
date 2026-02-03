@@ -11,10 +11,7 @@ import Label from 'common/components/Form/Label';
  * The `LabelComponents` component renders a set of examples illustrating
  * the use of the `Label` component.
  */
-const LabelComponents = ({
-  className,
-  testId = 'components-label',
-}: BaseComponentProps): JSX.Element => {
+const LabelComponents = ({ className, testId = 'components-label' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -36,9 +33,7 @@ const LabelComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -55,16 +50,15 @@ const LabelComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Label</span> component renders a HTML label
-          element. It describes a form control. The Label component is used to compose custom form
-          controls in the starter kit such as <span className="font-mono font-bold">Input</span>,{' '}
-          <span className="font-mono font-bold">Select</span>,{' '}
-          <span className="font-mono font-bold">Textarea</span>, and{' '}
-          <span className="font-mono font-bold">Toggle</span>.
+          The <span className="font-mono font-bold">Label</span> component renders a HTML label element. It describes a
+          form control. The Label component is used to compose custom form controls in the starter kit such as{' '}
+          <span className="font-mono font-bold">Input</span>, <span className="font-mono font-bold">Select</span>,{' '}
+          <span className="font-mono font-bold">Textarea</span>, and <span className="font-mono font-bold">Toggle</span>
+          .
         </div>
         <div className="mb-4">
-          In addition to the custom properties listed below, the Label component also accepts all
-          standard HTML label element attribute React properties.
+          In addition to the custom properties listed below, the Label component also accepts all standard HTML label
+          element attribute React properties.
         </div>
 
         <div className="my-8">
@@ -82,8 +76,7 @@ const LabelComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Label component. It displays a label associated with a
-          form control.
+          This is the most basic use of the Label component. It displays a label associated with a form control.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">

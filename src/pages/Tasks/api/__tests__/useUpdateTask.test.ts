@@ -51,9 +51,7 @@ describe('useUpdateTask', () => {
 
     // ASSERT
     expect(isSuccess).toBe(true);
-    expect(queryClient.getQueryData([QueryKey.Tasks, { userId: updatedTask.userId }])).toEqual([
-      updatedTask,
-    ]);
+    expect(queryClient.getQueryData([QueryKey.Tasks, { userId: updatedTask.userId }])).toEqual([updatedTask]);
   });
 
   it('should update cached data when exists', async () => {
@@ -77,8 +75,8 @@ describe('useUpdateTask', () => {
 
     // ASSERT
     expect(isSuccess).toBe(true);
-    expect(
-      queryClient.getQueryData<Task[]>([QueryKey.Tasks, { userId: updatedTask.userId }])?.length,
-    ).toEqual(todosFixture.length);
+    expect(queryClient.getQueryData<Task[]>([QueryKey.Tasks, { userId: updatedTask.userId }])?.length).toEqual(
+      todosFixture.length,
+    );
   });
 });

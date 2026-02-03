@@ -39,10 +39,7 @@ type ButtonVariants = VariantProps<typeof variants>;
  * @see {@link ButtonVariants}
  * @see {@link PropsWithTestId}
  */
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonVariants,
-    PropsWithTestId {}
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants, PropsWithTestId {}
 
 /**
  * The `Button` React component formats and renders a styled button.

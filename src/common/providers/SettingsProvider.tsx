@@ -14,11 +14,7 @@ const SettingsContextProvider = ({ children }: PropsWithChildren) => {
 
   const value = useMemo(() => settings, [settings]);
 
-  return (
-    <SettingsContext.Provider value={value}>
-      {!isLoading && <>{children}</>}
-    </SettingsContext.Provider>
-  );
+  return <SettingsContext.Provider value={value}>{!isLoading && <>{children}</>}</SettingsContext.Provider>;
 };
 
 export default SettingsContextProvider;

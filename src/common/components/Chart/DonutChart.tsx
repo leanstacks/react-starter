@@ -57,13 +57,7 @@ const DonutChart = ({
             <Cell key={`cell-${index}`} fill={cell.fill} strokeWidth={0} />
           ))}
         </Pie>
-        <Legend
-          iconSize={8}
-          iconType="circle"
-          layout="vertical"
-          align="right"
-          verticalAlign="middle"
-        />
+        <Legend iconSize={8} iconType="circle" layout="vertical" align="right" verticalAlign="middle" />
       </PieChart>
     </div>
   );

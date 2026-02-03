@@ -17,10 +17,7 @@ export interface StandardLayoutProps extends BaseComponentProps {}
  * @param [props] - Component properties, `StandardLayoutProps`.
  * @returns {JSX.Element} JSX
  */
-const StandardLayout = ({
-  className,
-  testId = 'layout-standard',
-}: StandardLayoutProps): JSX.Element => {
+const StandardLayout = ({ className, testId = 'layout-standard' }: StandardLayoutProps): JSX.Element => {
   return (
     <div className={className} data-testid={testId}>
       <Header />

@@ -34,8 +34,6 @@ describe('ComponentsPageBreadcrumbs', () => {
 
     // ASSERT
     expect(screen.getByTestId('page-components-breadcrumbs-page-alert')).toBeDefined();
-    expect(screen.getByTestId('page-components-breadcrumbs-page-alert')).toHaveTextContent(
-      /alert/i,
-    );
+    expect(screen.getByTestId('page-components-breadcrumbs-page-alert')).toHaveTextContent(/alert/i);
   });
 });

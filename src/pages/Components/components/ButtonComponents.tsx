@@ -19,10 +19,7 @@ interface ButtonComponentsProps extends BaseComponentProps {}
  * @param {ButtonComponentsProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const ButtonComponents = ({
-  className,
-  testId = 'components-button',
-}: ButtonComponentsProps): JSX.Element => {
+const ButtonComponents = ({ className, testId = 'components-button' }: ButtonComponentsProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -52,9 +49,7 @@ const ButtonComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -70,8 +65,8 @@ const ButtonComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Button</span> component displays a clickable
-        button which is styled in a standardized way.
+        The <span className="font-mono font-bold">Button</span> component displays a clickable button which is styled in
+        a standardized way.
       </div>
 
       <div className="my-8">

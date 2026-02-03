@@ -62,9 +62,7 @@ describe('Currency', () => {
 
   it('should use specified currency display', async () => {
     // ARRANGE
-    render(
-      <Currency value={19.99} currency={CurrencyCode.CAD} currencyDisplay={CurrencyDisplay.Name} />,
-    );
+    render(<Currency value={19.99} currency={CurrencyCode.CAD} currencyDisplay={CurrencyDisplay.Name} />);
     await screen.findByTestId('currency');
 
     // ASSERT

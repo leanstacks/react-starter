@@ -66,14 +66,7 @@ const MenuNavLink = ({
   return (
     <NavLink className={getClassName} data-testid={testId} {...props}>
       <>
-        {icon && (
-          <FAIcon
-            icon={icon}
-            size="lg"
-            className={cn('me-2', iconClassName)}
-            testId={`${testId}-icon`}
-          />
-        )}
+        {icon && <FAIcon icon={icon} size="lg" className={cn('me-2', iconClassName)} testId={`${testId}-icon`} />}
         {children}
       </>
     </NavLink>

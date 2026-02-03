@@ -67,9 +67,7 @@ const Textarea = <T extends FieldValues>({
         data-testid={`${testId}-textarea`}
       ></textarea>
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-      {!!supportingText && (
-        <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-      )}
+      {!!supportingText && <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>}
     </div>
   );
 };

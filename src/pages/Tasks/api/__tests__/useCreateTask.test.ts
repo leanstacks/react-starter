@@ -50,9 +50,7 @@ describe('useCreateTask', () => {
 
     // ASSERT
     expect(isSuccess).toBe(true);
-    expect(queryClient.getQueryData([QueryKey.Tasks, { userId: taskToCreate.userId }])).toEqual([
-      taskToCreate,
-    ]);
+    expect(queryClient.getQueryData([QueryKey.Tasks, { userId: taskToCreate.userId }])).toEqual([taskToCreate]);
     expect(queryClient.getQueryData([QueryKey.Tasks, taskToCreate.id])).toEqual(taskToCreate);
   });
 
@@ -77,8 +75,8 @@ describe('useCreateTask', () => {
 
     // ASSERT
     expect(isSuccess).toBe(true);
-    expect(
-      queryClient.getQueryData<Task[]>([QueryKey.Tasks, { userId: taskToCreate.userId }])?.length,
-    ).toEqual(todosFixture.length);
+    expect(queryClient.getQueryData<Task[]>([QueryKey.Tasks, { userId: taskToCreate.userId }])?.length).toEqual(
+      todosFixture.length,
+    );
   });
 });

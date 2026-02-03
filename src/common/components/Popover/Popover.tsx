@@ -1,12 +1,4 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import noop from 'lodash/noop';
 
 import { cn } from 'common/utils/css';
@@ -52,9 +44,7 @@ export interface PopoverProps extends BaseComponentProps, PropsWithChildren {}
  */
 const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
-  const [triggerRect, setTriggerRect] = useState<
-    Pick<DOMRect, 'top' | 'left' | 'height' | 'width'>
-  >({
+  const [triggerRect, setTriggerRect] = useState<Pick<DOMRect, 'top' | 'left' | 'height' | 'width'>>({
     top: 0,
     left: 0,
     height: 0,
@@ -152,12 +142,7 @@ const Content = ({
   });
   const { height: contentHeight, width: contentWidth } = contentRect;
   const { isOpen, setIsOpen, triggerRect } = useContext(PopoverContext);
-  const {
-    top: triggerTop,
-    left: triggerLeft,
-    height: triggerHeight,
-    width: triggerWidth,
-  } = triggerRect;
+  const { top: triggerTop, left: triggerLeft, height: triggerHeight, width: triggerWidth } = triggerRect;
 
   useEffect(() => {
     if (isOpen && contentRef.current) {
@@ -193,16 +178,7 @@ const Content = ({
         };
       }
     }
-  }, [
-    triggerTop,
-    triggerLeft,
-    triggerHeight,
-    triggerWidth,
-    contentHeight,
-    contentWidth,
-    side,
-    sideOffset,
-  ]);
+  }, [triggerTop, triggerLeft, triggerHeight, triggerWidth, contentHeight, contentWidth, side, sideOffset]);
 
   const isHidden = !isOpen;
   const isVisible = isOpen && contentHeight > 0 && contentWidth > 0;
@@ -215,12 +191,7 @@ const Content = ({
         testId={`${testId}-backdrop`}
       />
       <div
-        className={cn(
-          'fixed top-0 left-0 z-1001',
-          { hidden: isHidden },
-          { invisible: !isVisible },
-          className,
-        )}
+        className={cn('fixed top-0 left-0 z-1001', { hidden: isHidden }, { invisible: !isVisible }, className)}
         style={{ transform: `translate(${left}px, ${top}px)` }}
         ref={contentRef}
         data-testid={testId}

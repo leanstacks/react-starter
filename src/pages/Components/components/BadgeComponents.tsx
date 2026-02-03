@@ -19,10 +19,7 @@ interface BadgeComponentsProps extends BaseComponentProps {}
  * @param {BadgeComponentsProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const BadgeComponents = ({
-  className,
-  testId = 'components-badge',
-}: BadgeComponentsProps): JSX.Element => {
+const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeComponentsProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -52,9 +49,7 @@ const BadgeComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -70,9 +65,8 @@ const BadgeComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Badge</span> component displays a stylized
-        counter. Useful for displaying the number of items of a specific type, for example, the
-        number of notifications.
+        The <span className="font-mono font-bold">Badge</span> component displays a stylized counter. Useful for
+        displaying the number of items of a specific type, for example, the number of notifications.
       </div>
 
       <div className="my-8">

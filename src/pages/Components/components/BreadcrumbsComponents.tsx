@@ -12,10 +12,7 @@ import DropdownMenu from 'common/components/Dropdown/DropdownMenu';
  * The `BreadcrumbsComponents` React component renders a set of examples illustrating
  * the use of the `Breadcrumbs` family of components.
  */
-const BreadcrumbsComponents = ({
-  className,
-  testId = 'components-breadcrumbs',
-}: BaseComponentProps): JSX.Element => {
+const BreadcrumbsComponents = ({ className, testId = 'components-breadcrumbs' }: BaseComponentProps): JSX.Element => {
   const columnHelper = createColumnHelper<ComponentProperty>();
   const breadcrumbsData: ComponentProperty[] = [
     {
@@ -33,9 +30,7 @@ const BreadcrumbsComponents = ({
   ];
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -52,8 +47,8 @@ const BreadcrumbsComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">Breadcrumbs</span> component displays a
-          heirarchy of links as a path to the current route.
+          The <span className="font-mono font-bold">Breadcrumbs</span> component displays a heirarchy of links as a path
+          to the current route.
         </div>
 
         <div className="my-8">
@@ -71,9 +66,8 @@ const BreadcrumbsComponents = ({
           Breadcrumbs components
         </Heading>
         <div className="text-sm opacity-85">
-          The Breadcrumbs component is a compound component. It has component properties which allow
-          you to compose Breadcrumbs content. Those components include: List, Item, Link, Page,
-          Ellipsis, and Separator.
+          The Breadcrumbs component is a compound component. It has component properties which allow you to compose
+          Breadcrumbs content. Those components include: List, Item, Link, Page, Ellipsis, and Separator.
         </div>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -97,9 +91,7 @@ const BreadcrumbsComponents = ({
                 </Breadcrumbs.Item>
                 <Breadcrumbs.Separator />
                 <Breadcrumbs.Item>
-                  <Breadcrumbs.Link to="/app/tasks/97">
-                    dolorum laboriosam eos qui iure aliquam
-                  </Breadcrumbs.Link>
+                  <Breadcrumbs.Link to="/app/tasks/97">dolorum laboriosam eos qui iure aliquam</Breadcrumbs.Link>
                 </Breadcrumbs.Item>
                 <Breadcrumbs.Separator />
                 <Breadcrumbs.Item>

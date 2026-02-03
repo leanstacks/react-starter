@@ -47,9 +47,7 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
     }
   }, []);
 
-  return (
-    <ConfigContext.Provider value={config}>{isReady && <>{children}</>}</ConfigContext.Provider>
-  );
+  return <ConfigContext.Provider value={config}>{isReady && <>{children}</>}</ConfigContext.Provider>;
 };
 
 export default ConfigContextProvider;

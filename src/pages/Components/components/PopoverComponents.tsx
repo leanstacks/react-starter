@@ -12,10 +12,7 @@ import Card from 'common/components/Card/Card';
  * The `PopoverComponents` component renders a set of examples illustrating
  * the use of the `Popover` component.
  */
-const PopoverComponents = ({
-  className,
-  testId = 'components-popover',
-}: BaseComponentProps): JSX.Element => {
+const PopoverComponents = ({ className, testId = 'components-popover' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -33,9 +30,7 @@ const PopoverComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -52,9 +47,9 @@ const PopoverComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Popover</span> component displays rich content
-          within a portal, triggered by clicking a target element. The content can be any React
-          component, such as a menu, form, or dialog.
+          The <span className="font-mono font-bold">Popover</span> component displays rich content within a portal,
+          triggered by clicking a target element. The content can be any React component, such as a menu, form, or
+          dialog.
         </div>
 
         <div className="my-8">
@@ -72,9 +67,9 @@ const PopoverComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Popover component. A popover consists of a trigger and
-          content. When the trigger is clicked, the content is shown. The content is displayed over
-          a full-screen backdrop. Clicking the backdrop or the trigger will close the popover.
+          This is the most basic use of the Popover component. A popover consists of a trigger and content. When the
+          trigger is clicked, the content is shown. The content is displayed over a full-screen backdrop. Clicking the
+          backdrop or the trigger will close the popover.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col items-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -105,12 +100,11 @@ const PopoverComponents = ({
           Sides
         </Heading>
         <div className="mb-4 opacity-85">
-          The Popover component can be positioned on any side of the trigger. The default position
-          is bottom. The position can be changed by setting the{' '}
-          <span className="font-mono">"side"</span> prop on the Popover component. The available
-          options are <span className="font-mono">"top"</span>,{' '}
-          <span className="font-mono">"right"</span>, <span className="font-mono">"bottom"</span>,
-          and <span className="font-mono">"left"</span>.
+          The Popover component can be positioned on any side of the trigger. The default position is bottom. The
+          position can be changed by setting the <span className="font-mono">"side"</span> prop on the Popover
+          component. The available options are <span className="font-mono">"top"</span>,{' '}
+          <span className="font-mono">"right"</span>, <span className="font-mono">"bottom"</span>, and{' '}
+          <span className="font-mono">"left"</span>.
         </div>
         <div className="my-8">
           <div className="mb-2 grid grid-cols-2 justify-items-center gap-4 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -122,8 +116,7 @@ const PopoverComponents = ({
               <Popover.Content side="bottom">
                 <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
                   <Card.Body>
-                    This popover appears below the trigger, which is also the default side when not
-                    specified.
+                    This popover appears below the trigger, which is also the default side when not specified.
                   </Card.Body>
                 </Card>
               </Popover.Content>
@@ -213,8 +206,8 @@ const PopoverComponents = ({
           Side Offset
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the <span className="font-mono">"sideOffset"</span> prop to set the distance between
-          the trigger and the popover. The default value is 8px.
+          Use the <span className="font-mono">"sideOffset"</span> prop to set the distance between the trigger and the
+          popover. The default value is 8px.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col items-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -228,8 +221,8 @@ const PopoverComponents = ({
                   </Card.Header>
                   <Card.Separator />
                   <Card.Body>
-                    This popover has a sideOffset of 32, which means it will be positioned 32px away
-                    from the trigger instead of the default 8px.
+                    This popover has a sideOffset of 32, which means it will be positioned 32px away from the trigger
+                    instead of the default 8px.
                   </Card.Body>
                 </Card>
               </Popover.Content>

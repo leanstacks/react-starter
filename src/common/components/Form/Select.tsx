@@ -113,9 +113,7 @@ const Select = <T extends FieldValues>({
         {children}
       </SelectContext.Provider>
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-      {!!supportingText && (
-        <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-      )}
+      {!!supportingText && <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>}
     </div>
   );
 };
@@ -242,12 +240,7 @@ interface OptionProps extends BaseComponentProps, PropsWithChildren {
  * specifies the value which will be updated in the form context when this Option
  * is selected.
  */
-const Option = ({
-  children,
-  className,
-  testId = 'select-option',
-  value,
-}: OptionProps): JSX.Element => {
+const Option = ({ children, className, testId = 'select-option', value }: OptionProps): JSX.Element => {
   const { setIsOpen, value: currentValue, setValue, setText } = useContext(SelectContext);
   const isSelected = value === currentValue;
 

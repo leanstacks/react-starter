@@ -11,10 +11,7 @@ import Tabs from 'common/components/Tabs/Tabs';
  * The `TabsComponents` component renders a set of examples illustrating
  * the use of the `Tabs` component.
  */
-const TabsComponents = ({
-  className,
-  testId = 'components-tabs',
-}: BaseComponentProps): JSX.Element => {
+const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -36,9 +33,7 @@ const TabsComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -55,8 +50,8 @@ const TabsComponents = ({
 
       <div className="my-8">
         <div>
-          The <span className="font-mono font-bold">Tabs</span> component organizes content into
-          sections, i.e. tabs, allowing the user to select the section which is actively displayed.
+          The <span className="font-mono font-bold">Tabs</span> component organizes content into sections, i.e. tabs,
+          allowing the user to select the section which is actively displayed.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">

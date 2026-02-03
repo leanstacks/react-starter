@@ -20,10 +20,7 @@ interface AvatarComponentsProps extends BaseComponentProps {}
  * @param {AvatarComponentsProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const AvatarComponents = ({
-  className,
-  testId = 'components-avatar',
-}: AvatarComponentsProps): JSX.Element => {
+const AvatarComponents = ({ className, testId = 'components-avatar' }: AvatarComponentsProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -46,9 +43,7 @@ const AvatarComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -64,9 +59,8 @@ const AvatarComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Avatar</span> component displays a circular image
-        or placeholder. Usually used to represent a user, group, or team, but may be used to
-        represent any named object.
+        The <span className="font-mono font-bold">Avatar</span> component displays a circular image or placeholder.
+        Usually used to represent a user, group, or team, but may be used to represent any named object.
       </div>
 
       <div className="my-8">
@@ -88,20 +82,12 @@ const AvatarComponents = ({
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Avatar value="Alexander Johnson" className="rounded-full" />
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Avatar value="Alexander Johnson" className="rounded-full" />`}
-        />
+        <CodeSnippet className="my-2" code={`<Avatar value="Alexander Johnson" className="rounded-full" />`} />
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Avatar
-            picture={avatarPicture}
-            value="Jane Jones"
-            className="rounded-full"
-            testId="my-avatar"
-          />
+          <Avatar picture={avatarPicture} value="Jane Jones" className="rounded-full" testId="my-avatar" />
         </div>
         <CodeSnippet
           className="my-2"

@@ -34,10 +34,7 @@ type HeadingVariants = VariantProps<typeof variants>;
 /**
  * Properties for the `Heading` component.
  */
-export interface HeadingProps
-  extends BaseComponentProps,
-    HeadingVariants,
-    HTMLAttributes<HTMLHeadingElement> {}
+export interface HeadingProps extends BaseComponentProps, HeadingVariants, HTMLAttributes<HTMLHeadingElement> {}
 
 /**
  * The `Heading` component formats heading blocks.  The component supports
@@ -46,13 +43,7 @@ export interface HeadingProps
 const Heading = ({ className, level, testId = 'heading', ...props }: HeadingProps): JSX.Element => {
   const HeadingElement: HeadingType = level ? `h${level}` : 'h2';
 
-  return (
-    <HeadingElement
-      className={cn(variants({ level, className }))}
-      data-testid={testId}
-      {...props}
-    />
-  );
+  return <HeadingElement className={cn(variants({ level, className }))} data-testid={testId} {...props} />;
 };
 
 export default Heading;

@@ -19,11 +19,7 @@ interface UserInfoProps extends BaseComponentProps {
  * @param {UserInfoProps} props - Component properties.
  * @returns JSX
  */
-const UserInfo = ({
-  className,
-  testId = 'user-info',
-  userId,
-}: UserInfoProps): JSX.Element | false => {
+const UserInfo = ({ className, testId = 'user-info', userId }: UserInfoProps): JSX.Element | false => {
   const { data: user, isLoading } = useGetUser({ userId });
 
   return (
@@ -38,11 +34,7 @@ const UserInfo = ({
       {user && (
         <div data-testid={`${testId}-content`}>
           <div className="flex items-center gap-2">
-            <Avatar
-              value={user.name}
-              className="shrink-0 rounded-full"
-              testId={`${testId}-avatar`}
-            />
+            <Avatar value={user.name} className="shrink-0 rounded-full" testId={`${testId}-avatar`} />
 
             <div className="flex flex-col gap-1">
               <div className="font-bold">{user.name}</div>

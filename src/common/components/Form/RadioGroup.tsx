@@ -59,10 +59,7 @@ const radioGroupOptionsVariants = cva('flex', {
  * @see {@link InputHTMLAttributes}
  */
 export interface RadioGroupProps<T extends FieldValues>
-  extends Pick<
-      InputHTMLAttributes<HTMLInputElement>,
-      'children' | 'className' | 'disabled' | 'required'
-    >,
+  extends Pick<InputHTMLAttributes<HTMLInputElement>, 'children' | 'className' | 'disabled' | 'required'>,
     PropsWithTestId {
   control: Control<T>;
   label?: string;
@@ -108,9 +105,7 @@ const RadioGroup = <T extends FieldValues>({
       </RadioGroupContext.Provider>
       <div>
         <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-        {!!supportingText && (
-          <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-        )}
+        {!!supportingText && <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>}
       </div>
     </div>
   );
@@ -153,19 +148,8 @@ interface RadioGroupItemProps
  * The `Item` component renders a single radio button within
  * a `RadioGroup`. It is used to represent an individual option in the group.
  */
-const Item = ({
-  className,
-  disabled = false,
-  id,
-  testId = 'radio-group-item',
-  ...props
-}: RadioGroupItemProps) => {
-  const {
-    disabled: groupDisabled,
-    name,
-    setValue,
-    value: currentValue,
-  } = useContext(RadioGroupContext);
+const Item = ({ className, disabled = false, id, testId = 'radio-group-item', ...props }: RadioGroupItemProps) => {
+  const { disabled: groupDisabled, name, setValue, value: currentValue } = useContext(RadioGroupContext);
   const isChecked = currentValue === props.value;
   const isDisabled = disabled || groupDisabled;
 
@@ -176,11 +160,7 @@ const Item = ({
   };
 
   return (
-    <div
-      className={cn(radioGroupItemVariants({ disabled: isDisabled }))}
-      data-testid={testId}
-      onClick={handleChange}
-    >
+    <div className={cn(radioGroupItemVariants({ disabled: isDisabled }))} data-testid={testId} onClick={handleChange}>
       <input
         type="radio"
         id={id}

@@ -21,10 +21,7 @@ interface CardComponentsProps extends BaseComponentProps {}
  * @param {CardComponentsProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const CardComponents = ({
-  className,
-  testId = 'components-card',
-}: CardComponentsProps): JSX.Element => {
+const CardComponents = ({ className, testId = 'components-card' }: CardComponentsProps): JSX.Element => {
   const columnHelper = createColumnHelper<ComponentProperty>();
   const cardData: ComponentProperty[] = [
     {
@@ -64,9 +61,7 @@ const CardComponents = ({
   ];
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -83,8 +78,8 @@ const CardComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">Card</span> component displays block container
-          for a group of related content.
+          The <span className="font-mono font-bold">Card</span> component displays block container for a group of
+          related content.
         </div>
 
         <div className="my-8">
@@ -102,9 +97,8 @@ const CardComponents = ({
           Card components
         </Heading>
         <div className="text-sm opacity-85">
-          The Card component is a compound component. It has component properties which allow you to
-          compose Card content. Those components include: Header, Title, Subtitle, Body, Footer,
-          Separator, and Image.
+          The Card component is a compound component. It has component properties which allow you to compose Card
+          content. Those components include: Header, Title, Subtitle, Body, Footer, Separator, and Image.
         </div>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -152,8 +146,8 @@ const CardComponents = ({
           Card images
         </Heading>
         <div className="text-sm opacity-85">
-          Card images may be used anywhere within a Card. If the image is the first or last child of
-          the Card component, the image will be flush to the top or bottom and the corners rounded.
+          Card images may be used anywhere within a Card. If the image is the first or last child of the Card component,
+          the image will be flush to the top or bottom and the corners rounded.
         </div>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -164,11 +158,10 @@ const CardComponents = ({
                 <Card.Subtitle>with a subtitle</Card.Subtitle>
               </Card.Header>
               <Card.Body>
-                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
-                Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
-                ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
-                nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
-                minim id adipiscing dolor ero incididunt.
+                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor. Posuere justo minim dui
+                aliquip laboris et aenean. Fermentum et velit duis bibendum ea commodo. Ullamco excepteur officia id
+                ornare minim. Voluptate amet dolor magna nostrud posuere ornare. Cras enim ex ex quam aute proident mi.
+                Commodo sapien aliqua minim id adipiscing dolor ero incididunt.
               </Card.Body>
               <Card.Footer className="flex items-center justify-end">
                 <Button variant="text" className="text-sm font-bold text-blue-600">
@@ -209,11 +202,10 @@ const CardComponents = ({
                 <Card.Subtitle>with a subtitle</Card.Subtitle>
               </Card.Header>
               <Card.Body>
-                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
-                Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
-                ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
-                nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
-                minim id adipiscing dolor ero incididunt.
+                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor. Posuere justo minim dui
+                aliquip laboris et aenean. Fermentum et velit duis bibendum ea commodo. Ullamco excepteur officia id
+                ornare minim. Voluptate amet dolor magna nostrud posuere ornare. Cras enim ex ex quam aute proident mi.
+                Commodo sapien aliqua minim id adipiscing dolor ero incididunt.
               </Card.Body>
               <Card.Footer className="flex items-center justify-end">
                 <Button variant="text" className="text-sm font-bold text-blue-600">
@@ -255,18 +247,13 @@ const CardComponents = ({
               </Card.Header>
               <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
               <Card.Body>
-                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
-                Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
-                ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
-                nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
-                minim id adipiscing dolor ero incididunt.
+                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor. Posuere justo minim dui
+                aliquip laboris et aenean. Fermentum et velit duis bibendum ea commodo. Ullamco excepteur officia id
+                ornare minim. Voluptate amet dolor magna nostrud posuere ornare. Cras enim ex ex quam aute proident mi.
+                Commodo sapien aliqua minim id adipiscing dolor ero incididunt.
               </Card.Body>
               <Card.Footer className="flex items-center justify-end">
-                <Button
-                  variant="text"
-                  className="text-sm font-bold text-blue-600"
-                  data-testid="card-button-view"
-                >
+                <Button variant="text" className="text-sm font-bold text-blue-600" data-testid="card-button-view">
                   View
                 </Button>
               </Card.Footer>
@@ -303,8 +290,8 @@ const CardComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">MessageCard</span> component is a bespoke Card
-          layout for displaying messages.
+          The <span className="font-mono font-bold">MessageCard</span> component is a bespoke Card layout for displaying
+          messages.
         </div>
 
         <div className="my-8">
@@ -319,10 +306,7 @@ const CardComponents = ({
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard className="w-100" message="Hello world! &#128075;" />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<MessageCard className="w-100" message="Hello world! &#128075;" />`}
-          />
+          <CodeSnippet className="my-2" code={`<MessageCard className="w-100" message="Hello world! &#128075;" />`} />
         </div>
 
         <div className="my-8">

@@ -22,12 +22,7 @@ const Theme = ({ className, children, testId = 'theme' }: ThemeProps): JSX.Eleme
 
   return (
     <div className={settings.theme} data-testid={testId}>
-      <div
-        className={cn(
-          'min-h-screen bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text',
-          className,
-        )}
-      >
+      <div className={cn('bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text min-h-screen', className)}>
         {children}
       </div>
     </div>

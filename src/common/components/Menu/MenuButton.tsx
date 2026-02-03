@@ -24,12 +24,7 @@ export interface MenuButtonProps extends BaseComponentProps {
  * @param {MenuButtonProps} props - Component properties, `MenuButtonProps`.
  * @returns {JSX.Element} JSX
  */
-const MenuButton = ({
-  className,
-  Menu,
-  testId = 'button-menu',
-  title = 'Menu',
-}: MenuButtonProps): JSX.Element => {
+const MenuButton = ({ className, Menu, testId = 'button-menu', title = 'Menu' }: MenuButtonProps): JSX.Element => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

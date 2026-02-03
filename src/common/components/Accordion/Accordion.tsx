@@ -89,9 +89,7 @@ const Accordion = ({
 
   return (
     <div className={cn(className)} data-testid={testId}>
-      <AccordionContext.Provider
-        value={{ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }}
-      >
+      <AccordionContext.Provider value={{ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }}>
         {children}
       </AccordionContext.Provider>
     </div>
@@ -125,12 +123,7 @@ interface ItemProps extends BaseComponentProps, PropsWithChildren {
  * The `Item` component represents a single item in the `Accordion`. It contains
  * a `Trigger` and `Content`.
  */
-const Item = ({
-  children,
-  className,
-  value,
-  testId = 'accordion-item',
-}: ItemProps): JSX.Element => {
+const Item = ({ children, className, value, testId = 'accordion-item' }: ItemProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const { activeItems, addItem, removeItem } = useContext(AccordionContext);
 
@@ -157,9 +150,7 @@ const Item = ({
 
   return (
     <div className={cn('border-b border-neutral-500/50', className)} data-testid={testId}>
-      <AccordionItemContext.Provider value={{ isOpen, value }}>
-        {children}
-      </AccordionItemContext.Provider>
+      <AccordionItemContext.Provider value={{ isOpen, value }}>{children}</AccordionItemContext.Provider>
     </div>
   );
 };

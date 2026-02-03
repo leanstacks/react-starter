@@ -16,10 +16,7 @@ import Button from 'common/components/Button/Button';
  * The `TextareaComponents` component renders a set of examples illustrating
  * the use of the `Textarea` component.
  */
-const TextareaComponents = ({
-  className,
-  testId = 'components-textarea',
-}: BaseComponentProps): JSX.Element => {
+const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -49,9 +46,7 @@ const TextareaComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -86,13 +81,13 @@ const TextareaComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Textarea</span> component renders a HTML
-          textarea element. It is used to capture multiple lines of text. The Textarea component
-          internally uses the Label, HelpText, and FieldError components.
+          The <span className="font-mono font-bold">Textarea</span> component renders a HTML textarea element. It is
+          used to capture multiple lines of text. The Textarea component internally uses the Label, HelpText, and
+          FieldError components.
         </div>
         <div className="mb-4">
-          In addition to the custom properties listed below, the Textarea component also accepts all
-          standard HTML textarea element attribute React properties.
+          In addition to the custom properties listed below, the Textarea component also accepts all standard HTML
+          textarea element attribute React properties.
         </div>
 
         <div className="my-8">
@@ -110,9 +105,9 @@ const TextareaComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Textarea component. It has no label or supporting text.
-          It is integrated with React Hook Form through the "control" and "reset" values obtained
-          from the "useForm" hook (see the React Hook Form documentation for more information).
+          This is the most basic use of the Textarea component. It has no label or supporting text. It is integrated
+          with React Hook Form through the "control" and "reset" values obtained from the "useForm" hook (see the React
+          Hook Form documentation for more information).
         </div>
         <div className="mb-4 opacity-85">
           To view an example validation error message, enter more than 20 characters.
@@ -122,13 +117,7 @@ const TextareaComponents = ({
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <Textarea control={control} name="bio" className="mb-4" />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-1"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-1">
                 Reset
               </Button>
             </form>
@@ -154,21 +143,15 @@ const TextareaComponents = ({
           Labels
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "label" property to associate a HTML label with the textarea. When the textarea is
-          required, the label is styled to indicate.
+          Use the "label" property to associate a HTML label with the textarea. When the textarea is required, the label
+          is styled to indicate.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <Textarea control={control} name="bio" label="Biography" required className="mb-4" />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-2"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-2">
                 Reset
               </Button>
             </form>
@@ -194,8 +177,8 @@ const TextareaComponents = ({
           Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "supportingText" property to add helpful information below the textarea containing
-          instructions, validation requirements, or other tips for entering information.
+          Use the "supportingText" property to add helpful information below the textarea containing instructions,
+          validation requirements, or other tips for entering information.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -208,13 +191,7 @@ const TextareaComponents = ({
                 supportingText="Provide a short background so that others may get to know you."
                 className="mb-4"
               />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-3"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-3">
                 Reset
               </Button>
             </form>
@@ -246,8 +223,8 @@ const TextareaComponents = ({
           HTML textarea attributes
         </Heading>
         <div className="mb-4 opacity-85">
-          You may use standard HTML textarea element attributes; however, take caution that you do
-          not conflict with attributes supplied by React Hook Form such as "onChange" and "onBlur".
+          You may use standard HTML textarea element attributes; however, take caution that you do not conflict with
+          attributes supplied by React Hook Form such as "onChange" and "onBlur".
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -262,13 +239,7 @@ const TextareaComponents = ({
                 rows={8}
                 className="mb-4"
               />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-4"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-4">
                 Reset
               </Button>
             </form>

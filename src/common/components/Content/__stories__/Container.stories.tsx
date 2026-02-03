@@ -30,9 +30,7 @@ const meta = {
 export default meta;
 
 const Block = ({ children }: PropsWithChildren) => (
-  <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 text-white">
-    {children}
-  </div>
+  <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 text-white">{children}</div>
 );
 
 type Story = StoryObj<typeof meta>;

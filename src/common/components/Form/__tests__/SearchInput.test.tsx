@@ -25,9 +25,7 @@ describe('SearchInput', () => {
 
   it('should use custom testId', async () => {
     // ARRANGE
-    render(
-      <SearchInput onChange={mockOnChange} searchResults={searchResults} testId="custom-testId" />,
-    );
+    render(<SearchInput onChange={mockOnChange} searchResults={searchResults} testId="custom-testId" />);
     await screen.findByTestId('custom-testId');
 
     // ASSERT
@@ -36,13 +34,7 @@ describe('SearchInput', () => {
 
   it('should use custom className', async () => {
     // ARRANGE
-    render(
-      <SearchInput
-        className="custom-className"
-        onChange={mockOnChange}
-        searchResults={searchResults}
-      />,
-    );
+    render(<SearchInput className="custom-className" onChange={mockOnChange} searchResults={searchResults} />);
     await screen.findByTestId('input-search');
 
     // ASSERT
@@ -51,13 +43,7 @@ describe('SearchInput', () => {
 
   it('should display supporting text', async () => {
     // ARRANGE
-    render(
-      <SearchInput
-        supportingText="supporting"
-        onChange={mockOnChange}
-        searchResults={searchResults}
-      />,
-    );
+    render(<SearchInput supportingText="supporting" onChange={mockOnChange} searchResults={searchResults} />);
     await screen.findByTestId('input-search-supporting-text');
 
     // ASSERT

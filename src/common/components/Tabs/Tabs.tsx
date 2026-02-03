@@ -80,21 +80,13 @@ const listVariants = cva('flex gap-4 border-b border-b-neutral-500/10', {
 /**
  * Properties for the `List` component.
  */
-interface ListProps
-  extends BaseComponentProps,
-    PropsWithChildren,
-    VariantProps<typeof listVariants> {}
+interface ListProps extends BaseComponentProps, PropsWithChildren, VariantProps<typeof listVariants> {}
 
 /**
  * The `List` component is a container for one to many `Tab` components. It
  * renders a horizontal bar of clickable tabs.
  */
-const List = ({
-  align = 'start',
-  children,
-  className,
-  testId = 'tabs-list',
-}: ListProps): JSX.Element => {
+const List = ({ align = 'start', children, className, testId = 'tabs-list' }: ListProps): JSX.Element => {
   return (
     <div className={cn(listVariants({ align, className }))} data-testid={testId}>
       {children}
@@ -178,12 +170,7 @@ interface TabContentProps extends BaseComponentProps, PropsWithChildren {
  * Note: The `TabContent` and its associated `Tab` must have the same `value`
  * property value.
  */
-const Content = ({
-  children,
-  className,
-  testId = 'tabs-content',
-  value,
-}: TabContentProps): JSX.Element => {
+const Content = ({ children, className, testId = 'tabs-content', value }: TabContentProps): JSX.Element => {
   const { activeTab } = useContext(TabsContext);
 
   const active = value === activeTab;

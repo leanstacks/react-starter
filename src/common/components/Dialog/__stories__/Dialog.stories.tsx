@@ -61,24 +61,22 @@ export const LoremIpsum: Story = {
             <Dialog.Header>
               <Dialog.Title>Amet at duis deserunt ad ad ornare.</Dialog.Title>
               <Dialog.Subtitle>
-                Nam cupidatat duis dolore magna aute posuere. Esse arcu morbi quis consequat
-                facilisis lorem pulvinar.
+                Nam cupidatat duis dolore magna aute posuere. Esse arcu morbi quis consequat facilisis lorem pulvinar.
               </Dialog.Subtitle>
             </Dialog.Header>
             <Dialog.Body>
               <div className="mb-2">
-                Cupidatat excepteur mi magna nisi sint. Sint officia donec duis egestas cupidatat
-                quam consectetur fermentum. Egestas incididunt esse magna ex occaecat nunc arcu.
-                Adipiscing sit laborum adipiscing aliqua tempor amet. Tempus laboris lorem deserunt
-                aute sint ullamco magna pariatur. Ipsum elit justo cupidatat ea a exercitation
-                pariatur.
+                Cupidatat excepteur mi magna nisi sint. Sint officia donec duis egestas cupidatat quam consectetur
+                fermentum. Egestas incididunt esse magna ex occaecat nunc arcu. Adipiscing sit laborum adipiscing aliqua
+                tempor amet. Tempus laboris lorem deserunt aute sint ullamco magna pariatur. Ipsum elit justo cupidatat
+                ea a exercitation pariatur.
               </div>
               <div>
-                Mi tempor incididunt duis ullamco morbi minim. Proin condimentum adipiscing officia
-                et ipsum nunc. Est et est quam labore sit velit. Eiusmod laboris facilisis aliquip
-                nulla aliqua occaecat quam mi. Ligula aute fermentum tempus dolore qui dolore culpa.
-                Quis quam ligula nulla exercitation exercitation nibh. Bibendum laboris mollit vitae
-                sunt elit aenean a non. Neque dui proident cupidatat proident morbi sunt sapien.
+                Mi tempor incididunt duis ullamco morbi minim. Proin condimentum adipiscing officia et ipsum nunc. Est
+                et est quam labore sit velit. Eiusmod laboris facilisis aliquip nulla aliqua occaecat quam mi. Ligula
+                aute fermentum tempus dolore qui dolore culpa. Quis quam ligula nulla exercitation exercitation nibh.
+                Bibendum laboris mollit vitae sunt elit aenean a non. Neque dui proident cupidatat proident morbi sunt
+                sapien.
               </div>
             </Dialog.Body>
             <Dialog.Separator />

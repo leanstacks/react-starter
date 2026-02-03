@@ -5,9 +5,7 @@ import Alert, { AlertProps } from './Alert';
 /**
  * Properties for the `ErrorAlert` component.
  */
-export interface ErrorAlertProps
-  extends Omit<AlertProps, 'variant'>,
-    Partial<Pick<FAIconProps, 'icon'>> {
+export interface ErrorAlertProps extends Omit<AlertProps, 'variant'>, Partial<Pick<FAIconProps, 'icon'>> {
   title?: string;
   description: string;
 }

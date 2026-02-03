@@ -52,8 +52,6 @@ describe('useDeleteTask', () => {
 
     // ASSERT
     expect(isSuccess).toBe(true);
-    expect(
-      queryClient.getQueryData<Task[]>([QueryKey.Tasks, { userId: taskToDelete.userId }])?.length,
-    ).toBe(0);
+    expect(queryClient.getQueryData<Task[]>([QueryKey.Tasks, { userId: taskToDelete.userId }])?.length).toBe(0);
   });
 });

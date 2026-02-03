@@ -13,10 +13,7 @@ import Columns from 'common/components/Content/Columns';
  * The `IconComponents` component renders a set of examples illustrating
  * the use of the `FAIcon` component.
  */
-const IconComponents = ({
-  className,
-  testId = 'components-icon',
-}: BaseComponentProps): JSX.Element => {
+const IconComponents = ({ className, testId = 'components-icon' }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -38,9 +35,7 @@ const IconComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -57,8 +52,8 @@ const IconComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">FAIcon</span> component renders a Font Awesome
-          icon. The component extends all properties and capabilities of the{' '}
+          The <span className="font-mono font-bold">FAIcon</span> component renders a Font Awesome icon. The component
+          extends all properties and capabilities of the{' '}
           <Link to="https://docs.fontawesome.com/web/use-with/react/style" target="_blank">
             FontAwesomeIcon
           </Link>{' '}

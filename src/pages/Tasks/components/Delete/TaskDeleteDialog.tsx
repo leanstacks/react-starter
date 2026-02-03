@@ -74,11 +74,7 @@ const TaskDeleteDialog = ({
             <Dialog.Separator />
             <Dialog.Footer>
               <Dialog.ButtonBar>
-                <Dialog.Button
-                  onClick={() => close()}
-                  disabled={isPending}
-                  testId={`${testId}-button-cancel`}
-                >
+                <Dialog.Button onClick={() => close()} disabled={isPending} testId={`${testId}-button-cancel`}>
                   Cancel
                 </Dialog.Button>
                 <Dialog.Button

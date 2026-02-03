@@ -14,9 +14,7 @@ import DonutChart, { DonutChartData, DonutChartProps } from 'common/components/C
  * @see {@link BaseComponentProps}
  * @see {@link DonutChartProps}
  */
-export interface TaskStatusDonutChartProps
-  extends BaseComponentProps,
-    Omit<DonutChartProps, 'data'> {
+export interface TaskStatusDonutChartProps extends BaseComponentProps, Omit<DonutChartProps, 'data'> {
   tasks: Task[];
 }
 

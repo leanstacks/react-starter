@@ -21,18 +21,10 @@ export interface SearchResultProps extends BaseComponentProps, PropsWithChildren
  * @param {SearchResultProps} props - Component properties, `SearchResultProps`.
  * @returns {JSX.Element} JSX
  */
-const SearchResult = ({
-  children,
-  className,
-  onClick,
-  testId = 'search-result',
-}: SearchResultProps): JSX.Element => {
+const SearchResult = ({ children, className, onClick, testId = 'search-result' }: SearchResultProps): JSX.Element => {
   return (
     <div
-      className={cn(
-        'flex cursor-pointer items-center px-2 py-1 hover:bg-neutral-500/25',
-        className,
-      )}
+      className={cn('flex cursor-pointer items-center px-2 py-1 hover:bg-neutral-500/25', className)}
       onClick={onClick}
       data-testid={testId}
     >
