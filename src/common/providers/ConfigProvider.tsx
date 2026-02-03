@@ -39,8 +39,8 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
       setIsReady(true);
     } catch (err) {
       if (err instanceof ZodError) {
-        const errors = err.errors.map((e) => `${e.path.join('.')}::${e.message}`);
-        throw new Error(`Configuration error: ${errors.join(', ')}`);
+        const issues = err.issues.map((issue) => `${issue.path.join('.')} - ${issue.message}`);
+        throw new Error(`Configuration error: ${issues.join(', ')}`);
       }
       if (err instanceof Error) throw new Error(`Configuration error: ${err.message}`);
       throw err;
