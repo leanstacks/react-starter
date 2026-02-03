@@ -58,7 +58,7 @@ export const useGetUser = ({ userId }: UseGetUserProps): UseQueryResult<User, Er
   const axios = useAxios();
   const config = useConfig();
 
-  const getUser = async (): Promise<User | null> => {
+  const getUser = async (): Promise<User> => {
     const response = await axios.request({
       url: `${config.VITE_BASE_URL_API}/users/${userId}`,
     });
