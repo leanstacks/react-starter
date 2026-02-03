@@ -2,11 +2,11 @@
   "name": "react-starter-kit",
   "description": "Welcome to the LEANSTACKS React starter kit. This project provides a template to kickstart React single-page applications utilizing a curated Technology Stack for optimal testability, maintainability, and operability.",
   "keywords": [
-    "react"
+    "react, typescript, vite"
   ],
   "author": "LeanStacks",
   "license": "MIT",
-  "version": "0.10.0",
+  "version": "1.0.0-alpha.1",
   "type": "module",
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
     "dev": "vite --open",
     "build": "tsc && vite build",
     "build:storybook": "storybook build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
