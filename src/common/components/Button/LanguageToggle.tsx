@@ -33,7 +33,7 @@ const LanguageToggle = ({ className }: LanguageToggleProps): JSX.Element => {
   return (
     <DropdownMenu className={className} testId="dropdown-language">
       <DropdownMenu.Trigger>
-        <FAIcon icon="language" size="2x" title="Select Language" />
+        <FAIcon icon="language" size="lg" title="Select Language" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Heading>Languages</DropdownMenu.Heading>
