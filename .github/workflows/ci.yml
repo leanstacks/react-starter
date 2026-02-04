@@ -17,128 +17,56 @@ env:
   ENV_FILE: ${{ secrets.ENV_CI }}
 
 jobs:
-  build:
-    name: 'Build'
-
+  ci:
+    name: Build, Lint, and Test
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: 'Create .env File'
-        run: |
-          echo "${{ env.ENV_FILE }}" > .env
-
-      - name: Build
-        run: npm run build
-
-  storybook:
-    name: 'Storybook Build'
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: 'Create .env File'
-        run: |
-          echo "${{ env.ENV_FILE }}" > .env
-
-      - name: Build
-        run: npm run build:storybook
-
-  test:
-    name: 'Test'
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: 'Create .env File'
-        run: |
-          echo "${{ env.ENV_FILE }}" > .env
-
-      - name: Run Unit Tests
-        run: npm run test:ci
-
-  scan:
-    name: 'Scan'
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: 'Create .env File'
-        run: |
-          echo "${{ env.ENV_FILE }}" > .env
-
-      - name: Run Linter
-        run: npm run lint
-
-  validate-template:
-    name: 'Validate CloudFormation Template'
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 10
 
     permissions:
       id-token: write
       contents: read
 
     steps:
+      # --- Setup ---
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      # --- Application Checks ---
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: 'Create .env File'
+        run: |
+          echo "${{ env.ENV_FILE }}" > .env
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check code formatting
+        run: npm run format:check
+
+      - name: Build
+        run: npm run build
+
+      - name: Run unit tests
+        run: npm run test:ci
+
+      # --- Storybook Checks ---
+      - name: Build Storybook
+        run: npm run build:storybook
+
+      # --- Infrastructure Checks ---
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5.1.1
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          role-session-name: ci-react-starter
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Validate App Template
