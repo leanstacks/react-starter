@@ -78,13 +78,12 @@ const LinkComponents = ({ className, testId = 'components-link' }: BaseComponent
               page.
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div>
   To learn more about using the Link component view the{' '}
   <Link to="/pub/components/link">Link</Link> examples page.
 </div>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -106,9 +105,8 @@ const LinkComponents = ({ className, testId = 'components-link' }: BaseComponent
               .
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div>
   Open an external link in a new tab. To view the official React Router documentation,
   refer to the{' '}
   <Link to="https://reactrouter.com/api/components/Link" target="_blank">
@@ -116,7 +114,7 @@ const LinkComponents = ({ className, testId = 'components-link' }: BaseComponent
   </Link>
   .
 </div>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

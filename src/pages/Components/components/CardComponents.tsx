@@ -105,12 +105,11 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               <Card.Body>I am a simple Card with only a Body.</Card.Body>
             </Card>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Card className="w-100">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Card className="w-100">
   <Card.Body>I am a simple Card with only a Body.</Card.Body>
 </Card>`}
-          />
+          </CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -126,9 +125,8 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               <Card.Footer>And a footer for things at the bottom</Card.Footer>
             </Card>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Card className="w-100">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Card className="w-100">
   <Card.Header>
     <Card.Title>I am a title</Card.Title>
     <Card.Subtitle>There can be subtitles too</Card.Subtitle>
@@ -138,7 +136,7 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
   <Card.Separator />
   <Card.Footer>And a footer for things at the bottom</Card.Footer>
 </Card>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -169,9 +167,8 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               </Card.Footer>
             </Card>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Card className="w-100">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Card className="w-100">
   <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
   <Card.Header>
     <Card.Title>Title</Card.Title>
@@ -190,7 +187,7 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
     </Button>
   </Card.Footer>
 </Card>`}
-          />
+          </CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -214,9 +211,8 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
             </Card>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Card className="w-100">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Card className="w-100">
   <Card.Header>
     <Card.Title>Title</Card.Title>
     <Card.Subtitle>with a subtitle</Card.Subtitle>
@@ -235,7 +231,7 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
   </Card.Footer>
   <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
 </Card>`}
-          />
+          </CodeSnippet>
         </div>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -258,9 +254,8 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               </Card.Footer>
             </Card>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Card className="w-100">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Card className="w-100">
   <Card.Header>
     <Card.Title>Title</Card.Title>
     <Card.Subtitle>with a subtitle</Card.Subtitle>
@@ -279,7 +274,7 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
     </Button>
   </Card.Footer>
 </Card>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
 
@@ -305,7 +300,10 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard className="w-100" message="Hello world! &#128075;" />
           </div>
-          <CodeSnippet className="my-2" code={`<MessageCard className="w-100" message="Hello world! &#128075;" />`} />
+          <CodeSnippet
+            className="my-2"
+            language="tsx"
+          >{`<MessageCard className="w-100" message="Hello world! &#128075;" />`}</CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -316,14 +314,13 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               message="Here is a tip to help you with this page."
             />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<MessageCard
+          <CodeSnippet className="my-2" language="tsx">
+            {`<MessageCard
   className="w-100"
   iconProps={{ icon: 'circleInfo', size: '2x' }}
   message="Here is a tip to help you with this page."
 />`}
-          />
+          </CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -335,15 +332,14 @@ const CardComponents = ({ className, testId = 'components-card' }: CardComponent
               title="Read this first!"
             />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<MessageCard
+          <CodeSnippet className="my-2" language="tsx">
+            {`<MessageCard
   className="w-100 bg-red-800"
   iconProps={{ icon: 'circleExclamation', size: 'xl' }}
   message="What you are about to do... It is permanent and we will not be able to recover the data afterward."
   title="Read this first!"
 />`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

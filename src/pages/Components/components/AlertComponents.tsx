@@ -70,16 +70,15 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
             <Alert.Description>Something unexpected has occurred. Please excuse our mess.</Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="danger">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="danger">
   <Alert.Icon icon="circleExclamation" />
   <Alert.Title>Uh oh!</Alert.Title>
   <Alert.Description>
     Something unexpected has occurred. Please excuse our mess.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -95,9 +94,8 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
             </Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="info">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="info">
   <Alert.Icon icon="circleInfo" />
   <Alert.Title>Something you should know...</Alert.Title>
   <Alert.Description>
@@ -108,7 +106,7 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
     incididunt.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -123,9 +121,8 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
             </Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="warning">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="warning">
   <Alert.Title>Proceed with caution!</Alert.Title>
   <Alert.Description>
     Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
@@ -135,7 +132,7 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
     incididunt.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -150,9 +147,8 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
             </Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="success">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="success">
   <Alert.Title>You did it!</Alert.Title>
   <Alert.Description>
     Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
@@ -162,7 +158,7 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
     incididunt.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

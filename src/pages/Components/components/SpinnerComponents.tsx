@@ -75,7 +75,7 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
             {/* Example */}
             <Spinner />
           </div>
-          <CodeSnippet className="my-2" code={`<Spinner />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Spinner />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -94,9 +94,8 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
               <Spinner icon={{ size: '2x' }} />
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div className="grid grid-cols-6 place-items-center gap-4">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div className="grid grid-cols-6 place-items-center gap-4">
   <Spinner icon={{ size: 'xs' }} />
   <Spinner icon={{ size: 'sm' }} />
   <Spinner />
@@ -104,7 +103,7 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
   <Spinner icon={{ size: 'xl' }} />
   <Spinner icon={{ size: '2x' }} />
 </div>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -123,9 +122,8 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
               <Spinner className="text-orange-500" icon={{ size: '2x' }} />
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div className="grid grid-cols-6 place-items-center gap-4">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div className="grid grid-cols-6 place-items-center gap-4">
   <Spinner className="text-slate-500" icon={{ size: '2x' }} />
   <Spinner className="text-sky-500" icon={{ size: '2x' }} />
   <Spinner className="text-fuchsia-500" icon={{ size: '2x' }} />
@@ -133,7 +131,7 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
   <Spinner className="text-pink-500" icon={{ size: '2x' }} />
   <Spinner className="text-orange-500" icon={{ size: '2x' }} />
 </div>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -152,7 +150,10 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
             {/* Example */}
             <Spinner icon={{ icon: 'circleXmark', size: '2x' }} />
           </div>
-          <CodeSnippet className="my-2" code={`<Spinner icon={{ icon: 'circleXmark', size: '2x' }} />`} />
+          <CodeSnippet
+            className="my-2"
+            language="tsx"
+          >{`<Spinner icon={{ icon: 'circleXmark', size: '2x' }} />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -171,9 +172,8 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
               </Spinner>
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div className="grid grid-cols-2 place-items-center gap-4">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div className="grid grid-cols-2 place-items-center gap-4">
   <Spinner>
     <Spinner.Text>Loading...</Spinner.Text>
   </Spinner>
@@ -181,7 +181,7 @@ const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseCom
     <Spinner.Text className="text-4xl">Loading...</Spinner.Text>
   </Spinner>
 </div>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

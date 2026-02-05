@@ -134,16 +134,15 @@ const SearchInputComponents = ({ className, testId = 'components-search-input' }
           />
         </div>
 
-        <CodeSnippet
-          className="my-2"
-          code={`<SearchInput
+        <CodeSnippet className="my-2" language="tsx">
+          {`<SearchInput
   className="w-full"
   errorText={error}
   onChange={(val) => setValue(val)}
   searchResults={searchResults}
   supportingText="Start typing any color, e.g. blue."
 />`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

@@ -76,13 +76,12 @@ const HelpTextComponents = ({ className, testId = 'components-helptext' }: BaseC
               Tell us a little bit about yourself. The biography should be no more than 500 characters.
             </HelpText>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<HelpText>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<HelpText>
   Tell us a little bit about yourself. The biography should be no more than 500
   characters.
 </HelpText>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -97,16 +96,15 @@ const HelpTextComponents = ({ className, testId = 'components-helptext' }: BaseC
               <span>Tell us a little bit about yourself. The biography should be no more than 500 characters.</span>
             </HelpText>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<HelpText>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<HelpText>
   <FAIcon icon="circleInfo" className="me-2" beat />
   <span>
     Tell us a little bit about yourself. The biography should be no more than 500
     characters.
   </span>
 </HelpText>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

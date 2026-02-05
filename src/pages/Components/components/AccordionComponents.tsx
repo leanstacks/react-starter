@@ -86,9 +86,8 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
               </Accordion.Item>
             </Accordion>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Accordion className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Accordion className="w-full">
   <Accordion.Item value="section-1">
     <Accordion.Trigger>Section 1</Accordion.Trigger>
     <Accordion.Content>Content for section 1.</Accordion.Content>
@@ -98,7 +97,7 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
     <Accordion.Content>Content for section 2.</Accordion.Content>
   </Accordion.Item>
 </Accordion>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -121,9 +120,8 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
               </Accordion.Item>
             </Accordion>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Accordion className="w-full" multiple>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Accordion className="w-full" multiple>
   <Accordion.Item value="section-1">
     <Accordion.Trigger>Section 1</Accordion.Trigger>
     <Accordion.Content>Content for section 1.</Accordion.Content>
@@ -133,7 +131,7 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
     <Accordion.Content>Content for section 2.</Accordion.Content>
   </Accordion.Item>
 </Accordion>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -156,9 +154,8 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
               </Accordion.Item>
             </Accordion>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Accordion className="w-full" defaultValue="section-2" multiple>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Accordion className="w-full" defaultValue="section-2" multiple>
   <Accordion.Item value="section-1">
     <Accordion.Trigger>Section 1</Accordion.Trigger>
     <Accordion.Content>Content for section 1.</Accordion.Content>
@@ -168,7 +165,7 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
     <Accordion.Content>Content for section 2.</Accordion.Content>
   </Accordion.Item>
 </Accordion>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -225,9 +222,8 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
               </Accordion.Item>
             </Accordion>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Accordion className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Accordion className="w-full">
   <Accordion.Item value="prologue">
     <Accordion.Trigger>Prologue</Accordion.Trigger>
     <Accordion.Content>
@@ -254,7 +250,7 @@ const AccordionComponents = ({ className, testId = 'components-accordion' }: Bas
     </Accordion.Content>
   </Accordion.Item>
 </Accordion>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

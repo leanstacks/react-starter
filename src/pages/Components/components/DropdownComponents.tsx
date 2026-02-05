@@ -90,9 +90,8 @@ const DropdownComponents = ({ className, testId = 'components-dropdown' }: BaseC
               </DropdownMenu.Content>
             </DropdownMenu>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<DropdownMenu>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<DropdownMenu>
   <DropdownMenu.Trigger>
     <Button>Open</Button>
   </DropdownMenu.Trigger>
@@ -117,7 +116,7 @@ const DropdownComponents = ({ className, testId = 'components-dropdown' }: BaseC
     </DropdownMenu.Item>
   </DropdownMenu.Content>
 </DropdownMenu>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

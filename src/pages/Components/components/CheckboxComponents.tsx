@@ -153,9 +153,8 @@ const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseC
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Checkbox
     control={control}
     name="isAccepted"
@@ -180,7 +179,7 @@ const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseC
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -210,9 +209,8 @@ const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseC
               />
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Checkbox
     control={control}
     name="isDisabledChecked"
@@ -228,7 +226,7 @@ const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseC
     disabled
   />
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

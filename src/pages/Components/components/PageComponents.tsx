@@ -74,12 +74,11 @@ const PageComponents = ({ className, testId = 'components-page' }: BaseComponent
               <Block>A page provides resonsive spacing (grey) for the content (blue).</Block>
             </Page>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Page testId="page-example" className="bg-neutral-500/50">
-  <Block>The page content.</Block>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Page testId="page-example" className="bg-neutral-500/50">
+  <Block>A page provides resonsive spacing (grey) for the content (blue).</Block>
 </Page>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

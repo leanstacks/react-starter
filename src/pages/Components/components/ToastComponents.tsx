@@ -72,16 +72,15 @@ const ToastComponents = ({ className, testId = 'components-toast' }: BaseCompone
           <span className="font-mono font-bold">useToasts</span> hook.
         </div>
 
-        <CodeSnippet
-          className="my-2"
-          code={`const { createToast } = useToasts();
+        <CodeSnippet className="my-2" language="tsx">
+          {`const { createToast } = useToasts();
 createToast({
   text: "Item saved successfully.",
   isAutoDismiss: true,
   variant: "success",
 });
 `}
-        />
+        </CodeSnippet>
 
         <div className="my-8">
           <Heading level={3} className="mb-2">
@@ -115,9 +114,8 @@ createToast({
               dismiss={noop}
             />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Toast
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Toast
   toast={{
     id: '1',
     text: 'This is the toast message.',
@@ -126,7 +124,7 @@ createToast({
   }}
   dismiss={noop}
 />`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -172,9 +170,8 @@ createToast({
               />
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div className="flex flex-col gap-4">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div className="flex flex-col gap-4">
   <Toast
     toast={{
       id: '1',
@@ -206,7 +203,7 @@ createToast({
     dismiss={noop}
   />
 </div>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -229,9 +226,8 @@ createToast({
               dismiss={noop}
             />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Toast
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Toast
   toast={{
     id: '1',
     text: 'Click my close button to watch my animation.',
@@ -240,7 +236,7 @@ createToast({
   }}
   dismiss={noop}
 />`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -280,9 +276,8 @@ createToast({
               </Button>
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`const { createToast } = useToasts();
+          <CodeSnippet className="my-2" language="tsx">
+            {`const { createToast } = useToasts();
 
 return(
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -309,7 +304,7 @@ return(
     </Button>
   </div>
 );`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

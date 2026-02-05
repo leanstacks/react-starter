@@ -33,9 +33,9 @@ const text = `<Text>
 `;
 
 export const Simple: Story = {
-  args: { code: badge },
+  args: { children: badge },
 };
 
 export const MultiLine: Story = {
-  args: { code: text },
+  args: { children: text },
 };

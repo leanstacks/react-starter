@@ -66,14 +66,20 @@ const TextComponents = ({ className, testId = 'components-text' }: BaseComponent
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Text variant="danger">Danger! Something bad has happened.</Text>
           </div>
-          <CodeSnippet className="my-2" code={`<Text variant="danger">Danger! Something bad has happened.</Text>`} />
+          <CodeSnippet
+            className="my-2"
+            language="tsx"
+          >{`<Text variant='danger'>Danger! Something bad has happened.</Text>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Text variant="warning">Warning! Be sure to read this first.</Text>
           </div>
-          <CodeSnippet className="my-2" code={`<Text variant='warning'>Warning! Be sure to read this first.</Text>`} />
+          <CodeSnippet
+            className="my-2"
+            language="tsx"
+          >{`<Text variant='warning'>Warning! Be sure to read this first.</Text>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -82,8 +88,8 @@ const TextComponents = ({ className, testId = 'components-text' }: BaseComponent
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Text variant="info">This is some information to be highlighted.</Text>`}
-          />
+            language="tsx"
+          >{`<Text variant="info">This is some information to be highlighted.</Text>`}</CodeSnippet>
         </div>
       </div>
     </section>

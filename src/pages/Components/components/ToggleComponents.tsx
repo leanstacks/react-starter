@@ -118,9 +118,8 @@ const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseCompo
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Toggle control={control} name="isNotificationsEnabled" className="mb-4" />
   <Button
     onClick={() => reset()}
@@ -131,7 +130,7 @@ const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseCompo
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -151,9 +150,8 @@ const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseCompo
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Toggle
     control={control}
     name="isNotificationsEnabled"
@@ -169,7 +167,7 @@ const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseCompo
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -195,9 +193,8 @@ const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseCompo
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Toggle
     control={control}
     name="isNotificationsEnabled"
@@ -214,7 +211,7 @@ const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseCompo
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

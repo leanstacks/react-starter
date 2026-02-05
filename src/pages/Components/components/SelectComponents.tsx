@@ -136,9 +136,8 @@ const SelectComponents = ({ className, testId = 'components-select' }: BaseCompo
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
   <Select control={control} name="color" required className="mb-8">
     <Select.Trigger>
       <Select.Value placeholder="None selected" />
@@ -166,7 +165,7 @@ const SelectComponents = ({ className, testId = 'components-select' }: BaseCompo
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -202,9 +201,8 @@ const SelectComponents = ({ className, testId = 'components-select' }: BaseCompo
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
   <Select control={control} name="color" label="Color" required className="mb-8">
     <Select.Trigger>
       <Select.Value placeholder="None selected" />
@@ -232,7 +230,7 @@ const SelectComponents = ({ className, testId = 'components-select' }: BaseCompo
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -275,9 +273,8 @@ const SelectComponents = ({ className, testId = 'components-select' }: BaseCompo
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
   <Select
     control={control}
     name="color"
@@ -312,7 +309,7 @@ const SelectComponents = ({ className, testId = 'components-select' }: BaseCompo
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

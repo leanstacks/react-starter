@@ -80,7 +80,7 @@ const IconComponents = ({ className, testId = 'components-icon' }: BaseComponent
             {/* Example */}
             <FAIcon icon="circleInfo" />
           </div>
-          <CodeSnippet className="my-2" code={`<FAIcon icon='circleInfo' />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<FAIcon icon='circleInfo' />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -110,9 +110,8 @@ const IconComponents = ({ className, testId = 'components-icon' }: BaseComponent
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-1-1">
   <Columns.Column>
     <FAIcon icon="circleInfo" size="xs" />
   </Columns.Column>
@@ -132,7 +131,7 @@ const IconComponents = ({ className, testId = 'components-icon' }: BaseComponent
     <FAIcon icon="circleInfo" size="2x" />
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -143,7 +142,7 @@ const IconComponents = ({ className, testId = 'components-icon' }: BaseComponent
             {/* Example */}
             <FAIcon icon="circleNotch" spin />
           </div>
-          <CodeSnippet className="my-2" code={`<FAIcon icon="circleNotch" spin />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<FAIcon icon="circleNotch" spin />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -179,9 +178,8 @@ const IconComponents = ({ className, testId = 'components-icon' }: BaseComponent
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-1-1">
   <Columns.Column>
     <FAIcon icon="circleInfo" beat />
   </Columns.Column>
@@ -207,7 +205,7 @@ const IconComponents = ({ className, testId = 'components-icon' }: BaseComponent
     <FAIcon icon="circleNotch" spinPulse />
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

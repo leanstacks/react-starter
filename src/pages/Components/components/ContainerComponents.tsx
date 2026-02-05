@@ -79,12 +79,11 @@ const ContainerComponents = ({ className, testId = 'components-container' }: Bas
               <Block>Default</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container>
   <Block>Default</Block>
 </Container>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -97,12 +96,11 @@ const ContainerComponents = ({ className, testId = 'components-container' }: Bas
               <Block>Max Width 640px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="sm">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="sm">
   <Block>Max Width 640px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -115,12 +113,11 @@ const ContainerComponents = ({ className, testId = 'components-container' }: Bas
               <Block>Max Width 768px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="md">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="md">
   <Block>Max Width 768px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -133,12 +130,11 @@ const ContainerComponents = ({ className, testId = 'components-container' }: Bas
               <Block>Max Width 1024px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="lg">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="lg">
   <Block>Max Width 1024px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -151,12 +147,11 @@ const ContainerComponents = ({ className, testId = 'components-container' }: Bas
               <Block>Max Width 1280px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="xl">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="xl">
   <Block>Max Width 1280px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -169,12 +164,11 @@ const ContainerComponents = ({ className, testId = 'components-container' }: Bas
               <Block>Max Width 1536px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="2xl">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="2xl">
   <Block>Max Width 1536px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
       </div>
     </section>

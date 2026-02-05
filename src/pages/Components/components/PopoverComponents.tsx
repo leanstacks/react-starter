@@ -83,9 +83,8 @@ const PopoverComponents = ({ className, testId = 'components-popover' }: BaseCom
               </Popover.Content>
             </Popover>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Popover>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Popover>
   <Popover.Trigger>Open</Popover.Trigger>
   <Popover.Content>
     <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
@@ -93,7 +92,7 @@ const PopoverComponents = ({ className, testId = 'components-popover' }: BaseCom
     </Card>
   </Popover.Content>
 </Popover>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -152,9 +151,8 @@ const PopoverComponents = ({ className, testId = 'components-popover' }: BaseCom
               </Popover.Content>
             </Popover>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<>
   <Popover className="w-fit">
     <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
       Bottom
@@ -199,7 +197,7 @@ const PopoverComponents = ({ className, testId = 'components-popover' }: BaseCom
     </Popover.Content>
   </Popover>
 </>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -228,9 +226,8 @@ const PopoverComponents = ({ className, testId = 'components-popover' }: BaseCom
               </Popover.Content>
             </Popover>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Popover>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Popover>
   <Popover.Trigger>Open</Popover.Trigger>
   <Popover.Content side="top" sideOffset={32}>
     <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
@@ -245,7 +242,7 @@ const PopoverComponents = ({ className, testId = 'components-popover' }: BaseCom
     </Card>
   </Popover.Content>
 </Popover>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

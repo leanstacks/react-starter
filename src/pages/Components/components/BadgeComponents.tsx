@@ -80,14 +80,18 @@ const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeCompon
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Badge>3</Badge>
         </div>
-        <CodeSnippet className="my-2" code={`<Badge>3</Badge>`} />
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Badge>3</Badge>`}
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Badge size="sm">999+</Badge>
         </div>
-        <CodeSnippet className="my-2" code={`<Badge size="sm">999+</Badge>`} />
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Badge size="sm">999+</Badge>`}
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -96,12 +100,9 @@ const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeCompon
             19
           </Badge>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Badge size="sm" variant="primary" testId="my-badge">
+        <CodeSnippet className="my-2" language="tsx">{`<Badge size="sm" variant="primary" testId="my-badge">
   19
-</Badge`}
-        />
+</Badge>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -112,10 +113,10 @@ const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeCompon
         </div>
         <CodeSnippet
           className="my-2"
-          code={`<Badge size="lg" variant="info" uppercase testId="badge-status-closed">
+          language="tsx"
+        >{`<Badge size="lg" variant="info" uppercase testId="badge-status-closed">
   Closed
-</Badge>`}
-        />
+</Badge>`}</CodeSnippet>
       </div>
     </section>
   );

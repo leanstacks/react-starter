@@ -100,9 +100,8 @@ const BreadcrumbsComponents = ({ className, testId = 'components-breadcrumbs' }:
               </Breadcrumbs.List>
             </Breadcrumbs>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Breadcrumbs>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Breadcrumbs>
   <Breadcrumbs.List>
     <Breadcrumbs.Item>
       <Breadcrumbs.Link to="/">Home</Breadcrumbs.Link>
@@ -132,7 +131,7 @@ const BreadcrumbsComponents = ({ className, testId = 'components-breadcrumbs' }:
     </Breadcrumbs.Item>
   </Breadcrumbs.List>
 </Breadcrumbs>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

@@ -66,7 +66,7 @@ const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseCom
             {/* Example */}
             <Skeleton className="h-5" />
           </div>
-          <CodeSnippet className="my-2" code={`<Skeleton className="h-5" />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Skeleton className="h-5" />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -82,16 +82,15 @@ const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseCom
             <Skeleton className="mb-2 h-8 w-50" />
             <Skeleton className="mb-2 h-16 w-60" />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<>
   <Skeleton className="mb-2 h-1 w-20" />
   <Skeleton className="mb-2 h-2 w-30" />
   <Skeleton className="mb-2 h-4 w-40" />
   <Skeleton className="mb-2 h-8 w-50" />
   <Skeleton className="mb-2 h-16 w-60" />
 </>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -107,16 +106,15 @@ const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseCom
             <Skeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
             <Skeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<>
   <Skeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
   <Skeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
   <Skeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
   <Skeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
   <Skeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
 </>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -138,9 +136,8 @@ const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseCom
               </div>
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div className="flex items-center gap-4 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div className="flex items-center gap-4 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
   <Skeleton className="size-16 rounded-full" />
   <div className="flex grow flex-col gap-2">
     <Skeleton className="h-6 max-w-80" />
@@ -148,7 +145,7 @@ const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseCom
     <Skeleton className="h-4" />
   </div>
 </div>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

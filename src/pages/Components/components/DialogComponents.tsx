@@ -90,9 +90,8 @@ const DialogComponents = ({ className, testId = 'components-dialog' }: BaseCompo
             </Dialog.Content>
           </Dialog>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Dialog>
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Dialog>
   <Dialog.Trigger>
     <Button>Open</Button>
   </Dialog.Trigger>
@@ -116,7 +115,7 @@ const DialogComponents = ({ className, testId = 'components-dialog' }: BaseCompo
     </Dialog.Footer>
   </Dialog.Content>
 </Dialog>`}
-        />
+        </CodeSnippet>
       </div>
 
       <Heading level={4} className="mb-2">
@@ -167,9 +166,8 @@ const DialogComponents = ({ className, testId = 'components-dialog' }: BaseCompo
             )}
           </Dialog>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Dialog>
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Dialog>
   {({ close }) => (
     <>
       <Dialog.Trigger>
@@ -211,7 +209,7 @@ const DialogComponents = ({ className, testId = 'components-dialog' }: BaseCompo
     </>
   )}
 </Dialog>`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

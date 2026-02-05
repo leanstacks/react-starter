@@ -89,9 +89,8 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -99,7 +98,7 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
     <Block>2</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -117,9 +116,8 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-3" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-3" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -127,7 +125,7 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
     <Block>2</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -145,9 +143,8 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="3-1" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="3-1" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -155,7 +152,7 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
     <Block>2</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -176,9 +173,8 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-1-1" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -189,7 +185,7 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
     <Block>3</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -210,9 +206,8 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-2-1" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-2-1" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -223,7 +218,7 @@ const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseCom
     <Block>3</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

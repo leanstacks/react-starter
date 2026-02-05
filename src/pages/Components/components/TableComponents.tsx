@@ -112,16 +112,15 @@ const TableComponents = ({ className, testId = 'components-table' }: BaseCompone
           properties that will be displayed in the table.
         </div>
 
-        <CodeSnippet
-          className="mb-4"
-          code={`type Pet = {
+        <CodeSnippet className="mb-4" language="tsx">
+          {`type Pet = {
   id: number;
   name: string;
   species: string;
   age: number;
   owner: string;
 };`}
-        />
+        </CodeSnippet>
 
         <div className="mb-4">
           Create the column definitions. Basic column definitions may be created with a simple array. More advanced
@@ -135,16 +134,15 @@ const TableComponents = ({ className, testId = 'components-table' }: BaseCompone
           .
         </div>
 
-        <CodeSnippet
-          className="mb-4"
-          code={`const petColumns = [
+        <CodeSnippet className="mb-4" language="tsx">
+          {`const petColumns = [
   { header: 'ID', accessorKey: 'id' },
   { header: 'Name', accessorKey: 'name' },
   { header: 'Species', accessorKey: 'species' },
   { header: 'Age', accessorKey: 'age' },
   { header: 'Owner', accessorKey: 'owner' },
 ];`}
-        />
+        </CodeSnippet>
 
         <div className="my-8">
           <Heading level={3} className="mb-2">
@@ -171,7 +169,10 @@ const TableComponents = ({ className, testId = 'components-table' }: BaseCompone
             {/* Example */}
             <Table<Pet> data={petData} columns={petColumns} />
           </div>
-          <CodeSnippet className="my-2" code={`<Table<Pet> data={petData} columns={petColumns} />`} />
+          <CodeSnippet
+            className="my-2"
+            language="tsx"
+          >{`<Table<Pet> data={petData} columns={petColumns} />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -191,9 +192,8 @@ const TableComponents = ({ className, testId = 'components-table' }: BaseCompone
             {/* Example */}
             <Table<Pet> data={petData} columns={petColumnsWithHelper} />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`const petColumnHelper = createColumnHelper<Pet>();
+          <CodeSnippet className="my-2" language="tsx">
+            {`const petColumnHelper = createColumnHelper<Pet>();
 const petColumnsWithHelper = [
   petColumnHelper.accessor('id', {
     cell: (info) => (
@@ -218,8 +218,11 @@ const petColumnsWithHelper = [
     header: () => 'Owner',
   }),
 ] as ColumnDef<Pet>[];`}
-          />
-          <CodeSnippet className="my-2" code={`<Table<Pet> data={petData} columns={petColumnsWithHelper} />`} />
+          </CodeSnippet>
+          <CodeSnippet
+            className="my-2"
+            language="tsx"
+          >{`<Table<Pet> data={petData} columns={petColumnsWithHelper} />`}</CodeSnippet>
         </div>
       </div>
     </section>

@@ -83,9 +83,8 @@ const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponent
               </Tabs.Content>
             </Tabs>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Tabs defaultValue="list" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Tabs defaultValue="list" className="w-full">
   <Tabs.List>
     <Tabs.Tab value="list">List</Tabs.Tab>
     <Tabs.Tab value="detail">Detail</Tabs.Tab>
@@ -97,7 +96,7 @@ const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponent
     <div className="py-8 font-bold">I am the DETAIL tab.</div>
   </Tabs.Content>
 </Tabs>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -119,9 +118,8 @@ const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponent
               </Tabs.Content>
             </Tabs>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Tabs defaultValue="list" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Tabs defaultValue="list" className="w-full">
   <Tabs.List align="stretch">
     <Tabs.Tab value="list">List</Tabs.Tab>
     <Tabs.Tab value="detail">Detail</Tabs.Tab>
@@ -133,7 +131,7 @@ const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponent
     <div className="py-8 font-bold">I am the DETAIL tab.</div>
   </Tabs.Content>
 </Tabs>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

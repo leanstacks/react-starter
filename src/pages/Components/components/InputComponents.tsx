@@ -123,15 +123,14 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Input control={control} name="firstName" className="mb-4" />
   <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -152,9 +151,8 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Input control={control} name="firstName" label="First Name" className="mb-4" />
   <Input
     control={control}
@@ -167,7 +165,7 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -201,9 +199,8 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Input
     control={control}
     name="firstName"
@@ -223,7 +220,7 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -261,9 +258,8 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Input
     control={control}
     name="firstName"
@@ -287,7 +283,7 @@ const InputComponents = ({ className, testId = 'components-input' }: BaseCompone
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

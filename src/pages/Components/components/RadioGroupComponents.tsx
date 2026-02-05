@@ -140,9 +140,8 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup name="color" control={control} className="mb-4">
     <RadioGroup.Item id="color-red" value="red" label="Red" />
     <RadioGroup.Item id="color-green" value="green" label="Green" />
@@ -158,7 +157,7 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -182,9 +181,8 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup name="color" control={control} className="mb-4" label="Color" required>
     <RadioGroup.Item id="color-red" value="red" label="Red" />
     <RadioGroup.Item id="color-green" value="green" label="Green" />
@@ -200,7 +198,7 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -231,9 +229,8 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup
     name="color"
     control={control}
@@ -256,7 +253,7 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -288,9 +285,8 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup
     name="color"
     control={control}
@@ -314,7 +310,7 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -345,9 +341,8 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup
     name="color"
     control={control}
@@ -370,7 +365,7 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -401,9 +396,8 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup
     name="color"
     control={control}
@@ -426,7 +420,7 @@ const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: 
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

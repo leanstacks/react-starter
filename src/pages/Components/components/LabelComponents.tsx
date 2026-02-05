@@ -83,7 +83,7 @@ const LabelComponents = ({ className, testId = 'components-label' }: BaseCompone
             {/* Example */}
             <Label htmlFor="firstName">First Name</Label>
           </div>
-          <CodeSnippet className="my-2" code={`<Label htmlFor="firstName">First Name</Label>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Label htmlFor="firstName">First Name</Label>`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -99,12 +99,11 @@ const LabelComponents = ({ className, testId = 'components-label' }: BaseCompone
               First Name
             </Label>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Label htmlFor="firstName" required>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Label htmlFor="firstName" required>
   First Name
 </Label>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

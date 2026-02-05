@@ -80,7 +80,7 @@ const ButtonComponents = ({ className, testId = 'components-button' }: ButtonCom
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button>Default button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button>Default button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button>Default button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -92,9 +92,8 @@ const ButtonComponents = ({ className, testId = 'components-button' }: ButtonCom
             <FAIcon icon="bars" size="xl" />
           </Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<>
+        <CodeSnippet className="my-2" language="tsx">
+          {`<>
   <Button size="sm">Small</Button>
   <Button size="md">Medium</Button>
   <Button size="lg">Large</Button>
@@ -102,28 +101,28 @@ const ButtonComponents = ({ className, testId = 'components-button' }: ButtonCom
     <FAIcon icon="bars" size="xl" />
   </Button>
 </>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="outline">Outline button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button variant="outline">Outline button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button variant="outline">Outline button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="solid">Solid button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button variant="solid">Solid button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button variant="solid">Solid button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="text">Text button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button variant="text">Text button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button variant="text">Text button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -137,9 +136,8 @@ const ButtonComponents = ({ className, testId = 'components-button' }: ButtonCom
             Click me
           </Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Button
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Button
   variant="solid"
   className="border-blue-600! bg-blue-600! text-white!"
   onClick={() => alert('Hey! You clicked me!')}
@@ -147,7 +145,7 @@ const ButtonComponents = ({ className, testId = 'components-button' }: ButtonCom
 >
   Click me
 </Button>`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

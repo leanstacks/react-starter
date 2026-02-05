@@ -122,9 +122,8 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Textarea control={control} name="bio" className="mb-4" />
   <Button
     onClick={() => reset()}
@@ -136,7 +135,7 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -156,9 +155,8 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Textarea control={control} name="bio" label="Biography" required className="mb-4" />
   <Button
     onClick={() => reset()}
@@ -170,7 +168,7 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -196,9 +194,8 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Textarea
     control={control}
     name="bio"
@@ -216,7 +213,7 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -244,9 +241,8 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Textarea
     control={control}
     name="bio"
@@ -266,7 +262,7 @@ const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseC
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>
