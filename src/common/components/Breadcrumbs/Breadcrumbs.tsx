@@ -63,7 +63,7 @@ const Breadcrumbs = ({ children, className, testId = 'breadcrumbs' }: Breadcrumb
 const List = ({ children, className, testId = 'breadcrumbs-list' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <ol
-      className={cn('flex flex-wrap items-center gap-2 text-sm break-words sm:gap-3', className)}
+      className={cn('flex flex-wrap items-center gap-2 text-sm wrap-break-word sm:gap-3', className)}
       data-testid={testId}
     >
       {children}
