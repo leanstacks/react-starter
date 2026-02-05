@@ -14,10 +14,9 @@ export interface ThemeToggleProps extends PropsWithClassName {}
  * The `ThemeToggle` React component renders a `Button` which allows users
  * to toggle between light and dark themes.
  * @param {ThemeToggleProps} [props] - Component  properties, `ThemeProps`.
- * @returns {JSX.Element} JSX
  * @see {@link ThemeToggleProps}
  */
-const ThemeToggle = ({ className }: ThemeToggleProps): JSX.Element => {
+const ThemeToggle = ({ className }: ThemeToggleProps) => {
   const settings = useSettings();
   const { mutate: setSettings } = useSetSettings();
 

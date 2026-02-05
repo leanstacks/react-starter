@@ -7,10 +7,7 @@ import Breadcrumbs from 'common/components/Breadcrumbs/Breadcrumbs';
  * The `ComponentsPageBreadcrumbs` component renders the `Breadcrumbs` for the components
  * family of pages.
  */
-const ComponentsPageBreadcrumbs = ({
-  className,
-  testId = 'page-components-breadcrumbs',
-}: BaseComponentProps): JSX.Element => {
+const ComponentsPageBreadcrumbs = ({ className, testId = 'page-components-breadcrumbs' }: BaseComponentProps) => {
   const location = useLocation();
   const pathElements = location.pathname.split('/');
 

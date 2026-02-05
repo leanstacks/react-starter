@@ -19,9 +19,8 @@ interface CardComponentsProps extends BaseComponentProps {}
  * The `CardComponents` React component renders a set of examples illustrating
  * the use of the `Card` family of components.
  * @param {CardComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const CardComponents = ({ className, testId = 'components-card' }: CardComponentsProps): JSX.Element => {
+const CardComponents = ({ className, testId = 'components-card' }: CardComponentsProps) => {
   const columnHelper = createColumnHelper<ComponentProperty>();
   const cardData: ComponentProperty[] = [
     {

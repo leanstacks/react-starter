@@ -17,9 +17,8 @@ export interface MenuCloseButtonProps extends BaseComponentProps {
  * The `MenuCloseButton` component renders a `Button` which closes a Menu by
  * invoking the supplied `close` function.
  * @param {MenuCloseButtonProps} props - Component properties, `MenuCloseButtonProps`.
- * @returns {JSX.Element} JSX
  */
-const MenuCloseButton = ({ className, close, testId = 'menu-close-button' }: MenuCloseButtonProps): JSX.Element => {
+const MenuCloseButton = ({ className, close, testId = 'menu-close-button' }: MenuCloseButtonProps) => {
   return (
     <Button
       variant="text"

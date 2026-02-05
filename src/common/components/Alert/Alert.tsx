@@ -40,7 +40,7 @@ export interface AlertProps extends BaseComponentProps, PropsWithChildren, Varia
   </Alert>
  * ```
  */
-const Alert = ({ children, className, variant = 'info', testId = 'alert' }: AlertProps): JSX.Element => {
+const Alert = ({ children, className, variant = 'info', testId = 'alert' }: AlertProps) => {
   return (
     <div className={cn(alertVariants({ variant, className }))} role="alert" data-testid={testId}>
       {children}
@@ -51,11 +51,7 @@ const Alert = ({ children, className, variant = 'info', testId = 'alert' }: Aler
 /**
  * The `Title` component renders the styled title text for an `Alert`.
  */
-const Title = ({
-  children,
-  className,
-  testId = 'alert-title',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Title = ({ children, className, testId = 'alert-title' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn('mb-1 text-xl leading-none font-bold', className)} data-testid={testId}>
       {children}
@@ -67,11 +63,7 @@ Alert.Title = Title;
 /**
  * The `Description` component renders the styled description text for an `Alert`.
  */
-const Description = ({
-  children,
-  className,
-  testId = 'alert-description',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Description = ({ children, className, testId = 'alert-description' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn('leading-tight', className)} data-testid={testId}>
       {children}
@@ -83,7 +75,7 @@ Alert.Description = Description;
 /**
  * The `Icon` component renders the styled icon for an `Alert`.
  */
-const Icon = ({ size = 'lg', testId = 'alert-icon', ...props }: FAIconProps): JSX.Element => {
+const Icon = ({ size = 'lg', testId = 'alert-icon', ...props }: FAIconProps) => {
   return <FAIcon size={size} testId={testId} {...props} />;
 };
 Alert.Icon = Icon;

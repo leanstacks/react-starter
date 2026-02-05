@@ -12,7 +12,7 @@ import Link from 'common/components/Link/Link';
  * The `SpinnerComponents` component renders a set of examples illustrating
  * the use of the `Spinner` component.
  */
-const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseComponentProps): JSX.Element => {
+const SpinnerComponents = ({ className, testId = 'components-spinner' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

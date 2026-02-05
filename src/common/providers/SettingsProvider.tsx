@@ -7,7 +7,6 @@ import { SettingsContext } from './SettingsContext';
  * The `SettingsContextProvider` React component creates, maintains, and provides
  * access to the `SettingsContext` value.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
 const SettingsContextProvider = ({ children }: PropsWithChildren) => {
   const { data: settings, isLoading } = useGetSettings();

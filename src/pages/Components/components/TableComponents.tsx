@@ -22,7 +22,7 @@ type Pet = {
  * The `TableComponents` component renders a set of examples illustrating
  * the use of the `Table` component.
  */
-const TableComponents = ({ className, testId = 'components-table' }: BaseComponentProps): JSX.Element => {
+const TableComponents = ({ className, testId = 'components-table' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

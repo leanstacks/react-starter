@@ -12,7 +12,7 @@ import Container from 'common/components/Content/Container';
  * The `ContainerComponents` component renders a set of examples illustrating
  * the use of the `Container` component.
  */
-const ContainerComponents = ({ className, testId = 'components-container' }: BaseComponentProps): JSX.Element => {
+const ContainerComponents = ({ className, testId = 'components-container' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

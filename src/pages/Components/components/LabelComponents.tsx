@@ -11,7 +11,7 @@ import Label from 'common/components/Form/Label';
  * The `LabelComponents` component renders a set of examples illustrating
  * the use of the `Label` component.
  */
-const LabelComponents = ({ className, testId = 'components-label' }: BaseComponentProps): JSX.Element => {
+const LabelComponents = ({ className, testId = 'components-label' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

@@ -16,7 +16,7 @@ import RadioGroup from 'common/components/Form/RadioGroup';
  * The `RadioGroupComponents` component renders a set of examples illustrating
  * the use of the `RadioGroup` component.
  */
-const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: BaseComponentProps): JSX.Element => {
+const RadioGroupComponents = ({ className, testId = 'components-radio-group' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

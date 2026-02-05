@@ -10,9 +10,8 @@ import { useAuth } from 'common/hooks/useAuth';
  * If authenticated, the element specified by the route is rendered.
  *
  * If not authenticated, the application navigates to the sign in page.
- * @returns {JSX.Element} JSX
  */
-const PrivateOutlet = (): JSX.Element => {
+const PrivateOutlet = () => {
   const authContext = useAuth();
 
   if (authContext.isAuthenticated) {

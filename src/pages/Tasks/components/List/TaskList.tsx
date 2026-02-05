@@ -43,7 +43,6 @@ interface TaskListProps extends BaseComponentProps {
  * The `TaskList` component renders a list of `Task` items.  The list may be filtered
  * and ordered using properties.
  * @param {TaskListProps} props - Component properties.
- * @returns JSX
  */
 const TaskList = ({
   className,
@@ -54,7 +53,7 @@ const TaskList = ({
   testId = 'list-task',
   title,
   userId,
-}: TaskListProps): JSX.Element => {
+}: TaskListProps) => {
   const { t } = useTranslation();
   const { data: tasks, isLoading, isError } = useGetUserTasks({ userId });
 

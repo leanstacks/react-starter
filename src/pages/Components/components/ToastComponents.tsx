@@ -14,7 +14,7 @@ import { useToasts } from 'common/hooks/useToasts';
  * The `ToastComponents` component renders a set of examples illustrating
  * the use of the `Toast` component.
  */
-const ToastComponents = ({ className, testId = 'components-toast' }: BaseComponentProps): JSX.Element => {
+const ToastComponents = ({ className, testId = 'components-toast' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

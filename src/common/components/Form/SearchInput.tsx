@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, type JSX, useEffect, useRef } from 'react';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
@@ -40,7 +40,6 @@ export interface SearchInputProps extends BaseComponentProps {
  * component.
  *
  * @param {SearchInputProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const SearchInput = ({
   className,
@@ -50,7 +49,7 @@ const SearchInput = ({
   searchResults,
   supportingText,
   testId = 'input-search',
-}: SearchInputProps): JSX.Element => {
+}: SearchInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   /**

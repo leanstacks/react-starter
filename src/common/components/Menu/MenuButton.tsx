@@ -22,9 +22,8 @@ export interface MenuButtonProps extends BaseComponentProps {
  * The `MenuButton` React component renders a `Button` which toggles rendering
  * the supplied `Menu` when clicked.
  * @param {MenuButtonProps} props - Component properties, `MenuButtonProps`.
- * @returns {JSX.Element} JSX
  */
-const MenuButton = ({ className, Menu, testId = 'button-menu', title = 'Menu' }: MenuButtonProps): JSX.Element => {
+const MenuButton = ({ className, Menu, testId = 'button-menu', title = 'Menu' }: MenuButtonProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

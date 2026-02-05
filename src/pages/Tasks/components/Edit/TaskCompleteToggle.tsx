@@ -22,13 +22,8 @@ interface TaskCompleteToggleProps extends BaseComponentProps {
  * The `TaskCompleteToggle` component renders a `Button` which allows a user
  * to toggle the value of the Task `complete` attribute.
  * @param {TaskCompleteToggleProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const TaskCompleteToggle = ({
-  className,
-  task,
-  testId = 'toggle-task-complete',
-}: TaskCompleteToggleProps): JSX.Element => {
+const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
   const [isHovering, setIsHovering] = useState(false);
   const { t } = useTranslation();
   const { mutate: updateTask, isPending } = useUpdateTask();

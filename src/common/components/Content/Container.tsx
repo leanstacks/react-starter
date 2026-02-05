@@ -45,7 +45,7 @@ export interface ContainerProps extends BaseComponentProps, PropsWithChildren, V
   </Container>
  * ```
  */
-const Container = ({ children, className, size = 'default', testId = 'container' }: ContainerProps): JSX.Element => {
+const Container = ({ children, className, size = 'default', testId = 'container' }: ContainerProps) => {
   return (
     <div className={cn(containerVariants({ size, className }))} data-testid={testId}>
       {children}

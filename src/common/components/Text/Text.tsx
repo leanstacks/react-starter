@@ -33,7 +33,7 @@ export interface TextProps extends BaseComponentProps, PropsWithChildren, TextVa
 /**
  * The `Text` component displays styled text based upon the selected `variant`.
  */
-const Text = ({ children, className, testId = 'text', variant }: TextProps): JSX.Element => {
+const Text = ({ children, className, testId = 'text', variant }: TextProps) => {
   return (
     <span className={cn(variants({ variant, className }))} data-testid={testId}>
       {children}

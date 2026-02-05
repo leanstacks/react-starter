@@ -12,7 +12,7 @@ import Button from 'common/components/Button/Button';
  * The `DialogComponents` React component renders a set of examples illustrating
  * the use of the `Dialog` component.
  */
-const DialogComponents = ({ className, testId = 'components-dialog' }: BaseComponentProps): JSX.Element => {
+const DialogComponents = ({ className, testId = 'components-dialog' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

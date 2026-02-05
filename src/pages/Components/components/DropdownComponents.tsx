@@ -13,7 +13,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * The `DropdownComponents` component renders a set of examples illustrating
  * the use of the `DropdownMenu` component.
  */
-const DropdownComponents = ({ className, testId = 'components-dropdown' }: BaseComponentProps): JSX.Element => {
+const DropdownComponents = ({ className, testId = 'components-dropdown' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

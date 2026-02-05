@@ -27,7 +27,6 @@ export interface DecimalProps extends BaseComponentProps {
 /**
  * The `Decimal` React component formats and renders a decimal number.
  * @param {DecimalProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Decimal = ({
   className,
@@ -38,7 +37,7 @@ const Decimal = ({
   unitDisplay,
   value,
   testId = 'decimal',
-}: DecimalProps): JSX.Element => {
+}: DecimalProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = {
       maximumFractionDigits,

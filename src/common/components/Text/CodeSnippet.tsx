@@ -46,9 +46,8 @@ export interface CodeSnippetProps extends BaseComponentProps {
  * The `CodeSnippet` component renders a read only block which highlights
  * a small amount of application code such as JavaScript, JSX, or CSS.
  * @param {CodeSnippetProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const CodeSnippet = ({ className, code, testId = 'code-snippet' }: CodeSnippetProps): JSX.Element => {
+const CodeSnippet = ({ className, code, testId = 'code-snippet' }: CodeSnippetProps) => {
   const { theme } = useSettings();
   const files = {
     '/App.js': code,

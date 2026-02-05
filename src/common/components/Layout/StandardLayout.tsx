@@ -15,9 +15,8 @@ export interface StandardLayoutProps extends BaseComponentProps {}
  * The `StandardLayout` React component renders the standard page layout. It
  * renders a `Header` and `Footer` and provides an `Outlet` for the router.
  * @param [props] - Component properties, `StandardLayoutProps`.
- * @returns {JSX.Element} JSX
  */
-const StandardLayout = ({ className, testId = 'layout-standard' }: StandardLayoutProps): JSX.Element => {
+const StandardLayout = ({ className, testId = 'layout-standard' }: StandardLayoutProps) => {
   return (
     <div className={className} data-testid={testId}>
       <Header />

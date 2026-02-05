@@ -29,7 +29,6 @@ export interface TextareaProps<T extends FieldValues>
  * The `Textarea` component renders an HTML `textarea` element. It is used to capture
  * multiple lines of text input from a user.
  * @param {TextareaProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Textarea = <T extends FieldValues>({
   className,
@@ -39,7 +38,7 @@ const Textarea = <T extends FieldValues>({
   supportingText,
   testId = 'textarea',
   ...props
-}: TextareaProps<T>): JSX.Element => {
+}: TextareaProps<T>) => {
   const { field, fieldState } = useController({ control, name });
   const isDisabled = props.disabled || props.readOnly;
 

@@ -33,7 +33,7 @@ describe('ErrorBoundary', () => {
   it('should render fallback when error', async () => {
     // ARRANGE
     vi.spyOn(console, 'error').mockImplementation(() => null);
-    const TestError = (): JSX.Element => {
+    const TestError = () => {
       throw new Error('test error');
     };
     render(

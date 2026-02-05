@@ -18,9 +18,8 @@ export interface BackdropProps extends BaseComponentProps, PropsWithChildren {
  * component.  Usually used to partially mask background content to draw
  * attention to content in the foreground such as a `Dialog` or `Menu`.
  * @param {BackgroundProps} props - Component properties
- * @returns {JSX.Element} JSX
  */
-const Backdrop = ({ children, className, onClick, testId = 'backdrop' }: BackdropProps): JSX.Element => {
+const Backdrop = ({ children, className, onClick, testId = 'backdrop' }: BackdropProps) => {
   const handleClick = (e: React.MouseEvent) => {
     onClick?.(e);
   };

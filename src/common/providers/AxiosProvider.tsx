@@ -57,9 +57,8 @@ const notAuthenticatedErrorInterceptor = async (error: AxiosError, authContext: 
  * The `AxiosContextProvider` React component creates, maintains, and provides
  * access to the `AxiosContext` value.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
-const AxiosContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const AxiosContextProvider = ({ children }: PropsWithChildren) => {
   const [isReady, setIsReady] = useState(false);
   const authContext = useAuth();
 

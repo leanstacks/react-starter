@@ -30,9 +30,8 @@ type SigninFormValues = {
  * Upon error, displays messages.
  *
  * @param {BaseComponentProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): JSX.Element => {
+const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps) => {
   const [error, setError] = useState<string>('');
   const { mutate: signin } = useSignin();
   const navigate = useNavigate();

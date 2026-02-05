@@ -26,7 +26,6 @@ export interface DonutChartProps
 /**
  * The `DonutChart` component renders a pie chart without the center.
  * @param {DonutChartProps} props - Component properties.
- * @returns {JSX.Element} JSX
  * @see {@link https://recharts.org/en-US/api/PieChart PieChart}
  */
 const DonutChart = ({
@@ -38,7 +37,7 @@ const DonutChart = ({
   outerRadius = 32,
   paddingAngle = 0,
   testId = 'chart-donut',
-}: DonutChartProps): JSX.Element => {
+}: DonutChartProps) => {
   return (
     <div className={className} data-testid={testId}>
       <PieChart height={Number(height)} width={Number(width)}>

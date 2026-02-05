@@ -12,9 +12,8 @@ import Heading from 'common/components/Text/Heading';
  *
  * If an authenticated user navigates to this page, they are redirected to
  * the `DashboardPage`.
- * @returns {JSX.Element} JSX
  */
-const LandingPage = (): JSX.Element => {
+const LandingPage = () => {
   const { t } = useTranslation();
   const authContext = useAuth();
 

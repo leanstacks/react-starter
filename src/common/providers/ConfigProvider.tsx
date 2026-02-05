@@ -26,9 +26,8 @@ const configSchema = z.object({
  * Throws an `Error` when the configuration is invalid, preventing application
  * startup.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
-const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const ConfigContextProvider = ({ children }: PropsWithChildren) => {
   const [isReady, setIsReady] = useState<boolean>(false);
   const [config, setConfig] = useState<Config>();
 

@@ -12,7 +12,7 @@ import DropdownMenu from 'common/components/Dropdown/DropdownMenu';
  * The `BreadcrumbsComponents` React component renders a set of examples illustrating
  * the use of the `Breadcrumbs` family of components.
  */
-const BreadcrumbsComponents = ({ className, testId = 'components-breadcrumbs' }: BaseComponentProps): JSX.Element => {
+const BreadcrumbsComponents = ({ className, testId = 'components-breadcrumbs' }: BaseComponentProps) => {
   const columnHelper = createColumnHelper<ComponentProperty>();
   const breadcrumbsData: ComponentProperty[] = [
     {

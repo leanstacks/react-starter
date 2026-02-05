@@ -12,7 +12,7 @@ export interface PageProps extends BaseComponentProps, PropsWithChildren {}
  * The `Page` component renders a responsive, styled wrapper for a page of content
  * ensuring consistent spacing at various breakpoints.
  */
-const Page = ({ children, className, testId = 'page' }: PageProps): JSX.Element => {
+const Page = ({ children, className, testId = 'page' }: PageProps) => {
   return (
     <div className={cn('px-2 sm:px-8', className)} data-testid={testId}>
       {children}

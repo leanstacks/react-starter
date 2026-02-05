@@ -44,7 +44,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Bu
 /**
  * The `Button` React component formats and renders a styled button.
  * @param {ButtonProps} props - Component properties, `ButtonProps`.
- * @returns {JSX.Element} JSX
  */
 const Button = ({
   className,
@@ -54,7 +53,7 @@ const Button = ({
   variant,
   testId = 'button',
   ...props
-}: ButtonProps): JSX.Element => {
+}: ButtonProps) => {
   return (
     <button
       className={cn(variants({ size, variant, className }))}

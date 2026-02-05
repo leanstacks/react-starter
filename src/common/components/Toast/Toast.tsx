@@ -47,7 +47,7 @@ export interface ToastProps extends BaseComponentProps {
  * happened in the background such as saving information. Or they are
  * used when some adverse action happens, such as an error.
  */
-const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX.Element => {
+const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps) => {
   const config = useConfig();
 
   const [springs, api] = useSpring(() => ({

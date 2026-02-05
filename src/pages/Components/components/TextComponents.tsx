@@ -11,7 +11,7 @@ import Text from 'common/components/Text/Text';
  * The `TextComponents` React component renders a set of examples illustrating
  * the use of the text family of components.
  */
-const TextComponents = ({ className, testId = 'components-text' }: BaseComponentProps): JSX.Element => {
+const TextComponents = ({ className, testId = 'components-text' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

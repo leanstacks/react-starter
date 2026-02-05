@@ -17,9 +17,8 @@ interface BadgeComponentsProps extends BaseComponentProps {}
  * The `BadgeComponents` React component renders a set of examples illustrating
  * the use of the `Badge` component.
  * @param {BadgeComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeComponentsProps): JSX.Element => {
+const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeComponentsProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

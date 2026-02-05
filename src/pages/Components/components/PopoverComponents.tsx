@@ -12,7 +12,7 @@ import Card from 'common/components/Card/Card';
  * The `PopoverComponents` component renders a set of examples illustrating
  * the use of the `Popover` component.
  */
-const PopoverComponents = ({ className, testId = 'components-popover' }: BaseComponentProps): JSX.Element => {
+const PopoverComponents = ({ className, testId = 'components-popover' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

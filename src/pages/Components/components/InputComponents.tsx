@@ -16,7 +16,7 @@ import Button from 'common/components/Button/Button';
  * The `InputComponents` component renders a set of examples illustrating
  * the use of the `Input` component.
  */
-const InputComponents = ({ className, testId = 'components-input' }: BaseComponentProps): JSX.Element => {
+const InputComponents = ({ className, testId = 'components-input' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

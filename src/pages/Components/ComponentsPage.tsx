@@ -12,9 +12,8 @@ import Columns from 'common/components/Content/Columns';
  * The `ComponentsPage` component renders the layout for the components page.
  * It provides an `Outlet` for displaying a variety of sub-pages containing
  * React component variations.
- * @returns {JSX.Element} JSX
  */
-const ComponentsPage = (): JSX.Element => {
+const ComponentsPage = () => {
   const location = useLocation();
   // Scroll to top when the pathname changes
   useEffect(() => {

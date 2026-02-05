@@ -12,7 +12,7 @@ import Page from 'common/components/Content/Page';
  * The `PageComponents` component renders a set of examples illustrating
  * the use of the `Page` component.
  */
-const PageComponents = ({ className, testId = 'components-page' }: BaseComponentProps): JSX.Element => {
+const PageComponents = ({ className, testId = 'components-page' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

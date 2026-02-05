@@ -60,7 +60,7 @@ const Checkbox = <T extends FieldValues>({
   required = false,
   supportingText,
   testId = 'checkbox',
-}: CheckboxProps<T>): JSX.Element => {
+}: CheckboxProps<T>) => {
   const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isChecked = field.value === true;
 

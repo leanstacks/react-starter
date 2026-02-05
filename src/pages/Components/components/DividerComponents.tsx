@@ -11,7 +11,7 @@ import Divider from 'common/components/Divider/Divider';
  * The `DividerComponents` component renders a set of examples illustrating
  * the use of the `Divider` component.
  */
-const DividerComponents = ({ className, testId = 'components-divider' }: BaseComponentProps): JSX.Element => {
+const DividerComponents = ({ className, testId = 'components-divider' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

@@ -9,9 +9,8 @@ import Container from 'common/components/Content/Container';
 /**
  * The `SignoutPage` component deauthenticates the current user and redirects
  * to the base URL.
- * @returns {JSX.Element} JSX
  */
-const SignoutPage = (): JSX.Element => {
+const SignoutPage = () => {
   const navigate = useNavigate();
   const { mutate: signout } = useSignout();
 

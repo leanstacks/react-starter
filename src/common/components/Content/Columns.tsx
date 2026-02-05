@@ -55,13 +55,7 @@ export interface ColumnsProps extends BaseComponentProps, PropsWithChildren, Var
   </Columns>
  * ```
  */
-const Columns = ({
-  children,
-  className,
-  gap = 'md',
-  layout = '1-1',
-  testId = 'columns',
-}: ColumnsProps): JSX.Element => {
+const Columns = ({ children, className, gap = 'md', layout = '1-1', testId = 'columns' }: ColumnsProps) => {
   return (
     <div className={cn(columnsVariants({ gap, layout, className }))} data-testid={testId}>
       {children}
@@ -72,7 +66,7 @@ const Columns = ({
 /**
  * The `Column` component renders an individual column.
  */
-const Column = ({ children, className, testId = 'column' }: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Column = ({ children, className, testId = 'column' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}

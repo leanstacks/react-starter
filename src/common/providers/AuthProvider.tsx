@@ -8,9 +8,8 @@ import Spinner from 'common/components/Loader/Spinner';
  * The `AuthContextProvider` React component creates, maintains, and provides
  * access to the `AuthContext` value.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
-const AuthContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const AuthContextProvider = ({ children }: PropsWithChildren) => {
   // REPLACE: use a query hook to fetch authentication details from an IdP
   const {
     data: userTokens,

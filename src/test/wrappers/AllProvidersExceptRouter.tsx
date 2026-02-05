@@ -31,9 +31,8 @@ import { queryClient } from '../query-client';
  * );
  * ```
  * @param {PropsWithChildren} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const AllProvidersExceptRouter = ({ children }: PropsWithChildren): JSX.Element => {
+const AllProvidersExceptRouter = ({ children }: PropsWithChildren) => {
   return (
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>

@@ -20,12 +20,7 @@ interface TaskDeleteDialogProps extends BaseComponentProps, PropsWithChildren {
  * The `TaskDeleteDialog` renders a dialog prompting for deletion confirmation
  * of a `Task`.
  */
-const TaskDeleteDialog = ({
-  children,
-  className,
-  task,
-  testId = 'dialog-task-delete',
-}: TaskDeleteDialogProps): JSX.Element => {
+const TaskDeleteDialog = ({ children, className, task, testId = 'dialog-task-delete' }: TaskDeleteDialogProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { createToast } = useToasts();

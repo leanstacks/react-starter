@@ -13,7 +13,7 @@ import Columns from 'common/components/Content/Columns';
  * The `IconComponents` component renders a set of examples illustrating
  * the use of the `FAIcon` component.
  */
-const IconComponents = ({ className, testId = 'components-icon' }: BaseComponentProps): JSX.Element => {
+const IconComponents = ({ className, testId = 'components-icon' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

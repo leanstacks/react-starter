@@ -40,7 +40,7 @@ export interface HeadingProps extends BaseComponentProps, HeadingVariants, HTMLA
  * The `Heading` component formats heading blocks.  The component supports
  * traditional HTML heading levels 1 through 6.
  */
-const Heading = ({ className, level, testId = 'heading', ...props }: HeadingProps): JSX.Element => {
+const Heading = ({ className, level, testId = 'heading', ...props }: HeadingProps) => {
   const HeadingElement: HeadingType = level ? `h${level}` : 'h2';
 
   return <HeadingElement className={cn(variants({ level, className }))} data-testid={testId} {...props} />;

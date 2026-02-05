@@ -43,7 +43,7 @@ export interface BadgeProps extends BaseComponentProps, PropsWithChildren, Badge
  * The `Badge` component highlights a notification, a count, or a piece status
  * information.
  */
-const Badge = ({ children, className, size, testId = 'badge', variant, uppercase }: BadgeProps): JSX.Element => {
+const Badge = ({ children, className, size, testId = 'badge', variant, uppercase }: BadgeProps) => {
   return (
     <div className={cn(variants({ size, variant, uppercase, className }))} data-testid={testId}>
       {children}

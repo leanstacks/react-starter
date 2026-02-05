@@ -16,7 +16,7 @@ import Button from 'common/components/Button/Button';
  * The `TextareaComponents` component renders a set of examples illustrating
  * the use of the `Textarea` component.
  */
-const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseComponentProps): JSX.Element => {
+const TextareaComponents = ({ className, testId = 'components-textarea' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

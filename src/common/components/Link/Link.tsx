@@ -14,7 +14,7 @@ export interface LinkProps extends RouterLinkProps, PropsWithTestId {}
  * The `Link` React component formats and renders an `<a />` anchor HTML element using
  * the `Link` component from React Router.
  */
-const Link = ({ children, className, testId = 'link', ...props }: LinkProps): JSX.Element => {
+const Link = ({ children, className, testId = 'link', ...props }: LinkProps) => {
   return (
     <RouterLink
       className={cn(

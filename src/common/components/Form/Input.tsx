@@ -28,7 +28,6 @@ export interface InputProps<T extends FieldValues> extends InputHTMLAttributes<H
  * The `Input` component renders an HTML `input` element. It is used to capture
  * single line text input from a user.
  * @param {InputProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Input = <T extends FieldValues>({
   className,
@@ -38,7 +37,7 @@ const Input = <T extends FieldValues>({
   supportingText,
   testId = 'input',
   ...props
-}: InputProps<T>): JSX.Element => {
+}: InputProps<T>) => {
   const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isDisabled = props.disabled || props.readOnly;
 

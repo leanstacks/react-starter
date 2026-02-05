@@ -16,7 +16,7 @@ import Checkbox from 'common/components/Form/Checkbox';
  * The `CheckboxComponents` component renders a set of examples illustrating
  * the use of the `Checkbox` component.
  */
-const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseComponentProps): JSX.Element => {
+const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

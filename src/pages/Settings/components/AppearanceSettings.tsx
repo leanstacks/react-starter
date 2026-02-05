@@ -15,9 +15,8 @@ interface AppearanceSettingsProps extends PropsWithTestId {}
  * allow users to update personal configuration related to how the application
  * appears.
  * @param {AppearanceSettingsProps} props - Component properties, `AppearanceSettingsProps`.
- * @returns {JSX.Element} JSX
  */
-const AppearanceSettings = ({ testId = 'settings-appearance' }: AppearanceSettingsProps): JSX.Element => {
+const AppearanceSettings = ({ testId = 'settings-appearance' }: AppearanceSettingsProps) => {
   const settings = useSettings();
   const { mutate: setSettings } = useSetSettings();
 

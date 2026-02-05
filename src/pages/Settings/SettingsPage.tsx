@@ -12,9 +12,8 @@ import Container from 'common/components/Content/Container';
 /**
  * The `SettingsPage` component renders the layout for the settings page. It
  * provides an `Outlet` for displaying settings sub-pages.
- * @returns {JSX.Element} JSX
  */
-const SettingsPage = (): JSX.Element => {
+const SettingsPage = () => {
   const { data: user } = useGetCurrentUser();
 
   return (

@@ -16,7 +16,7 @@ import Button from 'common/components/Button/Button';
  * The `ToggleComponents` component renders a set of examples illustrating
  * the use of the `Toggle` component.
  */
-const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseComponentProps): JSX.Element => {
+const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

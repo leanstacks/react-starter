@@ -11,9 +11,8 @@ export interface MenuSeparatorProps extends BaseComponentProps {}
  * The `MenuSeparator` component renders a separator to deliniate the boundary
  * between sections of a `Menu`.
  * @param {MenuSeparatorProps} props - Component properties, `MenuSeparatorProps`.
- * @returns {JSX.Element} JSX
  */
-const MenuSeparator = ({ className, testId = 'menu-separator' }: MenuSeparatorProps): JSX.Element => {
+const MenuSeparator = ({ className, testId = 'menu-separator' }: MenuSeparatorProps) => {
   return <div className={cn('my-2 border-t border-neutral-500', className)} data-testid={testId} />;
 };
 

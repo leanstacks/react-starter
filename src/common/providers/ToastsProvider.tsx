@@ -99,9 +99,8 @@ const actions = (dispatch: Dispatch<ToastsContextAction>) => {
  * The `ToastsProvider` React component creates, maintains, and provides
  * access to the `ToastsContext` value.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
-const ToastsProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const ToastsProvider = ({ children }: PropsWithChildren) => {
   const [{ toasts }, dispatch] = useReducer(reducer, DEFAULT_STATE);
 
   const value = useMemo<ToastsContextValue>(() => {

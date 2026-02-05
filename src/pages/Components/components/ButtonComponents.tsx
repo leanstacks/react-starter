@@ -17,9 +17,8 @@ interface ButtonComponentsProps extends BaseComponentProps {}
  * The `ButtonComponents` React component renders a set of examples illustrating
  * the use of the `Button` component.
  * @param {ButtonComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const ButtonComponents = ({ className, testId = 'components-button' }: ButtonComponentsProps): JSX.Element => {
+const ButtonComponents = ({ className, testId = 'components-button' }: ButtonComponentsProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

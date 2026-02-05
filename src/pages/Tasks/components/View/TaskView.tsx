@@ -20,9 +20,8 @@ interface TaskViewProps extends BaseComponentProps {
  * The `TaskView` component renders the attributes of a `Task` in view mode.
  * This component is for the read-only display of a single Task.
  * @param {TaskViewProps} props - Component properties.
- * @returns JSX
  */
-const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps): JSX.Element => {
+const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps) => {
   const { t } = useTranslation();
   const { data: user, isLoading: isLoadingUser, isError: isErrorUser } = useGetUser({ userId: task.userId });
 

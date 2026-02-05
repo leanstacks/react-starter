@@ -54,9 +54,8 @@ const BACKGROUND_COLORS = [
  *   testId='icon-avatar-profile' />
  * ```
  * @param {AvatarProps} props - Component properties, `AvatarProps`.
- * @returns {JSX.Element} JSX
  */
-const Avatar = ({ className, picture, testId = 'icon-avatar', value }: AvatarProps): JSX.Element => {
+const Avatar = ({ className, picture, testId = 'icon-avatar', value }: AvatarProps) => {
   if (picture) {
     // 'picture' is available
     return (

@@ -11,7 +11,7 @@ import Link from 'common/components/Link/Link';
  * The `LinkComponents` component renders a set of examples illustrating
  * the use of the `Link` component.
  */
-const LinkComponents = ({ className, testId = 'components-link' }: BaseComponentProps): JSX.Element => {
+const LinkComponents = ({ className, testId = 'components-link' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

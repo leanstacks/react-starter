@@ -34,7 +34,6 @@ type NavLinkRenderProps = {
  * The `MenuNavLink` React component renders a `NavLink` with optional `Icon`.
  * For use within a `Menu` implementation, e.g. `SideMenu`.
  * @param {MenuNavLinkProps} props - Component properties, `MenuNavLinkProps`.
- * @returns {JSX.Element} JSX
  */
 const MenuNavLink = ({
   children,
@@ -44,7 +43,7 @@ const MenuNavLink = ({
   styleActive = false,
   testId = 'menu-navlink',
   ...props
-}: MenuNavLinkProps): JSX.Element => {
+}: MenuNavLinkProps) => {
   /**
    * Returns the list of class names to apply to the `NavLink`.
    * @param props - A `NavLinkRenderProps` object indicating the current state of the `NavLink`.

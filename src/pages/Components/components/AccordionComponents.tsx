@@ -11,7 +11,7 @@ import Accordion from 'common/components/Accordion/Accordion';
  * The `AccordionComponents` component renders a set of examples illustrating
  * the use of the `Accordion` component.
  */
-const AccordionComponents = ({ className, testId = 'components-accordion' }: BaseComponentProps): JSX.Element => {
+const AccordionComponents = ({ className, testId = 'components-accordion' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

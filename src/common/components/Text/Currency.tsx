@@ -23,7 +23,6 @@ export interface CurrencyProps extends BaseComponentProps {
 /**
  * The `Currency` React component formats and renders a currency value.
  * @param {CurrencyProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Currency = ({
   className,
@@ -32,7 +31,7 @@ const Currency = ({
   currencySign,
   value,
   testId = 'currency',
-}: CurrencyProps): JSX.Element => {
+}: CurrencyProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = {
       style: 'currency',

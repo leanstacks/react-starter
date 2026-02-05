@@ -10,7 +10,7 @@ export interface DividerProps extends BaseComponentProps {}
  * The `Divider` component renders a horizontal line which visually separates
  * content.
  */
-const Divider = ({ className, testId = 'divider' }: DividerProps): JSX.Element => {
+const Divider = ({ className, testId = 'divider' }: DividerProps) => {
   return <div className={cn('h-px bg-neutral-500/50', className)} data-testid={testId} />;
 };
 

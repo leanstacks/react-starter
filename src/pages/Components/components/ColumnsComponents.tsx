@@ -12,7 +12,7 @@ import Columns from 'common/components/Content/Columns';
  * The `ColumnsComponents` component renders a set of examples illustrating
  * the use of the `Columns` component.
  */
-const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseComponentProps): JSX.Element => {
+const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

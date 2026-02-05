@@ -148,7 +148,7 @@ const icons: Record<FAIconName, IconProp> = {
  * @param param0
  * @returns
  */
-const FAIcon = ({ className, icon, testId = 'fa-icon', ...iconProps }: FAIconProps): JSX.Element => {
+const FAIcon = ({ className, icon, testId = 'fa-icon', ...iconProps }: FAIconProps) => {
   const faIcon = icons[icon];
 
   return <FontAwesomeIcon className={cn('fa-icon', className)} icon={faIcon} {...iconProps} data-testid={testId} />;

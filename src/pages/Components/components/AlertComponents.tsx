@@ -11,7 +11,7 @@ import Alert from 'common/components/Alert/Alert';
  * The `AlertComponents` React component renders a set of examples illustrating
  * the use of the `Alert` component.
  */
-const AlertComponents = ({ className, testId = 'components-alert' }: BaseComponentProps): JSX.Element => {
+const AlertComponents = ({ className, testId = 'components-alert' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

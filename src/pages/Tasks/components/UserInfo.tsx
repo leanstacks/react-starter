@@ -17,9 +17,8 @@ interface UserInfoProps extends BaseComponentProps {
  * The `UserInfo` component renders a block containing summary attributes
  * about a user such as their name, email address, phone number, and website.
  * @param {UserInfoProps} props - Component properties.
- * @returns JSX
  */
-const UserInfo = ({ className, testId = 'user-info', userId }: UserInfoProps): JSX.Element | false => {
+const UserInfo = ({ className, testId = 'user-info', userId }: UserInfoProps) => {
   const { data: user, isLoading } = useGetUser({ userId });
 
   return (

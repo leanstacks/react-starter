@@ -27,7 +27,6 @@ export interface SideMenuProps extends BaseComponentProps, MenuProps, PropsWithC
  * `children` attribute. The optional menu header is provided in the
  * `headerContent` attribute.
  * @param {SideMenuProps} props - Component properties, `SideMenuProps`.
- * @returns {JSX.Element} JSX
  */
 const SideMenu = ({
   children,
@@ -36,7 +35,7 @@ const SideMenu = ({
   headerContent,
   side = 'left',
   testId = 'menu-side',
-}: SideMenuProps): JSX.Element => {
+}: SideMenuProps) => {
   const isLeft = side === 'left';
   const isRight = side === 'right';
 

@@ -19,15 +19,8 @@ export interface MessageCardProps extends CardProps {
  * The `MessageCard` component renders a `Card` which conveys a brief message.
  * Useful for informational, warning, error messages, or empty state messages.
  * @param {MessageCardProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const MessageCard = ({
-  className,
-  iconProps,
-  message,
-  testId = 'card-message',
-  title,
-}: MessageCardProps): JSX.Element => {
+const MessageCard = ({ className, iconProps, message, testId = 'card-message', title }: MessageCardProps) => {
   const hasHeader = !!iconProps || !!title;
 
   return (

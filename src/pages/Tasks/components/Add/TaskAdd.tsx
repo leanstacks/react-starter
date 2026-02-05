@@ -19,9 +19,8 @@ export interface TaskAddProps extends BaseComponentProps {}
  * The `TaskAdd` component renders the layout for creating a new Task including
  * headings, the task form, etc.
  * @param {TaskAddProps} props - Component properties.
- * @returns JSX
  */
-const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps): JSX.Element => {
+const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps) => {
   const [taskCreateError, setTaskCreateError] = useState('');
   const { t } = useTranslation();
   const navigate = useNavigate();

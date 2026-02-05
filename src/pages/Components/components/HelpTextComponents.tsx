@@ -12,7 +12,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * The `HelpTextComponents` component renders a set of examples illustrating
  * the use of the `HelpText` component.
  */
-const HelpTextComponents = ({ className, testId = 'components-helptext' }: BaseComponentProps): JSX.Element => {
+const HelpTextComponents = ({ className, testId = 'components-helptext' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

@@ -53,7 +53,7 @@ export interface DropdownMenuProps extends BaseComponentProps, PropsWithChildren
   </DropdownMenu>
  * ```
  */
-const DropdownMenu = ({ children, className, testId = 'dropdown-menu' }: DropdownMenuProps): JSX.Element => {
+const DropdownMenu = ({ children, className, testId = 'dropdown-menu' }: DropdownMenuProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
   return (
@@ -68,11 +68,7 @@ const DropdownMenu = ({ children, className, testId = 'dropdown-menu' }: Dropdow
  * a DropdownMenu. There should be 1 `Trigger` within a
  * DropdownMenu.
  */
-const Trigger = ({
-  children,
-  className,
-  testId = 'dropdown-menu-trigger',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Trigger = ({ children, className, testId = 'dropdown-menu-trigger' }: BaseComponentProps & PropsWithChildren) => {
   const { isHidden, setIsHidden } = useContext(DropdownMenuContext);
 
   return (
@@ -130,7 +126,7 @@ interface ItemProps extends BaseComponentProps, PropsWithChildren {
  * The `Item` component renders a single, clickable menu item within a
  * DropdownMenu.
  */
-const Item = ({ children, className, onClick, testId = 'dropdown-menu-item' }: ItemProps): JSX.Element => {
+const Item = ({ children, className, onClick, testId = 'dropdown-menu-item' }: ItemProps) => {
   const { isHidden, setIsHidden } = useContext(DropdownMenuContext);
 
   const handleClick = () => {
@@ -158,11 +154,7 @@ DropdownMenu.Item = Item;
  * The `Heading` component renders a heading within a DropdownMenu. This is
  * useful for describing a group of related menu items.
  */
-const Heading = ({
-  children,
-  className,
-  testId = 'dropdown-menu-heading',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Heading = ({ children, className, testId = 'dropdown-menu-heading' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <h5 className={cn('px-2 py-1.5 text-sm font-bold', className)} data-testid={testId}>
       {children}
@@ -175,7 +167,7 @@ DropdownMenu.Heading = Heading;
  * The `Separator` component renders a horizontal divider within a DropdownMenu.
  * This is useful to organize and separate groups of related menu items.
  */
-const Separator = ({ className, testId = 'dropdown-menu-separator' }: DividerProps): JSX.Element => {
+const Separator = ({ className, testId = 'dropdown-menu-separator' }: DividerProps) => {
   return <Divider className={cn('-mx-1 my-1', className)} testId={testId} />;
 };
 DropdownMenu.Separator = Separator;

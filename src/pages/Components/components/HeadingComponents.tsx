@@ -10,7 +10,7 @@ import Heading from 'common/components/Text/Heading';
  * The `HeadingComponents` React component renders a set of examples illustrating
  * the use of the `Heading` component.
  */
-const HeadingComponents = ({ className, testId = 'components-heading' }: BaseComponentProps): JSX.Element => {
+const HeadingComponents = ({ className, testId = 'components-heading' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',

@@ -22,8 +22,6 @@ export interface TaskStatusDonutChartProps extends BaseComponentProps, Omit<Donu
  * The `TaskStatusDonutChart` component renders a `DonutChart` which displays
  * the relative count of incomplete and complete tasks.
  * @param {TaskStatusDonutChartProps} props - Component properties.
- * @returns {JSX.Element | false} Returns JSX if the supplied collection of tasks
- * is not empty, otherwise returns `false`.
  */
 const TaskStatusDonutChart = ({
   tasks,
@@ -34,7 +32,7 @@ const TaskStatusDonutChart = ({
   outerRadius = 20,
   testId = 'chart-donut-task-status',
   ...chartProps
-}: TaskStatusDonutChartProps): JSX.Element | false => {
+}: TaskStatusDonutChartProps) => {
   const { t } = useTranslation();
 
   if (tasks.length > 0) {

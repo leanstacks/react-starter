@@ -18,9 +18,8 @@ interface AvatarComponentsProps extends BaseComponentProps {}
  * The `AvatarComponents` React component renders a set of examples illustrating
  * the use of the `Avatar` component.
  * @param {AvatarComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const AvatarComponents = ({ className, testId = 'components-avatar' }: AvatarComponentsProps): JSX.Element => {
+const AvatarComponents = ({ className, testId = 'components-avatar' }: AvatarComponentsProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

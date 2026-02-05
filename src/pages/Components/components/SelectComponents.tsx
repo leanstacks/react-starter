@@ -16,7 +16,7 @@ import Select from 'common/components/Form/Select';
  * The `SelectComponents` component renders a set of examples illustrating
  * the use of the `Select` component.
  */
-const SelectComponents = ({ className, testId = 'components-select' }: BaseComponentProps): JSX.Element => {
+const SelectComponents = ({ className, testId = 'components-select' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

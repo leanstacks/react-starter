@@ -42,7 +42,7 @@ const Toggle = <T extends FieldValues>({
   required = false,
   supportingText,
   testId = 'toggle',
-}: ToggleProps<T>): JSX.Element => {
+}: ToggleProps<T>) => {
   const { field, fieldState } = useController({ control, name: name as Path<T> });
 
   const handleClick = () => {

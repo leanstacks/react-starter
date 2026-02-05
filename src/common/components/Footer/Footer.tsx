@@ -15,10 +15,9 @@ export interface FooterProps extends BaseComponentProps {}
  * The `Footer` React component renders the standard page footer content used
  * throughout the application.
  * @param {FooterProps} props - Component properties, `FooterProps`.
- * @returns {JSX.Element} JSX
  * @see {@link FooterProps}
  */
-const Footer = ({ className, testId = 'footer' }: FooterProps): JSX.Element => {
+const Footer = ({ className, testId = 'footer' }: FooterProps) => {
   const { t } = useTranslation();
   const year = dayjs().format('YYYY');
 

@@ -15,9 +15,8 @@ import { queryClient } from '../query-client';
  *
  * This test wrapper includes all of the providers used in the application.
  * @param {PropsWithChildren} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const WithAllProviders = ({ children }: PropsWithChildren): JSX.Element => {
+const WithAllProviders = ({ children }: PropsWithChildren) => {
   return (
     <ConfigContextProvider>
       <QueryClientProvider client={queryClient}>

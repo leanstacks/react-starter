@@ -42,7 +42,7 @@ export interface PopoverProps extends BaseComponentProps, PropsWithChildren {}
  * </Popover>
  * ```
  */
-const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX.Element => {
+const Popover = ({ children, className, testId = 'popover' }: PopoverProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [triggerRect, setTriggerRect] = useState<Pick<DOMRect, 'top' | 'left' | 'height' | 'width'>>({
     top: 0,
@@ -65,11 +65,7 @@ const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX
  * It can be any element, such as a button or a link.
  * The `Trigger` component is a child of the `Popover` component.
  */
-const Trigger = ({
-  children,
-  className,
-  testId = 'popover-trigger',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Trigger = ({ children, className, testId = 'popover-trigger' }: BaseComponentProps & PropsWithChildren) => {
   const { isOpen, setIsOpen, setTriggerRect } = useContext(PopoverContext);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -134,7 +130,7 @@ const Content = ({
   side = 'bottom',
   sideOffset = 8,
   testId = 'popover-content',
-}: ContentProps): JSX.Element => {
+}: ContentProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentRect, setContentRect] = useState<Pick<DOMRect, 'height' | 'width'>>({
     height: 0,

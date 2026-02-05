@@ -11,9 +11,8 @@ import Card from 'common/components/Card/Card';
  * The `TaskListLayout` component renders the layout for all tasks for a
  * single `User`.
  * @param {BaseComponentProps} props - Component properties.
- * @returns JSX
  */
-const TaskListLayout = ({ className, testId = 'layout-task-list' }: BaseComponentProps): JSX.Element => {
+const TaskListLayout = ({ className, testId = 'layout-task-list' }: BaseComponentProps) => {
   const { t } = useTranslation();
   const { data: currentUser } = useGetCurrentUser();
   const { data: tasks } = useGetUserTasks({ userId: currentUser?.id });

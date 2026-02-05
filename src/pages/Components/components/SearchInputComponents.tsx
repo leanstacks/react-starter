@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { type JSX, useMemo, useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { filter } from 'lodash';
 import { map } from 'lodash';
@@ -15,9 +15,8 @@ import Heading from 'common/components/Text/Heading';
  * The `SearchInputComponents` React component renders a set of examples illustrating
  * the use of the `SearchField` component.
  * @param {BaseComponentProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const SearchInputComponents = ({ className, testId = 'components-search-input' }: BaseComponentProps): JSX.Element => {
+const SearchInputComponents = ({ className, testId = 'components-search-input' }: BaseComponentProps) => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
   const [selectedValue, setSelectedValue] = useState('');

@@ -31,14 +31,8 @@ export interface DayOfTheWeekProps extends BaseComponentProps {
  * The `DayOfTheWeek` React component renders the day of the week,
  * e.g. `Monday`, for the supplied date value.
  * @param {DayOfTheWeekProps} props - Component properties, `DayOfTheWeekProps`.
- * @returns {JSX.Element} JSX
  */
-const DayOfTheWeek = ({
-  className,
-  date,
-  relative = false,
-  testId = 'day-of-the-week',
-}: DayOfTheWeekProps): JSX.Element => {
+const DayOfTheWeek = ({ className, date, relative = false, testId = 'day-of-the-week' }: DayOfTheWeekProps) => {
   if (relative) {
     let relativeDayOfTheWeek: string | null = null;
     const theDate = dayjs(date);

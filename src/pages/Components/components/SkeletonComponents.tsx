@@ -11,7 +11,7 @@ import Skeleton from 'common/components/Loader/Skeleton';
  * The `SkeletonComponents` component renders a set of examples illustrating
  * the use of the `Skeleton` component.
  */
-const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseComponentProps): JSX.Element => {
+const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',

@@ -11,7 +11,7 @@ import Tabs from 'common/components/Tabs/Tabs';
  * The `TabsComponents` component renders a set of examples illustrating
  * the use of the `Tabs` component.
  */
-const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponentProps): JSX.Element => {
+const TabsComponents = ({ className, testId = 'components-tabs' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
