@@ -129,7 +129,7 @@ const Content = ({ children, className, testId = 'dialog-content' }: BaseCompone
         testId={`${testId}-backdrop`}
       >
         <div
-          className={cn('bg-light-bg dark:bg-dark-bg m-4 flex max-w-[560px] min-w-72 flex-col gap-4 rounded-md p-6')}
+          className={cn('bg-light-bg dark:bg-dark-bg m-4 flex max-w-140 min-w-72 flex-col gap-4 rounded-md p-6')}
           onClick={(e) => e.stopPropagation()}
           data-testid={`${testId}-content`}
         >

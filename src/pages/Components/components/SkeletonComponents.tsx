@@ -100,19 +100,19 @@ const SelectComponents = ({ className, testId = 'components-skeleton' }: BaseCom
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <Skeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
-            <Skeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
-            <Skeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
-            <Skeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
-            <Skeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
+            <Skeleton className="mb-2 h-4 bg-slate-100! dark:bg-slate-700!" />
+            <Skeleton className="mb-2 h-4 bg-sky-100! dark:bg-sky-950!" />
+            <Skeleton className="mb-2 h-4 bg-fuchsia-100! dark:bg-fuchsia-950!" />
+            <Skeleton className="mb-2 h-4 bg-lime-100! dark:bg-lime-950!" />
+            <Skeleton className="mb-2 h-4 bg-pink-100! dark:bg-pink-950!" />
           </div>
           <CodeSnippet className="my-2" language="tsx">
             {`<>
-  <Skeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
-  <Skeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
-  <Skeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
-  <Skeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
-  <Skeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
+  <Skeleton className="mb-2 h-4 bg-slate-100! dark:bg-slate-700!" />
+  <Skeleton className="mb-2 h-4 bg-sky-100! dark:bg-sky-950!" />
+  <Skeleton className="mb-2 h-4 bg-fuchsia-100! dark:bg-fuchsia-950!" />
+  <Skeleton className="mb-2 h-4 bg-lime-100! dark:bg-lime-950!" />
+  <Skeleton className="mb-2 h-4 bg-pink-100! dark:bg-pink-950!" />
 </>`}
           </CodeSnippet>
         </div>

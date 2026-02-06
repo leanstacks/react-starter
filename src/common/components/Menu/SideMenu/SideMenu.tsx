@@ -67,7 +67,7 @@ const SideMenu = ({
         <SideMenuHeader close={close} testId={`${testId}-header`}>
           {headerContent}
         </SideMenuHeader>
-        <div className="flex h-[calc(100vh_-_64px)] flex-col overflow-y-auto" data-testid={`${testId}-body`}>
+        <div className="flex h-[calc(100vh-64px)] flex-col overflow-y-auto" data-testid={`${testId}-body`}>
           <div className="mx-4" onClick={() => close?.()}>
             {children}
           </div>
