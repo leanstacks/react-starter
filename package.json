@@ -1,6 +1,6 @@
 {
-  "name": "react-starter-kit",
-  "description": "Welcome to the LEANSTACKS React starter kit. This project provides a template to kickstart React single-page applications utilizing a curated Technology Stack for optimal testability, maintainability, and operability.",
+  "name": "react-starter",
+  "description": "A starter project for React applications using a curated technology stack for optimal performance, reliability, and maintainability.",
   "keywords": [
     "react, typescript, vite"
   ],
@@ -10,7 +10,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leanstacks/react-starter-kit.git"
+    "url": "git+https://github.com/leanstacks/react-starter.git"
   },
   "scripts": {
     "clean": "rimraf coverage dist storybook-static",
