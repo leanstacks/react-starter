@@ -31,17 +31,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup Node.js Environment
+      - name: Setup Node.js environment
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
       # --- Application Checks ---
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: 'Create .env File'
+      - name: 'Create .env file'
         run: |
           echo "${{ env.ENV_FILE }}" > .env
 
@@ -62,7 +62,7 @@ jobs:
         run: npm run build:storybook
 
       # --- Infrastructure Checks ---
-      - name: Configure AWS Credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
