@@ -5,9 +5,8 @@ import { Link, Navigate, isRouteErrorResponse, useRouteError } from 'react-route
  * thrown from a child path in the router hierarchy.
  * The `ErrorPage` component is used in the `errorElement` of the React
  * Router configuration.
- * @returns {JSX.Element} JSX
  */
-const ErrorPage = (): JSX.Element => {
+const ErrorPage = () => {
   const error = useRouteError();
 
   const getMessage = (error: unknown): string => {

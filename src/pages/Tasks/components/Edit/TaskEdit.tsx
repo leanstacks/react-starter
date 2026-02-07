@@ -23,9 +23,8 @@ export interface TaskEditProps extends BaseComponentProps {}
  * The `TaskAdd` component renders the layout for updating a Task including
  * headings, the task form, etc.
  * @param {TaskEditProps} props - Component properties.
- * @returns JSX
  */
-const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Element => {
+const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps) => {
   const [taskUpdateError, setTaskUpdateError] = useState('');
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -74,9 +73,7 @@ const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Eleme
   return (
     <div className={cn(className)} data-testid={testId}>
       {/* heading */}
-      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">
-        {t('editTask', { ns: 'tasks' })}
-      </h2>
+      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">{t('editTask', { ns: 'tasks' })}</h2>
 
       {/* loading state */}
       {isLoading && <Skeleton className="h-10" testId={`${testId}-loading`} />}

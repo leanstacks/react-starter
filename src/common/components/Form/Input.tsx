@@ -17,9 +17,7 @@ import HelpText from '../Text/HelpText';
  * @see {@link PropsWithTestId}
  * @see {@link InputHTMLAttributes}
  */
-export interface InputProps<T extends FieldValues>
-  extends InputHTMLAttributes<HTMLInputElement>,
-    PropsWithTestId {
+export interface InputProps<T extends FieldValues> extends InputHTMLAttributes<HTMLInputElement>, PropsWithTestId {
   control: Control<T>;
   label?: string;
   name: string;
@@ -30,7 +28,6 @@ export interface InputProps<T extends FieldValues>
  * The `Input` component renders an HTML `input` element. It is used to capture
  * single line text input from a user.
  * @param {InputProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Input = <T extends FieldValues>({
   className,
@@ -40,7 +37,7 @@ const Input = <T extends FieldValues>({
   supportingText,
   testId = 'input',
   ...props
-}: InputProps<T>): JSX.Element => {
+}: InputProps<T>) => {
   const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isDisabled = props.disabled || props.readOnly;
 
@@ -67,9 +64,7 @@ const Input = <T extends FieldValues>({
         data-testid={`${testId}-input`}
       />
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-      {!!supportingText && (
-        <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-      )}
+      {!!supportingText && <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>}
     </div>
   );
 };

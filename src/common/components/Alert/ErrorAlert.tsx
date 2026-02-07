@@ -5,9 +5,7 @@ import Alert, { AlertProps } from './Alert';
 /**
  * Properties for the `ErrorAlert` component.
  */
-export interface ErrorAlertProps
-  extends Omit<AlertProps, 'variant'>,
-    Partial<Pick<FAIconProps, 'icon'>> {
+export interface ErrorAlertProps extends Omit<AlertProps, 'variant'>, Partial<Pick<FAIconProps, 'icon'>> {
   title?: string;
   description: string;
 }
@@ -23,7 +21,7 @@ const ErrorAlert = ({
   testId = 'alert-error',
   title,
   ...props
-}: ErrorAlertProps): JSX.Element => {
+}: ErrorAlertProps) => {
   return (
     <Alert variant="danger" className={cn(className)} testId={testId} {...props}>
       <Alert.Icon icon={icon} testId={`${testId}-icon`} />

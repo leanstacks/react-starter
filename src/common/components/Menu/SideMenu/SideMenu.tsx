@@ -27,7 +27,6 @@ export interface SideMenuProps extends BaseComponentProps, MenuProps, PropsWithC
  * `children` attribute. The optional menu header is provided in the
  * `headerContent` attribute.
  * @param {SideMenuProps} props - Component properties, `SideMenuProps`.
- * @returns {JSX.Element} JSX
  */
 const SideMenu = ({
   children,
@@ -36,7 +35,7 @@ const SideMenu = ({
   headerContent,
   side = 'left',
   testId = 'menu-side',
-}: SideMenuProps): JSX.Element => {
+}: SideMenuProps) => {
   const isLeft = side === 'left';
   const isRight = side === 'right';
 
@@ -48,7 +47,7 @@ const SideMenu = ({
   return (
     <div
       className={cn(
-        'fixed right-0 top-0 z-1000 flex h-screen w-screen bg-neutral-500/50',
+        'fixed top-0 right-0 z-1000 flex h-screen w-screen bg-neutral-500/50',
         { 'flex-row-reverse justify-start': isLeft },
         { 'justify-end': isRight },
         className,
@@ -68,10 +67,7 @@ const SideMenu = ({
         <SideMenuHeader close={close} testId={`${testId}-header`}>
           {headerContent}
         </SideMenuHeader>
-        <div
-          className="flex h-[calc(100vh_-_64px)] flex-col overflow-y-auto"
-          data-testid={`${testId}-body`}
-        >
+        <div className="flex h-[calc(100vh-64px)] flex-col overflow-y-auto" data-testid={`${testId}-body`}>
           <div className="mx-4" onClick={() => close?.()}>
             {children}
           </div>

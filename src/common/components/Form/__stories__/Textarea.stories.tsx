@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FieldValues, useForm } from 'react-hook-form';
 
 import { default as MyTextarea } from '../Textarea';

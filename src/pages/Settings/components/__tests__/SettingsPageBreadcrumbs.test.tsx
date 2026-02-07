@@ -34,8 +34,6 @@ describe('SettingsPageBreadcrumbs', () => {
 
     // ASSERT
     expect(screen.getByTestId('page-settings-breadcrumbs-page-appearance')).toBeDefined();
-    expect(screen.getByTestId('page-settings-breadcrumbs-page-appearance')).toHaveTextContent(
-      /appearance/i,
-    );
+    expect(screen.getByTestId('page-settings-breadcrumbs-page-appearance')).toHaveTextContent(/appearance/i);
   });
 });

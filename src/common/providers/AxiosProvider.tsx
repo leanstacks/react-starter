@@ -33,10 +33,7 @@ const authRequestInterceptor = async (
  * the current user authentication state.
  * @returns {AxiosResponse} An AxiosResponse representing the retried request.
  */
-const notAuthenticatedErrorInterceptor = async (
-  error: AxiosError,
-  authContext: AuthContextValue,
-) => {
+const notAuthenticatedErrorInterceptor = async (error: AxiosError, authContext: AuthContextValue) => {
   const config = error.config;
   if (error.response?.status === 401) {
     if (authContext.isAuthenticated && authContext.refetchUserTokens) {
@@ -60,9 +57,8 @@ const notAuthenticatedErrorInterceptor = async (
  * The `AxiosContextProvider` React component creates, maintains, and provides
  * access to the `AxiosContext` value.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
-const AxiosContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const AxiosContextProvider = ({ children }: PropsWithChildren) => {
   const [isReady, setIsReady] = useState(false);
   const authContext = useAuth();
 
@@ -84,9 +80,7 @@ const AxiosContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
     };
   }, [authContext]);
 
-  return (
-    <AxiosContext.Provider value={customAxios}>{isReady && <>{children}</>}</AxiosContext.Provider>
-  );
+  return <AxiosContext.Provider value={customAxios}>{isReady && <>{children}</>}</AxiosContext.Provider>;
 };
 
 export default AxiosContextProvider;

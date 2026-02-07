@@ -16,13 +16,8 @@ interface TaskListItemProps extends BaseComponentProps {
 /**
  * The `TaskListItem` component renders a single `Task` within a `TaskList`.
  * @param {TaskListItemProps} props - Component properties.
- * @returns JSX
  */
-const TaskListItem = ({
-  className,
-  task,
-  testId = 'list-task-item',
-}: TaskListItemProps): JSX.Element => {
+const TaskListItem = ({ className, task, testId = 'list-task-item' }: TaskListItemProps) => {
   return (
     <div className={cn('flex items-center gap-4 py-0.5', className)} data-testid={testId}>
       <TaskCompleteToggle task={task} testId={`${testId}-complete-toggle`} />

@@ -64,7 +64,7 @@ const Accordion = ({
   defaultValue = [],
   multiple = false,
   testId = 'accordion',
-}: AccordionProps): JSX.Element => {
+}: AccordionProps) => {
   const [activeItems, setActiveItems] = useState<string[]>(defaultValue);
   const addActiveItem = (item: string): void => {
     if (!multiple) {
@@ -89,9 +89,7 @@ const Accordion = ({
 
   return (
     <div className={cn(className)} data-testid={testId}>
-      <AccordionContext.Provider
-        value={{ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }}
-      >
+      <AccordionContext.Provider value={{ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }}>
         {children}
       </AccordionContext.Provider>
     </div>
@@ -125,12 +123,7 @@ interface ItemProps extends BaseComponentProps, PropsWithChildren {
  * The `Item` component represents a single item in the `Accordion`. It contains
  * a `Trigger` and `Content`.
  */
-const Item = ({
-  children,
-  className,
-  value,
-  testId = 'accordion-item',
-}: ItemProps): JSX.Element => {
+const Item = ({ children, className, value, testId = 'accordion-item' }: ItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { activeItems, addItem, removeItem } = useContext(AccordionContext);
 
@@ -157,9 +150,7 @@ const Item = ({
 
   return (
     <div className={cn('border-b border-neutral-500/50', className)} data-testid={testId}>
-      <AccordionItemContext.Provider value={{ isOpen, value }}>
-        {children}
-      </AccordionItemContext.Provider>
+      <AccordionItemContext.Provider value={{ isOpen, value }}>{children}</AccordionItemContext.Provider>
     </div>
   );
 };
@@ -169,11 +160,7 @@ Accordion.Item = Item;
  * The `Trigger` component represents the trigger for an `Item`. When clicked,
  * it will open or close the `Content`.
  */
-const Trigger = ({
-  children,
-  className,
-  testId = 'accordion-trigger',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Trigger = ({ children, className, testId = 'accordion-trigger' }: BaseComponentProps & PropsWithChildren) => {
   const { addActiveItem, removeActiveItem } = useContext(AccordionContext);
   const { isOpen, value } = useContext(AccordionItemContext);
   const [springs, api] = useSpring(() => ({
@@ -221,11 +208,7 @@ Accordion.Trigger = Trigger;
  * The `Content` component represents the content of an `Item`. When the `Item`
  * is open, the content will be displayed.
  */
-const Content = ({
-  children,
-  className,
-  testId = 'accordion-content',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Content = ({ children, className, testId = 'accordion-content' }: BaseComponentProps & PropsWithChildren) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
   const [springs, api] = useSpring(() => ({

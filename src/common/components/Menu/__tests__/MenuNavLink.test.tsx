@@ -93,11 +93,7 @@ describe('MenuNavLink', () => {
   it('should use className function', async () => {
     // ARRANGE
     render(
-      <MenuNavLink
-        to="/"
-        styleActive
-        className={({ isActive }) => [isActive ? 'some-active-class' : ''].join(' ')}
-      >
+      <MenuNavLink to="/" styleActive className={({ isActive }) => [isActive ? 'some-active-class' : ''].join(' ')}>
         LinkText
       </MenuNavLink>,
     );

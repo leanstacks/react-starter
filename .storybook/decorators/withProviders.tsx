@@ -1,4 +1,4 @@
-import { Decorator } from '@storybook/react';
+import { Decorator } from '@storybook/react-vite';
 import { QueryClientProvider } from '@tanstack/react-query';
 
 import { queryClient } from '../../src/test/query-client';

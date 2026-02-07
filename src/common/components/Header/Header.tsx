@@ -17,10 +17,9 @@ export interface HeaderProps extends PropsWithTestId {}
 /**
  * The `Header` React component renders a top navigation bar for pages.
  * @param {HeaderProps} [props] - Component properties, `HeaderProps`.
- * @returns {JSX.Element} JSX
  * @see {@link HeaderProps}
  */
-const Header = ({ testId = 'header' }: HeaderProps): JSX.Element => {
+const Header = ({ testId = 'header' }: HeaderProps) => {
   const { isAuthenticated } = useAuth();
 
   return (

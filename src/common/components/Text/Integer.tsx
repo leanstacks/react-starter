@@ -23,16 +23,8 @@ export interface IntegerProps extends BaseComponentProps {
 /**
  * The `Integer` React component formats and renders an integer number.
  * @param {IntegerProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const Integer = ({
-  className,
-  signDisplay,
-  unit,
-  unitDisplay,
-  value,
-  testId = 'integer',
-}: IntegerProps): JSX.Element => {
+const Integer = ({ className, signDisplay, unit, unitDisplay, value, testId = 'integer' }: IntegerProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = { maximumFractionDigits: 0, signDisplay };
     // if formatting with units

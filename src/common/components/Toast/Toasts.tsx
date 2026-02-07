@@ -12,9 +12,8 @@ export interface ToastsProps extends PropsWithTestId {}
  * The `Toasts` component renders a container for a list of `Toast`
  * components.
  * @param {ToastsProps} props - Component properties, `ToastsProps`.
- * @returns {JSX.Element} JSX
  */
-const Toasts = ({ testId = 'toasts' }: ToastsProps): JSX.Element => {
+const Toasts = ({ testId = 'toasts' }: ToastsProps) => {
   const { removeToast, toasts } = useToasts();
 
   return (

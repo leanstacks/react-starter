@@ -16,10 +16,7 @@ import Checkbox from 'common/components/Form/Checkbox';
  * The `CheckboxComponents` component renders a set of examples illustrating
  * the use of the `Checkbox` component.
  */
-const CheckboxComponents = ({
-  className,
-  testId = 'components-checkbox',
-}: BaseComponentProps): JSX.Element => {
+const CheckboxComponents = ({ className, testId = 'components-checkbox' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -57,9 +54,7 @@ const CheckboxComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -98,16 +93,14 @@ const CheckboxComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Checkbox</span> component renders a HTML button
-          that serves as a checkbox input. It is used to capture boolean input from a user. The
-          checkbox can be checked or unchecked, and it can also be disabled to prevent user
-          interaction. The component is integrated with React Hook Form, allowing for easy form
-          validation and state management.
+          The <span className="font-mono font-bold">Checkbox</span> component renders a HTML button that serves as a
+          checkbox input. It is used to capture boolean input from a user. The checkbox can be checked or unchecked, and
+          it can also be disabled to prevent user interaction. The component is integrated with React Hook Form,
+          allowing for easy form validation and state management.
         </div>
         <div className="mb-4">
-          The checkbox is styled using Tailwind CSS and can be customized with additional CSS class
-          names. It also supports a label and optional supporting text to provide additional context
-          or instructions to the user.
+          The checkbox is styled using Tailwind CSS and can be customized with additional CSS class names. It also
+          supports a label and optional supporting text to provide additional context or instructions to the user.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
@@ -124,18 +117,17 @@ const CheckboxComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Checkbox component. It is integrated with React Hook
-          Form through the "control" and "reset" values obtained from the "useForm" hook (see the
-          React Hook Form documentation for more information).
+          This is the most basic use of the Checkbox component. It is integrated with React Hook Form through the
+          "control" and "reset" values obtained from the "useForm" hook (see the React Hook Form documentation for more
+          information).
         </div>
         <div className="mb-4 opacity-85">
-          Use the "required" property to make the checkbox required. Use the "supportingText"
-          property to add helpful information below the input containing instructions, validation
-          requirements, or other tips for entering information.
+          Use the "required" property to make the checkbox required. Use the "supportingText" property to add helpful
+          information below the input containing instructions, validation requirements, or other tips for entering
+          information.
         </div>
         <div className="mb-4 opacity-85">
-          To view an example validation error message, check and then uncheck the terms and
-          conditions checkbox.
+          To view an example validation error message, check and then uncheck the terms and conditions checkbox.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -156,20 +148,13 @@ const CheckboxComponents = ({
                 label="I want to receive marketing emails"
                 className="mb-4"
               />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-1"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-1">
                 Reset
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Checkbox
     control={control}
     name="isAccepted"
@@ -194,15 +179,15 @@ const CheckboxComponents = ({
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
           Disabled
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "disabled" property to disable the checkbox. The checkbox will be unresponsive to
-          user input and will be visually styled to indicate its disabled state.
+          Use the "disabled" property to disable the checkbox. The checkbox will be unresponsive to user input and will
+          be visually styled to indicate its disabled state.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -224,9 +209,8 @@ const CheckboxComponents = ({
               />
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Checkbox
     control={control}
     name="isDisabledChecked"
@@ -242,7 +226,7 @@ const CheckboxComponents = ({
     disabled
   />
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

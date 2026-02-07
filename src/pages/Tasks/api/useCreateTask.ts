@@ -50,9 +50,8 @@ export const useCreateTask = () => {
     mutationFn: createTask,
     onSuccess: (data, variables) => {
       // update the cached task list
-      queryClient.setQueryData<Task[]>(
-        [QueryKey.Tasks, { userId: variables.task.userId }],
-        (cachedTasks) => (cachedTasks ? [...reject(cachedTasks, { id: data.id }), data] : [data]),
+      queryClient.setQueryData<Task[]>([QueryKey.Tasks, { userId: variables.task.userId }], (cachedTasks) =>
+        cachedTasks ? [...reject(cachedTasks, { id: data.id }), data] : [data],
       );
       // create or update the cache for this task
       queryClient.setQueryData<Task>([QueryKey.Tasks, data.id], () => data);

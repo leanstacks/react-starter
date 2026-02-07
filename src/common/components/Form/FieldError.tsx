@@ -13,19 +13,11 @@ export interface FieldErrorProps extends BaseComponentProps {
 /**
  * The `FieldError` component renders a styled error message for a form field.
  * @param {FieldErrorProps} props - Component properties.
- * @returns JSX
  */
-const FieldError = ({
-  className,
-  message,
-  testId = 'field-error',
-}: FieldErrorProps): JSX.Element | false => {
+const FieldError = ({ className, message, testId = 'field-error' }: FieldErrorProps) => {
   if (message) {
     return (
-      <div
-        className={cn('me-1.5 inline-block text-sm text-red-600', className)}
-        data-testid={testId}
-      >
+      <div className={cn('me-1.5 inline-block text-sm text-red-600', className)} data-testid={testId}>
         {message}
       </div>
     );

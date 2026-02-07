@@ -1,4 +1,4 @@
-# React Starter Kit
+# React Starter
 
 A serverless, progressive, responsive starter user interface (UI) with React at the core of the technology stack.
 
@@ -57,7 +57,7 @@ The development technology stack includes:
 
 This repository uses [trunk-based development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development). The latest code is located on the `main` branch. The `main` branch is always ready for deployment.
 
-Features are developed on branches named `feature/NNNNN` which are created from the `main` branch. The feature name used in the branch contains an issue identifier or a short name, e.g. `feature/123-do-something`.
+Features are developed on branches named `feature/NNNNN-feature-name` or `NNNNN-feature-name` which are created from the `main` branch. The feature name used in the branch contains an issue identifier or a short name, e.g. `feature/123-do-something`.
 
 Releases are created on branches named `release/MM.mm.pp` which are created from the `main` branch. The release name follows the [semantic versioning](https://semver.org/) specification.
 
@@ -69,13 +69,13 @@ See also: [Feature flags](https://www.atlassian.com/continuous-delivery/principl
 
 ### Issue Management
 
-This project uses [GitHub Issues](https://github.com/leanstacks/react-starter-kit/issues).
+This project uses [GitHub Issues](https://github.com/leanstacks/react-starter/issues).
 
 ### Code Formatting
 
-The project includes a configuration file for the [Prettier](https://prettier.io/docs/en/configuration.html) code formatter. This allows all project contributors to share the same code formatting rules.
+The project includes configuration files for the [Prettier](https://prettier.io/docs/en/configuration.html) and [EditorConfig](https://editorconfig.org/) code formatters. This allows all project contributors to share the same code formatting rules.
 
-Adjust the Prettier configuration as desired.
+Adjust the configuration as desired.
 
 ## Installation
 
@@ -121,6 +121,7 @@ We recommend the following VS Code extensions:
 
 - Prettier - Code formatter (required)
 - Tailwind CSS IntelliSense (required)
+- GitHub Copilot (recommended)
 - ESLint (recommended)
 - Indent Rainbow (optional)
 - GitLens (optional)
@@ -139,7 +140,7 @@ The application is configured using Environment Variables. Because single-page a
 
 > **NOTE:** Because they may contain sensitive information, `.env` files are not committed to the repository.
 
-After project installation and before running the application locally, create the following `.env` files in the project base directory. Learn more in the official [Vite guide for environment variables and modes](https://vitejs.dev/guide/env-and-mode.html).
+After project installation and before running the application locally, create the following `.env` files in the project base directory. Copy the `.env.example` file to get started. Learn more in the official [Vite guide for environment variables and modes](https://vitejs.dev/guide/env-and-mode.html).
 
 #### `.env.local`
 
@@ -284,7 +285,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [GitHub Actions][ghactions]
 
 [app]: https://react-starter.leanstacks.net/ 'React Starter Kit | LeanStacks'
-[repo]: https://github.com/leanstacks/react-starter-kit 'GitHub Repository'
+[repo]: https://github.com/leanstacks/react-starter 'GitHub Repository'
 [nvm]: https://github.com/nvm-sh/nvm 'Node Version Manager'
 [react]: https://react.dev 'React'
 [reactrouter]: https://reactrouter.com/ 'React Router'

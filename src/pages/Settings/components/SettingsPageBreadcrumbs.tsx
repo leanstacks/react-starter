@@ -7,10 +7,7 @@ import Breadcrumbs from 'common/components/Breadcrumbs/Breadcrumbs';
  * The `SettingsPageBreadcrumbs` component renders the `Breadcrumbs` for the settings
  * family of pages.
  */
-const SettingsPageBreadcrumbs = ({
-  className,
-  testId = 'page-settings-breadcrumbs',
-}: BaseComponentProps): JSX.Element => {
+const SettingsPageBreadcrumbs = ({ className, testId = 'page-settings-breadcrumbs' }: BaseComponentProps) => {
   const location = useLocation();
   const pathElements = location.pathname.split('/');
 

@@ -17,12 +17,8 @@ interface BadgeComponentsProps extends BaseComponentProps {}
  * The `BadgeComponents` React component renders a set of examples illustrating
  * the use of the `Badge` component.
  * @param {BadgeComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const BadgeComponents = ({
-  className,
-  testId = 'components-badge',
-}: BadgeComponentsProps): JSX.Element => {
+const BadgeComponents = ({ className, testId = 'components-badge' }: BadgeComponentsProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -52,9 +48,7 @@ const BadgeComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -70,9 +64,8 @@ const BadgeComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Badge</span> component displays a stylized
-        counter. Useful for displaying the number of items of a specific type, for example, the
-        number of notifications.
+        The <span className="font-mono font-bold">Badge</span> component displays a stylized counter. Useful for
+        displaying the number of items of a specific type, for example, the number of notifications.
       </div>
 
       <div className="my-8">
@@ -87,14 +80,18 @@ const BadgeComponents = ({
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Badge>3</Badge>
         </div>
-        <CodeSnippet className="my-2" code={`<Badge>3</Badge>`} />
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Badge>3</Badge>`}
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Badge size="sm">999+</Badge>
         </div>
-        <CodeSnippet className="my-2" code={`<Badge size="sm">999+</Badge>`} />
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Badge size="sm">999+</Badge>`}
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -103,12 +100,9 @@ const BadgeComponents = ({
             19
           </Badge>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Badge size="sm" variant="primary" testId="my-badge">
+        <CodeSnippet className="my-2" language="tsx">{`<Badge size="sm" variant="primary" testId="my-badge">
   19
-</Badge`}
-        />
+</Badge>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -119,10 +113,10 @@ const BadgeComponents = ({
         </div>
         <CodeSnippet
           className="my-2"
-          code={`<Badge size="lg" variant="info" uppercase testId="badge-status-closed">
+          language="tsx"
+        >{`<Badge size="lg" variant="info" uppercase testId="badge-status-closed">
   Closed
-</Badge>`}
-        />
+</Badge>`}</CodeSnippet>
       </div>
     </section>
   );

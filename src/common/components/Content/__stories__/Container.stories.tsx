@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import Container from '../Container';
 import Page from '../Page';
@@ -30,9 +30,7 @@ const meta = {
 export default meta;
 
 const Block = ({ children }: PropsWithChildren) => (
-  <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 text-white">
-    {children}
-  </div>
+  <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 text-white">{children}</div>
 );
 
 type Story = StoryObj<typeof meta>;

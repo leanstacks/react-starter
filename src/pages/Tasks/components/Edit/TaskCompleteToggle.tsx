@@ -22,21 +22,14 @@ interface TaskCompleteToggleProps extends BaseComponentProps {
  * The `TaskCompleteToggle` component renders a `Button` which allows a user
  * to toggle the value of the Task `complete` attribute.
  * @param {TaskCompleteToggleProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const TaskCompleteToggle = ({
-  className,
-  task,
-  testId = 'toggle-task-complete',
-}: TaskCompleteToggleProps): JSX.Element => {
+const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
   const [isHovering, setIsHovering] = useState(false);
   const { t } = useTranslation();
   const { mutate: updateTask, isPending } = useUpdateTask();
   const { createToast } = useToasts();
 
-  const buttonTitle = task.completed
-    ? t('markIncomplete', { ns: 'tasks' })
-    : t('markComplete', { ns: 'tasks' });
+  const buttonTitle = task.completed ? t('markIncomplete', { ns: 'tasks' }) : t('markComplete', { ns: 'tasks' });
 
   const showCompleted = (task.completed && !isHovering) || (!task.completed && isHovering);
 
@@ -54,9 +47,7 @@ const TaskCompleteToggle = ({
       {
         onSuccess: (data) => {
           createToast({
-            text: data.completed
-              ? t('markedComplete', { ns: 'tasks' })
-              : t('markedIncomplete', { ns: 'tasks' }),
+            text: data.completed ? t('markedComplete', { ns: 'tasks' }) : t('markedIncomplete', { ns: 'tasks' }),
             isAutoDismiss: true,
             variant: 'success',
           });

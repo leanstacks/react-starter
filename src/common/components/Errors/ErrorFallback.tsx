@@ -1,10 +1,9 @@
 /**
  * The `ErrorFallback` component renders the content displayed when the `ErrorBoundary`
  * catches an Error thrown from another React component.
- * @returns {JSX.Element} JSX
  * @see {@link ErrorBoundary}
  */
-const ErrorFallback = (): JSX.Element => {
+const ErrorFallback = () => {
   return (
     <div data-testid="error-fallback" className="px-8">
       <div className="container mx-auto min-h-[50vh]">

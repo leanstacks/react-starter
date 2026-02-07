@@ -23,9 +23,7 @@ export interface UserTokens {
  * configuration to `useQuery`.
  * @returns {UserTokens} Returns a `UseQueryResult` with `UserTokens` data.
  */
-export const useGetUserTokens = (
-  options?: Partial<UseQueryOptions<UserTokens>>,
-): UseQueryResult<UserTokens, Error> => {
+export const useGetUserTokens = (options?: Partial<UseQueryOptions<UserTokens>>): UseQueryResult<UserTokens, Error> => {
   /**
    * Fetch `UserTokens` from the Identity Provider (IdP).
    * @returns The `UserTokens` if successful.

@@ -15,19 +15,13 @@ export interface ThemeProps extends BaseComponentProps, PropsWithChildren {}
  * The `Theme` component uses the user settings (preferences) and renders the
  * CSS for the preferred theme.
  * @param props - Component properties, `ThemeProps`.
- * @returns {JSX.Element} JSX
  */
-const Theme = ({ className, children, testId = 'theme' }: ThemeProps): JSX.Element => {
+const Theme = ({ className, children, testId = 'theme' }: ThemeProps) => {
   const settings = useSettings();
 
   return (
     <div className={settings.theme} data-testid={testId}>
-      <div
-        className={cn(
-          'min-h-screen bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text',
-          className,
-        )}
-      >
+      <div className={cn('bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text min-h-screen', className)}>
         {children}
       </div>
     </div>

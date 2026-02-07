@@ -28,6 +28,7 @@ export default defineConfig({
         '**/tailwind.config.js',
         ...coverageConfigDefaults.exclude,
       ],
+      reporter: ['text', 'json', 'html'],
     },
     environment: 'jsdom',
     globals: true,

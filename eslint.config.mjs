@@ -4,9 +4,9 @@ import tsParser from '@typescript-eslint/parser';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 
-import pluginReactHooks from 'eslint-plugin-react-hooks';
-import pluginReactRefresh from 'eslint-plugin-react-refresh';
-import pluginStorybook from 'eslint-plugin-storybook';
+import reactHooks from 'eslint-plugin-react-hooks';
+import { reactRefresh } from 'eslint-plugin-react-refresh';
+import storybook from 'eslint-plugin-storybook';
 
 /**
  * The ESLint configuration in "flat config" format.
@@ -31,9 +31,9 @@ export default tseslint.config(
       reportUnusedDisableDirectives: 'warn',
     },
     plugins: {
-      'react-hooks': pluginReactHooks,
-      'react-refresh': pluginReactRefresh,
-      storybook: pluginStorybook,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh.plugin,
+      storybook: storybook,
     },
     rules: {
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],

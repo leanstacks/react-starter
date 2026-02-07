@@ -14,9 +14,8 @@ export interface HelpTextProps extends BaseComponentProps, PropsWithChildren {}
  * The `HelpText` component renders styled text typically used to display helpful
  * information with regard to another element, such as a form field.
  * @param {HelpTextProps} props - Component properties.
- * @returns JSX
  */
-const HelpText = ({ children, className, testId = 'help-text' }: HelpTextProps): JSX.Element => {
+const HelpText = ({ children, className, testId = 'help-text' }: HelpTextProps) => {
   return (
     <div className={cn('inline-block text-sm font-light', className)} data-testid={testId}>
       {children}

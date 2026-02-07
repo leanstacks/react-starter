@@ -12,10 +12,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * The `HelpTextComponents` component renders a set of examples illustrating
  * the use of the `HelpText` component.
  */
-const HelpTextComponents = ({
-  className,
-  testId = 'components-helptext',
-}: BaseComponentProps): JSX.Element => {
+const HelpTextComponents = ({ className, testId = 'components-helptext' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -33,9 +30,7 @@ const HelpTextComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -52,13 +47,11 @@ const HelpTextComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">HelpText</span> component renders styled text,
-          typically used to display helpful information regarding another element such as a form
-          control. The HelpText component is used to compose custom form controls in the starter kit
-          such as <span className="font-mono font-bold">Input</span>,{' '}
-          <span className="font-mono font-bold">Select</span>,{' '}
-          <span className="font-mono font-bold">Textarea</span>, and{' '}
-          <span className="font-mono font-bold">Toggle</span>.
+          The <span className="font-mono font-bold">HelpText</span> component renders styled text, typically used to
+          display helpful information regarding another element such as a form control. The HelpText component is used
+          to compose custom form controls in the starter kit such as <span className="font-mono font-bold">Input</span>,{' '}
+          <span className="font-mono font-bold">Select</span>, <span className="font-mono font-bold">Textarea</span>,
+          and <span className="font-mono font-bold">Toggle</span>.
         </div>
 
         <div className="my-8">
@@ -80,46 +73,38 @@ const HelpTextComponents = ({
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <HelpText>
-              Tell us a little bit about yourself. The biography should be no more than 500
-              characters.
+              Tell us a little bit about yourself. The biography should be no more than 500 characters.
             </HelpText>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<HelpText>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<HelpText>
   Tell us a little bit about yourself. The biography should be no more than 500
   characters.
 </HelpText>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
           Content
         </Heading>
-        <div className="mb-4 opacity-85">
-          You may pass complex content as the "children" to the HelpText component.
-        </div>
+        <div className="mb-4 opacity-85">You may pass complex content as the "children" to the HelpText component.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <HelpText>
               <FAIcon icon="circleInfo" className="me-2" beat />
-              <span>
-                Tell us a little bit about yourself. The biography should be no more than 500
-                characters.
-              </span>
+              <span>Tell us a little bit about yourself. The biography should be no more than 500 characters.</span>
             </HelpText>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<HelpText>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<HelpText>
   <FAIcon icon="circleInfo" className="me-2" beat />
   <span>
     Tell us a little bit about yourself. The biography should be no more than 500
     characters.
   </span>
 </HelpText>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

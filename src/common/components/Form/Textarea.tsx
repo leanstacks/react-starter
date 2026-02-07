@@ -18,8 +18,7 @@ import HelpText from '../Text/HelpText';
  * @see {@link InputHTMLAttributes}
  */
 export interface TextareaProps<T extends FieldValues>
-  extends BaseComponentProps,
-    TextareaHTMLAttributes<HTMLTextAreaElement> {
+  extends BaseComponentProps, TextareaHTMLAttributes<HTMLTextAreaElement> {
   control: Control<T>;
   label?: string;
   name: Path<T>;
@@ -30,7 +29,6 @@ export interface TextareaProps<T extends FieldValues>
  * The `Textarea` component renders an HTML `textarea` element. It is used to capture
  * multiple lines of text input from a user.
  * @param {TextareaProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Textarea = <T extends FieldValues>({
   className,
@@ -40,7 +38,7 @@ const Textarea = <T extends FieldValues>({
   supportingText,
   testId = 'textarea',
   ...props
-}: TextareaProps<T>): JSX.Element => {
+}: TextareaProps<T>) => {
   const { field, fieldState } = useController({ control, name });
   const isDisabled = props.disabled || props.readOnly;
 
@@ -67,9 +65,7 @@ const Textarea = <T extends FieldValues>({
         data-testid={`${testId}-textarea`}
       ></textarea>
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-      {!!supportingText && (
-        <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-      )}
+      {!!supportingText && <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>}
     </div>
   );
 };

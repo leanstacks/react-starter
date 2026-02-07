@@ -18,9 +18,8 @@ export interface AppMenuProps extends Omit<SideMenuProps, 'headerContent'> {}
  * The `AppMenu` component a `SideMenu` which contains application menu
  * items. The `AppMenu` is typically rendered at small media breakpoints.
  * @param {AppMenuProps} props - Component properties, `AppMenuProps`.
- * @returns {JSX.Element} JSX
  */
-const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps): JSX.Element => {
+const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps) => {
   const { t } = useTranslation();
   const { isAuthenticated } = useAuth();
   const { data: user } = useGetCurrentUser();

@@ -61,9 +61,7 @@ describe('DropdownMenu', () => {
 
     // ACT
     await user.click(screen.getByTestId('dropdown-menu-trigger'));
-    await waitFor(() =>
-      expect(screen.getByTestId('dropdown-menu-content')).not.toHaveClass('hidden'),
-    );
+    await waitFor(() => expect(screen.getByTestId('dropdown-menu-content')).not.toHaveClass('hidden'));
 
     // ASSERT
     expect(screen.getByTestId('dropdown-menu-content')).not.toHaveClass('hidden');
@@ -87,9 +85,7 @@ describe('DropdownMenu', () => {
     // ACT
     /* first, open the dropdown menu */
     await user.click(screen.getByTestId('dropdown-menu-trigger'));
-    await waitFor(() =>
-      expect(screen.getByTestId('dropdown-menu-content')).not.toHaveClass('hidden'),
-    );
+    await waitFor(() => expect(screen.getByTestId('dropdown-menu-content')).not.toHaveClass('hidden'));
     /* then, click the backdrop */
     await user.click(screen.getByTestId('dropdown-menu-content-backdrop'));
     await waitFor(() => expect(screen.getByTestId('dropdown-menu-content')).toHaveClass('hidden'));

@@ -47,7 +47,7 @@ export interface ToastProps extends BaseComponentProps {
  * happened in the background such as saving information. Or they are
  * used when some adverse action happens, such as an error.
  */
-const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX.Element => {
+const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps) => {
   const config = useConfig();
 
   const [springs, api] = useSpring(() => ({
@@ -66,10 +66,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
   useEffect(() => {
     if (toast.isAutoDismiss) {
       const dismissInterval = setInterval(() => {
-        const dismissAt = dayjs(toast.createdAt).add(
-          config.VITE_TOAST_AUTO_DISMISS_MILLIS,
-          'millisecond',
-        );
+        const dismissAt = dayjs(toast.createdAt).add(config.VITE_TOAST_AUTO_DISMISS_MILLIS, 'millisecond');
         if (dayjs().isAfter(dismissAt)) {
           doDismiss();
         }
@@ -89,12 +86,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
         <div className="grow text-sm" data-testid={`${testId}-text`}>
           {toast.text}
         </div>
-        <Button
-          variant="text"
-          size="icon"
-          onClick={() => doDismiss()}
-          data-testid={`${testId}-button-dismiss`}
-        >
+        <Button variant="text" size="icon" onClick={() => doDismiss()} data-testid={`${testId}-button-dismiss`}>
           <FAIcon icon="circleXmark" size="xl" testId={`${testId}-icon-dismiss`} />
         </Button>
       </div>

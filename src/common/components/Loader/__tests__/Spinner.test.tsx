@@ -26,9 +26,7 @@ describe('Spinner', () => {
   it('should render custom icon', async () => {
     // ARRANGE
     render(<Spinner testId="my-spinner" icon={{ icon: 'bars' }} />);
-    await waitFor(() =>
-      expect(screen.getByTestId('my-spinner-icon')).toHaveAttribute('data-icon', 'bars'),
-    );
+    await waitFor(() => expect(screen.getByTestId('my-spinner-icon')).toHaveAttribute('data-icon', 'bars'));
 
     // ASSERT
     expect(screen.getByTestId('my-spinner-icon')).toHaveAttribute('data-icon', 'bars');

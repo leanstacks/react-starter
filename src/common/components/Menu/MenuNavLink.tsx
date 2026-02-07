@@ -16,10 +16,7 @@ import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
  * @see {@link PropsWithTestId}
  */
 export interface MenuNavLinkProps
-  extends Omit<NavLinkProps, 'children'>,
-    Partial<Pick<FAIconProps, 'icon'>>,
-    PropsWithChildren,
-    PropsWithTestId {
+  extends Omit<NavLinkProps, 'children'>, Partial<Pick<FAIconProps, 'icon'>>, PropsWithChildren, PropsWithTestId {
   iconClassName?: string;
   styleActive?: boolean;
 }
@@ -37,7 +34,6 @@ type NavLinkRenderProps = {
  * The `MenuNavLink` React component renders a `NavLink` with optional `Icon`.
  * For use within a `Menu` implementation, e.g. `SideMenu`.
  * @param {MenuNavLinkProps} props - Component properties, `MenuNavLinkProps`.
- * @returns {JSX.Element} JSX
  */
 const MenuNavLink = ({
   children,
@@ -47,7 +43,7 @@ const MenuNavLink = ({
   styleActive = false,
   testId = 'menu-navlink',
   ...props
-}: MenuNavLinkProps): JSX.Element => {
+}: MenuNavLinkProps) => {
   /**
    * Returns the list of class names to apply to the `NavLink`.
    * @param props - A `NavLinkRenderProps` object indicating the current state of the `NavLink`.
@@ -66,14 +62,7 @@ const MenuNavLink = ({
   return (
     <NavLink className={getClassName} data-testid={testId} {...props}>
       <>
-        {icon && (
-          <FAIcon
-            icon={icon}
-            size="lg"
-            className={cn('me-2', iconClassName)}
-            testId={`${testId}-icon`}
-          />
-        )}
+        {icon && <FAIcon icon={icon} size="lg" className={cn('me-2', iconClassName)} testId={`${testId}-icon`} />}
         {children}
       </>
     </NavLink>

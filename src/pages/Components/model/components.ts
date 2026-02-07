@@ -7,4 +7,4 @@
 export type ComponentProperty = {
   name: string;
   description: string;
-}
+};

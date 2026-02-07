@@ -26,9 +26,8 @@ const configSchema = z.object({
  * Throws an `Error` when the configuration is invalid, preventing application
  * startup.
  * @param {PropsWithChildren} props - Component properties, `PropsWithChildren`.
- * @returns {JSX.Element} JSX
  */
-const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const ConfigContextProvider = ({ children }: PropsWithChildren) => {
   const [isReady, setIsReady] = useState<boolean>(false);
   const [config, setConfig] = useState<Config>();
 
@@ -39,17 +38,15 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
       setIsReady(true);
     } catch (err) {
       if (err instanceof ZodError) {
-        const errors = err.errors.map((e) => `${e.path.join('.')}::${e.message}`);
-        throw new Error(`Configuration error: ${errors.join(', ')}`);
+        const issues = err.issues.map((issue) => `${issue.path.join('.')} - ${issue.message}`);
+        throw new Error(`Configuration error: ${issues.join(', ')}`);
       }
       if (err instanceof Error) throw new Error(`Configuration error: ${err.message}`);
       throw err;
     }
   }, []);
 
-  return (
-    <ConfigContext.Provider value={config}>{isReady && <>{children}</>}</ConfigContext.Provider>
-  );
+  return <ConfigContext.Provider value={config}>{isReady && <>{children}</>}</ConfigContext.Provider>;
 };
 
 export default ConfigContextProvider;

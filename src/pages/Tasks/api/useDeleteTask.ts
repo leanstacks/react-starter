@@ -40,9 +40,8 @@ export const useDeleteTask = () => {
   return useMutation({
     mutationFn: deleteTask,
     onSuccess: (_data, variables) => {
-      queryClient.setQueryData<Task[]>(
-        [QueryKey.Tasks, { userId: variables.task.userId }],
-        (cachedTasks) => (cachedTasks ? [...reject(cachedTasks, { id: variables.task.id })] : []),
+      queryClient.setQueryData<Task[]>([QueryKey.Tasks, { userId: variables.task.userId }], (cachedTasks) =>
+        cachedTasks ? [...reject(cachedTasks, { id: variables.task.id })] : [],
       );
     },
   });

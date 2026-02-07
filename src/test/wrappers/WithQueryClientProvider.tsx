@@ -12,9 +12,8 @@ import { queryClient } from '../query-client';
  * but nothing more. Removes other providers to minimize side effects on the
  * component under test.
  * @param {PropsWithChildren} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const WithQueryClientProvider = ({ children }: PropsWithChildren): JSX.Element => {
+const WithQueryClientProvider = ({ children }: PropsWithChildren) => {
   return (
     <QueryClientProvider client={queryClient}>
       <MemoryRouter>{children}</MemoryRouter>

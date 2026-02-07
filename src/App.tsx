@@ -28,9 +28,8 @@ const queryClient = new QueryClient({
 /**
  * The application. The outermost component of the React application
  * hierarchy. Declares application-wide providers.
- * @returns {JSX.Element} JSX
  */
-function App(): JSX.Element {
+function App() {
   return (
     <div id="app" data-testid="app">
       <ErrorBoundary fallback={<ErrorFallback />}>

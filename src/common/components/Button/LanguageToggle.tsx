@@ -16,9 +16,8 @@ export interface LanguageToggleProps extends PropsWithClassName {}
  * The `LanguageToggle` component renders a `Dropdown` which allows users
  * to select the language in which they wish to view the application.
  * @param {LanguageToggleProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const LanguageToggle = ({ className }: LanguageToggleProps): JSX.Element => {
+const LanguageToggle = ({ className }: LanguageToggleProps) => {
   const { i18n } = useTranslation();
 
   /**
@@ -33,7 +32,7 @@ const LanguageToggle = ({ className }: LanguageToggleProps): JSX.Element => {
   return (
     <DropdownMenu className={className} testId="dropdown-language">
       <DropdownMenu.Trigger>
-        <FAIcon icon="language" size="2x" title="Select Language" />
+        <FAIcon icon="language" size="lg" title="Select Language" />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Heading>Languages</DropdownMenu.Heading>

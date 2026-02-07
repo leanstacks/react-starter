@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react';
 import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom';
 
@@ -23,9 +24,7 @@ const AccordionComponents = lazy(() => import('pages/Components/components/Accor
 const AlertComponents = lazy(() => import('pages/Components/components/AlertComponents'));
 const AvatarComponents = lazy(() => import('pages/Components/components/AvatarComponents'));
 const BadgeComponents = lazy(() => import('pages/Components/components/BadgeComponents'));
-const BreadcrumbsComponents = lazy(
-  () => import('pages/Components/components/BreadcrumbsComponents'),
-);
+const BreadcrumbsComponents = lazy(() => import('pages/Components/components/BreadcrumbsComponents'));
 const ButtonComponents = lazy(() => import('pages/Components/components/ButtonComponents'));
 const CardComponents = lazy(() => import('pages/Components/components/CardComponents'));
 const CheckboxComponents = lazy(() => import('pages/Components/components/CheckboxComponents'));
@@ -43,9 +42,7 @@ const LinkComponents = lazy(() => import('pages/Components/components/LinkCompon
 const PageComponents = lazy(() => import('pages/Components/components/PageComponents'));
 const PopoverComponents = lazy(() => import('pages/Components/components/PopoverComponents'));
 const RadioGroupComponents = lazy(() => import('pages/Components/components/RadioGroupComponents'));
-const SearchInputComponents = lazy(
-  () => import('pages/Components/components/SearchInputComponents'),
-);
+const SearchInputComponents = lazy(() => import('pages/Components/components/SearchInputComponents'));
 const SelectComponents = lazy(() => import('pages/Components/components/SelectComponents'));
 const SkeletonComponents = lazy(() => import('pages/Components/components/SkeletonComponents'));
 const SpinnerComponents = lazy(() => import('pages/Components/components/SpinnerComponents'));

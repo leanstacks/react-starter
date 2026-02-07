@@ -6,9 +6,8 @@ import SigninForm from './components/SigninForm';
 /**
  * The `SigninPage` component renders the content for a user authentication
  * page.
- * @returns {JSX.Element} JSX
  */
-const SigninPage = (): JSX.Element => {
+const SigninPage = () => {
   return (
     <Page testId="page-signin">
       <Container className="my-6 min-h-[50vh]">

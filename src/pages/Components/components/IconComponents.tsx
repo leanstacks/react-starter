@@ -13,10 +13,7 @@ import Columns from 'common/components/Content/Columns';
  * The `IconComponents` component renders a set of examples illustrating
  * the use of the `FAIcon` component.
  */
-const IconComponents = ({
-  className,
-  testId = 'components-icon',
-}: BaseComponentProps): JSX.Element => {
+const IconComponents = ({ className, testId = 'components-icon' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -38,9 +35,7 @@ const IconComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -57,8 +52,8 @@ const IconComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">FAIcon</span> component renders a Font Awesome
-          icon. The component extends all properties and capabilities of the{' '}
+          The <span className="font-mono font-bold">FAIcon</span> component renders a Font Awesome icon. The component
+          extends all properties and capabilities of the{' '}
           <Link to="https://docs.fontawesome.com/web/use-with/react/style" target="_blank">
             FontAwesomeIcon
           </Link>{' '}
@@ -85,7 +80,7 @@ const IconComponents = ({
             {/* Example */}
             <FAIcon icon="circleInfo" />
           </div>
-          <CodeSnippet className="my-2" code={`<FAIcon icon='circleInfo' />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<FAIcon icon='circleInfo' />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -115,9 +110,8 @@ const IconComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-1-1">
   <Columns.Column>
     <FAIcon icon="circleInfo" size="xs" />
   </Columns.Column>
@@ -137,7 +131,7 @@ const IconComponents = ({
     <FAIcon icon="circleInfo" size="2x" />
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -148,7 +142,7 @@ const IconComponents = ({
             {/* Example */}
             <FAIcon icon="circleNotch" spin />
           </div>
-          <CodeSnippet className="my-2" code={`<FAIcon icon="circleNotch" spin />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<FAIcon icon="circleNotch" spin />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -184,9 +178,8 @@ const IconComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-1-1">
   <Columns.Column>
     <FAIcon icon="circleInfo" beat />
   </Columns.Column>
@@ -212,7 +205,7 @@ const IconComponents = ({
     <FAIcon icon="circleNotch" spinPulse />
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

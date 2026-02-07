@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MemoryRouter } from 'react-router-dom';
 
 import Avatar from 'common/components/Icon/Avatar';
@@ -31,8 +31,7 @@ const meta = {
       description: 'Optional. A `ReactNode` containing the content of the menu header.',
     },
     side: {
-      description:
-        'Optional. The side of the viewport where the menu should display when shown. Default: left',
+      description: 'Optional. The side of the viewport where the menu should display when shown. Default: left',
     },
     testId: { description: 'The test identifier.' },
   },

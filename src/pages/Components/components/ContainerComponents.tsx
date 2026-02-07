@@ -12,10 +12,7 @@ import Container from 'common/components/Content/Container';
  * The `ContainerComponents` component renders a set of examples illustrating
  * the use of the `Container` component.
  */
-const ContainerComponents = ({
-  className,
-  testId = 'components-container',
-}: BaseComponentProps): JSX.Element => {
+const ContainerComponents = ({ className, testId = 'components-container' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -37,9 +34,7 @@ const ContainerComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -49,9 +44,7 @@ const ContainerComponents = ({
   ] as ColumnDef<ComponentProperty>[];
 
   const Block = ({ children }: PropsWithChildren) => (
-    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">
-      {children}
-    </div>
+    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">{children}</div>
   );
 
   return (
@@ -62,14 +55,11 @@ const ContainerComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Container</span> component renders a block which
-          fixes the maximum width of content to a breakpoint and centers the content within the
-          viewport. By default, a Container sets the maximum width of the content to the minimum
-          width of the current breakpoint.
+          The <span className="font-mono font-bold">Container</span> component renders a block which fixes the maximum
+          width of content to a breakpoint and centers the content within the viewport. By default, a Container sets the
+          maximum width of the content to the minimum width of the current breakpoint.
         </div>
-        <div className="mb-4">
-          Use the "size" property to specify a fixed maximum width for all viewport sizes.
-        </div>
+        <div className="mb-4">Use the "size" property to specify a fixed maximum width for all viewport sizes.</div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
             Properties
@@ -89,12 +79,11 @@ const ContainerComponents = ({
               <Block>Default</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container>
   <Block>Default</Block>
 </Container>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -107,12 +96,11 @@ const ContainerComponents = ({
               <Block>Max Width 640px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="sm">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="sm">
   <Block>Max Width 640px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -125,12 +113,11 @@ const ContainerComponents = ({
               <Block>Max Width 768px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="md">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="md">
   <Block>Max Width 768px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -143,12 +130,11 @@ const ContainerComponents = ({
               <Block>Max Width 1024px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="lg">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="lg">
   <Block>Max Width 1024px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -161,12 +147,11 @@ const ContainerComponents = ({
               <Block>Max Width 1280px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="xl">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="xl">
   <Block>Max Width 1280px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -179,12 +164,11 @@ const ContainerComponents = ({
               <Block>Max Width 1536px</Block>
             </Container>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Container size="2xl">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Container size="2xl">
   <Block>Max Width 1536px</Block>
-</Container`}
-          />
+</Container>`}
+          </CodeSnippet>
         </div>
       </div>
     </section>

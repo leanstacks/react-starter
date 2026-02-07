@@ -20,21 +20,13 @@ interface TaskDetailLayoutProps extends BaseComponentProps {}
  * The `TaskDetailLayout` component renders a layout for viewing and maintaining
  * a single `Task`. Provides buttons and navigation to perform actions on the Task.
  * @param {TaskDetailLayoutProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const TaskDetailLayout = ({
-  className,
-  testId = 'layout-task-detail',
-}: TaskDetailLayoutProps): JSX.Element => {
+const TaskDetailLayout = ({ className, testId = 'layout-task-detail' }: TaskDetailLayoutProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { taskId } = useParams();
 
-  const {
-    data: task,
-    error: taskError,
-    isLoading: isLoadingTask,
-  } = useGetTask({ taskId: Number(taskId) });
+  const { data: task, error: taskError, isLoading: isLoadingTask } = useGetTask({ taskId: Number(taskId) });
 
   return (
     <div className={className} data-testid={testId}>

@@ -12,10 +12,7 @@ import Columns from 'common/components/Content/Columns';
  * The `ColumnsComponents` component renders a set of examples illustrating
  * the use of the `Columns` component.
  */
-const ColumnsComponents = ({
-  className,
-  testId = 'components-columns',
-}: BaseComponentProps): JSX.Element => {
+const ColumnsComponents = ({ className, testId = 'components-columns' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -41,9 +38,7 @@ const ColumnsComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -53,9 +48,7 @@ const ColumnsComponents = ({
   ] as ColumnDef<ComponentProperty>[];
 
   const Block = ({ children }: PropsWithChildren) => (
-    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">
-      {children}
-    </div>
+    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">{children}</div>
   );
 
   return (
@@ -66,9 +59,9 @@ const ColumnsComponents = ({
 
       <div className="my-8">
         <div>
-          The <span className="font-mono font-bold">Columns</span> component renders a responsive
-          grid column layout. Use the "layout" property to specify the number of columns and their
-          relative widths. Use the "gap" property to specify the spacing between columns.
+          The <span className="font-mono font-bold">Columns</span> component renders a responsive grid column layout.
+          Use the "layout" property to specify the number of columns and their relative widths. Use the "gap" property
+          to specify the spacing between columns.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
@@ -96,9 +89,8 @@ const ColumnsComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -106,7 +98,7 @@ const ColumnsComponents = ({
     <Block>2</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -124,9 +116,8 @@ const ColumnsComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-3" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-3" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -134,7 +125,7 @@ const ColumnsComponents = ({
     <Block>2</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -152,9 +143,8 @@ const ColumnsComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="3-1" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="3-1" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -162,7 +152,7 @@ const ColumnsComponents = ({
     <Block>2</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -183,9 +173,8 @@ const ColumnsComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-1-1" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -196,7 +185,7 @@ const ColumnsComponents = ({
     <Block>3</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="mb-2">
@@ -217,9 +206,8 @@ const ColumnsComponents = ({
               </Columns.Column>
             </Columns>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-2-1" className="w-full">
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Columns layout="1-2-1" className="w-full">
   <Columns.Column>
     <Block>1</Block>
   </Columns.Column>
@@ -230,7 +218,7 @@ const ColumnsComponents = ({
     <Block>3</Block>
   </Columns.Column>
 </Columns>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

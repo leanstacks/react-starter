@@ -54,9 +54,7 @@ export const useSignin = () => {
 
       return user;
     } else {
-      throw new Error(
-        'We are unable to authenticate you. Please verify your credentials and try again.',
-      );
+      throw new Error('We are unable to authenticate you. Please verify your credentials and try again.');
     }
   };
 

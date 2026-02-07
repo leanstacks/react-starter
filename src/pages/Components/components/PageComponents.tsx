@@ -12,10 +12,7 @@ import Page from 'common/components/Content/Page';
  * The `PageComponents` component renders a set of examples illustrating
  * the use of the `Page` component.
  */
-const PageComponents = ({
-  className,
-  testId = 'components-page',
-}: BaseComponentProps): JSX.Element => {
+const PageComponents = ({ className, testId = 'components-page' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -33,9 +30,7 @@ const PageComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -58,8 +53,8 @@ const PageComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Page</span> component renders a responsive,
-          styled wrapper for a page of content, ensuring consistent spacing at various breakpoints.
+          The <span className="font-mono font-bold">Page</span> component renders a responsive, styled wrapper for a
+          page of content, ensuring consistent spacing at various breakpoints.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
@@ -79,12 +74,11 @@ const PageComponents = ({
               <Block>A page provides resonsive spacing (grey) for the content (blue).</Block>
             </Page>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Page testId="page-example" className="bg-neutral-500/50">
-  <Block>The page content.</Block>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<Page testId="page-example" className="bg-neutral-500/50">
+  <Block>A page provides resonsive spacing (grey) for the content (blue).</Block>
 </Page>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

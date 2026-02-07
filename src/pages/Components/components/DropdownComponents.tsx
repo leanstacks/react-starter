@@ -13,10 +13,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * The `DropdownComponents` component renders a set of examples illustrating
  * the use of the `DropdownMenu` component.
  */
-const DropdownComponents = ({
-  className,
-  testId = 'components-dropdown',
-}: BaseComponentProps): JSX.Element => {
+const DropdownComponents = ({ className, testId = 'components-dropdown' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -34,9 +31,7 @@ const DropdownComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -53,8 +48,8 @@ const DropdownComponents = ({
 
       <div className="my-8">
         <div>
-          The <span className="font-mono font-bold">DropdownMenu</span> component displays a context
-          menu adjacent to the element which triggers the display of the menu.
+          The <span className="font-mono font-bold">DropdownMenu</span> component displays a context menu adjacent to
+          the element which triggers the display of the menu.
         </div>
 
         <div className="my-8">
@@ -95,9 +90,8 @@ const DropdownComponents = ({
               </DropdownMenu.Content>
             </DropdownMenu>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<DropdownMenu>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<DropdownMenu>
   <DropdownMenu.Trigger>
     <Button>Open</Button>
   </DropdownMenu.Trigger>
@@ -122,7 +116,7 @@ const DropdownComponents = ({
     </DropdownMenu.Item>
   </DropdownMenu.Content>
 </DropdownMenu>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

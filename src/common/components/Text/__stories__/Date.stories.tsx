@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { DateFormat } from 'common/utils/constants';
 
@@ -14,8 +14,7 @@ const meta = {
   argTypes: {
     className: { description: 'Additional CSS classes.' },
     date: {
-      description:
-        'The date value expressed as an ISO 8601 date string or as a number of milliseconds.',
+      description: 'The date value expressed as an ISO 8601 date string or as a number of milliseconds.',
     },
     format: { description: 'Optional. The format of the Date.' },
     testId: { description: 'The test identifier.' },

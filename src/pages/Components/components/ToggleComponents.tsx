@@ -16,10 +16,7 @@ import Button from 'common/components/Button/Button';
  * The `ToggleComponents` component renders a set of examples illustrating
  * the use of the `Toggle` component.
  */
-const ToggleComponents = ({
-  className,
-  testId = 'components-toggle',
-}: BaseComponentProps): JSX.Element => {
+const ToggleComponents = ({ className, testId = 'components-toggle' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -57,9 +54,7 @@ const ToggleComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -90,8 +85,8 @@ const ToggleComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Toggle</span> component renders a button form
-          control which may be used for binary inputs, i.e. true / false.
+          The <span className="font-mono font-bold">Toggle</span> component renders a button form control which may be
+          used for binary inputs, i.e. true / false.
         </div>
 
         <div className="my-8">
@@ -109,29 +104,22 @@ const ToggleComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Toggle component. It has no label or supporting text. It
-          is integrated with React Hook Form through the "control" and "reset" values obtained from
-          the "useForm" hook (see the React Hook Form documentation for more information).
+          This is the most basic use of the Toggle component. It has no label or supporting text. It is integrated with
+          React Hook Form through the "control" and "reset" values obtained from the "useForm" hook (see the React Hook
+          Form documentation for more information).
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <Toggle control={control} name="isNotificationsEnabled" className="mb-4" />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-1"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-1">
                 Reset
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Toggle control={control} name="isNotificationsEnabled" className="mb-4" />
   <Button
     onClick={() => reset()}
@@ -142,40 +130,28 @@ const ToggleComponents = ({
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
           Labels
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "label" property to associate a HTML label with the toggle. When the toggle is
-          required, the label is styled to indicate.
+          Use the "label" property to associate a HTML label with the toggle. When the toggle is required, the label is
+          styled to indicate.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Toggle
-                control={control}
-                name="isNotificationsEnabled"
-                label="Enable Notifications"
-                className="mb-4"
-              />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-2"
-              >
+              <Toggle control={control} name="isNotificationsEnabled" label="Enable Notifications" className="mb-4" />
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-2">
                 Reset
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Toggle
     control={control}
     name="isNotificationsEnabled"
@@ -191,15 +167,15 @@ const ToggleComponents = ({
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
           Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "supportingText" property to add helpful information below the toggle containing
-          instructions, validation requirements, or other tips for entering information.
+          Use the "supportingText" property to add helpful information below the toggle containing instructions,
+          validation requirements, or other tips for entering information.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -212,20 +188,13 @@ const ToggleComponents = ({
                 supportingText="Enable to receive push notifications from this app."
                 className="mb-4"
               />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-3"
-              >
+              <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto" testId="reset-3">
                 Reset
               </Button>
             </form>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<form onSubmit={handleSubmit(onSubmit)}>
   <Toggle
     control={control}
     name="isNotificationsEnabled"
@@ -242,7 +211,7 @@ const ToggleComponents = ({
     Reset
   </Button>
 </form>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

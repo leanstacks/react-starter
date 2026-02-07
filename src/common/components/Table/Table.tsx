@@ -22,12 +22,7 @@ export interface TableProps<TData = unknown> extends BaseComponentProps {
  * This component is built using the `@tanstack/react-table` library.
  * It provides a simple and flexible way to display tabular data in a React application.
  */
-const Table = <TData,>({
-  className,
-  columns,
-  data,
-  testId = 'table',
-}: TableProps<TData>): JSX.Element => {
+const Table = <TData,>({ className, columns, data, testId = 'table' }: TableProps<TData>) => {
   const table = useReactTable({
     data,
     columns,
@@ -35,21 +30,13 @@ const Table = <TData,>({
   });
 
   return (
-    <table
-      className={cn('w-full border-collapse text-left text-sm', className)}
-      data-testid={testId}
-    >
+    <table className={cn('w-full border-collapse text-left text-sm', className)} data-testid={testId}>
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th
-                key={header.id}
-                className="border-b border-neutral-400/25 py-2 pr-2 font-semibold"
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}
+              <th key={header.id} className="border-b border-neutral-400/25 py-2 pr-2 font-semibold">
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
               </th>
             ))}
           </tr>
@@ -70,13 +57,8 @@ const Table = <TData,>({
         {table.getFooterGroups().map((footerGroup) => (
           <tr key={footerGroup.id}>
             {footerGroup.headers.map((header) => (
-              <th
-                key={header.id}
-                className="border-t border-neutral-400/10 py-2 pr-2 font-semibold"
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.footer, header.getContext())}
+              <th key={header.id} className="border-t border-neutral-400/10 py-2 pr-2 font-semibold">
+                {header.isPlaceholder ? null : flexRender(header.column.columnDef.footer, header.getContext())}
               </th>
             ))}
           </tr>

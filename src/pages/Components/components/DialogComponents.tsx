@@ -12,10 +12,7 @@ import Button from 'common/components/Button/Button';
  * The `DialogComponents` React component renders a set of examples illustrating
  * the use of the `Dialog` component.
  */
-const DialogComponents = ({
-  className,
-  testId = 'components-dialog',
-}: BaseComponentProps): JSX.Element => {
+const DialogComponents = ({ className, testId = 'components-dialog' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -33,9 +30,7 @@ const DialogComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -51,11 +46,10 @@ const DialogComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Dialog</span> is a modal window that displays on
-        top of the main content, typically asking the user to take an action or confirm a decision.
-        Compose a Dialog using combinations of: <code>Trigger</code>, <code>Content</code>,{' '}
-        <code>Header</code>, <code>Title</code>, <code>Subtitle</code>, <code>Body</code>,{' '}
-        <code>Footer</code>, <code>ButtonBar</code>, and <code>Button</code>.
+        The <span className="font-mono font-bold">Dialog</span> is a modal window that displays on top of the main
+        content, typically asking the user to take an action or confirm a decision. Compose a Dialog using combinations
+        of: <code>Trigger</code>, <code>Content</code>, <code>Header</code>, <code>Title</code>, <code>Subtitle</code>,{' '}
+        <code>Body</code>, <code>Footer</code>, <code>ButtonBar</code>, and <code>Button</code>.
       </div>
 
       <div className="my-8">
@@ -84,10 +78,7 @@ const DialogComponents = ({
                 <Dialog.Subtitle>Deletion is permanent and cannot be undone.</Dialog.Subtitle>
               </Dialog.Header>
               <Dialog.Body>
-                Delete issue:{' '}
-                <span className="font-bold text-neutral-500">
-                  987 Use dialog to confirm task delete
-                </span>
+                Delete issue: <span className="font-bold text-neutral-500">987 Use dialog to confirm task delete</span>
               </Dialog.Body>
               <Dialog.Separator />
               <Dialog.Footer>
@@ -99,9 +90,8 @@ const DialogComponents = ({
             </Dialog.Content>
           </Dialog>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Dialog>
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Dialog>
   <Dialog.Trigger>
     <Button>Open</Button>
   </Dialog.Trigger>
@@ -125,7 +115,7 @@ const DialogComponents = ({
     </Dialog.Footer>
   </Dialog.Content>
 </Dialog>`}
-        />
+        </CodeSnippet>
       </div>
 
       <Heading level={4} className="mb-2">
@@ -143,23 +133,21 @@ const DialogComponents = ({
                   <Dialog.Header>
                     <Dialog.Title>Terms and Conditions</Dialog.Title>
                     <Dialog.Subtitle>
-                      Nam cupidatat duis dolore magna aute posuere. Esse arcu morbi quis consequat
-                      facilisis lorem pulvinar.
+                      Nam cupidatat duis dolore magna aute posuere. Esse arcu morbi quis consequat facilisis lorem
+                      pulvinar.
                     </Dialog.Subtitle>
                   </Dialog.Header>
                   <Dialog.Body>
                     <div className="mb-2">
-                      Dolor proident aliqua ornare consectetur. Sapien est do quam labore qos
-                      veniam. Aute sint sunt commodo ea e. Ligula anim amet nulla morbi nulla.
-                      Laborum duis sunt exercitation justo. Quis aliquip posuere incididunt et
-                      consectetur. Nostrud incididunt laborum pulvinar ea ut ex at.
+                      Dolor proident aliqua ornare consectetur. Sapien est do quam labore qos veniam. Aute sint sunt
+                      commodo ea e. Ligula anim amet nulla morbi nulla. Laborum duis sunt exercitation justo. Quis
+                      aliquip posuere incididunt et consectetur. Nostrud incididunt laborum pulvinar ea ut ex at.
                     </div>
                     <div>
-                      Pariatur anim veniam morbi dui consectetur officia. Occaecat e dolore mi enim
-                      morbi aliquip e. Condimentum adipiscing sunt commodo proident enim laborum mi.
-                      Dui labore posuere ex exercitation justo morbi. A consequat pulvinar aliqua do
-                      duis ligula. Ullamco enim condimentum pariatur dolor nulla ad quam. Nam
-                      egestas laboris laoreet et ipsum deserunt ligula.
+                      Pariatur anim veniam morbi dui consectetur officia. Occaecat e dolore mi enim morbi aliquip e.
+                      Condimentum adipiscing sunt commodo proident enim laborum mi. Dui labore posuere ex exercitation
+                      justo morbi. A consequat pulvinar aliqua do duis ligula. Ullamco enim condimentum pariatur dolor
+                      nulla ad quam. Nam egestas laboris laoreet et ipsum deserunt ligula.
                     </div>
                   </Dialog.Body>
                   <Dialog.Separator />
@@ -168,11 +156,7 @@ const DialogComponents = ({
                       <Dialog.Button onClick={() => close()} testId="dialog-button-decline">
                         Decline
                       </Dialog.Button>
-                      <Dialog.Button
-                        variant="primary"
-                        onClick={() => close()}
-                        testId="dialog-button-accept"
-                      >
+                      <Dialog.Button variant="primary" onClick={() => close()} testId="dialog-button-accept">
                         Accept
                       </Dialog.Button>
                     </Dialog.ButtonBar>
@@ -182,9 +166,8 @@ const DialogComponents = ({
             )}
           </Dialog>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Dialog>
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Dialog>
   {({ close }) => (
     <>
       <Dialog.Trigger>
@@ -226,7 +209,7 @@ const DialogComponents = ({
     </>
   )}
 </Dialog>`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

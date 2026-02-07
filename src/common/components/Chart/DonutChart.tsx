@@ -1,5 +1,4 @@
-import { Cell, CellProps, Legend, Pie, PieChart, PieProps } from 'recharts';
-import { CategoricalChartProps } from 'recharts/types/chart/generateCategoricalChart';
+import { CellProps, Legend, Pie, PieChart, PieProps } from 'recharts';
 
 import { BaseComponentProps } from 'common/utils/types';
 
@@ -16,20 +15,17 @@ export type DonutChartData = Pick<CellProps, 'fill'> & {
  * Properties for the `DonutChart` component.
  * @param {DonutChartData[]} data - A collection of `DonutChartData` objects.
  * @see {@link BaseComponentProps}
- * @see {@link CategoricalChartProps}
+ * @see {@link PieProps}
  * @see {@link PieProps}
  */
 export interface DonutChartProps
-  extends BaseComponentProps,
-    Pick<CategoricalChartProps, 'height' | 'width'>,
-    Pick<PieProps, 'innerRadius' | 'outerRadius' | 'paddingAngle'> {
+  extends BaseComponentProps, Pick<PieProps, 'height' | 'innerRadius' | 'outerRadius' | 'paddingAngle' | 'width'> {
   data: DonutChartData[];
 }
 
 /**
  * The `DonutChart` component renders a pie chart without the center.
  * @param {DonutChartProps} props - Component properties.
- * @returns {JSX.Element} JSX
  * @see {@link https://recharts.org/en-US/api/PieChart PieChart}
  */
 const DonutChart = ({
@@ -41,29 +37,19 @@ const DonutChart = ({
   outerRadius = 32,
   paddingAngle = 0,
   testId = 'chart-donut',
-}: DonutChartProps): JSX.Element => {
+}: DonutChartProps) => {
   return (
     <div className={className} data-testid={testId}>
-      <PieChart height={height} width={width}>
+      <PieChart height={Number(height)} width={Number(width)}>
         <Pie
           data={data}
           dataKey="value"
           innerRadius={innerRadius}
           outerRadius={outerRadius}
           paddingAngle={paddingAngle}
-          fill="#737373"
-        >
-          {data.map((cell, index) => (
-            <Cell key={`cell-${index}`} fill={cell.fill} strokeWidth={0} />
-          ))}
-        </Pie>
-        <Legend
-          iconSize={8}
-          iconType="circle"
-          layout="vertical"
-          align="right"
-          verticalAlign="middle"
+          strokeWidth={0}
         />
+        <Legend iconSize={8} iconType="circle" layout="vertical" align="right" verticalAlign="middle" />
       </PieChart>
     </div>
   );

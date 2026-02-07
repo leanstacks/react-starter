@@ -23,7 +23,6 @@ export interface PercentProps extends BaseComponentProps {
 /**
  * The `Percent` React component formats and renders a percent value.
  * @param {PercentProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const Percent = ({
   className,
@@ -32,7 +31,7 @@ const Percent = ({
   signDisplay,
   value,
   testId = 'percent',
-}: PercentProps): JSX.Element => {
+}: PercentProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = {
       style: 'percent',

@@ -35,3 +35,7 @@ __snapshots__
 # Storybook
 storybook-static
 *storybook.log
+
+# dotenv environment variable files
+.env*
+!.env.example

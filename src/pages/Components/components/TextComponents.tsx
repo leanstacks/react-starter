@@ -11,10 +11,7 @@ import Text from 'common/components/Text/Text';
  * The `TextComponents` React component renders a set of examples illustrating
  * the use of the text family of components.
  */
-const TextComponents = ({
-  className,
-  testId = 'components-text',
-}: BaseComponentProps): JSX.Element => {
+const TextComponents = ({ className, testId = 'components-text' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -36,9 +33,7 @@ const TextComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -55,8 +50,8 @@ const TextComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">Text</span> component displays styled text based
-          upon the provided `variant`.
+          The <span className="font-mono font-bold">Text</span> component displays styled text based upon the provided
+          `variant`.
         </div>
 
         <div className="my-8">
@@ -73,8 +68,8 @@ const TextComponents = ({
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Text variant="danger">Danger! Something bad has happened.</Text>`}
-          />
+            language="tsx"
+          >{`<Text variant='danger'>Danger! Something bad has happened.</Text>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -83,8 +78,8 @@ const TextComponents = ({
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Text variant='warning'>Warning! Be sure to read this first.</Text>`}
-          />
+            language="tsx"
+          >{`<Text variant='warning'>Warning! Be sure to read this first.</Text>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
@@ -93,8 +88,8 @@ const TextComponents = ({
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Text variant="info">This is some information to be highlighted.</Text>`}
-          />
+            language="tsx"
+          >{`<Text variant="info">This is some information to be highlighted.</Text>`}</CodeSnippet>
         </div>
       </div>
     </section>

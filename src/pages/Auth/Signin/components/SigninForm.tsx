@@ -30,9 +30,8 @@ type SigninFormValues = {
  * Upon error, displays messages.
  *
  * @param {BaseComponentProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): JSX.Element => {
+const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps) => {
   const [error, setError] = useState<string>('');
   const { mutate: signin } = useSignin();
   const navigate = useNavigate();
@@ -76,12 +75,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
-        <ErrorAlert
-          title="Authentication failed"
-          description={error}
-          className="mb-4"
-          testId={`${testId}-error`}
-        />
+        <ErrorAlert title="Authentication failed" description={error} className="mb-4" testId={`${testId}-error`} />
       )}
 
       <form onSubmit={handleSubmit(onFormSubmit)} noValidate>

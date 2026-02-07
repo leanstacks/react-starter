@@ -11,10 +11,7 @@ import Alert from 'common/components/Alert/Alert';
  * The `AlertComponents` React component renders a set of examples illustrating
  * the use of the `Alert` component.
  */
-const AlertComponents = ({
-  className,
-  testId = 'components-alert',
-}: BaseComponentProps): JSX.Element => {
+const AlertComponents = ({ className, testId = 'components-alert' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -36,9 +33,7 @@ const AlertComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -54,9 +49,9 @@ const AlertComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Alert</span> component displays a styled message
-        block. Alerts are a callout to get the user's attention. Compose an Alert using combinations
-        of: <code>Icon</code>, <code>Title</code>, and <code>Description</code>.
+        The <span className="font-mono font-bold">Alert</span> component displays a styled message block. Alerts are a
+        callout to get the user's attention. Compose an Alert using combinations of: <code>Icon</code>,{' '}
+        <code>Title</code>, and <code>Description</code>.
       </div>
 
       <div className="my-8">
@@ -72,21 +67,18 @@ const AlertComponents = ({
           <Alert variant="danger">
             <Alert.Icon icon="circleExclamation" />
             <Alert.Title>Uh oh!</Alert.Title>
-            <Alert.Description>
-              Something unexpected has occurred. Please excuse our mess.
-            </Alert.Description>
+            <Alert.Description>Something unexpected has occurred. Please excuse our mess.</Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="danger">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="danger">
   <Alert.Icon icon="circleExclamation" />
   <Alert.Title>Uh oh!</Alert.Title>
   <Alert.Description>
     Something unexpected has occurred. Please excuse our mess.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -95,17 +87,15 @@ const AlertComponents = ({
             <Alert.Icon icon="circleInfo" />
             <Alert.Title>Something you should know...</Alert.Title>
             <Alert.Description>
-              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-              exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-              exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit
-              qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
-              incididunt.
+              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore
+              a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est
+              justo veniam. Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet
+              qui labore a neque incididunt.
             </Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="info">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="info">
   <Alert.Icon icon="circleInfo" />
   <Alert.Title>Something you should know...</Alert.Title>
   <Alert.Description>
@@ -116,7 +106,7 @@ const AlertComponents = ({
     incididunt.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -124,17 +114,15 @@ const AlertComponents = ({
           <Alert variant="warning">
             <Alert.Title>Proceed with caution!</Alert.Title>
             <Alert.Description>
-              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-              exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-              exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit
-              qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
-              incididunt.
+              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore
+              a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est
+              justo veniam. Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet
+              qui labore a neque incididunt.
             </Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="warning">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="warning">
   <Alert.Title>Proceed with caution!</Alert.Title>
   <Alert.Description>
     Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
@@ -144,7 +132,7 @@ const AlertComponents = ({
     incididunt.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -152,17 +140,15 @@ const AlertComponents = ({
           <Alert variant="success">
             <Alert.Title>You did it!</Alert.Title>
             <Alert.Description>
-              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-              exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-              exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit
-              qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
-              incididunt.
+              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore
+              a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est
+              justo veniam. Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet
+              qui labore a neque incididunt.
             </Alert.Description>
           </Alert>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Alert variant="success">
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Alert variant="success">
   <Alert.Title>You did it!</Alert.Title>
   <Alert.Description>
     Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
@@ -172,7 +158,7 @@ const AlertComponents = ({
     incididunt.
   </Alert.Description>
 </Alert>`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

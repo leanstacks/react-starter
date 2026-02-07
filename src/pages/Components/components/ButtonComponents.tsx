@@ -17,12 +17,8 @@ interface ButtonComponentsProps extends BaseComponentProps {}
  * The `ButtonComponents` React component renders a set of examples illustrating
  * the use of the `Button` component.
  * @param {ButtonComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const ButtonComponents = ({
-  className,
-  testId = 'components-button',
-}: ButtonComponentsProps): JSX.Element => {
+const ButtonComponents = ({ className, testId = 'components-button' }: ButtonComponentsProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -52,9 +48,7 @@ const ButtonComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -70,8 +64,8 @@ const ButtonComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Button</span> component displays a clickable
-        button which is styled in a standardized way.
+        The <span className="font-mono font-bold">Button</span> component displays a clickable button which is styled in
+        a standardized way.
       </div>
 
       <div className="my-8">
@@ -86,7 +80,7 @@ const ButtonComponents = ({
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button>Default button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button>Default button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button>Default button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -98,9 +92,8 @@ const ButtonComponents = ({
             <FAIcon icon="bars" size="xl" />
           </Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<>
+        <CodeSnippet className="my-2" language="tsx">
+          {`<>
   <Button size="sm">Small</Button>
   <Button size="md">Medium</Button>
   <Button size="lg">Large</Button>
@@ -108,28 +101,28 @@ const ButtonComponents = ({
     <FAIcon icon="bars" size="xl" />
   </Button>
 </>`}
-        />
+        </CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="outline">Outline button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button variant="outline">Outline button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button variant="outline">Outline button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="solid">Solid button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button variant="solid">Solid button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button variant="solid">Solid button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="text">Text button</Button>
         </div>
-        <CodeSnippet className="my-2" code={`<Button variant="text">Text button</Button>`} />
+        <CodeSnippet className="my-2" language="tsx">{`<Button variant="text">Text button</Button>`}</CodeSnippet>
       </div>
 
       <div className="my-8">
@@ -143,9 +136,8 @@ const ButtonComponents = ({
             Click me
           </Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Button
+        <CodeSnippet className="my-2" language="tsx">
+          {`<Button
   variant="solid"
   className="border-blue-600! bg-blue-600! text-white!"
   onClick={() => alert('Hey! You clicked me!')}
@@ -153,7 +145,7 @@ const ButtonComponents = ({
 >
   Click me
 </Button>`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

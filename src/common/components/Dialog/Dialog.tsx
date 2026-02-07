@@ -78,7 +78,7 @@ export interface DialogProps extends BaseComponentProps {
   </Dialog>
  * ```
  */
-const Dialog = ({ children, className, testId = 'dialog' }: DialogProps): JSX.Element => {
+const Dialog = ({ children, className, testId = 'dialog' }: DialogProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
   const close = () => {
@@ -98,11 +98,7 @@ const Dialog = ({ children, className, testId = 'dialog' }: DialogProps): JSX.El
  * The `Trigger` renders a clickable element used to open a `Dialog`. There
  * should be 1 `Trigger` within a `Dialog`.
  */
-const Trigger = ({
-  children,
-  className,
-  testId = 'dialog-trigger',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Trigger = ({ children, className, testId = 'dialog-trigger' }: BaseComponentProps & PropsWithChildren) => {
   const { isHidden, setIsHidden } = useContext(DialogContext);
 
   return (
@@ -122,11 +118,7 @@ Dialog.Trigger = Trigger;
  * The `Content` component wraps the contents of a `Dialog` including the
  * header, body, and footer. There should be 1 `Content` within a `Dialog`.
  */
-const Content = ({
-  children,
-  className,
-  testId = 'dialog-content',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Content = ({ children, className, testId = 'dialog-content' }: BaseComponentProps & PropsWithChildren) => {
   const { isHidden, setIsHidden } = useContext(DialogContext);
 
   return (
@@ -137,9 +129,7 @@ const Content = ({
         testId={`${testId}-backdrop`}
       >
         <div
-          className={cn(
-            'bg-light-bg dark:bg-dark-bg m-4 flex max-w-[560px] min-w-72 flex-col gap-4 rounded-md p-6',
-          )}
+          className={cn('bg-light-bg dark:bg-dark-bg m-4 flex max-w-140 min-w-72 flex-col gap-4 rounded-md p-6')}
           onClick={(e) => e.stopPropagation()}
           data-testid={`${testId}-content`}
         >
@@ -155,11 +145,7 @@ Dialog.Content = Content;
  * The `Header` is a block within a dialog `Content` and may contain a `Title`
  * and `Subtitle`.
  */
-const Header = ({
-  children,
-  className,
-  testId = 'dialog-header',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Header = ({ children, className, testId = 'dialog-header' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -171,11 +157,7 @@ Dialog.Header = Header;
 /**
  * The `Body` is a block which encloses the main content of the `Dialog`.
  */
-const Body = ({
-  children,
-  className,
-  testId = 'dialog-body',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Body = ({ children, className, testId = 'dialog-body' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -189,11 +171,7 @@ Dialog.Body = Body;
  * a `ButtonBar`, `Button`, or any components which are located at the bottom of
  * the `Dialog`.
  */
-const Footer = ({
-  children,
-  className,
-  testId = 'dialog-footer',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Footer = ({ children, className, testId = 'dialog-footer' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -206,11 +184,7 @@ Dialog.Footer = Footer;
  * A `Title` for the `Dialog`.  The title is optional.  When present, the `Title`
  * is typically located within the dialog `Header`.
  */
-const Title = ({
-  children,
-  className,
-  testId = 'dialog-title',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Title = ({ children, className, testId = 'dialog-title' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <h5 className={cn('line-clamp-2 text-2xl', className)} data-testid={testId}>
       {children}
@@ -224,17 +198,10 @@ Dialog.Title = Title;
  * `Subtitle` is typically located within the dialog `Header`, immediately after
  * the `Title`.
  */
-const Subtitle = ({
-  children,
-  className,
-  testId = 'dialog-subtitle',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Subtitle = ({ children, className, testId = 'dialog-subtitle' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div
-      className={cn(
-        'line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed',
-        className,
-      )}
+      className={cn('line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed', className)}
       data-testid={testId}
     >
       {children}
@@ -247,11 +214,7 @@ Dialog.Subtitle = Subtitle;
  * A `ButtonBar` organizes one to many dialog `Button` components in a horizontal
  * row.  The buttons are right justified within the bar.
  */
-const ButtonBar = ({
-  children,
-  className,
-  testId = 'dialog-button-bar',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const ButtonBar = ({ children, className, testId = 'dialog-button-bar' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn('flex items-center justify-end gap-4', className)} data-testid={testId}>
       {children}
@@ -288,12 +251,7 @@ export interface ButtonProps extends Omit<CommonButtonProps, 'variant'>, ButtonV
  * A dialog `Button` is a button which is styles for presentation within a
  * `Dialog`.
  */
-const Button = ({
-  className,
-  variant = 'secondary',
-  testId = 'dialog-button',
-  ...props
-}: ButtonProps): JSX.Element => {
+const Button = ({ className, variant = 'secondary', testId = 'dialog-button', ...props }: ButtonProps) => {
   return (
     <CommonButton
       variant="text"
@@ -310,7 +268,7 @@ Dialog.Button = Button;
  * The `Separator` component renders a horizontal divider.
  * This is useful to organize and separate content.
  */
-const Separator = ({ className, testId = 'dialog-separator' }: DividerProps): JSX.Element => {
+const Separator = ({ className, testId = 'dialog-separator' }: DividerProps) => {
   return <Divider className={cn('my-1', className)} testId={testId} />;
 };
 Dialog.Separator = Separator;

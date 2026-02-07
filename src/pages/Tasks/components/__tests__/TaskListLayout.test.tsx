@@ -23,10 +23,7 @@ describe('TaskListLayout', () => {
   it('should render content when user loaded', async () => {
     // ARRANGE
     const useGetCurrentUserSpy = vi.spyOn(UseGetCurrentUser, 'useGetCurrentUser');
-    useGetCurrentUserSpy.mockReturnValue({ data: userFixture1 } as unknown as UseQueryResult<
-      User,
-      Error
-    >);
+    useGetCurrentUserSpy.mockReturnValue({ data: userFixture1 } as unknown as UseQueryResult<User, Error>);
     render(<TaskListLayout testId="component" />);
     await screen.findByTestId('component-list-incomplete');
 
@@ -38,10 +35,7 @@ describe('TaskListLayout', () => {
   it('should render task status chart when tasks loaded', async () => {
     // ARRANGE
     const useGetCurrentUserSpy = vi.spyOn(UseGetCurrentUser, 'useGetCurrentUser');
-    useGetCurrentUserSpy.mockReturnValue({ data: userFixture1 } as unknown as UseQueryResult<
-      User,
-      Error
-    >);
+    useGetCurrentUserSpy.mockReturnValue({ data: userFixture1 } as unknown as UseQueryResult<User, Error>);
     const useGetUserTasksSpy = vi.spyOn(UseGetUserTasks, 'useGetUserTasks');
     useGetUserTasksSpy.mockReturnValue({
       data: todosFixture,

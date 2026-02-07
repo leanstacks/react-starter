@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import Alert from '../Alert';
 
@@ -28,10 +28,10 @@ export const WithIcon: Story = {
       <Alert.Icon icon="circleExclamation" />
       <Alert.Title>Something unexpected has happened!</Alert.Title>
       <Alert.Description>
-        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
       </Alert.Description>
     </Alert>
   ),
@@ -45,10 +45,10 @@ export const NoIcon: Story = {
     <Alert {...args}>
       <Alert.Title>Something unexpected has happened!</Alert.Title>
       <Alert.Description>
-        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
       </Alert.Description>
     </Alert>
   ),
@@ -61,10 +61,10 @@ export const DescriptionOnly: Story = {
   render: (args) => (
     <Alert {...args}>
       <Alert.Description>
-        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
       </Alert.Description>
     </Alert>
   ),
@@ -90,10 +90,10 @@ export const Info: Story = {
     <Alert {...args}>
       <Alert.Title>Something you should know...</Alert.Title>
       <Alert.Description>
-        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
       </Alert.Description>
     </Alert>
   ),
@@ -107,10 +107,10 @@ export const Warning: Story = {
     <Alert {...args}>
       <Alert.Title>Proceed with caution!</Alert.Title>
       <Alert.Description>
-        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
       </Alert.Description>
     </Alert>
   ),
@@ -124,10 +124,10 @@ export const Success: Story = {
     <Alert {...args}>
       <Alert.Title>You did it!</Alert.Title>
       <Alert.Description>
-        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
       </Alert.Description>
     </Alert>
   ),

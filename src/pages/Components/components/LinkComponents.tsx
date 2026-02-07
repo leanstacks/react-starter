@@ -11,10 +11,7 @@ import Link from 'common/components/Link/Link';
  * The `LinkComponents` component renders a set of examples illustrating
  * the use of the `Link` component.
  */
-const LinkComponents = ({
-  className,
-  testId = 'components-link',
-}: BaseComponentProps): JSX.Element => {
+const LinkComponents = ({ className, testId = 'components-link' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -32,9 +29,7 @@ const LinkComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -51,11 +46,10 @@ const LinkComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Link</span> component is a wrapper around the
-          React Router Link component. It provides a way to navigate between different routes in
-          your application without causing a full page reload. The Link component accepts all the
-          same props as the React Router Link component, as well as some additional props for
-          styling and testing.
+          The <span className="font-mono font-bold">Link</span> component is a wrapper around the React Router Link
+          component. It provides a way to navigate between different routes in your application without causing a full
+          page reload. The Link component accepts all the same props as the React Router Link component, as well as some
+          additional props for styling and testing.
         </div>
 
         <div className="my-8">
@@ -73,51 +67,46 @@ const LinkComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is a basic example of the <span className="font-mono font-bold">Link</span>{' '}
-          component. It renders a HTML anchor element that links to the specified URL. The Link is
-          styled with accessibility in mind.
+          This is a basic example of the <span className="font-mono font-bold">Link</span> component. It renders a HTML
+          anchor element that links to the specified URL. The Link is styled with accessibility in mind.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <div>
-              To learn more about using the Link component view the{' '}
-              <Link to="/pub/components/link">Link</Link> examples page.
+              To learn more about using the Link component view the <Link to="/pub/components/link">Link</Link> examples
+              page.
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div>
   To learn more about using the Link component view the{' '}
   <Link to="/pub/components/link">Link</Link> examples page.
 </div>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
           Router Link Properties
         </Heading>
         <div className="mb-4 opacity-85">
-          The Link component accepts all the same props as the React Router Link component. This
-          includes the <span className="font-mono font-bold">to</span> prop, which specifies the URL
-          to link to. Or the <span className="font-mono font-bold">target</span> prop, which
-          specifies where to open the linked document.
+          The Link component accepts all the same props as the React Router Link component. This includes the{' '}
+          <span className="font-mono font-bold">to</span> prop, which specifies the URL to link to. Or the{' '}
+          <span className="font-mono font-bold">target</span> prop, which specifies where to open the linked document.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <div>
-              Open an external link in a new tab. To view the official React Router documentation,
-              refer to the{' '}
+              Open an external link in a new tab. To view the official React Router documentation, refer to the{' '}
               <Link to="https://reactrouter.com/api/components/Link" target="_blank">
                 Link component guide
               </Link>
               .
             </div>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<div>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<div>
   Open an external link in a new tab. To view the official React Router documentation,
   refer to the{' '}
   <Link to="https://reactrouter.com/api/components/Link" target="_blank">
@@ -125,7 +114,7 @@ const LinkComponents = ({
   </Link>
   .
 </div>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

@@ -60,7 +60,7 @@ const Checkbox = <T extends FieldValues>({
   required = false,
   supportingText,
   testId = 'checkbox',
-}: CheckboxProps<T>): JSX.Element => {
+}: CheckboxProps<T>) => {
   const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isChecked = field.value === true;
 
@@ -85,31 +85,15 @@ const Checkbox = <T extends FieldValues>({
           disabled={disabled}
           data-testid={`${testId}-button`}
         >
-          {isChecked && (
-            <FAIcon
-              icon="check"
-              size="sm"
-              fixedWidth
-              className="text-white"
-              testId={`${testId}-icon`}
-            />
-          )}
+          {isChecked && <FAIcon icon="check" size="sm" fixedWidth className="text-white" testId={`${testId}-icon`} />}
         </button>
-        <Label
-          id={`${name}-label`}
-          htmlFor={name}
-          required={required}
-          className="m-0"
-          testId={`${testId}-label`}
-        >
+        <Label id={`${name}-label`} htmlFor={name} required={required} className="m-0" testId={`${testId}-label`}>
           {label}
         </Label>
       </div>
       <div className="flex flex-wrap items-center">
         <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-        {supportingText && (
-          <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-        )}
+        {supportingText && <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>}
       </div>
     </div>
   );

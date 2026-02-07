@@ -28,7 +28,7 @@ export interface CardProps extends BaseComponentProps, PropsWithChildren {}
   </Card>
  * ```
  */
-const Card = ({ children, className, testId = 'card' }: CardProps): JSX.Element => {
+const Card = ({ children, className, testId = 'card' }: CardProps) => {
   return (
     <div
       className={cn(
@@ -46,11 +46,7 @@ const Card = ({ children, className, testId = 'card' }: CardProps): JSX.Element 
  * The `Header` is a block within a card. It often contains a Title, Subtitle,
  * or any components located at the top of the card.
  */
-const Header = ({
-  children,
-  className,
-  testId = 'card-header',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Header = ({ children, className, testId = 'card-header' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -62,11 +58,7 @@ Card.Header = Header;
 /**
  * The `Body` is a block which encloses the main content of the card.
  */
-const Body = ({
-  children,
-  className,
-  testId = 'card-body',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Body = ({ children, className, testId = 'card-body' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -79,11 +71,7 @@ Card.Body = Body;
  * The `Footer` is a block within a card. It may contain any components located
  * at the bottom of the card.
  */
-const Footer = ({
-  children,
-  className,
-  testId = 'card-footer',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Footer = ({ children, className, testId = 'card-footer' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}
@@ -100,7 +88,7 @@ const Image = ({
   className,
   testId = 'card-image',
   ...props
-}: BaseComponentProps & ImgHTMLAttributes<HTMLImageElement>): JSX.Element => {
+}: BaseComponentProps & ImgHTMLAttributes<HTMLImageElement>) => {
   return <img className={cn(className)} data-testid={testId} {...props} />;
 };
 Card.Image = Image;
@@ -109,11 +97,7 @@ Card.Image = Image;
  * A `Title` for a `Card`.  Typically used within the card `Header`, but not
  * required.
  */
-const Title = ({
-  children,
-  className,
-  testId = 'card-title',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Title = ({ children, className, testId = 'card-title' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <h5 className={cn('line-clamp-2 text-2xl', className)} data-testid={testId}>
       {children}
@@ -126,17 +110,10 @@ Card.Title = Title;
  * A `Subtitle` for a `Card`. Typically used within the card `Header`, but not
  * required.
  */
-const Subtitle = ({
-  children,
-  className,
-  testId = 'card-subtitle',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Subtitle = ({ children, className, testId = 'card-subtitle' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div
-      className={cn(
-        'line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed',
-        className,
-      )}
+      className={cn('line-clamp-2 leading-tight text-neutral-500 font-stretch-condensed', className)}
       data-testid={testId}
     >
       {children}
@@ -149,7 +126,7 @@ Card.Subtitle = Subtitle;
  * The `Separator` component renders a horizontal divider.
  * This is useful to organize and separate content.
  */
-const Separator = ({ className, testId = 'card-separator' }: DividerProps): JSX.Element => {
+const Separator = ({ className, testId = 'card-separator' }: DividerProps) => {
   return <Divider className={cn('my-1', className)} testId={testId} />;
 };
 Card.Separator = Separator;

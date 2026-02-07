@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { withProviders } from '../../../../../.storybook/decorators/withProviders';
 
@@ -33,9 +33,9 @@ const text = `<Text>
 `;
 
 export const Simple: Story = {
-  args: { code: badge },
+  args: { children: badge },
 };
 
 export const MultiLine: Story = {
-  args: { code: text },
+  args: { children: text },
 };

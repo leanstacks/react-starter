@@ -44,10 +44,6 @@ export const toNumberBetween = (
  * @returns {string} The formatted value.
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options | NumberFormatOptions}
  */
-export function formatNumber(
-  value: number,
-  options?: Intl.NumberFormatOptions,
-  locale?: string,
-): string {
+export function formatNumber(value: number, options?: Intl.NumberFormatOptions, locale?: string): string {
   return new Intl.NumberFormat(locale, options).format(value);
 }

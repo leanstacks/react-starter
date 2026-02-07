@@ -48,11 +48,7 @@ export interface BreadcrumbsProps extends BaseComponentProps, PropsWithChildren 
   </Breadcrumbs>
  * ```
  */
-const Breadcrumbs = ({
-  children,
-  className,
-  testId = 'breadcrumbs',
-}: BreadcrumbsProps): JSX.Element => {
+const Breadcrumbs = ({ children, className, testId = 'breadcrumbs' }: BreadcrumbsProps) => {
   return (
     <nav className={cn(className)} aria-label="breadcrumbs" data-testid={testId}>
       {children}
@@ -64,14 +60,10 @@ const Breadcrumbs = ({
  * The `List` contains the list of items in the breadcrumbs. It is located immediately
  * within the `Breadcrumbs` component and contains one to many `Item` components.
  */
-const List = ({
-  children,
-  className,
-  testId = 'breadcrumbs-list',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const List = ({ children, className, testId = 'breadcrumbs-list' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <ol
-      className={cn('flex flex-wrap items-center gap-2 text-sm break-words sm:gap-3', className)}
+      className={cn('flex flex-wrap items-center gap-2 text-sm wrap-break-word sm:gap-3', className)}
       data-testid={testId}
     >
       {children}
@@ -87,11 +79,7 @@ Breadcrumbs.List = List;
  * An `Item` may contain any type of child; however, an item typically contains a `Link`,
  * `Page`, or a `DropdownMenu`.
  */
-const Item = ({
-  children,
-  className,
-  testId = 'breadcrumbs-item',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Item = ({ children, className, testId = 'breadcrumbs-item' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <li className={cn('last:font-bold', className)} data-testid={testId}>
       {children}
@@ -105,12 +93,7 @@ Breadcrumbs.Item = Item;
  * a child of an `Item`.  Use the `to` property to specify the relative path for
  * the link.
  */
-const Link = ({
-  children,
-  className,
-  testId = 'breadcrumbs-link',
-  ...props
-}: CommonLinkProps): JSX.Element => {
+const Link = ({ children, className, testId = 'breadcrumbs-link', ...props }: CommonLinkProps) => {
   return (
     <CommonLink
       className={cn('text-light-text dark:text-dark-text block max-w-40 truncate', className)}
@@ -129,11 +112,7 @@ Breadcrumbs.Link = Link;
  * not clickable. A `Page` is commonly used for the current page, i.e. the last
  * element in the breadcrumbs.
  */
-const Page = ({
-  children,
-  className,
-  testId = 'breadcrumbs-page',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Page = ({ children, className, testId = 'breadcrumbs-page' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <span className={cn('block max-w-40 truncate', className)} data-testid={testId}>
       {children}
@@ -152,9 +131,7 @@ const Separator = ({
   size = 'sm',
   testId = 'breadcrumbs-separator',
   ...iconProps
-}: BaseComponentProps &
-  Omit<FAIconProps, 'icon'> &
-  Partial<Pick<FAIconProps, 'icon'>>): JSX.Element => {
+}: BaseComponentProps & Omit<FAIconProps, 'icon'> & Partial<Pick<FAIconProps, 'icon'>>) => {
   return (
     <li className={cn(className)} data-testid={testId}>
       <FAIcon icon={icon} size={size} className="size-4" {...iconProps} testId={`${testId}-icon`} />
@@ -171,10 +148,7 @@ Breadcrumbs.Separator = Separator;
  * a `DropdownMenu` within the breadcrumbs to allow navigation to those routes
  * which have been omitted for brevity.
  */
-const Ellipsis = ({
-  className,
-  testId = 'breadcrumbs-ellipsis',
-}: BaseComponentProps): JSX.Element => {
+const Ellipsis = ({ className, testId = 'breadcrumbs-ellipsis' }: BaseComponentProps) => {
   return (
     <span className={cn('hover:opacity-75', className)} data-testid={testId}>
       <FAIcon icon="ellipsis" className="size-4" />

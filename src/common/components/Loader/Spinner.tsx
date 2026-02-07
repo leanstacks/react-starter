@@ -19,7 +19,7 @@ export interface SpinnerProps extends BaseComponentProps, PropsWithChildren {
  * optional accompanying text. Typically used when some foreground or background
  * process is occurring, such as an interaction with an API.
  */
-const Spinner = ({ children, className, icon, testId = 'spinner' }: SpinnerProps): JSX.Element => {
+const Spinner = ({ children, className, icon, testId = 'spinner' }: SpinnerProps) => {
   return (
     <div className={cn('flex items-center gap-2', className)} data-testid={testId}>
       <FAIcon icon={icon?.icon || 'circleNotch'} spin {...icon} testId={`${testId}-icon`} />
@@ -31,11 +31,7 @@ const Spinner = ({ children, className, icon, testId = 'spinner' }: SpinnerProps
 /**
  * The Text component displays optional accompanying text for the `Spinner`.
  */
-const Text = ({
-  children,
-  className,
-  testId = 'spinner-text',
-}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+const Text = ({ children, className, testId = 'spinner-text' }: BaseComponentProps & PropsWithChildren) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {children}

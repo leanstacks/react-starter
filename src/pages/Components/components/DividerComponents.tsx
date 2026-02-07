@@ -11,10 +11,7 @@ import Divider from 'common/components/Divider/Divider';
  * The `DividerComponents` component renders a set of examples illustrating
  * the use of the `Divider` component.
  */
-const DividerComponents = ({
-  className,
-  testId = 'components-divider',
-}: BaseComponentProps): JSX.Element => {
+const DividerComponents = ({ className, testId = 'components-divider' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'className',
@@ -28,9 +25,7 @@ const DividerComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -47,8 +42,8 @@ const DividerComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Divider</span> component renders a horizontal
-          line to create visual separation of content.
+          The <span className="font-mono font-bold">Divider</span> component renders a horizontal line to create visual
+          separation of content.
         </div>
 
         <div className="my-8">
@@ -70,7 +65,7 @@ const DividerComponents = ({
             {/* Example */}
             <Divider />
           </div>
-          <CodeSnippet className="my-2" code={`<Divider />`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Divider />`}</CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -86,9 +81,8 @@ const DividerComponents = ({
             <Divider className="my-2 h-4" />
             <Divider className="my-2 h-6" />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<>
   <Divider className="my-2" />
   <Divider className="my-2 h-1" />
   <Divider className="my-2 h-2" />
@@ -96,7 +90,7 @@ const DividerComponents = ({
   <Divider className="my-2 h-4" />
   <Divider className="my-2 h-6" />
 </>`}
-          />
+          </CodeSnippet>
         </div>
 
         <Heading level={4} className="my-2">
@@ -113,9 +107,8 @@ const DividerComponents = ({
             <Divider className="my-2 h-1 bg-yellow-600" />
             <Divider className="my-2 h-1 bg-linear-to-r from-cyan-300 to-indigo-700" />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<>
+          <CodeSnippet className="my-2" language="tsx">
+            {`<>
   <Divider className="my-2 h-1" />
   <Divider className="my-2 h-1 bg-blue-600" />
   <Divider className="my-2 h-1 bg-indigo-600" />
@@ -124,7 +117,7 @@ const DividerComponents = ({
   <Divider className="my-2 h-1 bg-yellow-600" />
   <Divider className="my-2 h-1 bg-linear-to-r from-cyan-400 to-pink-600" />
 </>`}
-          />
+          </CodeSnippet>
         </div>
       </div>
     </section>

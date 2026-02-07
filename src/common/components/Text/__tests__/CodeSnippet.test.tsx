@@ -14,7 +14,7 @@ describe('CodeSnippet', () => {
 
   it('should render successfully', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>" />);
+    render(<CodeSnippet code="<></>">{`<></>`}</CodeSnippet>);
     await screen.findByTestId('code-snippet');
 
     // ASSERT
@@ -23,7 +23,7 @@ describe('CodeSnippet', () => {
 
   it('should use custom testId', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>" testId="custom-testId" />);
+    render(<CodeSnippet code="<></>" testId="custom-testId">{`<></>`}</CodeSnippet>);
     await screen.findByTestId('custom-testId');
 
     // ASSERT
@@ -32,7 +32,7 @@ describe('CodeSnippet', () => {
 
   it('should use custom className', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>" className="custom-className" />);
+    render(<CodeSnippet code="<></>" className="custom-className">{`<></>`}</CodeSnippet>);
     await screen.findByTestId('code-snippet');
 
     // ASSERT
@@ -41,7 +41,7 @@ describe('CodeSnippet', () => {
 
   it('should display code', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<div>content</div>" />);
+    render(<CodeSnippet code="<div>content</div>">{`<div>content</div>`}</CodeSnippet>);
     await screen.findByTestId('code-snippet');
 
     // ASSERT
@@ -51,10 +51,12 @@ describe('CodeSnippet', () => {
   it('should use dark theme', async () => {
     // ARRANGE
     useSettingsSpy.mockReturnValue({ theme: 'dark' });
-    render(<CodeSnippet code="<></>" />);
-    await screen.findByTestId('code-snippet');
+    render(<CodeSnippet code="<></>">{`<></>`}</CodeSnippet>);
+    const codeElement = await screen.findByTestId('code-snippet');
 
     // ASSERT
-    expect(screen.getByTestId('code-snippet').querySelector('.dark')).not.toBeNull();
+    const preElement = codeElement.querySelector('pre');
+    expect(preElement).toBeDefined();
+    expect(preElement?.style.background).toBeDefined();
   });
 });

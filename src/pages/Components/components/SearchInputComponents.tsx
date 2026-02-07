@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { type JSX, useMemo, useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { filter } from 'lodash';
 import { map } from 'lodash';
@@ -15,12 +15,8 @@ import Heading from 'common/components/Text/Heading';
  * The `SearchInputComponents` React component renders a set of examples illustrating
  * the use of the `SearchField` component.
  * @param {BaseComponentProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
-const SearchInputComponents = ({
-  className,
-  testId = 'components-search-input',
-}: BaseComponentProps): JSX.Element => {
+const SearchInputComponents = ({ className, testId = 'components-search-input' }: BaseComponentProps) => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
@@ -62,9 +58,7 @@ const SearchInputComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -108,9 +102,8 @@ const SearchInputComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">SearchInput</span> component displays a search
-        input field which may be used for a typeahead style search and permits API calls to
-        asynchronously fetch search results.
+        The <span className="font-mono font-bold">SearchInput</span> component displays a search input field which may
+        be used for a typeahead style search and permits API calls to asynchronously fetch search results.
       </div>
 
       <div className="my-8">
@@ -141,16 +134,15 @@ const SearchInputComponents = ({
           />
         </div>
 
-        <CodeSnippet
-          className="my-2"
-          code={`<SearchInput
+        <CodeSnippet className="my-2" language="tsx">
+          {`<SearchInput
   className="w-full"
   errorText={error}
   onChange={(val) => setValue(val)}
   searchResults={searchResults}
   supportingText="Start typing any color, e.g. blue."
 />`}
-        />
+        </CodeSnippet>
       </div>
     </section>
   );

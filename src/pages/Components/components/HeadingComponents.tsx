@@ -10,10 +10,7 @@ import Heading from 'common/components/Text/Heading';
  * The `HeadingComponents` React component renders a set of examples illustrating
  * the use of the `Heading` component.
  */
-const HeadingComponents = ({
-  className,
-  testId = 'components-heading',
-}: BaseComponentProps): JSX.Element => {
+const HeadingComponents = ({ className, testId = 'components-heading' }: BaseComponentProps) => {
   const data: ComponentProperty[] = [
     {
       name: 'children',
@@ -35,9 +32,7 @@ const HeadingComponents = ({
   const columnHelper = createColumnHelper<ComponentProperty>();
   const columns = [
     columnHelper.accessor('name', {
-      cell: (info) => (
-        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
-      ),
+      cell: (info) => <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>,
       header: () => 'Name',
     }),
     columnHelper.accessor('description', {
@@ -54,8 +49,8 @@ const HeadingComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">Heading</span> component displays blocks of text
-          as HTML heading elements.
+          The <span className="font-mono font-bold">Heading</span> component displays blocks of text as HTML heading
+          elements.
         </div>
 
         <div className="my-8">
@@ -73,42 +68,42 @@ const HeadingComponents = ({
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={1}>Heading 1</Heading>
           </div>
-          <CodeSnippet className="my-2" code={`<Heading level={1}>Heading 1</Heading>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Heading level={1}>Heading 1</Heading>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={2}>Heading 2</Heading>
           </div>
-          <CodeSnippet className="my-2" code={`<Heading level={2}>Heading 2</Heading>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Heading level={2}>Heading 2</Heading>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={3}>Heading 3</Heading>
           </div>
-          <CodeSnippet className="my-2" code={`<Heading level={3}>Heading 3</Heading>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Heading level={3}>Heading 3</Heading>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={4}>Heading 4</Heading>
           </div>
-          <CodeSnippet className="my-2" code={`<Heading level={4}>Heading 4</Heading>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Heading level={4}>Heading 4</Heading>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={5}>Heading 5</Heading>
           </div>
-          <CodeSnippet className="my-2" code={`<Heading level={5}>Heading 5</Heading>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Heading level={5}>Heading 5</Heading>`}</CodeSnippet>
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={6}>Heading 6</Heading>
           </div>
-          <CodeSnippet className="my-2" code={`<Heading level={6}>Heading 6</Heading>`} />
+          <CodeSnippet className="my-2" language="tsx">{`<Heading level={6}>Heading 6</Heading>`}</CodeSnippet>
         </div>
       </div>
     </section>

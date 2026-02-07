@@ -17,9 +17,8 @@ import Button from 'common/components/Button/Button';
  * The `TasksPage` component renders the layout for the tasks family of pages.
  * It provides an `Outlet` for displaying sub-pages.
  * @param {PropsWithTestId} props - Component properties.
- * @returns JSX
  */
-const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId): JSX.Element => {
+const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { data: currentUser } = useGetCurrentUser();
