@@ -16,9 +16,11 @@ _Provide clear acceptance criteria to validate the story is complete._
 
 [Gherkin syntax](https://cucumber.io/docs/gherkin/reference) example:
 
-> Given the 'PERSONA' has 'DONE SOMETHING'  
-> When the 'PERSONA' does 'ONE THING'  
-> Then the 'PERSONA' must do 'ANOTHER THING'
+> GIVEN the 'PERSONA' has 'DONE SOMETHING'  
+> WHEN the 'PERSONA' does 'ONE THING'  
+> THEN the 'PERSONA' must do 'THIS THING'
+> AND the 'PERSONA' must do 'ANOTHER THING'
+> BUT the 'PERSONA' must not do 'UNWANTED THING'
 
 ### Additional context
 
