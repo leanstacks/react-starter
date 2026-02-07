@@ -2,7 +2,10 @@
 
 A serverless, progressive, responsive starter user interface (UI) with React at the core of the technology stack.
 
-[![CI](https://github.com/leanstacks/react-starter-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/leanstacks/react-starter-kit/actions/workflows/ci.yml)
+[![CI](https://github.com/leanstacks/react-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/leanstacks/react-starter/actions/workflows/ci.yml)
+&nbsp;
+&nbsp;
+[![Code Quality](https://github.com/leanstacks/react-starter/actions/workflows/code-quality.yml/badge.svg)](https://github.com/leanstacks/react-starter/actions/workflows/code-quality.yml)
 
 ## Helpful Hints
 
@@ -256,7 +259,7 @@ The resources provisioned to host the React app are:
 
 ### CI/CD Pipelines
 
-This project uses GitHub Actions to perform DevOps automation activities such as Continuous Integration and Continous Deployment. See all project [GitHub Actions workflow runs](https://github.com/leanstacks/react-starter-kit/actions).
+This project uses GitHub Actions to perform DevOps automation activities such as Continuous Integration and Continous Deployment. See all project [GitHub Actions workflow runs](https://github.com/leanstacks/react-starter/actions).
 
 | Workflow              | Trigger                        | Description                                                                                            |
 | --------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------ |
