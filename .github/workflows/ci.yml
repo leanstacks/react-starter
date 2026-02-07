@@ -29,10 +29,10 @@ jobs:
     steps:
       # --- Setup ---
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Setup Node.js Environment
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
@@ -63,7 +63,7 @@ jobs:
 
       # --- Infrastructure Checks ---
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5.1.1
+        uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           role-session-name: ci-react-starter
