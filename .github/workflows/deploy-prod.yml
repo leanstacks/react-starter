@@ -1,4 +1,4 @@
-name: Deploy Storybook to Production
+name: Deploy to PROD
 
 on:
   release:
@@ -10,14 +10,15 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Deploy SB PR
-    uses: ./.github/workflows/deploy-storybook.yml
+    name: Deploy to PROD
+    uses: ./.github/workflows/reusable-deploy.yml
     with:
-      aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-prod
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_PROD }}
       env: prod
     secrets:
       env_file: ${{ secrets.ENV_PROD }}
+      cdk_env_file: ${{ secrets.CDK_ENV_PROD }}

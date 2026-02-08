@@ -1,0 +1,110 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      aws_region:
+        required: false
+        type: string
+        default: 'us-east-1'
+      aws_role_arn:
+        required: true
+        type: string
+      env:
+        required: false
+        type: string
+        default: 'dev'
+    secrets:
+      env_file:
+        required: true
+      cdk_env_file:
+        required: true
+
+jobs:
+  deploy:
+    name: Deploy
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Create app .env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+          echo "VITE_BUILD_DATE=$(date +'%Y-%m-%d')" >> .env
+          echo "VITE_BUILD_TIME=$(date +'%H:%M:%S%z')" >> .env
+          echo "VITE_BUILD_TS=$(date +'%Y-%m-%dT%H:%M:%S%z')" >> .env
+          echo "VITE_BUILD_COMMIT_SHA=${{ github.sha }}" >> .env
+          echo "VITE_BUILD_ENV_CODE=${{ inputs.env }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_NAME=${{ github.workflow }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_RUN_NUMBER=${{ github.run_number }}" >> .env
+          echo "VITE_BUILD_WORKFLOW_RUN_ATTEMPT=${{ github.run_attempt }}" >> .env
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.0.0
+        with:
+          role-to-assume: ${{ inputs.aws_role_arn }}
+          aws-region: ${{ inputs.aws_region }}
+          role-session-name: deploy-react-starter-${{ github.run_id }}
+
+      - name: Install infrastructure dependencies
+        working-directory: ./infrastructure
+        run: npm ci
+
+      - name: Create infrastructure .env file
+        working-directory: ./infrastructure
+        run: |
+          echo "${{ secrets.CDK_ENV_DEV }}" > .env
+          echo "✅ Infrastructure .env file created"
+
+      - name: Build infrastructure
+        working-directory: ./infrastructure
+        run: npm run build
+
+      - name: Bootstrap CDK
+        working-directory: ./infrastructure
+        run: |
+          echo "⚡ Checking if CDK bootstrap is needed..."
+          # Try to describe the bootstrap stack to see if it exists
+          if ! aws cloudformation describe-stacks --stack-name CDKToolkit --region ${{ inputs.aws_region }} >/dev/null 2>&1; then
+            echo "🚀 CDK not bootstrapped, bootstrapping now..."
+            npm run bootstrap
+          else
+            echo "✅ CDK already bootstrapped, skipping..."
+          fi
+
+      - name: Synthesize CDK stacks
+        working-directory: ./infrastructure
+        run: npm run synth
+
+      - name: Deploy CDK stacks
+        working-directory: ./infrastructure
+        run: npm run deploy:all -- --require-approval never
+
+      - name: Clean up sensitive files
+        if: always()
+        working-directory: ./infrastructure
+        run: |
+          echo "🧹 Cleaning up sensitive files..."
+          rm -f .env
+          rm -rf cdk.out
+          echo "✅ Sensitive files cleaned up"

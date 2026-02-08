@@ -1,4 +1,4 @@
-name: Deploy Storybook to QA
+name: Deploy to QA
 
 on:
   push:
@@ -9,14 +9,15 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    name: Deploy SB QA
-    uses: ./.github/workflows/deploy-storybook.yml
+    name: Deploy to QA
+    uses: ./.github/workflows/reusable-deploy.yml
     with:
-      aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-qa
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_QA }}
       env: qa
     secrets:
       env_file: ${{ secrets.ENV_QA }}
+      cdk_env_file: ${{ secrets.CDK_ENV_QA }}
