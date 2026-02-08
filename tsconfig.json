@@ -31,5 +31,6 @@
     }
   },
   "include": ["src", "./vitest.setup.ts"],
+  "exclude": ["infrastructure"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
