@@ -19,11 +19,11 @@ AWS CDK infrastructure for the React Starter application.
 
 3. **Bootstrap CDK (first time only):**
 
-This step should only be performed 1 time per AWS Account. An Account needs only to be bootstrapped for the AWS CDK once.
+   This step should only be performed 1 time per AWS Account. An Account needs only to be bootstrapped for the AWS CDK once.
 
-```bash
-npx cdk bootstrap
-```
+   ```bash
+   npx cdk bootstrap
+   ```
 
 4. **Build main application:**
 
