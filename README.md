@@ -244,18 +244,18 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 
 ### Cloud Resources
 
-The AWS resources for this application component are provisioned via AWS CloudFormation. CloudFormation templates are located in the `.aws/` directory. The `app.yml` file contains the CloudFormation template which provisions resources to host the React app. The `storybook.yml` file contains the CloudFormation template which provisions resources to host the Storybook static website.
+The AWS resources for this application component are provisioned via the AWS Cloud Development Kit (CDK) Infrastructure as Code (IaC) written in TypeScript. The AWS CDK logic and dependencies are organized as a self-contained Node.js application located in the `/infrastructure` directory.
 
-The resources provisioned to host the React app are:
+The AWS resources provisioned to host the React app are:
 
-| Resource                | Description                                                                   |
-| ----------------------- | ----------------------------------------------------------------------------- |
-| S3 Bucket               | Contains the published application.                                           |
-| S3 Bucket Policy        | Provides access to the S3 Bucket from AWS CloudFront.                         |
-| CloudFront Distribution | A CloudFront distribution to serve the SPA application.                       |
-| CloudFront Distribution | A CloudFront distribution to serve the full-stack application (UI, API, etc). |
-| Route53 RecordSet       | An `A` record for the application distribution.                               |
-| Route53 RecordSet       | An `AAAA` record for the application distribution.                            |
+| Resource                | Description                                         |
+| ----------------------- | --------------------------------------------------- |
+| S3 Bucket               | Contains the static assets for the application.     |
+| CloudFront Distribution | A CloudFront distribution to serve the application. |
+| Route53 RecordSet       | An `A` record for the CloudFront distribution.      |
+| Route53 RecordSet       | An `AAAA` record for the CloudFront distribution.   |
+
+> **NOTE:** A similar set of AWS resources may optionally be provisioned to host the Storybook application.
 
 ### CI/CD Pipelines
 
