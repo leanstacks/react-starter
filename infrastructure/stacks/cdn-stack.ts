@@ -1,6 +1,7 @@
 /**
  * An AWS CDK stack for deploying a Content Delivery Network (CDN) using CloudFront and S3.
- * @module CdnStack
+ *
+ * @module stacks/CdnStack
  */
 
 import * as cdk from 'aws-cdk-lib';

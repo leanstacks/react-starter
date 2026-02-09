@@ -25,6 +25,8 @@ describe('config', () => {
       expect(config).toBeDefined();
       expect(config.CDK_ENV).toBe('dev');
       expect(config.CDK_APP_NAME).toBe('react-starter');
+      expect(config.CDK_STORYBOOK_ASSET_PATH).toBe('../storybook-static');
+      expect(config.CDK_ASSET_PATH).toBe('../dist');
     });
 
     it('should return configuration with optional values', () => {
@@ -39,6 +41,11 @@ describe('config', () => {
       process.env.CDK_OU = 'leanstacks';
       process.env.CDK_OWNER = 'platform-team';
       process.env.CDK_ASSET_PATH = '../custom-dist';
+      process.env.CDK_STORYBOOK_ASSET_PATH = '../custom-storybook';
+      process.env.CDK_STORYBOOK_DOMAIN_NAME = 'my-app-storybook.prd.example.com';
+      process.env.CDK_STORYBOOK_CERTIFICATE_ARN = 'arn:aws:acm:us-east-1:123456789012:certificate/my-cert-storybook';
+      process.env.CDK_STORYBOOK_HOSTED_ZONE_ID = 'Z0987654321FEDCBAXYZ';
+      process.env.CDK_STORYBOOK_HOSTED_ZONE_NAME = 'prd.example.com';
 
       const config = getConfig();
 
@@ -54,6 +61,11 @@ describe('config', () => {
         CDK_REGION: 'us-east-1',
         CDK_OU: 'leanstacks',
         CDK_OWNER: 'platform-team',
+        CDK_STORYBOOK_ASSET_PATH: '../custom-storybook',
+        CDK_STORYBOOK_DOMAIN_NAME: 'my-app-storybook.prd.example.com',
+        CDK_STORYBOOK_CERTIFICATE_ARN: 'arn:aws:acm:us-east-1:123456789012:certificate/my-cert-storybook',
+        CDK_STORYBOOK_HOSTED_ZONE_ID: 'Z0987654321FEDCBAXYZ',
+        CDK_STORYBOOK_HOSTED_ZONE_NAME: 'prd.example.com',
       });
     });
 
@@ -80,6 +92,7 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
         CDK_OU: 'leanstacks',
         CDK_OWNER: 'platform-team',
       };
@@ -103,6 +116,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'qa.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
       };
 
       const tags = getTags(config);
@@ -110,7 +126,7 @@ describe('config', () => {
       expect(tags).toEqual({
         App: 'react-starter',
         Env: 'qa',
-        OU: 'leanstacks',
+        OU: 'unknown',
         Owner: 'unknown',
       });
     });
@@ -124,6 +140,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'leanstacks',
+        CDK_OWNER: 'unknown',
       };
 
       const tags = getTags(config);
@@ -150,6 +169,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
         CDK_ACCOUNT: '123456789012',
         CDK_REGION: 'us-west-2',
       };
@@ -176,6 +198,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
       };
 
       const envConfig = getEnvironmentConfig(config);
@@ -198,6 +223,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'prd.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
         CDK_ACCOUNT: '999999999999',
         CDK_REGION: 'ap-southeast-2',
       };
@@ -224,6 +252,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
       };
 
       const envConfig = getEnvironmentConfig(config);
@@ -243,6 +274,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
       };
 
       const envConfig = getEnvironmentConfig(config);
@@ -262,6 +296,9 @@ describe('config', () => {
         CDK_HOSTED_ZONE_ID: 'Z1234567890ABCDEFGHI',
         CDK_HOSTED_ZONE_NAME: 'dev.example.com',
         CDK_ASSET_PATH: '../dist',
+        CDK_STORYBOOK_ASSET_PATH: '../storybook-static',
+        CDK_OU: 'unknown',
+        CDK_OWNER: 'unknown',
       };
 
       const envConfig = getEnvironmentConfig(config);

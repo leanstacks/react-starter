@@ -33,3 +33,23 @@ new CdnStack(app, `${config.CDK_APP_NAME}-ui-cdn-${config.CDK_ENV}`, {
   hostedZoneId: config.CDK_HOSTED_ZONE_ID,
   hostedZoneName: config.CDK_HOSTED_ZONE_NAME,
 });
+
+if (config.CDK_STORYBOOK_ASSET_PATH) {
+  // Optionally create a CDN stack for hosting the Storybook application
+  new CdnStack(app, `${config.CDK_APP_NAME}-storybook-cdn-${config.CDK_ENV}`, {
+    stackName: `${config.CDK_APP_NAME}-storybook-cdn-${config.CDK_ENV}`,
+    description: `Storybook CDN for ${config.CDK_APP_NAME} - ${config.CDK_ENV}`,
+    // Use the environment variables for account and region
+    env,
+    // Tags for the stack
+    tags,
+    // Additional properties
+    appName: config.CDK_APP_NAME,
+    envName: config.CDK_ENV,
+    assetPath: config.CDK_STORYBOOK_ASSET_PATH,
+    domainName: config.CDK_STORYBOOK_DOMAIN_NAME,
+    certificateArn: config.CDK_STORYBOOK_CERTIFICATE_ARN,
+    hostedZoneId: config.CDK_STORYBOOK_HOSTED_ZONE_ID,
+    hostedZoneName: config.CDK_STORYBOOK_HOSTED_ZONE_NAME,
+  });
+}

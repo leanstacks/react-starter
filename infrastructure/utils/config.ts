@@ -1,3 +1,12 @@
+/**
+ * AWS CDK configuration utilities.
+ *
+ * This module provides functions to load and validate configuration from environment variables,
+ * generate standard resource tags, and create AWS environment configurations for CDK stacks.
+ *
+ * @module utils/config
+ */
+
 import 'dotenv/config';
 import { z } from 'zod';
 
@@ -7,15 +16,20 @@ import { z } from 'zod';
 const configSchema = z.object({
   CDK_APP_NAME: z.string().default('react-starter'),
   CDK_ENV: z.enum(['dev', 'qa', 'prd'], 'CDK_ENV must be one of: dev, qa, prd'),
-  CDK_DOMAIN_NAME: z.string().min(1, 'CDK_DOMAIN_NAME is required'),
-  CDK_CERTIFICATE_ARN: z.string().min(1, 'CDK_CERTIFICATE_ARN is required'),
-  CDK_HOSTED_ZONE_ID: z.string().min(1, 'CDK_HOSTED_ZONE_ID is required'),
-  CDK_HOSTED_ZONE_NAME: z.string().min(1, 'CDK_HOSTED_ZONE_NAME is required'),
-  CDK_ASSET_PATH: z.string().default('../dist'),
   CDK_ACCOUNT: z.string().optional(),
   CDK_REGION: z.string().optional(),
-  CDK_OU: z.string().optional(),
-  CDK_OWNER: z.string().optional(),
+  CDK_OU: z.string().default('unknown'),
+  CDK_OWNER: z.string().default('unknown'),
+  CDK_ASSET_PATH: z.string().default('../dist'),
+  CDK_DOMAIN_NAME: z.string().optional(),
+  CDK_CERTIFICATE_ARN: z.string().optional(),
+  CDK_HOSTED_ZONE_ID: z.string().optional(),
+  CDK_HOSTED_ZONE_NAME: z.string().optional(),
+  CDK_STORYBOOK_ASSET_PATH: z.string().default('../storybook-static'),
+  CDK_STORYBOOK_DOMAIN_NAME: z.string().optional(),
+  CDK_STORYBOOK_CERTIFICATE_ARN: z.string().optional(),
+  CDK_STORYBOOK_HOSTED_ZONE_ID: z.string().optional(),
+  CDK_STORYBOOK_HOSTED_ZONE_NAME: z.string().optional(),
 });
 
 /**
@@ -51,8 +65,8 @@ export function getTags(config: Config): Record<string, string> {
   return {
     App: config.CDK_APP_NAME,
     Env: config.CDK_ENV,
-    OU: config.CDK_OU || 'leanstacks',
-    Owner: config.CDK_OWNER || 'unknown',
+    OU: config.CDK_OU,
+    Owner: config.CDK_OWNER,
   };
 }
 
