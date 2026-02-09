@@ -2,7 +2,7 @@
 import * as cdk from 'aws-cdk-lib';
 
 import { getConfig, getEnvironmentConfig, getTags } from './utils/config';
-import { FrontendStack } from './stacks/frontend-stack';
+import { CdnStack } from './stacks/cdn-stack';
 
 // Load and validate configuration
 const config = getConfig();
@@ -16,10 +16,10 @@ const env = getEnvironmentConfig(config);
 // Create the CDK application
 const app = new cdk.App();
 
-// Create the frontend stack
-new FrontendStack(app, `${config.CDK_APP_NAME}-frontend-${config.CDK_ENV}`, {
-  stackName: `${config.CDK_APP_NAME}-frontend-${config.CDK_ENV}`,
-  description: `Frontend resources for ${config.CDK_APP_NAME} in the ${config.CDK_ENV} environment`,
+// Create a CDN stack for hosting the React application
+new CdnStack(app, `${config.CDK_APP_NAME}-ui-cdn-${config.CDK_ENV}`, {
+  stackName: `${config.CDK_APP_NAME}-ui-cdn-${config.CDK_ENV}`,
+  description: `UI CDN for ${config.CDK_APP_NAME} - ${config.CDK_ENV}`,
   // Use the environment variables for account and region
   env,
   // Tags for the stack
