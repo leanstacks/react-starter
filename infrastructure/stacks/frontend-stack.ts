@@ -156,7 +156,13 @@ export class FrontendStack extends cdk.Stack {
         },
       );
 
-      new route53.ARecord(this, `${props.appName}-alias-record-${props.envName}`, {
+      new route53.ARecord(this, `${props.appName}-a-record-${props.envName}`, {
+        zone: hostedZone,
+        recordName: props.domainName,
+        target: route53.RecordTarget.fromAlias(new route53_targets.CloudFrontTarget(this.distribution)),
+      });
+
+      new route53.AaaaRecord(this, `${props.appName}-aaaa-record-${props.envName}`, {
         zone: hostedZone,
         recordName: props.domainName,
         target: route53.RecordTarget.fromAlias(new route53_targets.CloudFrontTarget(this.distribution)),
