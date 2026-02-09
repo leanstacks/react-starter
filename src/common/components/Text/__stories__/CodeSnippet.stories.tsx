@@ -15,6 +15,7 @@ const meta = {
   argTypes: {
     className: { description: 'Additional CSS classes.' },
     code: { description: 'The code snippet.' },
+    language: { description: 'The programming language of the code snippet for syntax highlighting.' },
     testId: { description: 'The test identifier.' },
   },
 } satisfies Meta<typeof CodeSnippet>;
@@ -33,9 +34,9 @@ const text = `<Text>
 `;
 
 export const Simple: Story = {
-  args: { children: badge },
+  args: { children: badge, language: 'jsx' },
 };
 
 export const MultiLine: Story = {
-  args: { children: text },
+  args: { children: text, language: 'jsx' },
 };

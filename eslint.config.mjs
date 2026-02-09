@@ -43,6 +43,6 @@ export default tseslint.config(
   {
     // global ignores
     // do not add any other keys to this object
-    ignores: ['coverage/', 'dist/', 'storybook-static/'],
+    ignores: ['**/node_modules/', '**/coverage/', '**/dist/', '**/storybook-static/', '**/cdk.out/'],
   },
 );

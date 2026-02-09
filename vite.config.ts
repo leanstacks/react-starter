@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
-import { coverageConfigDefaults } from 'vitest/config';
+import { coverageConfigDefaults, configDefaults } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -17,6 +17,7 @@ export default defineConfig({
     },
   },
   test: {
+    exclude: [...configDefaults.exclude, '**/infrastructure/**'],
     coverage: {
       exclude: [
         'storybook-static/**',
@@ -24,7 +25,9 @@ export default defineConfig({
         '**/__mocks__/**',
         '**/*.stories.*',
         'src/main.tsx',
+        'src/assets',
         'src/test',
+        '**/i18n/locales/**',
         '**/tailwind.config.js',
         ...coverageConfigDefaults.exclude,
       ],
