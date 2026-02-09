@@ -46,7 +46,7 @@ jobs:
 
       - name: Create app .env file
         run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
+          echo "${{ secrets.env_file }}" > .env
           echo "VITE_BUILD_DATE=$(date +'%Y-%m-%d')" >> .env
           echo "VITE_BUILD_TIME=$(date +'%H:%M:%S%z')" >> .env
           echo "VITE_BUILD_TS=$(date +'%Y-%m-%dT%H:%M:%S%z')" >> .env
@@ -73,7 +73,7 @@ jobs:
       - name: Create infrastructure .env file
         working-directory: ./infrastructure
         run: |
-          echo "${{ secrets.CDK_ENV_DEV }}" > .env
+          echo "${{ secrets.cdk_env_file }}" > .env
           echo "✅ Infrastructure .env file created"
 
       - name: Build infrastructure
