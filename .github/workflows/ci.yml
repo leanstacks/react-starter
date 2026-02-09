@@ -4,17 +4,11 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-env:
-  AWS_CFN_TEMPLATE_APP: .aws/cfn/app.yml
-  AWS_CFN_TEMPLATE_STORYBOOK: .aws/cfn/storybook.yml
-  AWS_REGION: ${{ vars.AWS_REGION }}
-  AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
-  ENV_FILE: ${{ secrets.ENV_CI }}
 
 jobs:
   ci:
@@ -43,7 +37,7 @@ jobs:
 
       - name: 'Create .env file'
         run: |
-          echo "${{ env.ENV_FILE }}" > .env
+          echo "${{ secrets.ENV_CI }}" > .env
 
       - name: Lint
         run: npm run lint
@@ -62,19 +56,40 @@ jobs:
         run: npm run build:storybook
 
       # --- Infrastructure Checks ---
+      - name: Install infrastructure dependencies
+        working-directory: ./infrastructure
+        run: npm ci
+
+      - name: Build infrastructure
+        working-directory: ./infrastructure
+        run: npm run build
+
+      - name: Run infrastructure tests with coverage
+        working-directory: ./infrastructure
+        run: npm run test:coverage
+
+      - name: Create infrastructure .env file
+        working-directory: ./infrastructure
+        run: |
+          echo "${{ secrets.CDK_ENV_DEV }}" > .env
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          role-to-assume: ${{ vars.AWS_ROLE_ARN_DEV }}
           role-session-name: ci-react-starter
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Validate App Template
-        run: |-
-          aws cloudformation validate-template \
-          --template-body file://${{ env.AWS_CFN_TEMPLATE_APP }}
+      - name: Synthesize CDK stacks
+        working-directory: ./infrastructure
+        run: npm run synth
 
-      - name: Validate Storybook Template
-        run: |-
-          aws cloudformation validate-template \
-          --template-body file://${{ env.AWS_CFN_TEMPLATE_STORYBOOK }}
+      # Final Step: Clean up sensitive infrastructure files
+      - name: Clean up sensitive files
+        if: always()
+        working-directory: ./infrastructure
+        run: |
+          echo "🧹 Cleaning up sensitive files..."
+          rm -f .env
+          rm -rf cdk.out
+          echo "✅ Sensitive files cleaned up"
