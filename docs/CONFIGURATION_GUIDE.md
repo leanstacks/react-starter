@@ -83,6 +83,65 @@ VITE_BUILD_WORKFLOW_RUN_NUMBER=1
 VITE_BUILD_WORKFLOW_RUN_ATTEMPT=1
 ```
 
+### Unit Testing
+
+For running unit tests, create a `.env.test.local` file in the root directory with values optimized for the test environment. This configuration is used by Vitest when running unit tests.
+
+1. **Copy the example configuration file:**
+
+   ```bash
+   cp .env.example .env.test.local
+   ```
+
+2. **Update with test-specific values:**
+
+   ```env
+   # Provided by Pipeline (Simulated)
+   VITE_BUILD_DATE=1970-01-01
+   VITE_BUILD_TIME=00:00:00
+   VITE_BUILD_TS=1970-01-01T00:00:00+0000
+   VITE_BUILD_COMMIT_SHA=test
+   VITE_BUILD_ENV_CODE=test
+   VITE_BUILD_WORKFLOW_NAME=test
+   VITE_BUILD_WORKFLOW_RUN_NUMBER=1
+   VITE_BUILD_WORKFLOW_RUN_ATTEMPT=1
+
+   # API Configuration
+   # Use JSONPlaceholder for mock API testing
+   VITE_BASE_URL_API=https://jsonplaceholder.typicode.com
+
+   # Toasts Configuration
+   # Use shorter duration in tests for faster test execution
+   VITE_TOAST_AUTO_DISMISS_MILLIS=1500
+   ```
+
+#### Test Configuration Notes
+
+- **API Base URL**: Uses [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - a free fake REST API for testing. In actual test environments, API calls are typically mocked using MSW (Mock Service Worker).
+- **Toast Duration**: Reduced to 1500ms for faster test execution while still allowing time for async operations.
+- **Build Information**: All build-related variables are set to static test values, ensuring consistent snapshots and reproducible test results.
+- **Environment Code**: Set to `test` to distinguish test runs from development and production.
+
+#### Usage with MSW
+
+The test configuration works seamlessly with [MSW](https://mswjs.io/) (Mock Service Worker), which intercepts HTTP requests in tests. The `VITE_BASE_URL_API` can point to a test server, and MSW handlers will intercept and mock responses:
+
+```typescript
+// Example MSW handler in tests
+import { http, HttpResponse } from 'msw';
+import { setupServer } from 'msw/node';
+
+const server = setupServer(
+  http.get('https://jsonplaceholder.typicode.com/users', () => {
+    return HttpResponse.json([{ id: 1, name: 'Test User' }]);
+  }),
+);
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+```
+
 ---
 
 ## Infrastructure Configuration
