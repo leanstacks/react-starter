@@ -257,19 +257,17 @@ The AWS resources provisioned to host the React app are:
 
 > **NOTE:** A similar set of AWS resources may optionally be provisioned to host the Storybook application.
 
-### CI/CD Pipelines
+## Documentation
 
-This project uses GitHub Actions to perform DevOps automation activities such as Continuous Integration and Continous Deployment. See all project [GitHub Actions workflow runs](https://github.com/leanstacks/react-starter/actions).
+For detailed guides and reference materials, see the [Project Documentation](docs/README.md).
 
-| Workflow              | Trigger                        | Description                                                                                            |
-| --------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| CI                    | Pull Request for `main` branch | Builds, lints, and tests the application. Builds Storybook. Validates the AWS CloudFormation template. |
-| Deploy to Development | Push to `main` branch          | Deploys AWS CloudFormation stack. Builds and deploys the application.                                  |
-| Deploy to QA          | Push to `release/*` branch     | Deploys AWS CloudFormation stack. Builds and deploys the application.                                  |
-| Deploy to Production  | Publish a Release              | Deploys AWS CloudFormation stack. Builds and deploys the application.                                  |
+## License
 
-## Related Information
+This project is licensed under the MIT License - see [LICENSE](./LICENSE) file for details.
 
+## Further Reading
+
+- [Project Documentation](./docs/README.md)
 - [Vite][vite]
 - [React][react]
 - [React Router][reactrouter]
