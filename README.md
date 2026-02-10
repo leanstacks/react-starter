@@ -151,59 +151,7 @@ The _Tailwind CSS IntelliSense_ extension is a must-have companion in all projec
 
 ## Configuration
 
-The application is configured using Environment Variables. Because single-page applications are static, environment variable values are injected into the application during the build. The environment variables may be sourced from the environment or `.env` files as described in the [Vite documentation](https://vitejs.dev/guide/env-and-mode.html).
-
-### `.env` files
-
-> **NOTE:** Because they may contain sensitive information, `.env` files are not committed to the repository.
-
-After project installation and before running the application locally, create the following `.env` files in the project base directory. Copy the `.env.example` file to get started. Learn more in the official [Vite guide for environment variables and modes](https://vitejs.dev/guide/env-and-mode.html).
-
-#### `.env.local`
-
-The `.env.local` configuration file provides the configuration values when the application is started on a developer's local machine.
-
-```
-# Provided by Pipeline (Simulated)
-VITE_BUILD_DATE=1970-01-01
-VITE_BUILD_TIME=00:00:00
-VITE_BUILD_TS=1970-01-01T00:00:00+0000
-VITE_BUILD_COMMIT_SHA=local
-VITE_BUILD_ENV_CODE=local
-VITE_BUILD_WORKFLOW_NAME=local
-VITE_BUILD_WORKFLOW_RUN_NUMBER=1
-VITE_BUILD_WORKFLOW_RUN_ATTEMPT=1
-
-# API Configuration
-VITE_BASE_URL_API=https://jsonplaceholder.typicode.com
-
-# Toasts Configuration
-VITE_TOAST_AUTO_DISMISS_MILLIS=5000
-```
-
-#### `.env.test.local`
-
-The `.env.test.local` configuration file provides configuration values used when unit tests are executed on a developer's local machine.
-
-> **NOTE:** Use the same values when running tests in a CI/CD pipeline.
-
-```
-# Provided by Pipeline (Simulated)
-VITE_BUILD_DATE=1970-01-01
-VITE_BUILD_TIME=00:00:00
-VITE_BUILD_TS=1970-01-01T00:00:00+0000
-VITE_BUILD_COMMIT_SHA=test
-VITE_BUILD_ENV_CODE=test
-VITE_BUILD_WORKFLOW_NAME=test
-VITE_BUILD_WORKFLOW_RUN_NUMBER=1
-VITE_BUILD_WORKFLOW_RUN_ATTEMPT=1
-
-# API Configuration
-VITE_BASE_URL_API=https://jsonplaceholder.typicode.com
-
-# Toasts Configuration
-VITE_TOAST_AUTO_DISMISS_MILLIS=1500
-```
+See the [Configuration Guide](./docs/CONFIGURATION_GUIDE.md) in the [project docs](./docs/README.md) for detailed information about application and infrastructure configuration.
 
 ## Available Scripts
 
