@@ -7,6 +7,14 @@ A serverless, progressive, responsive starter user interface (UI) with React at 
 &nbsp;
 [![Code Quality](https://github.com/leanstacks/react-starter/actions/workflows/code-quality.yml/badge.svg)](https://github.com/leanstacks/react-starter/actions/workflows/code-quality.yml)
 
+## License
+
+This project is licensed under the MIT License - see [LICENSE](./LICENSE) file for details.
+
+## Documentation
+
+For detailed guides and reference materials, see the [Project Documentation](docs/README.md).
+
 ## Helpful Hints
 
 ### Viewing the Starter Kit
@@ -29,7 +37,7 @@ When using the application, you may sign in with any of the JSON Placeholder [Us
 
 This project was bootstrapped with the [Vite](https://vitejs.dev/) React TypeScript template.
 
-The production technology stack includes:
+The application production technology stack includes:
 
 - React - core web user interface library
 - React Router Dom - declarative component routing
@@ -47,7 +55,7 @@ The production technology stack includes:
 - TanStack Table - advanced tables and datagrids
 - Recharts - composable charting library for React
 
-The development technology stack includes:
+The application development technology stack includes:
 
 - Vite - front end build tooling
 - Vitest - core unit test framework
@@ -55,6 +63,12 @@ The development technology stack includes:
 - Mock Service Worker - API mocking
 - Storybook - UI component visualization and documentation
 - TypeScript - the TypeScript language
+
+The infrastructure technology stack includes:
+
+- AWS CDK - framework for provisioning AWS cloud infrastructure
+- Zod - schema based validation
+- Jest: unit test framework
 
 ### Repository
 
@@ -239,31 +253,6 @@ Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localh
 ## `npm run build:storybook`
 
 Build a static version the [Storybook][storybook] UI which may be deployed to a CDN or HTTP server.
-
-## DevOps
-
-### Cloud Resources
-
-The AWS resources for this application component are provisioned via the AWS Cloud Development Kit (CDK) Infrastructure as Code (IaC) written in TypeScript. The AWS CDK logic and dependencies are organized as a self-contained Node.js application located in the `/infrastructure` directory.
-
-The AWS resources provisioned to host the React app are:
-
-| Resource                | Description                                         |
-| ----------------------- | --------------------------------------------------- |
-| S3 Bucket               | Contains the static assets for the application.     |
-| CloudFront Distribution | A CloudFront distribution to serve the application. |
-| Route53 RecordSet       | An `A` record for the CloudFront distribution.      |
-| Route53 RecordSet       | An `AAAA` record for the CloudFront distribution.   |
-
-> **NOTE:** A similar set of AWS resources may optionally be provisioned to host the Storybook application.
-
-## Documentation
-
-For detailed guides and reference materials, see the [Project Documentation](docs/README.md).
-
-## License
-
-This project is licensed under the MIT License - see [LICENSE](./LICENSE) file for details.
 
 ## Further Reading
 
