@@ -24,7 +24,7 @@ The React Starter frontend application is deployed on AWS using a modern, global
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│                        CloudFront Distribution                        │
+│                        CloudFront Distribution                       │
 │              (Global Edge Locations & Caching Layer)                 │
 ├──────────────────────────────────────────────────────────────────────┤
 │  Route 53 DNS │ Origin Access Control │ SSL/TLS Certificate          │
@@ -32,7 +32,7 @@ The React Starter frontend application is deployed on AWS using a modern, global
                 │
                 ▼
 ┌──────────────────────────────────────────────────────────────────────┐
-│                    S3 Bucket (Origin)                                 │
+│                    S3 Bucket (Origin)                                │
 │        (Hosts compiled React static assets - index.html, JS, CSS)    │
 │              (Automatic invalidation on deployment)                  │
 └──────────────────────────────────────────────────────────────────────┘
