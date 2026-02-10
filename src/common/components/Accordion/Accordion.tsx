@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, PropsWithChildren, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import noop from 'lodash/noop';
 import { animated, useSpring } from '@react-spring/web';
 
@@ -66,32 +66,38 @@ const Accordion = ({
   testId = 'accordion',
 }: AccordionProps) => {
   const [activeItems, setActiveItems] = useState<string[]>(defaultValue);
-  const addActiveItem = (item: string): void => {
-    if (!multiple) {
-      setActiveItems([item]);
-    } else if (!activeItems.includes(item)) {
-      setActiveItems([...activeItems, item]);
-    }
-  };
-  const removeActiveItem = (item: string): void => {
-    setActiveItems(activeItems.filter((i) => i !== item));
-  };
+  const addActiveItem = useCallback(
+    (item: string): void => {
+      if (!multiple) {
+        setActiveItems([item]);
+      } else {
+        setActiveItems((prev) => (!prev.includes(item) ? [...prev, item] : prev));
+      }
+    },
+    [multiple],
+  );
+
+  const removeActiveItem = useCallback((item: string): void => {
+    setActiveItems((prev) => prev.filter((i) => i !== item));
+  }, []);
 
   const [items, setItems] = useState<string[]>([]);
-  const addItem = (item: string): void => {
-    if (!items.includes(item)) {
-      setItems([...items, item]);
-    }
-  };
-  const removeItem = (item: string): void => {
-    setItems(items.filter((i) => i !== item));
-  };
+  const addItem = useCallback((item: string): void => {
+    setItems((prev) => (!prev.includes(item) ? [...prev, item] : prev));
+  }, []);
+
+  const removeItem = useCallback((item: string): void => {
+    setItems((prev) => prev.filter((i) => i !== item));
+  }, []);
+
+  const contextValue = useMemo(
+    () => ({ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }),
+    [items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem],
+  );
 
   return (
     <div className={cn(className)} data-testid={testId}>
-      <AccordionContext.Provider value={{ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }}>
-        {children}
-      </AccordionContext.Provider>
+      <AccordionContext.Provider value={contextValue}>{children}</AccordionContext.Provider>
     </div>
   );
 };
@@ -148,9 +154,11 @@ const Item = ({ children, className, value, testId = 'accordion-item' }: ItemPro
     }
   }, [activeItems, value]);
 
+  const contextValue = useMemo(() => ({ isOpen, value }), [isOpen, value]);
+
   return (
     <div className={cn('border-b border-neutral-500/50', className)} data-testid={testId}>
-      <AccordionItemContext.Provider value={{ isOpen, value }}>{children}</AccordionItemContext.Provider>
+      <AccordionItemContext.Provider value={contextValue}>{children}</AccordionItemContext.Provider>
     </div>
   );
 };
@@ -163,27 +171,30 @@ Accordion.Item = Item;
 const Trigger = ({ children, className, testId = 'accordion-trigger' }: BaseComponentProps & PropsWithChildren) => {
   const { addActiveItem, removeActiveItem } = useContext(AccordionContext);
   const { isOpen, value } = useContext(AccordionItemContext);
-  const [springs, api] = useSpring(() => ({
-    rotate: isOpen ? '180deg' : '0deg',
-  }));
+  const [springs, api] = useSpring(
+    () => ({
+      rotate: isOpen ? '180deg' : '0deg',
+    }),
+    [isOpen],
+  );
 
   /**
    * When the "isOpen" state changes, animate the rotation of the chevron.
    */
   useEffect(() => {
     api.start({ rotate: isOpen ? '180deg' : '0deg' });
-  }, [isOpen]);
+  }, [isOpen, api]);
 
   /**
    * When the trigger is clicked, update the active item.
    */
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (isOpen) {
       removeActiveItem(value);
     } else {
       addActiveItem(value);
     }
-  };
+  }, [isOpen, value, addActiveItem, removeActiveItem]);
 
   return (
     <h5 className={cn(className)} data-testid={testId}>
