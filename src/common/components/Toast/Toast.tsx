@@ -5,8 +5,8 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
+import { config } from 'common/utils/config';
 import { ToastDetail } from 'common/providers/ToastsContext';
-import { useConfig } from 'common/hooks/useConfig';
 import Button from 'common/components/Button/Button';
 import FAIcon from 'common/components/Icon/FAIcon';
 
@@ -48,8 +48,6 @@ export interface ToastProps extends BaseComponentProps {
  * used when some adverse action happens, such as an error.
  */
 const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps) => {
-  const config = useConfig();
-
   const [springs, api] = useSpring(() => ({
     from: { opacity: 1, x: 0 },
   }));
@@ -74,7 +72,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps) => {
 
       return () => clearInterval(dismissInterval);
     }
-  }, [toast, config.VITE_TOAST_AUTO_DISMISS_MILLIS]);
+  }, [toast]);
 
   return (
     <animated.div

@@ -42,7 +42,7 @@ The following environment variables are available for configuring the React appl
    ```env
    VITE_BUILD_DATE=2026-02-10
    VITE_BUILD_TIME=14:30:00
-   VITE_BUILD_TS=2026-02-10T14:30:00+0000
+   VITE_BUILD_TS=2026-02-10T14:30:00Z
    VITE_BUILD_COMMIT_SHA=abc123def456
    VITE_BUILD_ENV_CODE=dev
    VITE_BUILD_WORKFLOW_NAME=Build
@@ -52,19 +52,34 @@ The following environment variables are available for configuring the React appl
 
 ### Accessing Configuration
 
-Application configuration values are accessible directly in your React components since Vite automatically injects them:
+Application configuration values are accessed through the `config` utility, which provides type-safe, validated configuration throughout your React components and utilities. The utility validates all environment variables at runtime using Zod schema validation, ensuring type safety and early error detection.
+
+Import the `config` object from the common utilities:
 
 ```typescript
-// API base URL
-const apiUrl = import.meta.env.VITE_BASE_URL_API;
+import { config } from 'common/utils/config';
 
-// Toast settings
-const toastDuration = import.meta.env.VITE_TOAST_AUTO_DISMISS_MILLIS;
+// API base URL (type-safe string)
+const apiUrl = config.VITE_BASE_URL_API;
 
-// Build information
-const buildDate = import.meta.env.VITE_BUILD_DATE;
-const buildCommit = import.meta.env.VITE_BUILD_COMMIT_SHA;
+// Toast settings (type-safe number)
+const toastDuration = config.VITE_TOAST_AUTO_DISMISS_MILLIS;
+
+// Build information (type-safe strings)
+const buildDate = config.VITE_BUILD_DATE;
+const buildCommit = config.VITE_BUILD_COMMIT_SHA;
+const envCode = config.VITE_BUILD_ENV_CODE;
 ```
+
+**Benefits of using the `config` utility:**
+
+- **Type Safety**: All configuration values are validated against a Zod schema, ensuring correct types
+- **Validation**: Environment variables are validated on application startup, catching missing or invalid configuration early
+- **IDE Support**: Full TypeScript autocomplete and type checking for configuration values
+- **Single Source of Truth**: Configuration is centralized and consistently accessed throughout the application
+
+**Configuration Schema Location:**
+The Zod schema that validates all environment variables is defined in [src/common/utils/config.ts](../src/common/utils/config.ts). This file also exports the `Config` type for use in type annotations when needed.
 
 ### Local Development
 
@@ -75,7 +90,7 @@ VITE_BASE_URL_API=http://localhost:3000
 VITE_TOAST_AUTO_DISMISS_MILLIS=5000
 VITE_BUILD_DATE=1970-01-01
 VITE_BUILD_TIME=00:00:00
-VITE_BUILD_TS=1970-01-01T00:00:00+0000
+VITE_BUILD_TS=1970-01-01T00:00:00Z
 VITE_BUILD_COMMIT_SHA=local
 VITE_BUILD_ENV_CODE=local
 VITE_BUILD_WORKFLOW_NAME=local
@@ -99,7 +114,7 @@ For running unit tests, create a `.env.test.local` file in the root directory wi
    # Provided by Pipeline (Simulated)
    VITE_BUILD_DATE=1970-01-01
    VITE_BUILD_TIME=00:00:00
-   VITE_BUILD_TS=1970-01-01T00:00:00+0000
+   VITE_BUILD_TS=1970-01-01T00:00:00Z
    VITE_BUILD_COMMIT_SHA=test
    VITE_BUILD_ENV_CODE=test
    VITE_BUILD_WORKFLOW_NAME=test
@@ -432,15 +447,19 @@ Ensure all required configuration variables are set as the correct type.
 2. Ensure AWS CLI is configured with `aws configure`
 3. Verify with: `aws sts get-caller-identity`
 
-### Application Build Variables Not Available
+### Application Configuration Validation Error
 
-**Problem**: `import.meta.env.VITE_*` variables are undefined at runtime.
+**Problem**: Application fails to start with a configuration validation error message.
 
 **Solution**:
 
-1. Ensure variables in `.env` are prefixed with `VITE_`
-2. Restart the development server after changing `.env`
-3. Verify with: `echo $VITE_BASE_URL_API`
+1. Ensure all required variables in `.env` are present (see Environment Variables table above)
+2. Ensure variables are prefixed with `VITE_` for Vite compatibility
+3. Restart the development server after changing `.env`
+4. Verify variables are set: `echo $VITE_BASE_URL_API`
+5. The config utility will provide detailed error messages indicating which variables are missing or invalid
+
+**Note**: The application uses the `config` utility from `common/utils/config` which validates all environment variables at startup using Zod schema validation. If any required variables are missing or have invalid values, the application will fail with a clear error message indicating the issue.
 
 ### CDK Configuration Validation Errors
 

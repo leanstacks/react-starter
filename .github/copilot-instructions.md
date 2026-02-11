@@ -173,7 +173,7 @@ package.json                            # Project dependencies and scripts
 ## Testing Guidelines
 
 - Use **Vitest**.
-- Place test files next to the source file, with `.test.ts` suffix.
+- Place test files in the `__tests__` directory adjacent to the source file, with `.test.ts` suffix.
 - Use Arrange - Act - Assert (AAA) pattern for test structure:
   - **Arrange:** Set up the test environment and inputs.
   - **Act:** Call the function being tested.

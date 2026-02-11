@@ -5,7 +5,7 @@ import find from 'lodash/find';
 import { User } from 'common/api/useGetUser';
 import { UserTokens } from 'common/api/useGetUserTokens';
 import { useAxios } from 'common/hooks/useAxios';
-import { useConfig } from 'common/hooks/useConfig';
+import { config } from 'common/utils/config';
 import storage from 'common/utils/storage';
 import { QueryKey, StorageKey } from 'common/utils/constants';
 
@@ -16,7 +16,6 @@ import { QueryKey, StorageKey } from 'common/utils/constants';
 export const useSignin = () => {
   const queryClient = useQueryClient();
   const axios = useAxios();
-  const config = useConfig();
 
   /**
    * Attempts to authenticate a user.

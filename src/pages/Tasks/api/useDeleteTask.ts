@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import reject from 'lodash/reject';
 
 import { QueryKey } from 'common/utils/constants';
+import { config } from 'common/utils/config';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useAxios } from 'common/hooks/useAxios';
-import { useConfig } from 'common/hooks/useConfig';
 
 /**
  * The `useDeleteTask` mutation function variables.
@@ -23,7 +23,6 @@ export type DeleteTaskVariables = {
  */
 export const useDeleteTask = () => {
   const queryClient = useQueryClient();
-  const config = useConfig();
   const axios = useAxios();
 
   /**

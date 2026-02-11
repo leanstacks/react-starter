@@ -2,8 +2,8 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { User } from 'common/api/useGetUser';
 
 import { useAxios } from 'common/hooks/useAxios';
-import { useConfig } from 'common/hooks/useConfig';
 import { QueryKey } from 'common/utils/constants';
+import { config } from 'common/utils/config';
 
 /**
  * An API hook which fetches a collection of `User` objects.
@@ -11,7 +11,6 @@ import { QueryKey } from 'common/utils/constants';
  */
 export const useGetUsers = (): UseQueryResult<User[], Error> => {
   const axios = useAxios();
-  const config = useConfig();
 
   const getUsers = async (): Promise<User[]> => {
     const response = await axios.request({

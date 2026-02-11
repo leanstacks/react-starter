@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import ErrorBoundary from 'common/components/Errors/ErrorBoundary';
 import ErrorFallback from 'common/components/Errors/ErrorFallback';
-import ConfigContextProvider from 'common/providers/ConfigProvider';
 import SettingsContextProvider from 'common/providers/SettingsProvider';
 import AxiosContextProvider from 'common/providers/AxiosProvider';
 import { router } from 'common/components/Router/Router';
@@ -33,22 +32,20 @@ function App() {
   return (
     <div id="app" data-testid="app">
       <ErrorBoundary fallback={<ErrorFallback />}>
-        <ConfigContextProvider>
-          <QueryClientProvider client={queryClient}>
-            <SettingsContextProvider>
-              <Theme>
-                <AuthContextProvider>
-                  <AxiosContextProvider>
-                    <ToastsProvider>
-                      <RouterProvider router={router} />
-                    </ToastsProvider>
-                  </AxiosContextProvider>
-                </AuthContextProvider>
-              </Theme>
-              <ReactQueryDevtools initialIsOpen={false} />
-            </SettingsContextProvider>
-          </QueryClientProvider>
-        </ConfigContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <SettingsContextProvider>
+            <Theme>
+              <AuthContextProvider>
+                <AxiosContextProvider>
+                  <ToastsProvider>
+                    <RouterProvider router={router} />
+                  </ToastsProvider>
+                </AxiosContextProvider>
+              </AuthContextProvider>
+            </Theme>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </SettingsContextProvider>
+        </QueryClientProvider>
       </ErrorBoundary>
     </div>
   );

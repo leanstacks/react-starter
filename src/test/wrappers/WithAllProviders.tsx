@@ -2,7 +2,6 @@ import { PropsWithChildren } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 
-import ConfigContextProvider from 'common/providers/ConfigProvider';
 import SettingsContextProvider from 'common/providers/SettingsProvider';
 import AuthContextProvider from 'common/providers/AuthProvider';
 import ToastsProvider from 'common/providers/ToastsProvider';
@@ -18,17 +17,15 @@ import { queryClient } from '../query-client';
  */
 const WithAllProviders = ({ children }: PropsWithChildren) => {
   return (
-    <ConfigContextProvider>
-      <QueryClientProvider client={queryClient}>
-        <SettingsContextProvider>
-          <AuthContextProvider>
-            <ToastsProvider>
-              <MemoryRouter>{children}</MemoryRouter>
-            </ToastsProvider>
-          </AuthContextProvider>
-        </SettingsContextProvider>
-      </QueryClientProvider>
-    </ConfigContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <SettingsContextProvider>
+        <AuthContextProvider>
+          <ToastsProvider>
+            <MemoryRouter>{children}</MemoryRouter>
+          </ToastsProvider>
+        </AuthContextProvider>
+      </SettingsContextProvider>
+    </QueryClientProvider>
   );
 };
 
