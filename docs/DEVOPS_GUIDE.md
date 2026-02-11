@@ -32,18 +32,24 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
 - **Concurrency:**
   - Ensures only one workflow runs per branch/ref at a time; cancels in-progress runs for the same branch/ref.
 - **Timeout:** 10 minutes
+- **Prerequisites:**
+  - GitHub Actions variables must be configured:
+    - `ENV_CI` - Application environment variables for CI
+    - `CDK_ENV_DEV` - CDK infrastructure environment configuration for DEV
+    - `AWS_ROLE_ARN_DEV` - AWS IAM Role ARN for development environment
+    - `AWS_REGION` - AWS region for deployment
 - **Main Steps:**
   1. Checkout repository
   2. Setup Node.js (from `.nvmrc`, with npm cache)
   3. Install dependencies (`npm ci`)
-  4. Create application `.env` file from secrets (`ENV_CI`)
+  4. Create application `.env` file from variables (`ENV_CI`)
   5. Lint code (`npm run lint`)
   6. Check code formatting (`npm run format:check`)
   7. Build application (`npm run build`)
   8. Run unit tests with CI mode (`npm run test:ci`)
   9. Build Storybook (`npm run build:storybook`)
   10. Install and build infrastructure code
-  11. Create infrastructure `.env` file from secrets (`CDK_ENV_DEV`)
+  11. Create infrastructure `.env` file from variables (`CDK_ENV_DEV`)
   12. Configure AWS credentials using OIDC (role: `AWS_ROLE_ARN_DEV`)
   13. Synthesize CDK stacks (`npm run synth`)
   14. Clean up sensitive files (`.env`, `cdk.out`)
@@ -94,7 +100,6 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
   - GitHub Actions variables must be configured:
     - `AWS_ROLE_ARN_DEV` - AWS IAM Role ARN for development environment
     - `AWS_REGION` - AWS region for deployment (default: `us-east-1`)
-  - GitHub Actions secrets must be configured:
     - `ENV_DEV` - Application environment variables
     - `CDK_ENV_DEV` - CDK infrastructure environment configuration
 - **Execution:** Calls the reusable `Deploy` workflow
@@ -112,7 +117,6 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
   - GitHub Actions variables must be configured:
     - `AWS_ROLE_ARN_QA` - AWS IAM Role ARN for QA environment
     - `AWS_REGION` - AWS region for deployment
-  - GitHub Actions secrets must be configured:
     - `ENV_QA` - Application environment variables
     - `CDK_ENV_QA` - CDK infrastructure environment configuration
 - **Execution:** Calls the reusable `Deploy` workflow
@@ -130,7 +134,6 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
   - GitHub Actions variables must be configured:
     - `AWS_ROLE_ARN_PROD` - AWS IAM Role ARN for production environment
     - `AWS_REGION` - AWS region for deployment
-  - GitHub Actions secrets must be configured:
     - `ENV_PROD` - Application environment variables
     - `CDK_ENV_PROD` - CDK infrastructure environment configuration
 - **Execution:** Calls the reusable `Deploy` workflow
@@ -145,7 +148,6 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
   - `aws_role_arn` - AWS IAM role ARN for the target environment (required)
   - `aws_region` - AWS region for deployment (default: `us-east-1`)
   - `env` - Environment name (dev, qa, prod; default: `dev`)
-- **Secrets:**
   - `env_file` - Application environment variables (required)
   - `cdk_env_file` - CDK infrastructure environment configuration (required)
 - **Timeout:** 30 minutes
@@ -195,11 +197,6 @@ GitHub Actions variables should be configured in the repository settings:
 - `AWS_ROLE_ARN_DEV` - AWS IAM role ARN for development
 - `AWS_ROLE_ARN_QA` - AWS IAM role ARN for QA
 - `AWS_ROLE_ARN_PROD` - AWS IAM role ARN for production
-
-### Secrets
-
-GitHub Actions secrets should be configured in the repository settings:
-
 - `ENV_CI` - Environment variables for CI workflow (application)
 - `ENV_DEV` - Environment variables for DEV deployment (application)
 - `ENV_QA` - Environment variables for QA deployment (application)
