@@ -18,6 +18,5 @@ jobs:
     with:
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_QA }}
       env: qa
-    secrets:
-      env_file: ${{ secrets.ENV_QA }}
-      cdk_env_file: ${{ secrets.CDK_ENV_QA }}
+      env_file: ${{ vars.ENV_QA }}
+      cdk_env_file: ${{ vars.CDK_ENV_QA }}

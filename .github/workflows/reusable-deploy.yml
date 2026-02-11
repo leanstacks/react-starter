@@ -4,20 +4,21 @@ on:
   workflow_call:
     inputs:
       aws_region:
-        required: false
         type: string
+        required: false
         default: 'us-east-1'
       aws_role_arn:
+        type: string
         required: true
-        type: string
       env:
-        required: false
         type: string
+        required: false
         default: 'dev'
-    secrets:
       env_file:
+        type: string
         required: true
       cdk_env_file:
+        type: string
         required: true
 
 jobs:
@@ -46,7 +47,7 @@ jobs:
 
       - name: Create app .env file
         run: |
-          echo "${{ secrets.env_file }}" > .env
+          echo "${{ inputs.env_file }}" > .env
           echo "VITE_BUILD_DATE=$(date +'%Y-%m-%d')" >> .env
           echo "VITE_BUILD_TIME=$(date +'%H:%M:%S%z')" >> .env
           echo "VITE_BUILD_TS=$(date +'%Y-%m-%dT%H:%M:%S%z')" >> .env
@@ -76,7 +77,7 @@ jobs:
       - name: Create infrastructure .env file
         working-directory: ./infrastructure
         run: |
-          echo "${{ secrets.cdk_env_file }}" > .env
+          echo "${{ inputs.cdk_env_file }}" > .env
           echo "✅ Infrastructure .env file created"
 
       - name: Build infrastructure
