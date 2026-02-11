@@ -19,6 +19,5 @@ jobs:
     with:
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_PROD }}
       env: prod
-    secrets:
-      env_file: ${{ secrets.ENV_PROD }}
-      cdk_env_file: ${{ secrets.CDK_ENV_PROD }}
+      env_file: ${{ vars.ENV_PROD }}
+      cdk_env_file: ${{ vars.CDK_ENV_PROD }}
