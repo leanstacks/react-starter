@@ -2,9 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import reject from 'lodash/reject';
 
 import { Task } from './useGetUserTasks';
-import { useConfig } from 'common/hooks/useConfig';
 import { useAxios } from 'common/hooks/useAxios';
 import { QueryKey } from 'common/utils/constants';
+import { config } from 'common/utils/config';
 
 /**
  * The `CreateTaskDTO` object describes the `Task` attributes used to
@@ -29,7 +29,6 @@ export type CreateTaskVariables = {
  */
 export const useCreateTask = () => {
   const queryClient = useQueryClient();
-  const config = useConfig();
   const axios = useAxios();
 
   /**

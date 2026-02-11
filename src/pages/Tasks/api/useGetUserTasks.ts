@@ -1,8 +1,8 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 
 import { useAxios } from 'common/hooks/useAxios';
-import { useConfig } from 'common/hooks/useConfig';
 import { QueryKey } from 'common/utils/constants';
+import { config } from 'common/utils/config';
 
 /**
  * The `Task` type.
@@ -30,7 +30,6 @@ interface UseGetUserTasksProps {
  */
 export const useGetUserTasks = ({ userId }: UseGetUserTasksProps): UseQueryResult<Task[], Error> => {
   const axios = useAxios();
-  const config = useConfig();
 
   const getUserTasks = async (): Promise<Task[]> => {
     const response = await axios.request({

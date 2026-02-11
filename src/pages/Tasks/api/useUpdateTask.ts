@@ -2,8 +2,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import reject from 'lodash/reject';
 
 import { QueryKey } from 'common/utils/constants';
+import { config } from 'common/utils/config';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
-import { useConfig } from 'common/hooks/useConfig';
 import { useAxios } from 'common/hooks/useAxios';
 
 /**
@@ -22,7 +22,6 @@ export type UpdateTaskVariables = {
  */
 export const useUpdateTask = () => {
   const queryClient = useQueryClient();
-  const config = useConfig();
   const axios = useAxios();
 
   /**

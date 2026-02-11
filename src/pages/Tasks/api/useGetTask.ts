@@ -1,9 +1,9 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 
 import { useAxios } from 'common/hooks/useAxios';
-import { useConfig } from 'common/hooks/useConfig';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { QueryKey } from 'common/utils/constants';
+import { config } from 'common/utils/config';
 
 /**
  * Properties for the `useGetTask` hook.
@@ -20,7 +20,6 @@ interface UseGetTaskProps {
  */
 export const useGetTask = ({ taskId }: UseGetTaskProps): UseQueryResult<Task> => {
   const axios = useAxios();
-  const config = useConfig();
 
   const getTask = async (): Promise<Task> => {
     const response = await axios.request({

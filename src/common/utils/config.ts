@@ -18,12 +18,12 @@ const configSchema = z.object({
   VITE_BUILD_COMMIT_SHA: z.string().describe('The Git commit SHA of the build'),
   VITE_BUILD_ENV_CODE: z.string().describe('The environment code for the build (e.g., local, dev, qa, prd)'),
   VITE_BUILD_WORKFLOW_NAME: z.string().describe('The name of the CI/CD workflow that produced the build'),
-  VITE_BUILD_WORKFLOW_RUN_NUMBER: z
+  VITE_BUILD_WORKFLOW_RUN_NUMBER: z.coerce
     .number()
     .int()
     .nonnegative()
     .describe('The run number of the CI/CD workflow that produced the build'),
-  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: z
+  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: z.coerce
     .number()
     .int()
     .nonnegative()
@@ -31,7 +31,7 @@ const configSchema = z.object({
   /** API configuration */
   VITE_BASE_URL_API: z.url().describe('Base URL for REST API service'),
   /** Application configuration */
-  VITE_TOAST_AUTO_DISMISS_MILLIS: z
+  VITE_TOAST_AUTO_DISMISS_MILLIS: z.coerce
     .number()
     .int()
     .nonnegative()

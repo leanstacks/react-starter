@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import dayjs from 'dayjs';
 
-import ConfigContextProvider from 'common/providers/ConfigProvider';
 import { ToastDetail } from 'common/providers/ToastsContext';
 
 import Toast from '../Toast';
@@ -11,10 +10,8 @@ const meta = {
   component: Toast,
   decorators: [
     (Story) => (
-      <div className="w-[480px]">
-        <ConfigContextProvider>
-          <Story />
-        </ConfigContextProvider>
+      <div className="w-120">
+        <Story />
       </div>
     ),
   ],
