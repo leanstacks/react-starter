@@ -14,7 +14,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy to QA
-    uses: ./.github/workflows/reusable-deploy.yml
+    uses: ./.github/workflows/deploy-reusable.yml
     with:
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_QA }}
       env: qa
