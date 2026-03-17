@@ -3,6 +3,12 @@ import { useEffect } from 'react';
 import { BaseComponentProps } from 'common/utils/types';
 import { useSettings } from 'common/hooks/useSettings';
 
+/**
+ * The `ThemeValue` type defines the possible theme values that can be used in the application.
+ * - 'light': Represents the light theme.
+ * - 'dark': Represents the dark theme.
+ * - 'system': Represents the system theme, which will follow the user's operating system preference.
+ */
 export type ThemeValue = 'light' | 'dark' | 'system';
 
 /**
