@@ -47,7 +47,7 @@ The application production technology stack includes:
 - React Hook Form - form management, validation, error handling, custom fields, etc.
 - TailwindCSS - utility first CSS framework
 - React Spring - animations
-- Font Awesome - iconography
+- Font Awesome + Lucide - iconography
 - Google Fonts - typography
 - React i18next - internationalization
 - Zod - schema based validation
@@ -217,6 +217,7 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 - [Tailwind CSS][tailwind]
 - [Class Variance Authority][cva]
 - [Font Awesome][fontawesome]
+- [Lucide][lucide]
 - [React Spring][reactspring]
 - [React i18next][reacti18next]
 - [Recharts][recharts]
@@ -236,6 +237,7 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 [tailwind]: https://tailwindcss.com/ 'Tailwind CSS'
 [cva]: https://cva.style/ 'Class Variance Authority'
 [fontawesome]: https://fontawesome.com/ 'Font Awesome'
+[lucide]: https://lucide.dev/icons/ 'Lucide'
 [tanstack]: https://tanstack.com/ 'TanStack'
 [testing-library]: https://testing-library.com/ 'Testing Library'
 [ghactions]: https://docs.github.com/en/actions 'GitHub Actions'
