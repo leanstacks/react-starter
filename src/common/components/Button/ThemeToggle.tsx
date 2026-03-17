@@ -26,7 +26,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
         <Button
           variant="text"
           size="icon"
-          className={cn('text-light-text', className)}
+          className={cn('text-primary', className)}
           title="Dark Mode"
           onClick={() => setSettings({ theme: 'dark' })}
           testId="button-theme-dark"
@@ -37,7 +37,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps) => {
         <Button
           variant="text"
           size="icon"
-          className={cn('text-dark-text', className)}
+          className={cn('text-primary', className)}
           title="Light Mode"
           onClick={() => setSettings({ theme: 'light' })}
           testId="button-theme-light"

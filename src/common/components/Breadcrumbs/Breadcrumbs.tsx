@@ -95,11 +95,7 @@ Breadcrumbs.Item = Item;
  */
 const Link = ({ children, className, testId = 'breadcrumbs-link', ...props }: CommonLinkProps) => {
   return (
-    <CommonLink
-      className={cn('text-light-text dark:text-dark-text block max-w-40 truncate', className)}
-      data-testid={testId}
-      {...props}
-    >
+    <CommonLink className={cn('block max-w-40 truncate', className)} data-testid={testId} {...props}>
       {children}
     </CommonLink>
   );

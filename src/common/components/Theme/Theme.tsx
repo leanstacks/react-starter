@@ -21,9 +21,7 @@ const Theme = ({ className, children, testId = 'theme' }: ThemeProps) => {
 
   return (
     <div className={settings.theme} data-testid={testId}>
-      <div className={cn('bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text min-h-screen', className)}>
-        {children}
-      </div>
+      <div className={cn('bg-background text-foreground min-h-screen', className)}>{children}</div>
     </div>
   );
 };
