@@ -24,7 +24,7 @@ export enum StorageKey {
  * Default `Settings`, i.e. user preferences.
  */
 export const DEFAULT_SETTINGS: Settings = {
-  theme: 'light',
+  theme: 'system',
 };
 
 /**

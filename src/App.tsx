@@ -30,19 +30,18 @@ const queryClient = new QueryClient({
  */
 function App() {
   return (
-    <div id="app" data-testid="app">
+    <div id="app" className="bg-background text-foreground min-h-screen" data-testid="app">
       <ErrorBoundary fallback={<ErrorFallback />}>
         <QueryClientProvider client={queryClient}>
           <SettingsContextProvider>
-            <Theme>
-              <AuthContextProvider>
-                <AxiosContextProvider>
-                  <ToastsProvider>
-                    <RouterProvider router={router} />
-                  </ToastsProvider>
-                </AxiosContextProvider>
-              </AuthContextProvider>
-            </Theme>
+            <Theme />
+            <AuthContextProvider>
+              <AxiosContextProvider>
+                <ToastsProvider>
+                  <RouterProvider router={router} />
+                </ToastsProvider>
+              </AxiosContextProvider>
+            </AuthContextProvider>
             <ReactQueryDevtools initialIsOpen={false} />
           </SettingsContextProvider>
         </QueryClientProvider>

@@ -23,10 +23,7 @@ const Header = ({ testId = 'header' }: HeaderProps) => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <header
-      className="border-opacity-30 dark:border-opacity-50 flex h-16 items-center justify-between border-b border-b-neutral-500 bg-neutral-100 px-4 dark:bg-neutral-900"
-      data-testid={testId}
-    >
+    <header className="flex h-16 items-center justify-between border-b px-4 shadow-xs" data-testid={testId}>
       <div className="flex items-center">
         <Link to={isAuthenticated ? '/app/tasks' : '/'}>
           <img src={logo} alt="Logo" height="32" width="32" />

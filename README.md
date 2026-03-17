@@ -41,12 +41,13 @@ The application production technology stack includes:
 
 - React - core web user interface library
 - React Router Dom - declarative component routing
+- shadcn/ui - common component library
 - TanStack Query - asynchronous state management, caching, and data fetching
 - Axios - http client
 - React Hook Form - form management, validation, error handling, custom fields, etc.
 - TailwindCSS - utility first CSS framework
 - React Spring - animations
-- Font Awesome - iconography
+- Font Awesome + Lucide - iconography
 - Google Fonts - typography
 - React i18next - internationalization
 - Zod - schema based validation
@@ -208,6 +209,7 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 - [Vite][vite]
 - [React][react]
 - [React Router][reactrouter]
+- [shadcn/ui][shadcn]
 - [TanStack][tanstack]
 - [Axios][axios]
 - [React Hook Form][reacthookform]
@@ -215,6 +217,7 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 - [Tailwind CSS][tailwind]
 - [Class Variance Authority][cva]
 - [Font Awesome][fontawesome]
+- [Lucide][lucide]
 - [React Spring][reactspring]
 - [React i18next][reacti18next]
 - [Recharts][recharts]
@@ -228,11 +231,13 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 [react]: https://react.dev 'React'
 [reactrouter]: https://reactrouter.com/ 'React Router'
 [vite]: https://vitejs.dev/ 'Vite'
+[shadcn]: https://ui.shadcn.com/ 'shadcn/ui'
 [axios]: https://axios-http.com/ 'Axios'
 [reacthookform]: https://www.react-hook-form.com/ 'React Hook Form'
 [tailwind]: https://tailwindcss.com/ 'Tailwind CSS'
 [cva]: https://cva.style/ 'Class Variance Authority'
 [fontawesome]: https://fontawesome.com/ 'Font Awesome'
+[lucide]: https://lucide.dev/icons/ 'Lucide'
 [tanstack]: https://tanstack.com/ 'TanStack'
 [testing-library]: https://testing-library.com/ 'Testing Library'
 [ghactions]: https://docs.github.com/en/actions 'GitHub Actions'
