@@ -3,14 +3,14 @@ import { useEffect } from 'react';
 import { BaseComponentProps } from 'common/utils/types';
 import { useSettings } from 'common/hooks/useSettings';
 
-type Theme = 'light' | 'dark' | 'system';
+export type ThemeValue = 'light' | 'dark' | 'system';
 
 /**
  * Properties for the `Theme` component.
  * @see {@link BaseComponentProps}
  */
 export interface ThemeProps extends BaseComponentProps {
-  defaultTheme?: Theme;
+  defaultTheme?: ThemeValue;
 }
 
 /**

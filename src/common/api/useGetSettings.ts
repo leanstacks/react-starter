@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import Theme from 'common/components/Theme/Theme';
+import { ThemeValue } from 'common/components/Theme/Theme';
 
 import { DEFAULT_SETTINGS, QueryKey, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
@@ -10,7 +10,7 @@ import storage from 'common/utils/storage';
  * @param [updatedAt] - Optional. The timestamp the settings were last updated.
  */
 export interface Settings {
-  theme: Theme;
+  theme: ThemeValue;
   updatedAt?: string;
 }
 
