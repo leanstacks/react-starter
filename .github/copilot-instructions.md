@@ -31,7 +31,7 @@ The React application leverages a modern technology stack to ensure optimal perf
 - **HTTP Client**: Axios
 - **Styling**: TailwindCSS
 - **Component Library**: shadcn/ui
-- **Font Awesome**: icons
+- **Icons**: Font Awesome and Lucide
 - **Utility Library**: Lodash
 - **Date Library**: date-fns
 - **Unit Testing**: Vitest
@@ -53,7 +53,7 @@ src
       useGetCurrentUser.ts              # API hook for fetching current user
       useGetCurrentUser.test.ts         # Unit test for useGetCurrentUser
     /components
-      /ui                               # shadcn/ui components
+      /shadcn                           # shadcn/ui components
         button.tsx                      # Reusable button component from shadcn/ui
         input.tsx                       # Reusable input component from shadcn/ui
         label.tsx                       # Reusable label component from shadcn/ui
@@ -142,8 +142,8 @@ package.json                            # Project dependencies and scripts
 
 - Use **functional components** with hooks.
 - Use **TypeScript** for type safety.
-- Return **JSX.Element** or **false** from components.
 - Use arrow functions for components.
+- Return JSX or `null` from components.
 - Use the `data-testid` attribute to assist with testing.
 - Use default exports for components.
 - Use a **testId** prop for components that need to be tested, defaulting to the component name in kebab-case.
@@ -157,6 +157,7 @@ package.json                            # Project dependencies and scripts
 - Use **Tailwind CSS** for styling.
 - Apply base styles in `src/index.css`
 - Use CSS variables for theming (index.css).
+- Use class-variance-authority (CVA) for reusable component styles and variants, see: `src/common/utils/css.ts`.
 
 ### Configuration
 
@@ -195,8 +196,9 @@ package.json                            # Project dependencies and scripts
 
 After installing shadcn/ui:
 
-- Reusable UI components like `<Button />`, `<Input />`, `<Label />` live in `src/common/components/ui/`
-- You can override and customize each component’s styles with Tailwind and variants
+- Reusable UI components like `<Button />`, `<Input />`, `<Label />` live in `src/common/components/shadcn/`
+- DO override and customize each component’s styles with Tailwind and variants.
+- DO NOT modify shadcn/ui underlying component logic or structure, as this will make it difficult to maintain and update in the future. Instead create wrapper components if you need to add additional functionality or logic.
 - Recommended: use the CLI to scaffold new components:
 
   ```bash
