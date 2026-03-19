@@ -18,10 +18,10 @@ export interface ErrorAlertProps extends BaseComponentProps {
  */
 const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
   return (
-    <Alert variant="destructive" className={cn(className)} data-testId={testId} {...props}>
+    <Alert variant="destructive" className={cn(className)} data-testid={testId} {...props}>
       <AlertCircleIcon />
-      {title && <AlertTitle data-testId={`${testId}-title`}>{title}</AlertTitle>}
-      <AlertDescription data-testId={`${testId}-description`}>{description}</AlertDescription>
+      {title && <AlertTitle data-testid={`${testId}-title`}>{title}</AlertTitle>}
+      <AlertDescription data-testid={`${testId}-description`}>{description}</AlertDescription>
     </Alert>
   );
 };
