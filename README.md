@@ -169,14 +169,21 @@ The page will reload when source files are saved.
 
 ### `npm test`
 
+Executes the unit tests once. See the Vitest documentation about [running tests](https://vitest.dev/guide/cli.html) for more information.
+
+### `npm run test:coverage`
+
+Executes the unit tests once, producing a code coverage report.
+
+### `npm run test:watch`
+
 Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://vitest.dev/guide/cli.html) for more information.
 
 ### `npm run test:ci`
 
-Executes the test runner in `CI` mode and produces a coverage report. With `CI` mode enabled, the test runner executes all tests one time and prints a summary report to the console. A code coverage report is printed to the console immediately following the test summary.
+Executes the test runner in `CI` mode and produces a coverage report. With `CI` mode enabled, the test runner executes all tests one time silently and prints a summary report to the console. A code coverage report is printed to the console immediately following the test summary.
 
-A detailed test coverage report is created in the `./coverage` directory.
+A detailed test coverage report is created in the `./coverage` directory. Additional report formats, for example a JSON summary report, are produced which may be injested by external reporting tools.
 
 > **NOTE:** This is the command which should be utilized by CI/CD platforms.
 
@@ -191,9 +198,21 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 See the official guide for more information about [building for production](https://vitejs.dev/guide/build.html) and [deploying a static site](https://vitejs.dev/guide/static-deploy.html).
 
+### `npm run format`
+
+Runs the Prettier static code analysis and fixes problems identified to comply with Prettier formatting rules. See `.prettierrc` and `.prettierignore`.
+
+### `npm run format:check`
+
+Runs the Prettier static code analysis and prints the results to the console.
+
 ### `npm run lint`
 
 Runs the eslint static code analysis and prints the results to the console.
+
+### `npm run lint:fix`
+
+Runs the eslint static code analysis and updates source code to fix problems.
 
 ## `npm run storybook`
 

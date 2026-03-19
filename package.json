@@ -24,10 +24,11 @@
     "prepare": "husky",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage --coverage.all=false",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:ci": "vitest run --coverage --silent",
-    "test:ui": "vitest --ui --coverage --silent"
+    "test:ui": "vitest --ui --coverage --silent",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@fontsource-variable/noto-sans": "5.2.10",
