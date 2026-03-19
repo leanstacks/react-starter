@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { CircleAlertIcon, Info } from 'lucide-react';
 
-import Alert from '../Alert';
+import { Alert, AlertDescription, AlertTitle } from '../alert';
 
 const meta = {
   title: 'Common/Alert/Alert',
@@ -12,9 +13,8 @@ const meta = {
     variant: {
       description: 'Optional. The style variant.',
       control: { type: 'select' },
-      options: ['danger', 'info', 'success', 'warning'],
+      options: ['default', 'destructive', 'info', 'success', 'warning'],
     },
-    testId: { description: 'The test identifier.' },
   },
 } satisfies Meta<typeof Alert>;
 
@@ -25,93 +25,109 @@ type Story = StoryObj<typeof meta>;
 export const WithIcon: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Icon icon="circleExclamation" />
-      <Alert.Title>Something unexpected has happened!</Alert.Title>
-      <Alert.Description>
+      <CircleAlertIcon />
+      <AlertTitle>Something unexpected has happened!</AlertTitle>
+      <AlertDescription>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
         Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
         Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
         incididunt.
-      </Alert.Description>
+      </AlertDescription>
     </Alert>
   ),
   args: {
-    variant: 'danger',
+    variant: 'destructive',
   },
 };
 
 export const NoIcon: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Title>Something unexpected has happened!</Alert.Title>
-      <Alert.Description>
+      <AlertTitle>Something unexpected has happened!</AlertTitle>
+      <AlertDescription>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
         Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
         Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
         incididunt.
-      </Alert.Description>
+      </AlertDescription>
     </Alert>
   ),
   args: {
-    variant: 'danger',
+    variant: 'destructive',
   },
 };
 
 export const DescriptionOnly: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Description>
+      <AlertDescription>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
         Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
         Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
         incididunt.
-      </Alert.Description>
+      </AlertDescription>
     </Alert>
   ),
   args: {
-    variant: 'danger',
+    variant: 'destructive',
   },
 };
 
 export const TitleOnly: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Icon icon="circleExclamation" />
-      <Alert.Title>Something unexpected has happened!</Alert.Title>
+      <CircleAlertIcon />
+      <AlertTitle>Something unexpected has happened!</AlertTitle>
     </Alert>
   ),
   args: {
-    variant: 'danger',
+    variant: 'destructive',
   },
 };
 
-export const Info: Story = {
+export const DefaultVariant: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Title>Something you should know...</Alert.Title>
-      <Alert.Description>
+      <Info />
+      <AlertTitle>Something you should know...</AlertTitle>
+      <AlertDescription>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
         Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
         Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
         incididunt.
-      </Alert.Description>
+      </AlertDescription>
     </Alert>
   ),
-  args: {
-    variant: 'info',
-  },
 };
 
-export const Warning: Story = {
+export const DestructiveVariant: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Title>Proceed with caution!</Alert.Title>
-      <Alert.Description>
+      <CircleAlertIcon />
+      <AlertTitle>Something unexpected has happened!</AlertTitle>
+      <AlertDescription>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
         Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
         Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
         incididunt.
-      </Alert.Description>
+      </AlertDescription>
+    </Alert>
+  ),
+  args: {
+    variant: 'destructive',
+  },
+};
+
+export const WarningVariant: Story = {
+  render: (args) => (
+    <Alert {...args}>
+      <AlertTitle>Proceed with caution!</AlertTitle>
+      <AlertDescription>
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
+        Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
+        Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
+        incididunt.
+      </AlertDescription>
     </Alert>
   ),
   args: {
@@ -119,16 +135,16 @@ export const Warning: Story = {
   },
 };
 
-export const Success: Story = {
+export const SuccessVariant: Story = {
   render: (args) => (
     <Alert {...args}>
-      <Alert.Title>You did it!</Alert.Title>
-      <Alert.Description>
+      <AlertTitle>You did it!</AlertTitle>
+      <AlertDescription>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore a.
         Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est justo veniam.
         Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
         incididunt.
-      </Alert.Description>
+      </AlertDescription>
     </Alert>
   ),
   args: {

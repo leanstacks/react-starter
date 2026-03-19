@@ -1,11 +1,13 @@
+import { AlertCircleIcon } from 'lucide-react';
+
 import { cn } from 'common/utils/css';
-import { FAIconProps } from '../Icon/FAIcon';
-import Alert, { AlertProps } from './Alert';
+import { Alert, AlertDescription, AlertTitle } from '../shadcn/alert';
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `ErrorAlert` component.
  */
-export interface ErrorAlertProps extends Omit<AlertProps, 'variant'>, Partial<Pick<FAIconProps, 'icon'>> {
+export interface ErrorAlertProps extends BaseComponentProps {
   title?: string;
   description: string;
 }
@@ -14,19 +16,12 @@ export interface ErrorAlertProps extends Omit<AlertProps, 'variant'>, Partial<Pi
  * The `ErrorAlert` component renders a bespoke `Alert` layout for error
  * messages.
  */
-const ErrorAlert = ({
-  className,
-  description,
-  icon = 'circleExclamation',
-  testId = 'alert-error',
-  title,
-  ...props
-}: ErrorAlertProps) => {
+const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
   return (
-    <Alert variant="danger" className={cn(className)} testId={testId} {...props}>
-      <Alert.Icon icon={icon} testId={`${testId}-icon`} />
-      {title && <Alert.Title testId={`${testId}-title`}>{title}</Alert.Title>}
-      <Alert.Description testId={`${testId}-description`}>{description}</Alert.Description>
+    <Alert variant="destructive" className={cn(className)} data-testId={testId} {...props}>
+      <AlertCircleIcon />
+      {title && <AlertTitle data-testId={`${testId}-title`}>{title}</AlertTitle>}
+      <AlertDescription data-testId={`${testId}-description`}>{description}</AlertDescription>
     </Alert>
   );
 };
