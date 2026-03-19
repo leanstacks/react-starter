@@ -245,24 +245,58 @@ Dependencies: clsx, class-variance-authority
 
 ### Wrapping shadcn Components
 
-Create wrapper components to standardize usage across your application:
+**Only wrap shadcn components when you need to adjust their behavior.** For style, variant, or CVA configuration changes, modify the component directly in `src/common/components/shadcn/` instead. This keeps base components clean and centralizes visual variants in one place.
+
+#### Example: Alert Components
+
+The project provides a great example of this pattern with the Alert components:
+
+**When NOT to Wrap — Modify Variants/Styles Directly:**
+
+The base [shadcn Alert component](src/common/components/shadcn/alert.tsx) defines all visual variants (default, destructive, success, warning) and style configurations directly using CVA:
 
 ```typescript
-// src/common/components/Button/Button.tsx
-import { Button as ShadcnButton, ButtonProps } from 'common/components/shadcn/button';
+const alertVariants = cva('group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 ...', {
+  variants: {
+    variant: {
+      default: 'bg-card text-card-foreground',
+      destructive: 'bg-card text-destructive *:[svg]:text-current',
+      success: 'bg-card text-success *:[svg]:text-current',
+      warning: 'bg-card text-warning *:[svg]:text-current',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+```
 
-export interface CustomButtonProps extends ButtonProps {
-  isLoading?: boolean;
-}
+Style and variant adjustments stay here, not in wrapper components.
 
-export const Button = ({ isLoading, children, ...props }: CustomButtonProps) => {
+**When to Wrap — Add Behavior/Functionality:**
+
+The [ErrorAlert wrapper](src/common/components/Alert/ErrorAlert.tsx) extends the Alert for a specific use case by adding optional title handling and structured error presentation:
+
+```typescript
+const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
   return (
-    <ShadcnButton disabled={isLoading} {...props}>
-      {isLoading ? 'Loading...' : children}
-    </ShadcnButton>
+    <Alert variant="destructive" className={cn(className)} data-testId={testId} {...props}>
+      <AlertCircleIcon />
+      {title && <AlertTitle data-testId={`${testId}-title`}>{title}</AlertTitle>}
+      <AlertDescription data-testId={`${testId}-description`}>{description}</AlertDescription>
+    </Alert>
   );
 };
 ```
+
+This wrapper adds behavior-specific logic while reusing the base Alert's styles and CVA configuration.
+
+#### General Pattern
+
+Follow this approach for all shadcn components:
+
+- **Modify the shadcn component** (`src/common/components/shadcn/*.tsx`) for all visual customizations, variants, and CVA configuration
+- **Create a wrapper** (`src/common/components/ComponentName/*.tsx`) only when adding behavior, functionality, or context-specific logic
 
 ### Testing shadcn Components
 

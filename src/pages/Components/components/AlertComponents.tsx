@@ -1,11 +1,12 @@
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
+import { AlertCircleIcon, HeartHandshake } from 'lucide-react';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
 import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Heading from 'common/components/Text/Heading';
-import Alert from 'common/components/Alert/Alert';
+import { Alert, AlertDescription, AlertTitle } from 'common/components/shadcn/alert';
 
 /**
  * The `AlertComponents` React component renders a set of examples illustrating
@@ -64,47 +65,42 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
       <Heading level={3}>Examples</Heading>
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Alert variant="danger">
-            <Alert.Icon icon="circleExclamation" />
-            <Alert.Title>Uh oh!</Alert.Title>
-            <Alert.Description>Something unexpected has occurred. Please excuse our mess.</Alert.Description>
+          <Alert>
+            <HeartHandshake />
+            <AlertTitle>Tip</AlertTitle>
+            <AlertDescription>
+              Use a default alert for general information. This may be useful in various scenarios such as providing
+              helpful tips or guidance.
+            </AlertDescription>
           </Alert>
         </div>
         <CodeSnippet className="my-2" language="tsx">
-          {`<Alert variant="danger">
-  <Alert.Icon icon="circleExclamation" />
-  <Alert.Title>Uh oh!</Alert.Title>
-  <Alert.Description>
-    Something unexpected has occurred. Please excuse our mess.
-  </Alert.Description>
+          {`<Alert>
+  <HeartHandshake />
+  <AlertTitle>Tip</AlertTitle>
+  <AlertDescription>
+    Use a default alert for general information. This may be useful in various scenarios such as providing
+    helpful tips or guidance.
+  </AlertDescription>
 </Alert>`}
         </CodeSnippet>
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Alert variant="info">
-            <Alert.Icon icon="circleInfo" />
-            <Alert.Title>Something you should know...</Alert.Title>
-            <Alert.Description>
-              Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore
-              a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est
-              justo veniam. Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet
-              qui labore a neque incididunt.
-            </Alert.Description>
+          <Alert variant="destructive">
+            <AlertCircleIcon />
+            <AlertTitle>Uh oh!</AlertTitle>
+            <AlertDescription>Something unexpected has occurred. Please excuse our mess.</AlertDescription>
           </Alert>
         </div>
         <CodeSnippet className="my-2" language="tsx">
-          {`<Alert variant="info">
-  <Alert.Icon icon="circleInfo" />
-  <Alert.Title>Something you should know...</Alert.Title>
-  <Alert.Description>
-    Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-    exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-    exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit
-    qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
-    incididunt.
-  </Alert.Description>
+          {`<Alert variant="destructive">
+  <AlertCircleIcon />
+  <AlertTitle>Uh oh!</AlertTitle>
+  <AlertDescription>
+    Something unexpected has occurred. Please excuse our mess.
+  </AlertDescription>
 </Alert>`}
         </CodeSnippet>
       </div>
@@ -112,25 +108,25 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Alert variant="warning">
-            <Alert.Title>Proceed with caution!</Alert.Title>
-            <Alert.Description>
+            <AlertTitle>Proceed with caution!</AlertTitle>
+            <AlertDescription>
               Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore
               a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est
               justo veniam. Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet
               qui labore a neque incididunt.
-            </Alert.Description>
+            </AlertDescription>
           </Alert>
         </div>
         <CodeSnippet className="my-2" language="tsx">
           {`<Alert variant="warning">
-  <Alert.Title>Proceed with caution!</Alert.Title>
-  <Alert.Description>
+  <AlertTitle>Proceed with caution!</AlertTitle>
+  <AlertDescription>
     Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
     exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
     exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit
     qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
     incididunt.
-  </Alert.Description>
+  </AlertDescription>
 </Alert>`}
         </CodeSnippet>
       </div>
@@ -138,25 +134,25 @@ const AlertComponents = ({ className, testId = 'components-alert' }: BaseCompone
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Alert variant="success">
-            <Alert.Title>You did it!</Alert.Title>
-            <Alert.Description>
+            <AlertTitle>You did it!</AlertTitle>
+            <AlertDescription>
               Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero exercitation labore
               a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum exercitation voluptate. Aute et ut est
               justo veniam. Ut do convallis reprehenderit qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet
               qui labore a neque incididunt.
-            </Alert.Description>
+            </AlertDescription>
           </Alert>
         </div>
         <CodeSnippet className="my-2" language="tsx">
           {`<Alert variant="success">
-  <Alert.Title>You did it!</Alert.Title>
-  <Alert.Description>
+  <AlertTitle>You did it!</AlertTitle>
+  <AlertDescription>
     Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
     exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
     exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit
     qui. Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque
     incididunt.
-  </Alert.Description>
+  </AlertDescription>
 </Alert>`}
         </CodeSnippet>
       </div>
