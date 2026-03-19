@@ -32,6 +32,7 @@ The React application leverages a modern technology stack to ensure optimal perf
 - **Styling**: TailwindCSS
 - **Component Library**: shadcn/ui
 - **Icons**: Font Awesome and Lucide
+- **Fonts**: Fontsource
 - **Utility Library**: Lodash
 - **Date Library**: date-fns
 - **Unit Testing**: Vitest
