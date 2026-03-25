@@ -33,7 +33,106 @@ There are some limitations to the JSON Placeholder APIs. The primary limitation 
 
 When using the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Kamren` or `Samantha` and password `abc123`.
 
-## About
+## Features
+
+### Core Architecture
+
+- **Type-safe development** with TypeScript strict mode enabled across the entire codebase
+- **Modular component architecture** with separation of concerns: common shared components, hooks, utilities, and page-specific components with co-located tests
+- **React Router DOM** for declarative, nested routing with lazy-loaded code splitting and `Suspense` boundary integration
+- **Context API + custom hooks** for global state management (authentication, settings, notifications, API configuration)
+- **Efficient re-renders** with React hooks best practices, memoization where appropriate, and optimized context selectors
+
+### Component Library & Common Components
+
+- **shadcn/ui** base component library with full customization via Tailwind CSS variants and CVA (Class Variance Authority)
+- **Pre-built common components** including Header, Layout, Dialog, Dropdown, Menu, Accordion, Tabs, Card, Badge, and more
+- **Icon system** with Font Awesome and Lucide icons for consistent iconography across the application
+- **Accessible, semantic HTML** components following WAI-ARIA guidelines for inclusive user experiences
+- **Composition-based component patterns** encouraging reusability and maintainability over implementation inheritance
+
+### Form Management & Validation
+
+- **React Hook Form** for performant, flexible form handling with minimal re-renders
+- **Zod schema validation** providing compile-time type safety and runtime validation
+- **Custom field components** integrating with shadcn/ui for consistent styled form inputs
+- **Error handling and display** with user-friendly validation messages and field-level feedback
+- **Form state persistence** via browser storage utilities for seamless user experience
+
+### API Integration & State Management
+
+- **Axios HTTP client** with centralized configuration, request/response interceptors, and error handling
+- **TanStack Query (React Query)** for declarative data fetching, caching, synchronization, and background updates
+- **Custom API hooks** (e.g., `useGetCurrentUser`, `useGetSettings`) encapsulating common API operations
+- **Optimistic updates** with automatic cache invalidation and rollback on errors
+- **Request deduplication** preventing duplicate API calls for the same resource
+- **Error boundaries and fallback UI** for graceful error handling throughout the application
+
+### Styling & Theme Management
+
+- **Tailwind CSS** utility-first CSS framework for rapid UI development and consistent design system
+- **CSS custom properties** for dynamic theming, supporting light/dark mode and custom color schemes
+- **CVA (Class Variance Authority)** for managing component styles and variants in a type-safe manner
+- **Responsive design utilities** ensuring mobile-first, adaptive layouts across all screen sizes
+- **React Spring** animations library for smooth, physics-based transitions and interactive elements
+
+### Internationalization (i18n)
+
+- **React i18next** framework for multi-language support with lazy-loaded language files
+- **Dynamic language switching** without page reload
+- **Translation management** with namespace support for organized locale files
+
+### Advanced UI Features
+
+- **TanStack Table** for powerful, headless table/datagrid components with sorting, filtering, and pagination
+- **Recharts** composable charting library for data visualization and analytics
+- **Modal dialogs and dropdowns** with context-aware positioning and keyboard navigation
+- **Toast notifications system** for non-intrusive user feedback (success, error, warning, info states)
+- **Loading and skeleton UI** with `Suspense` boundaries for streaming updates and better perceived performance
+
+### Configuration Management
+
+- **Environment-based configuration** using `.env` files with `VITE_` prefixed variables for frontend access
+- **Type-safe config initialization** with Zod schema validation at application startup
+- **Runtime configuration switching** without redeployment (e.g., API endpoints, feature flags)
+- **Development vs. production config separation** with sensible defaults and override capabilities
+
+### Code Quality & Testing
+
+- **Vitest** as the core unit testing framework with V8 code coverage support
+- **React Testing Library** for user-centric component testing (prefer testing behaviors over implementation)
+- **Mock Service Worker (MSW)** for seamless API mocking in both tests and Storybook
+- **Co-located test files** (`.test.ts`, `.test.tsx`) adjacent to source for easy maintenance and discovery
+- **80% minimum code coverage** requirement ensuring testability and reliability
+- **Test utilities and helpers** (`test-utils.tsx`) for consistent test setup and common operations
+- **ESLint** static analysis with TypeScript-aware rules for code consistency
+- **Prettier** automatic code formatting ensuring uniform style across contributions
+
+### DevOps & Infrastructure
+
+- **AWS CDK** infrastructure-as-code framework for provisioning and managing cloud resources
+- **CloudFront distribution** for global CDN delivery with S3 bucket integration
+- **Automated deployments** via AWS CDK with separate environment configurations (dev/qa/prd)
+- **Environment-based tagging** of AWS resources for cost allocation and governance
+- **GitHub Actions CI/CD** workflows for continuous integration, code quality checks, and automated deployments
+
+### Documentation & Developer Experience
+
+- **Storybook UI** for isolated component development, documentation, and visual testing
+- **Inline code comments** explaining complex logic and architectural decisions
+- **Project documentation** guides covering configuration, infrastructure, shadcn/ui setup, and more
+- **Type definitions** and JSDoc comments for better IDE intellisense and developer handoff
+- **Consistent file organization** following established patterns enabling developers to navigate and extend the codebase confidently
+
+### AI-Assisted Coding
+
+- **GitHub Copilot instructions** (`copilot-instructions.md`) providing comprehensive guidance for agentic AI coding
+- **Project-specific coding standards** documented for AI assistants including TypeScript conventions, React patterns, and testing practices
+- **Architecture and file organization** guidance enabling AI agents to generate consistent, maintainable code
+- **Tool restrictions and best practices** defined for AI-assisted code generation, refactoring, and documentation
+- **Seamless AI integration** with VS Code for leveraging GitHub Copilot and other AI agents within your development workflow
+
+## Technology Stack
 
 This project was bootstrapped with the [Vite](https://vitejs.dev/) React TypeScript template.
 
