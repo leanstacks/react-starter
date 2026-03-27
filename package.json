@@ -1,12 +1,12 @@
 {
-  "name": "react-starter",
+  "name": "@leanstacks/react-starter",
   "description": "A starter project for React applications using a curated technology stack for optimal performance, reliability, and maintainability.",
   "keywords": [
     "react, typescript, vite"
   ],
   "author": "LeanStacks",
   "license": "MIT",
-  "version": "1.4.0",
+  "version": "1.5.0-alpha.1",
   "type": "module",
   "repository": {
     "type": "git",
