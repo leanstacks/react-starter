@@ -1,6 +1,6 @@
 {
   "name": "@leanstacks/react-starter-infrastructure",
-  "version": "1.5.0-alpha.1",
+  "version": "1.5.0",
   "private": true,
   "scripts": {
     "build": "tsc",
