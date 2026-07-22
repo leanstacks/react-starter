@@ -77,7 +77,7 @@ const AboutPage = () => {
 
   return (
     <Page testId="page-about">
-      <Container>
+      <Container size="md">
         <div className="space-y-8 py-8">
           {/* Page Header */}
           <div className="space-y-4">
