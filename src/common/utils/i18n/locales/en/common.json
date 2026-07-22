@@ -1,4 +1,13 @@
 {
+  "about": "About the React Starter Kit",
+  "aboutDescription": "The React Starter Kit is designed to help you quickly set up and develop React applications. It provides a solid foundation with pre-configured tools and best practices.",
+  "attribute": "Attribute",
+  "buildDate": "Build date",
+  "buildInformation": "Build Information",
+  "buildTime": "Build time",
+  "buildTimestamp": "Build timestamp",
+  "commitSha": "Commit SHA",
+  "environment": "Environment",
   "creatingReactApps": "Creating React apps just got a lot simpler",
   "errors": {
     "generic": "Uh oh",
@@ -21,5 +30,9 @@
     "max_other": "Must be at most {{count}} characters. ",
     "required": "Required. "
   },
-  "welcome": "Welcome"
+  "value": "Value",
+  "welcome": "Welcome",
+  "workflowName": "Workflow name",
+  "workflowRunNumber": "Workflow run number",
+  "workflowRunAttempt": "Workflow run attempt"
 }

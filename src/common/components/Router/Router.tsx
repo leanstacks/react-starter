@@ -53,6 +53,9 @@ const TextareaComponents = lazy(() => import('pages/Components/components/Textar
 const ToastComponents = lazy(() => import('pages/Components/components/ToastComponents'));
 const ToggleComponents = lazy(() => import('pages/Components/components/ToggleComponents'));
 
+// About Page Family
+const AboutPage = lazy(() => import('pages/About/AboutPage'));
+
 // Tasks Page Family
 const TasksPage = lazy(() => import('pages/Tasks/TasksPage'));
 const TaskListLayout = lazy(() => import('pages/Tasks/components/TaskListLayout'));
@@ -229,6 +232,10 @@ export const routes: RouteObject[] = [
                 element: withSuspense(<ToggleComponents />),
               },
             ],
+          },
+          {
+            path: 'about',
+            element: withSuspense(<AboutPage />),
           },
         ],
       },
