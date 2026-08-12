@@ -50,4 +50,10 @@ AWS CDK infrastructure for the React Starter application.
 
 ## Further Reading
 
-See [../docs/infrastructure.md](../docs/infrastructure.md) for complete documentation.
+See the [Infrastructure Guide](../../docs/INFRASTRUCTURE_GUIDE.md) for detailed infrastructure documentation.
+
+<br/>
+
+---
+
+:point_left: Return to the main project [README](../../README.md).
