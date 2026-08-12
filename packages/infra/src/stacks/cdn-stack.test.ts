@@ -25,7 +25,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
       };
 
       stack = new CdnStack(app, 'TestStack', props);
@@ -152,7 +152,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
         certificateArn: 'arn:aws:acm:us-east-1:123456789012:certificate/test-cert',
         domainName: 'app.example.com',
       };
@@ -224,7 +224,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'prod',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
         certificateArn: 'arn:aws:acm:us-east-1:123456789012:certificate/test-cert',
         domainName: 'app.example.com',
         hostedZoneId: 'Z1234567890ABC',
@@ -280,7 +280,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
         certificateArn: 'arn:aws:acm:us-east-1:123456789012:certificate/test-cert',
         domainName: 'app.example.com',
         hostedZoneName: 'example.com',
@@ -297,7 +297,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
         certificateArn: 'arn:aws:acm:us-east-1:123456789012:certificate/test-cert',
         domainName: 'app.example.com',
         hostedZoneId: 'Z1234567890ABC',
@@ -314,7 +314,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
         domainName: 'app.example.com',
         // certificateArn is missing
       };
@@ -340,7 +340,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'my-app',
         envName: 'staging',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
       };
 
       const stack = new CdnStack(app, 'TestStackNaming', props);
@@ -354,7 +354,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
       };
 
       const stack = new CdnStack(app, 'TestStackProperties', props);
@@ -367,7 +367,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
       };
 
       const stack = new CdnStack(app, 'TestStackInheritance', props);
@@ -384,7 +384,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
       };
 
       stack = new CdnStack(app, 'TestStackCloudFront', props);
@@ -426,7 +426,7 @@ describe('CdnStack', () => {
       const props: CdnStackProps = {
         appName: 'test-app',
         envName: 'dev',
-        assetPath: '../dist',
+        assetPath: '../web/dist',
       };
 
       stack = new CdnStack(app, 'TestStackS3', props);
