@@ -158,7 +158,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## Infrastructure Test Coverage Analysis" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          npm run test:coverage -w packages/infrastructure
+          npm run test:coverage -w packages/infra
 
           # Extract coverage summary
           if [ -f packages/infra/coverage/coverage-summary.json ]; then
