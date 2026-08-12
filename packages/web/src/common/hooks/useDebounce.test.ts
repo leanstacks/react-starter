@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { renderHook, waitFor } from '@/test/test-utils';
+import { renderHook, waitFor } from '@testing-library/react';
 
 import { useDebounce } from '@/common/hooks/useDebounce';
 
