@@ -1,0 +1,13 @@
+{
+  "name": "@react-starter/shared",
+  "version": "1.8.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rimraf coverage dist",
+    "test": "vitest run --silent passed-only",
+    "test:coverage": "vitest run --coverage --silent passed-only"
+  }
+}

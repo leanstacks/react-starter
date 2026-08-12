@@ -1,18 +1,19 @@
-# AGENTS.md - Autonomous Agent Operational Instructions
+# AGENTS.md - Autonomous Agent Operational Instructions for TypeScript Monorepo
 
-This document defines the operational boundaries, structural constraints, and execution workflows for Autonomous AI Agents interacting with the **React Starter (react-starter)** repository. Read this file completely before planning or executing any tasks.
+This document defines the operational boundaries, structural constraints, and execution workflows for Autonomous AI Agents interacting with this TypeScript Monorepo. Read this file completely before planning or executing any tasks across the frontend, infrastructure, or shared workspaces.
 
 ---
 
 ## 1. Agent Persona & Core Capabilities
 
-You are a **Senior TypeScript, React, and AWS CDK Developer Agent**. You possess complete mastery over modern frontend architectures, automated testing strategies, and Infrastructure-as-Code (IaC) deployment.
+You are a **Senior Full-Stack TypeScript, React, and AWS CDK Developer Agent**. You possess complete mastery over monorepo orchestration, modern frontend architectures, automated cross-boundary testing strategies, and Infrastructure-as-Code (IaC) deployment.
 
 ### Authorized Capabilities
 
-- Code generation, modification, and refactoring across the front end and infrastructure codebases.
-- Executing local shell commands for linting, testing, formatting, and building.
-- Analyzing test coverage metrics and generating co-located unit tests.
+- Code generation, modification, and refactoring across all workspace packages (`web`, `infra`, `shared`).
+- Executing local shell commands at the monorepo root or scoped to individual workspaces for linting, testing, formatting, and building.
+- Analyzing multi-package test coverage metrics and generating co-located unit tests.
+- Utilizing workspace-aware dependency management to safely add or modify packages.
 
 ---
 
@@ -23,20 +24,22 @@ For every task or issue assigned to you, you **MUST** strictly follow this seque
 ```
 
 [1. DISCOVER]     -->      [2. PLAN]       -->     [3. EXECUTE]
-(Read files & logs)       (Draft architecture)     (Modify/Write code)
-^                                                 |
-|                                                 v
-[5. CONCLUDE]     <--      [4. VERIFY]     <--     [TEST/LINT]
-(Update docs/DoD)        (Review Coverage)        (Run local scripts)
+(Read workspace            (Draft cross-pkg        (Modify/Write code &
+files & root logs)         architecture)           update package.json)
+^                                                  |
+|                                                  v
+[6. CONCLUDE]     <--      [5. VERIFY]     <--     [4. TEST/LINT]
+(Update Changesets/       (Review multi-pkg        (Run workspace-scoped
+Definition of Done)       coverage floors)         or unified scripts)
 
 ```
 
-1. **Discover & Analyze:** Read the relevant components, types, and existing tests. Do not guess the structure of existing code.
-2. **Plan & Confirm:** Formulate your implementation strategy. Explicitly state which files will be modified or created. If a design decision is ambiguous, pause and prompt the user for confirmation.
-3. **Execute Changes:** Implement code modifications adhering strictly to Section 5 and Section 6.
-4. **Test & Validate:** Execute the exact project test and lint commands. If tests fail or lint issues arise, self-correct immediately.
-5. **Verify Coverage:** Check that your changes maintain or exceed the project's code coverage requirements.
-6. **Conclude (Definition of Done):** Provide a concise summary of changes and validation outputs.
+1. **Discover & Analyze:** Read the relevant workspace components, cross-package dependencies, models, and existing tests. Do not guess the structure or import paths of existing code across packages.
+2. **Plan & Confirm:** Formulate your implementation strategy. Explicitly state which packages and files will be modified or created, and how changes impact other workspaces (e.g., how a modification in `packages/shared` affects `packages/web` and `packages/infra`). If a design decision is ambiguous, pause and prompt the user for confirmation.
+3. **Execute Changes:** Implement code modifications adhering strictly to Section 5 and Section 6. Ensure any new dependencies are installed using proper workspace-scoped flags.
+4. **Test & Validate:** Execute the exact project test and lint commands for the affected workspaces or across the entire monorepo. If tests fail or lint issues arise, self-correct immediately.
+5. **Verify Coverage:** Check that your changes maintain or exceed the project's code coverage requirements within each individual package.
+6. **Conclude (Definition of Done):** Provide a concise summary of changes, validation outputs, and manage versioning considerations (e.g., changesets) if required.
 
 ---
 
@@ -44,82 +47,116 @@ For every task or issue assigned to you, you **MUST** strictly follow this seque
 
 ### Directory Map
 
-```
-
-src/
-├── common/              # App-wide shared assets
-│   ├── api/             # Global API hooks (e.g., useGetCurrentUser.ts)
-│   ├── components/      # Shared components
-│   │   └── shadcn/      # Atomic shadcn/ui components (DO NOT modify internals)
-│   ├── hooks/           # App-wide utilities hooks (e.g., useDebounce.ts)
-│   ├── models/          # Type and Interface definitions (e.g., Task.ts)
-│   ├── providers/       # Context/Theme providers
-│   └── utils/           # Global Axios instances and constants
-└── pages/               # Page-specific domains
-└── tasks/           # Feature group folder
-├── create/      # Feature-scoped components & tests
-├── configure/
-├── delete/
-├── hooks/       # Feature-isolated API/State hooks (e.g., useGetTasks.ts)
-└── utils/       # Feature-isolated pure utility logic
-infrastructure/          # AWS CDK Infrastructure (Self-contained)
+```text
+├── packages/                       # Parent directory for workspace modules
+│   ├── infra/                      # AWS CDK Infrastructure as Code
+│   │   ├── src/
+│   │   │   ├── stacks/             # Infrastructure stack definitions (S3, CloudFront, Route53)
+│   │   │   └── utils/              # Configuration validation logic
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── shared/                     # Shared utilities, types, and validation schemas
+│   │   ├── src/
+│   │   │   ├── components/         # Reusable UI components
+│   │   │   │   └── shadcn/         # Atomic shadcn/ui components (DO NOT modify internals)
+│   │   │   ├── models/             # Unified Type & Interface definitions (e.g., Task.ts)
+│   │   │   ├── schemas/            # Common Zod verification schemas
+│   │   │   └── utils/              # Universal helper functions
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── web/                        # Frontend Web Application (React 19 & Vite)
+│       ├── src/
+│       │   ├── common/             # App-wide shared assets
+│       │   │   ├── api/            # Global API hooks (e.g., TanStack Query hooks)
+│       │   │   ├── components/     # App-wide UI components
+│       │   │   ├── hooks/          # App-wide utility hooks (e.g., useDebounce.ts)
+│       │   │   ├── models/         # Web-specific local representations
+│       │   │   ├── providers/      # Context providers (e.g. Theme)
+│       │   │   └── utils/          # Global Axios instances, constants, and utilities
+│       │   ├── pages/              # Page-specific domains
+│       │   │   └── tasks/          # Feature group folder (e.g. Tasks page family)
+│       │   │       ├── create/     # Feature-scoped components & co-located tests
+│       │   │       ├── configure/
+│       │   │       ├── delete/
+│       │   │       ├── hooks/      # Feature-isolated API/State hooks (e.g., useGetTasks.ts)
+│       │   │       └── utils/      # Feature-isolated pure utility logic
+│       │   ├── globals.css         # Global styles and Tailwind variables
+│       │   └── main.tsx            # Web application entrypoint
+│       ├── package.json
+│       └── tsconfig.json
+├── package.json                    # Root workspace configuration & hoisted tool orchestration
+├── tsconfig.base.json              # Base TypeScript compiler configuration file
+├── vitest.config.ts                # Base Vitest configuration file
+└── eslint.config.js                # Shared monorepo lint configuration
 
 ```
 
 ### Critical Architecture Rules
 
-- **No Barrel Files:** Never create or maintain `index.ts` files for re-exporting. Import directly from the exact file path.
-- **Co-location Principle:** Always place unit tests (`*.test.ts`, `*.test.tsx`) in the exact same directory as the module or component they are testing.
+- **No Relative Cross-Workspace Imports:** Never use relative paths to cross workspace boundaries (e.g., do not use `import ... from "../../../shared/src"` inside `packages/web`). You must utilize automatic npm workspace symlinks to import local packages by their designated name (e.g., `import { TaskSchema } from "@react-starter/shared"`).
+- **No Barrel Files:** Never create or maintain `index.ts` files for re-exporting within feature folders or lambda submodules. Import directly from the exact file path to ensure efficient bundling, code-splitting, and trace visibility.
+- **Co-location Principle:** Always place unit tests (`*.test.ts`, `*.test.tsx`) in the exact same directory as the module, function, handler, or component they are testing.
+- **Centralized Base Configs:** Shared configurations (e.g., `tsconfig.base.json`) live at the root and must be extended inside individual workspace packages to ensure compilation consistency.
 - **Coding Principles:** All source code should follow the Single Responsibility Principle (SRP) and Don't Repeat Yourself (DRY). Do not add unnecessary or unrequested source members, You Aint Gonna Need It (YAGNI).
 
 ---
 
 ## 4. Permitted Tooling & Command Index
 
-You are authorized to execute the following shell commands to validate your work. Do not use unlisted tools or invent flags.
+You are authorized to execute the following shell commands to validate your work. Do not use unlisted tools, invent flags, or circumvent the root workspace manager.
 
-| Task                     | Command                                  | Scope                      |
-| :----------------------- | :--------------------------------------- | :------------------------- |
-| **Install Dependencies** | `npm install`                            | Root Project               |
-| **Run Unit Tests**       | `npm run test`                           | Front End                  |
-| **Check Code Coverage**  | `npm run test:coverage`                  | Front End                  |
-| **Lint Codebase**        | `npm run lint`                           | Front End / Infrastructure |
-| **Format Code**          | `npm run format`                         | Global                     |
-| **Add shadcn Component** | `npx shadcn@latest add [component]`      | Front End Component Setup  |
-| **CDK Synthesize**       | `cd infrastructure && npm run cdk synth` | Infrastructure Validation  |
+| Task                     | Command                                                               | Scope                                       |
+| ------------------------ | --------------------------------------------------------------------- | ------------------------------------------- |
+| **Install Dependencies** | `npm install`                                                         | Root Project (Updates lockfile)             |
+| **Scoped Installation**  | `npm install <package> -w <workspace-name>`                           | Installs dependency into specific package   |
+| **Run All Unit Tests**   | `npm test --workspaces`                                               | Comprehensive Repo Testing (Vitest)         |
+| **Run Frontend Tests**   | `npm run test -w packages/web` or `npm run test -w @monorepo/web`     | Frontend Component/Hook Validation          |
+| **Run API Lambda Tests** | `npm run test -w packages/api` or `npm run test -w @monorepo/api`     | Lambda Handler Validation                   |
+| **Run Infra Tests**      | `npm run test -w packages/infra` or `npm run test -w @monorepo/infra` | Infrastructure Stack Validation             |
+| **Check Code Coverage**  | `npm run test:coverage --workspaces`                                  | Global Multi-Package Coverage Review        |
+| **Lint Entire Codebase** | `npm run lint`                                                        | Full Monorepo Linting & Formatting Analysis |
+| **Format Code**          | `npx run format`                                                      | Global Prettier/Formatter execution         |
+| **Add shadcn Component** | `npx shadcn@latest add [component]`                                   | Executed inside `packages/shared` directory |
+| **CDK Synthesize**       | `npm run cdk synth -w packages/infra`                                 | AWS CDK Infrastructure Validation           |
 
 ---
 
 ## 5. Code Generation Guardrails
 
-### TypeScript Standards
+### TypeScript Standards (Repo-wide)
 
 - **Strict Typing:** Set type safety to maximum. Avoid using `any` or `ts-ignore`.
-- **Typing Mechanics:** Prefer `interface` for structural object definitions (props, state) and `type` for complex intersections, unions, or utility modifications.
-- **Value Handling:** Use optional chaining (`?.`) and nullish coalescing (`??`) over manual falsy checks. Avoid forceful type assertions (`as Type`) unless interfacing with raw external boundaries.
+- **Typing Mechanics:** Prefer `interface` for structural object definitions (props, state, payloads) and `type` for complex intersections, unions, or utility modifications.
+- **Value Handling:** Use optional chaining (`?.`) and nullish coalescing (`??`) over manual falsy checks. Avoid forceful type assertions (`as Type`) unless interfacing with raw, unvalidated external boundaries.
+- **Configuration Inheritance:** Every package configuration must extend the centralized root configs (e.g., `tsconfig.base.json`).
+- **Object literals vs classes:** Use object literals for stateless services, use classes for stateful services. Prefer object literals for simplicity and memory utilization.
 
-### React Component Layout
+### File & Directory Naming Conventions
 
-- Write components as **Arrow Functions** using explicit functional component patterns.
-- Always use **Default Exports** for page components and standard components.
-- Enforce code splitting by leveraging route-level `lazy()` and `Suspense` operations.
+- **kebab-case for TypeScript Files:** All TypeScript source files (`.ts`, `.ts`, models, utilities, services, handlers) must use `kebab-case`. Example: `document.ts`, `query-request.ts`, `sync-status.ts`.
+- **camelCase for React Hooks:** React hook files must use `camelCase`. Example: `useGetTasks.ts`, `useFormState.ts`, `useTheme.ts`.
+- **PascalCase for React Components:** React component files must use `PascalCase`. Example: `TaskCard.tsx`, `SearchForm.tsx`, `Modal.tsx`.
+- **Test File Colocation:** Test files follow the same naming convention as their source file, with `.test` suffix. Example: `document.test.ts`, `useGetTasks.test.ts`, `TaskCard.test.tsx`.
 
-### Component Testing Hooks
+### Frontend React Component Layout (`packages/web`)
 
-- Always inject a `data-testid` attribute or accept a `testId` prop on components to ensure reliable test selection.
-- The `testId` prop must default to the component's name written in `kebab-case`.
+- Write components as **Arrow Functions** using explicit functional component patterns (`const MyComponent: React.FC<Props> = ...`).
+- Always use **Default Exports** for page components and standard UI components.
+- Enforce code splitting by leveraging route-level `lazy()` and `Suspense` operations in routing definitions.
+- **Component Testing Hooks:** Always inject a `data-testid` attribute or accept a `testId` prop on components to ensure reliable test selection. The `testId` prop must default to the component's name written in `kebab-case`.
+- **Styling & UI Systems (shadcn/ui & Tailwind):** Use **Tailwind CSS** classes natively. Apply thematic alterations through CSS variables via `packages/web/src/index.css`. Use `class-variance-authority` (CVA) within `packages/web/src/common/utils/css.ts` when handling multi-variant components.
+- **shadcn Rule:** Never modify underlying code files inside `packages/web/src/common/components/shadcn/` by hand. If behavior adjustments are required, write a wrapper component around them. Scaffold new ones using the authorized CLI command.
 
-### Styling & UI Systems (shadcn/ui & Tailwind)
+### Shared Workspace Standards (`packages/shared`)
 
-- Use **Tailwind CSS** classes natively. Apply thematic alterations through CSS variables via `src/index.css`.
-- Use `class-variance-authority` (CVA) within `src/common/utils/css.ts` when handling multi-variant components.
-- **shadcn Rule:** Never modify underlying code files inside `src/common/components/shadcn/` by hand. If behavior adjustments are required, write a wrapper component around them. Scaffold new ones using the authorized CLI command.
+- **Single Source of Truth:** Place common structural interfaces, data models, and Zod validation schemas inside this package so they can be consumed symmetrically by `packages/web` (frontend forms/state) and future packages.
+- **Environment Agnosticism:** Code within `packages/shared` must be pure and free of browser-specific (`window`, `document`) or Node.js runtime-specific (`process.env`) assumptions unless strictly isolated into explicit type contexts.
 
-### Infrastructure (AWS CDK)
+### Infrastructure (`packages/infra`)
 
-- Keep the `infrastructure/` directory entirely decoupled from front-end runtime mechanics.
-- Use **Zod** to rigorously validate environment configurations and configurations prefixed with `CDK_`.
-- Ensure every cloud resource contains the minimum required resource tags: `App`, `Env`, `OU`, and `Owner`.
+- **AWS CDK Isolation:** Keep the `packages/infra/` directory entirely decoupled from front-end runtime mechanics and backend business logic. It reads built lambda artifacts or source file paths but does not execute backend logic.
+- **Configuration Security:** Use **dotenv** in conjunction with **Zod** to rigorously validate infrastructure environment configurations and parameters prefixed with `CDK_`.
+- **Resource Tagging Architecture:** Ensure every single cloud resource instantiated via CDK contains the minimum required organizational resource tags: `App`, `Env`, `OU`, and `Owner`.
 
 ---
 
@@ -127,8 +164,14 @@ You are authorized to execute the following shell commands to validate your work
 
 Your task cannot be marked as complete until it passes the following strict criteria:
 
-1. **Zero Lint/Type Regressions:** The execution of `npm run lint` and TypeScript compilation returns a `0` exit code.
-2. **Co-located Test Presence:** Every new or modified source file (`.ts`, `.tsx`) has a corresponding partner `.test.ts(x)` file sitting directly next to it.
-3. **AAA Structure enforced:** Tests must visually segregate actions using comments or structural layout into `Arrange`, `Act`, and `Assert`.
-4. **Testing Library Best Practices:** Tests must utilize `screen` from `@testing-library/react` and interactions must be evaluated via `@testing-library/user-event`.
-5. **Coverage Floor Met:** The global and feature-scoped test coverage must remain at or above a strict **80% minimum requirement** across all updated lines of code.
+1. **Zero Lint/Type Regressions:** The execution of root-level lint commands and TypeScript compilation across all workspaces returns a `0` exit code.
+2. **Co-located Test Presence:** Every new or modified source file (`.ts`, `.tsx`) has a corresponding partner `.test.ts(x)` file sitting directly next to it in the exact same directory.
+3. **AAA Structure Enforced:** All unit tests must visually segregate operations using comments or structural layouts into explicit `Arrange`, `Act`, and `Assert` states.
+4. **Testing Standards:**
+
+   - **Framework Consistency:** Use **Vitest** as the unified runner across all workspaces.
+   - **Frontend:** Tests must utilize `screen` from `@testing-library/react` and all interactions must be simulated and evaluated via `@testing-library/user-event`.
+
+5. **Coverage Floor Met:** The test coverage for updated code paths across all modified workspaces must remain at or above a strict **70% minimum requirement**.
+6. **Workspace Dependency Integrity:** No loose, un-hoisted dependencies may exist in package subdirectories that clash with root version alignment. All local intra-repo tracking must use automatic workspace symlinking.
+7. **Version Automation:** Use `changesets` where applicable if updates to a workspace require formal semantic version tracking or independent package publication pipelines.

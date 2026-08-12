@@ -15,6 +15,49 @@ This project is licensed under the MIT License - see [LICENSE](./LICENSE) file f
 
 For detailed guides and reference materials, see the [Project Documentation](docs/README.md).
 
+## Monorepo Structure
+
+This project is organized as a **TypeScript monorepo** using npm workspaces, enabling modular development, shared type definitions, and coordinated deployments across frontend, backend, and infrastructure concerns.
+
+### Packages
+
+The monorepo consists of three primary packages:
+
+#### **`packages/web`** — React Frontend Application
+
+The client-side application built with React 19, TypeScript, and Vite. This package contains all UI components, pages, routing, state management, and API integration logic. It leverages the `shared` package for common types, schemas, and components.
+
+- **Technology:** React, Vite, React Router DOM, TanStack Query, Axios, React Hook Form, Tailwind CSS, shadcn/ui
+- **Structure:** Organized by feature domains with co-located tests (`*.test.tsx`), hooks, and utilities
+- **Key Responsibilities:** UI rendering, form handling, API client interactions, client-side routing, theme management
+
+#### **`packages/shared`** — Common Types, Schemas & Components
+
+A library package providing the single source of truth for data models, validation schemas, and reusable UI components. Both the frontend (`web`) and infrastructure (`infra`) packages depend on `shared` to ensure consistent type definitions across the application.
+
+- **Technology:** TypeScript, Zod, shadcn/ui
+- **Structure:** Organized by concern: models (interfaces/types), schemas (Zod validators), components (UI library), utilities (pure functions)
+- **Key Responsibilities:** Type definitions, schema validation, shared component library, utility functions
+
+#### **`packages/infra`** — AWS CDK Infrastructure as Code
+
+Infrastructure provisioning and deployment automation using AWS CDK. This package defines all cloud resources (CloudFront, S3, Route53, etc.) and handles environment-specific configurations. It does not execute application logic but references compiled frontend artifacts and shared configuration schemas.
+
+- **Technology:** AWS CDK, TypeScript, Zod
+- **Structure:** Organized by AWS resource type with stacks and validation utilities
+- **Key Responsibilities:** Infrastructure stack definitions, deployment automation, resource tagging, environment configuration
+
+### Workspace Dependencies
+
+```
+web ──→ shared
+infra ──→ shared
+```
+
+The `web` and `infra` packages both depend on `shared` for common types and schemas, but maintain independence from each other. This architecture enables parallel development, independent testing, and clear separation of concerns across frontend and infrastructure concerns.
+
+See [AGENTS.md](./AGENTS.md) for comprehensive architectural guidelines, coding standards, and operational workflows across all packages.
+
 ## Helpful Hints
 
 ### Viewing the Starter Kit
