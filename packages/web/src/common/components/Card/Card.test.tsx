@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@/test/test-utils';
 
-import logo from 'assets/img/logo.png';
+import logo from '@/assets/img/logo.png';
 
 import Card from './Card';
 
