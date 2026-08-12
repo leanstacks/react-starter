@@ -4,7 +4,7 @@ import { render, screen } from '@/test/test-utils';
 import AboutPage from './AboutPage';
 
 // Mock the config module
-vi.mock('common/utils/config', () => ({
+vi.mock('@/common/utils/config', () => ({
   config: {
     VITE_BUILD_DATE: '2026-07-22',
     VITE_BUILD_TIME: '12:00:00',
