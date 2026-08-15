@@ -340,11 +340,11 @@ Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 The page will reload when source files are saved.
 
-## `npm run storybook -w packages/web`
+### `npm run storybook -w packages/web`
 
 Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
-## `npm run build:storybook -w packages/web`
+### `npm run build:storybook -w packages/web`
 
 Build a static version the [Storybook][storybook] UI which may be deployed to a CDN or HTTP server.
 
