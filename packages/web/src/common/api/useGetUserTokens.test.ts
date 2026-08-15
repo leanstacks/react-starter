@@ -37,7 +37,7 @@ describe('useGetTokens', () => {
       ...userTokensFixture,
       expires_at: dayjs('2024-01-01').toISOString(),
     };
-    getItemSpy.mockReturnValue(JSON.stringify(token));
+    getItemSpy.mockReturnValue(token);
     // use a specific wrapper to avoid test side effects from "AuthProvider"
     const { result } = renderHook(() => useGetUserTokens(), { wrapper: WithQueryClientProvider });
     await waitFor(() => expect(result.current.isError).toBe(true));
