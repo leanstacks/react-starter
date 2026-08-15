@@ -79,7 +79,7 @@ const envCode = config.VITE_BUILD_ENV_CODE;
 - **Single Source of Truth**: Configuration is centralized and consistently accessed throughout the application
 
 **Configuration Schema Location:**
-The Zod schema that validates all environment variables is defined in [src/common/utils/config.ts](../src/common/utils/config.ts). This file also exports the `Config` type for use in type annotations when needed.
+The Zod schema that validates all environment variables is defined in [packages/web/src/common/utils/config.ts](../packages/web/src/common/utils/config.ts). This file also exports the `Config` type for use in type annotations when needed.
 
 ### Local Development
 
@@ -175,12 +175,12 @@ The following environment variables are available for configuring the infrastruc
 | `CDK_REGION`                     | string | AWS region for deployment (e.g., `us-east-1`)                                 | Auto-detected from AWS CLI | No       |
 | `CDK_OU`                         | string | Organizational Unit for resource tagging                                      | `unknown`                  | No       |
 | `CDK_OWNER`                      | string | Owner tag for resource tracking                                               | `unknown`                  | No       |
-| `CDK_ASSET_PATH`                 | string | Path to application build artifacts (relative to infrastructure directory)    | `../dist`                  | No       |
+| `CDK_ASSET_PATH`                 | string | Path to application build artifacts (relative to packages/infra directory)    | `../web/dist`              | No       |
 | `CDK_DOMAIN_NAME`                | string | Custom domain name for the application CDN (e.g., `app.example.com`)          | -                          | No       |
 | `CDK_CERTIFICATE_ARN`            | string | ACM certificate ARN for custom domain (must be in `us-east-1` for CloudFront) | -                          | No       |
 | `CDK_HOSTED_ZONE_ID`             | string | Route53 hosted zone ID for DNS records                                        | -                          | No       |
 | `CDK_HOSTED_ZONE_NAME`           | string | Route53 hosted zone name (e.g., `example.com`)                                | -                          | No       |
-| `CDK_STORYBOOK_ASSET_PATH`       | string | Path to Storybook build artifacts (relative to infrastructure directory)      | `../storybook-static`      | No       |
+| `CDK_STORYBOOK_ASSET_PATH`       | string | Path to Storybook build artifacts (relative to packages/infra directory)      | `../web/storybook-static`  | No       |
 | `CDK_STORYBOOK_DOMAIN_NAME`      | string | Custom domain name for Storybook CDN                                          | -                          | No       |
 | `CDK_STORYBOOK_CERTIFICATE_ARN`  | string | ACM certificate ARN for Storybook custom domain                               | -                          | No       |
 | `CDK_STORYBOOK_HOSTED_ZONE_ID`   | string | Route53 hosted zone ID for Storybook DNS records                              | -                          | No       |
@@ -188,10 +188,10 @@ The following environment variables are available for configuring the infrastruc
 
 ### Setup
 
-1. **Navigate to the infrastructure directory:**
+1. **Navigate to the infrastructure package directory:**
 
    ```bash
-   cd infrastructure
+   cd packages/infra
    ```
 
 2. **Copy the example configuration file:**
@@ -212,7 +212,7 @@ The following environment variables are available for configuring the infrastruc
 
 ### Usage
 
-Infrastructure configuration is loaded and validated through the `getConfig()` function in `infrastructure/utils/config.ts`:
+Infrastructure configuration is loaded and validated through the `getConfig()` function in [packages/infra/src/utils/config.ts](../packages/infra/src/utils/config.ts):
 
 ```typescript
 import { getConfig, getTags, getEnvironmentConfig } from './utils/config';
@@ -231,7 +231,7 @@ console.log(`Tags:`, tags);
 Infrastructure configuration can be provided through:
 
 1. **Environment variables** - Set directly in your shell or CI/CD pipeline (highest priority)
-2. **.env file** - Create a `.env` file in the `infrastructure/` directory for local development
+2. **.env file** - Create a `.env` file in the `packages/infra/` directory for local development
 3. **Default values** - Specified in the Zod schema (lowest priority)
 
 ### Resource Tagging
@@ -251,7 +251,7 @@ These tags are used for cost allocation, resource management, and identifying re
 
 #### Development Environment
 
-Create `infrastructure/.env` for development deployment:
+Create `packages/infra/.env` for development deployment:
 
 ```env
 ###############################################
@@ -268,14 +268,14 @@ CDK_OU=software-engineering
 CDK_OWNER=frontend-team
 
 ### CDN Configuration ###
-CDK_ASSET_PATH=../dist
+CDK_ASSET_PATH=../web/dist
 CDK_DOMAIN_NAME=react-starter.dev.example.com
 CDK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_HOSTED_ZONE_ID=Z1234567890ABC
 CDK_HOSTED_ZONE_NAME=dev.example.com
 
 ### Storybook CDN Configuration ###
-CDK_STORYBOOK_ASSET_PATH=../storybook-static
+CDK_STORYBOOK_ASSET_PATH=../web/storybook-static
 CDK_STORYBOOK_DOMAIN_NAME=react-starter-storybook.dev.example.com
 CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC
@@ -297,13 +297,13 @@ CDK_REGION=us-east-1
 CDK_OU=software-engineering
 CDK_OWNER=frontend-team
 
-CDK_ASSET_PATH=../dist
+CDK_ASSET_PATH=../web/dist
 CDK_DOMAIN_NAME=react-starter.qa.example.com
 CDK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_HOSTED_ZONE_ID=Z1234567890ABC
 CDK_HOSTED_ZONE_NAME=qa.example.com
 
-CDK_STORYBOOK_ASSET_PATH=../storybook-static
+CDK_STORYBOOK_ASSET_PATH=../web/storybook-static
 CDK_STORYBOOK_DOMAIN_NAME=react-starter-storybook.qa.example.com
 CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC
@@ -325,13 +325,13 @@ CDK_REGION=us-east-1
 CDK_OU=software-engineering
 CDK_OWNER=frontend-team
 
-CDK_ASSET_PATH=../dist
+CDK_ASSET_PATH=../web/dist
 CDK_DOMAIN_NAME=react-starter.example.com
 CDK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_HOSTED_ZONE_ID=Z1234567890ABC
 CDK_HOSTED_ZONE_NAME=example.com
 
-CDK_STORYBOOK_ASSET_PATH=../storybook-static
+CDK_STORYBOOK_ASSET_PATH=../web/storybook-static
 CDK_STORYBOOK_DOMAIN_NAME=react-starter-storybook.example.com
 CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC

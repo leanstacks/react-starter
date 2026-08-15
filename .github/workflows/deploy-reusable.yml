@@ -45,7 +45,8 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Create app .env file
+      - name: Create web .env file
+        working-directory: ./packages/web
         run: |
           echo "${{ inputs.env_file }}" > .env
           echo "VITE_BUILD_DATE=$(date -u +'%Y-%m-%d')" >> .env
@@ -57,11 +58,16 @@ jobs:
           echo "VITE_BUILD_WORKFLOW_RUN_NUMBER=${{ github.run_number }}" >> .env
           echo "VITE_BUILD_WORKFLOW_RUN_ATTEMPT=${{ github.run_attempt }}" >> .env
 
+      - name: Create infrastructure .env file
+        working-directory: ./packages/infra
+        run: |
+          echo "${{ inputs.cdk_env_file }}" > .env
+
       - name: Build the app
         run: npm run build
 
       - name: Build storybook
-        run: npm run build:storybook
+        run: npm run build:storybook -w packages/web
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
@@ -70,45 +76,33 @@ jobs:
           aws-region: ${{ inputs.aws_region }}
           role-session-name: deploy-react-starter-${{ github.run_id }}
 
-      - name: Install infrastructure dependencies
-        working-directory: ./infrastructure
-        run: npm ci
-
-      - name: Create infrastructure .env file
-        working-directory: ./infrastructure
-        run: |
-          echo "${{ inputs.cdk_env_file }}" > .env
-          echo "✅ Infrastructure .env file created"
-
-      - name: Build infrastructure
-        working-directory: ./infrastructure
-        run: npm run build
-
       - name: Bootstrap CDK
-        working-directory: ./infrastructure
+        working-directory: ./packages/infra
         run: |
           echo "⚡ Checking if CDK bootstrap is needed..."
           # Try to describe the bootstrap stack to see if it exists
           if ! aws cloudformation describe-stacks --stack-name CDKToolkit --region ${{ inputs.aws_region }} >/dev/null 2>&1; then
             echo "🚀 CDK not bootstrapped, bootstrapping now..."
-            npm run bootstrap
+            npx cdk bootstrap
           else
             echo "✅ CDK already bootstrapped, skipping..."
           fi
 
       - name: Synthesize CDK stacks
-        working-directory: ./infrastructure
-        run: npm run synth
+        run: npm run synth -w packages/infra
 
       - name: Deploy CDK stacks
-        working-directory: ./infrastructure
-        run: npm run deploy:all -- --require-approval never
+        run: npm run deploy:all -w packages/infra
 
       - name: Clean up sensitive files
         if: always()
-        working-directory: ./infrastructure
         run: |
           echo "🧹 Cleaning up sensitive files..."
-          rm -f .env
-          rm -rf cdk.out
+          rm -f packages/web/.env
+          rm -rf packages/web/dist
+          rm -rf packages/web/storybook-static
+          rm -f packages/infra/.env
+          rm -rf packages/infra/dist
+          rm -rf packages/infra/cdk.out
+          rm -rf packages/shared/dist
           echo "✅ Sensitive files cleaned up"

@@ -3,18 +3,21 @@
 This guide provides a comprehensive overview of the AWS infrastructure for the React Starter frontend application, including architectural decisions, deployment instructions, and operational considerations.
 
 > **Note:** This infrastructure provisions only frontend/presentation tier components. Resources are used for hosting static React assets via a Content Delivery Network (CDN) for optimal performance and scalability.
+>
+> **Monorepo Context:** This React Starter project uses an npm workspaces monorepo with separate `packages/infra`, `packages/web`, and `packages/shared` directories. Commands and paths in this guide reflect this structure.
 
 ## Table of Contents
 
 1. [Architecture Overview](#architecture-overview)
 2. [Infrastructure Components](#infrastructure-components)
-3. [Deployment Process](#deployment-process)
-4. [Environment Management](#environment-management)
-5. [Security Model](#security-model)
-6. [Cost Optimization](#cost-optimization)
-7. [Monitoring and Observability](#monitoring-and-observability)
-8. [Troubleshooting](#troubleshooting)
-9. [Best Practices](#best-practices)
+3. [Monorepo Architecture](#monorepo-architecture)
+4. [Deployment Process](#deployment-process)
+5. [Environment Management](#environment-management)
+6. [Security Model](#security-model)
+7. [Cost Optimization](#cost-optimization)
+8. [Monitoring and Observability](#monitoring-and-observability)
+9. [Troubleshooting](#troubleshooting)
+10. [Best Practices](#best-practices)
 
 ## Architecture Overview
 
@@ -147,7 +150,8 @@ CDK_STORYBOOK_HOSTED_ZONE_NAME=example.com
 3. **Local Environment**:
    - Node.js (version specified in `.nvmrc`)
    - AWS CDK CLI installed globally: `npm install -g aws-cdk`
-   - Vite build output available at `../dist` (relative to infrastructure/)
+   - Monorepo dependencies installed: `npm install` (from project root)
+   - Vite build output available at `packages/web/dist` (relative to project root)
 
 ### Step-by-Step Deployment
 
@@ -158,33 +162,38 @@ CDK_STORYBOOK_HOSTED_ZONE_NAME=example.com
    npm run build
    ```
 
-   This generates optimized static assets in the `dist` directory.
+   This generates optimized static assets in the `packages/web/dist` directory.
 
 2. **Configure Infrastructure**:
 
    ```bash
-   cd infrastructure
+   cd packages/infra
    cp .env.example .env
    # Edit .env with your AWS account, region, and domain configuration
    ```
 
-3. **Install Infrastructure Dependencies**:
+3. **Install Dependencies** (if not already done):
 
    ```bash
+   # From the project root (if dependencies not yet installed)
    npm install
    ```
+
+   This installs dependencies for all workspace packages, including the infrastructure package.
 
 4. **Verify Configuration**:
 
    ```bash
+   # From packages/infra directory
    npm run synth
    ```
 
-   This generates CloudFormation templates without deploying. Review the synthesized templates in `cdk.out/`.
+   This generates CloudFormation templates without deploying. Review the synthesized templates in `packages/infra/cdk.out/`.
 
 5. **Deploy Infrastructure** (with confirmation):
 
    ```bash
+   # From packages/infra directory
    npm run deploy
    ```
 
@@ -222,6 +231,54 @@ CDK automatically manages dependencies, but understand the logical order:
    - Independent deployment with same structure as UI CDN
    - Can be created/updated/deleted separately
 
+## Monorepo Architecture
+
+The React Starter project uses an npm workspaces monorepo structure with three integrated packages:
+
+### Workspace Packages
+
+1. **`packages/infra`** - AWS CDK Infrastructure as Code
+   - Defines and deploys CloudFront + S3 CDN infrastructure
+   - Configuration via environment variables in `.env`
+   - Contains build configuration for AWS CDK stacks
+   - Commands run from this directory for CDK operations
+
+2. **`packages/web`** - React 19 Frontend Application
+   - Main React application built with Vite
+   - Generates optimized build output to `dist/` directory
+   - Referenced by infrastructure via `CDK_ASSET_PATH` configuration
+   - Local development via `npm run dev -w @react-starter/web`
+
+3. **`packages/shared`** - Shared Utilities, Types, and Schemas
+   - Common TypeScript interfaces and data models
+   - Zod validation schemas for data consistency
+   - Reusable UI components
+   - Shared across web and infrastructure packages
+
+### Working Directory Context
+
+- **Root Commands**: Run from project root for monorepo-wide operations
+  - `npm run build` - Builds all packages including web and infrastructure
+  - `npm run test --workspaces` - Runs tests across all packages
+  - `npm run lint` - Lints entire monorepo
+
+- **Infrastructure Commands**: Run from `packages/infra` directory for CDK operations
+  - `npm run synth` - Synthesize CloudFormation templates
+  - `npm run deploy` - Deploy infrastructure stacks
+  - `npm run diff` - Show CDK changes before deployment
+
+- **Workspace-Scoped Commands**: Use `-w` flag from root
+  - `npm run build -w @react-starter/web` - Build only the web package
+  - `npm run dev -w @react-starter/web` - Start development server
+  - `npm run deploy -w @react-starter/infra` - Deploy infrastructure
+
+### Dependency Management
+
+- Root `package.json` defines workspaces and hoisted dependencies
+- Each package has its own `package.json` with specific dependencies
+- Cross-package imports use npm workspace symlinks (e.g., `import { TaskSchema } from "@react-starter/shared"`)
+- Install dependencies once at project root: `npm install`
+
 ## Resource Configuration
 
 ### Performance Considerations
@@ -247,26 +304,26 @@ All configuration uses environment variables prefixed with `CDK_`:
 
 #### Application CDN Variables
 
-| Variable               | Purpose              | Default         | Required |
-| ---------------------- | -------------------- | --------------- | -------- |
-| `CDK_APP_NAME`         | Application name     | `react-starter` | No       |
-| `CDK_ASSET_PATH`       | Path to build output | `../dist`       | Yes      |
-| `CDK_DOMAIN_NAME`      | Custom domain        | -               | No       |
-| `CDK_CERTIFICATE_ARN`  | SSL certificate ARN  | -               | No\*     |
-| `CDK_HOSTED_ZONE_ID`   | Route 53 zone ID     | -               | No\*     |
-| `CDK_HOSTED_ZONE_NAME` | Route 53 zone name   | -               | No\*     |
+| Variable               | Purpose                  | Default                | Required |
+| ---------------------- | ------------------------ | ---------------------- | -------- |
+| `CDK_APP_NAME`         | Application name         | `react-starter`        | No       |
+| `CDK_ASSET_PATH`       | Path to web build output | `../packages/web/dist` | Yes      |
+| `CDK_DOMAIN_NAME`      | Custom domain            | -                      | No       |
+| `CDK_CERTIFICATE_ARN`  | SSL certificate ARN      | -                      | No\*     |
+| `CDK_HOSTED_ZONE_ID`   | Route 53 zone ID         | -                      | No\*     |
+| `CDK_HOSTED_ZONE_NAME` | Route 53 zone name       | -                      | No\*     |
 
 **Note:** `CDK_CERTIFICATE_ARN`, `CDK_HOSTED_ZONE_ID`, and `CDK_HOSTED_ZONE_NAME` are required only if using `CDK_DOMAIN_NAME`.
 
 #### Storybook CDN Variables (Optional)
 
-| Variable                         | Purpose                | Default               | Required |
-| -------------------------------- | ---------------------- | --------------------- | -------- |
-| `CDK_STORYBOOK_ASSET_PATH`       | Storybook build output | `../storybook-static` | No       |
-| `CDK_STORYBOOK_DOMAIN_NAME`      | Custom domain          | -                     | No       |
-| `CDK_STORYBOOK_CERTIFICATE_ARN`  | SSL certificate ARN    | -                     | No\*     |
-| `CDK_STORYBOOK_HOSTED_ZONE_ID`   | Route 53 zone ID       | -                     | No\*     |
-| `CDK_STORYBOOK_HOSTED_ZONE_NAME` | Route 53 zone name     | -                     | No\*     |
+| Variable                         | Purpose                | Default                            | Required |
+| -------------------------------- | ---------------------- | ---------------------------------- | -------- |
+| `CDK_STORYBOOK_ASSET_PATH`       | Storybook build output | `../packages/web/storybook-static` | No       |
+| `CDK_STORYBOOK_DOMAIN_NAME`      | Custom domain          | -                                  | No       |
+| `CDK_STORYBOOK_CERTIFICATE_ARN`  | SSL certificate ARN    | -                                  | No\*     |
+| `CDK_STORYBOOK_HOSTED_ZONE_ID`   | Route 53 zone ID       | -                                  | No\*     |
+| `CDK_STORYBOOK_HOSTED_ZONE_NAME` | Route 53 zone name     | -                                  | No\*     |
 
 **Note:** If `CDK_STORYBOOK_ASSET_PATH` is provided, separate stacks are created for Storybook CDN.
 
@@ -281,7 +338,7 @@ All configuration uses environment variables prefixed with `CDK_`:
 
 Each environment uses:
 
-- Separate `.env` files (recommended)
+- Separate `.env` files (recommended) in `packages/infra`
 - Environment-specific stack names: `${appName}-ui-cdn-${env}`
 - Environment-specific asset deployment
 - Independent CloudFront cache invalidations
@@ -289,6 +346,7 @@ Each environment uses:
 Example deployment:
 
 ```bash
+# From packages/infra directory
 # Development
 CDK_ENV=dev npm run deploy
 
@@ -430,14 +488,14 @@ Set up alerts for:
 1. **Rollback to Previous Version**:
 
    ```bash
-   # Checkout previous build artifacts
+   # Checkout previous build artifacts from git history
    git checkout <previous-commit-hash>
 
-   # Rebuild if needed
-   npm run build
+   # Rebuild the web application
+   npm run build -w @react-starter/web
 
-   # Redeploy
-   npm run deploy
+   # Redeploy from packages/infra
+   cd packages/infra && npm run deploy
    ```
 
 2. **CloudFront Cache Invalidation**:
@@ -510,8 +568,8 @@ aws cloudfront get-invalidation \
 # Verify S3 bucket contents
 aws s3 ls s3://<bucket-name>/ --recursive
 
-# Check CDK synthesis without deploying
-npm run synth
+# Check CDK synthesis without deploying (from packages/infra)
+cd packages/infra && npm run synth
 
 # View CloudFormation events
 aws cloudformation describe-stack-events \
@@ -520,25 +578,30 @@ aws cloudformation describe-stack-events \
 
 # Test CloudFront distribution directly
 curl -I https://<cloudfront-domain>/index.html
+
+# Build just the web package from root
+npm run build -w @react-starter/web
 ```
 
 ## Best Practices
 
 ### Configuration Management
 
-1. **Environment Separation**: Use `.env.dev`, `.env.qa`, `.env.prd`
-2. **Build Output**: Always build (`npm run build`) before deployment
+1. **Environment Separation**: Use separate `.env` files in `packages/infra` (e.g., `.env.dev`, `.env.qa`, `.env.prd`)
+2. **Build Output**: Always build from project root using `npm run build` before deployment
 3. **Asset Cleanup**: Use appropriate `removalPolicy` per environment
-4. **Version Control**: Keep `.env.example` updated, never commit `.env`
+4. **Version Control**: Keep `.env.example` in `packages/infra` updated, never commit `.env` files
 5. **Configuration Validation**: Test configuration in development first
+6. **Working Directory**: Run CDK commands from `packages/infra` directory
 
 ### Development Workflow
 
-1. **Local Development**: Use local Vite dev server, not CloudFront
-2. **Build Locally**: Verify `dist/` output before deployment
+1. **Local Development**: Use `npm run dev -w @react-starter/web` for local Vite dev server, not CloudFront
+2. **Build Locally**: Verify `packages/web/dist` output before deployment using `npm run build`
 3. **Staging Verification**: Deploy to staging environment first
 4. **Progressive Rollout**: Deploy to production after staging validation
 5. **Infrastructure as Code**: Always use CDK, never manual AWS changes
+6. **Monorepo Commands**: Use workspace-aware npm commands from project root
 
 ### Security Best Practices
 
@@ -573,10 +636,11 @@ curl -I https://<cloudfront-domain>/index.html
 ### Operational Best Practices
 
 1. **Documentation**: Keep infrastructure changes documented
-2. **Change Management**: Review CDK diffs before deployment
+2. **Change Management**: Review CDK diffs before deployment using `npm run diff -w @react-starter/infra`
 3. **Release Management**: Use git tags for release tracking
 4. **Cost Monitoring**: Review CloudFront costs monthly
 5. **Disaster Recovery**: Test rollback procedures regularly
+6. **Monorepo Awareness**: Understand how infrastructure changes may impact the shared and web packages
 
 ### Code Organization
 

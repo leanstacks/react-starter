@@ -2,16 +2,16 @@ name: Code Quality
 
 on:
   schedule:
-    # Run code quality checks daily at 2 AM UTC on Sundays
-    - cron: '0 2 * * 0'
+    # Run code quality checks daily at 0500 UTC on Sundays
+    - cron: '0 5 * * 0'
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - 'src/**'
-      - 'package.json'
-      - 'tsconfig.json'
-      - 'tsconfig.node.json'
+      - '**/src/**'
+      - '**/package.json'
+      - '**/tsconfig.json'
+      - '**/tsconfig.node.json'
       - '.github/workflows/**'
 
 jobs:
@@ -21,6 +21,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      # --- Setup ---
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
@@ -35,19 +36,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: 'Create .env file'
+      - name: 'Create web .env file'
+        working-directory: ./packages/web
         run: |
           echo "${{ vars.ENV_CI }}" > .env
 
+      - name: Create infrastructure .env file
+        working-directory: ./packages/infra
+        run: |
+          echo "${{ vars.CDK_ENV_DEV }}" > .env
+
+      # --- Project Checks ---
       - name: Run ESLint with detailed output
         run: |
           echo "## ESLint Analysis" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          npm run lint -- --output-file eslint-output.txt || true
-          if [ -s eslint-output.txt ]; then
+          npm run lint -- --output-file lint-output.txt || true
+          if [ -s lint-output.txt ]; then
             echo "### Issues Found:" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            cat eslint-output.txt >> $GITHUB_STEP_SUMMARY
+            cat lint-output.txt >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           else
             echo "✅ No ESLint issues found" >> $GITHUB_STEP_SUMMARY
@@ -58,41 +66,14 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## Prettier Analysis" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          npm run format:check > prettier-output.txt 2>&1 || true
+          npm run format:check > format-output.txt 2>&1 || true
           if [ $? -eq 0 ]; then
             echo "✅ All files are properly formatted" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ Some files need formatting:" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            cat prettier-output.txt >> $GITHUB_STEP_SUMMARY
+            cat format-output.txt >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Run tests with detailed coverage
-        run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Test Coverage Analysis" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          npm run test:ci -- --coverage.reporter=json-summary
-
-          # Extract coverage summary
-          if [ -f coverage/coverage-summary.json ]; then
-            echo "### Coverage Summary:" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            
-            # Use Node.js to parse JSON and create a table
-            node -e "
-              const fs = require('fs');
-              const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
-              const total = coverage.total;
-              
-              console.log('| Metric | Percentage | Covered/Total |');
-              console.log('|--------|------------|---------------|');
-              console.log(\`| Lines | \${total.lines.pct}% | \${total.lines.covered}/\${total.lines.total} |\`);
-              console.log(\`| Functions | \${total.functions.pct}% | \${total.functions.covered}/\${total.functions.total} |\`);
-              console.log(\`| Branches | \${total.branches.pct}% | \${total.branches.covered}/\${total.branches.total} |\`);
-              console.log(\`| Statements | \${total.statements.pct}% | \${total.statements.covered}/\${total.statements.total} |\`);
-            " >> $GITHUB_STEP_SUMMARY
           fi
 
       - name: Build check
@@ -100,13 +81,13 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## Build" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          npm run build > tsc-output.txt 2>&1
+          npm run build > build-output.txt 2>&1
           if [ $? -eq 0 ]; then
             echo "✅ Build successful" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ Build failed:" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            cat tsc-output.txt >> $GITHUB_STEP_SUMMARY
+            cat build-output.txt >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
 
@@ -134,36 +115,32 @@ jobs:
 
           # Check for outdated packages
           echo "### Outdated Packages:" >> $GITHUB_STEP_SUMMARY
-          npm outdated > outdated-output.txt 2>&1 || true
-          if [ -s outdated-output.txt ]; then
+          npm outdated > package-output.txt 2>&1 || true
+          if [ -s package-output.txt ]; then
             echo '```' >> $GITHUB_STEP_SUMMARY
-            cat outdated-output.txt >> $GITHUB_STEP_SUMMARY
+            cat package-output.txt >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           else
             echo "✅ All packages are up to date" >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: Install infrastructure dependencies
-        working-directory: ./infrastructure
-        run: npm ci
-
-      - name: Run infrastructure tests with detailed coverage
-        working-directory: ./infrastructure
+      # -- Web Package Checks ---
+      - name: Run web tests with detailed coverage
         run: |
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Infrastructure Test Coverage Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "## Test Coverage Analysis" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          npm run test:coverage
+          npm run test:coverage -w packages/web
 
           # Extract coverage summary
-          if [ -f coverage/coverage-summary.json ]; then
-            echo "### Infrastructure Coverage Summary:" >> $GITHUB_STEP_SUMMARY
+          if [ -f packages/web/coverage/coverage-summary.json ]; then
+            echo "### Web Coverage Summary:" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
             # Use Node.js to parse JSON and create a table
             node -e "
               const fs = require('fs');
-              const coverage = JSON.parse(fs.readFileSync('coverage/coverage-summary.json', 'utf8'));
+              const coverage = JSON.parse(fs.readFileSync('packages/web/coverage/coverage-summary.json', 'utf8'));
               const total = coverage.total;
               
               console.log('| Metric | Percentage | Covered/Total |');
@@ -175,55 +152,32 @@ jobs:
             " >> $GITHUB_STEP_SUMMARY
           fi
 
-      - name: Infrastructure build check
-        working-directory: ./infrastructure
+      # --- Infrastructure Package Checks ---
+      - name: Run infrastructure tests with detailed coverage
         run: |
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Infrastructure Build" >> $GITHUB_STEP_SUMMARY
+          echo "## Infrastructure Test Coverage Analysis" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          npm run build > infra-tsc-output.txt 2>&1
-          if [ $? -eq 0 ]; then
-            echo "✅ Build successful" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "❌ Build failed:" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            cat infra-tsc-output.txt >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          fi
+          npm run test:coverage -w packages/infra
 
-      - name: Infrastructure security audit
-        working-directory: ./infrastructure
-        run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Infrastructure Security Audit" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          npm audit --audit-level=moderate --omit=dev > infra-security-output.txt 2>&1 || true
-
-          if grep -q "found 0 vulnerabilities" infra-security-output.txt; then
-            echo "✅ No security vulnerabilities found" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "⚠️ Security vulnerabilities detected:" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            cat infra-security-output.txt >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          fi
-
-      - name: Infrastructure package analysis
-        working-directory: ./infrastructure
-        run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## Infrastructure Package Analysis" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Check for outdated packages
-          echo "### Outdated Packages:" >> $GITHUB_STEP_SUMMARY
-          npm outdated > infra-outdated-output.txt 2>&1 || true
-          if [ -s infra-outdated-output.txt ]; then
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            cat infra-outdated-output.txt >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-          else
-            echo "✅ All packages are up to date" >> $GITHUB_STEP_SUMMARY
+          # Extract coverage summary
+          if [ -f packages/infra/coverage/coverage-summary.json ]; then
+            echo "### Infrastructure Coverage Summary:" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Use Node.js to parse JSON and create a table
+            node -e "
+              const fs = require('fs');
+              const coverage = JSON.parse(fs.readFileSync('packages/infra/coverage/coverage-summary.json', 'utf8'));
+              const total = coverage.total;
+              
+              console.log('| Metric | Percentage | Covered/Total |');
+              console.log('|--------|------------|---------------|');
+              console.log(\`| Lines | \${total.lines.pct}% | \${total.lines.covered}/\${total.lines.total} |\`);
+              console.log(\`| Functions | \${total.functions.pct}% | \${total.functions.covered}/\${total.functions.total} |\`);
+              console.log(\`| Branches | \${total.branches.pct}% | \${total.branches.covered}/\${total.branches.total} |\`);
+              console.log(\`| Statements | \${total.statements.pct}% | \${total.statements.covered}/\${total.statements.total} |\`);
+            " >> $GITHUB_STEP_SUMMARY
           fi
 
       - name: Archive test results
@@ -232,13 +186,9 @@ jobs:
         with:
           name: test-results
           path: |
-            coverage/
-            eslint-output.txt
-            prettier-output.txt
-            tsc-output.txt
+            lint-output.txt
+            format-output.txt
+            build-output.txt
             security-output.txt
-            outdated-output.txt
-            infra-tsc-output.txt
-            infra-security-output.txt
-            infra-outdated-output.txt
+            package-output.txt
           retention-days: 7

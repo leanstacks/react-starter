@@ -31,14 +31,20 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      # --- Application Checks ---
       - name: Install dependencies
         run: npm ci
 
-      - name: 'Create .env file'
+      - name: 'Create web .env file'
+        working-directory: ./packages/web
         run: |
           echo "${{ vars.ENV_CI }}" > .env
 
+      - name: Create infrastructure .env file
+        working-directory: ./packages/infra
+        run: |
+          echo "${{ vars.CDK_ENV_DEV }}" > .env
+
+      # --- Project Checks ---
       - name: Lint
         run: npm run lint
 
@@ -49,30 +55,14 @@ jobs:
         run: npm run build
 
       - name: Run unit tests
-        run: npm run test:ci
-
-      # --- Storybook Checks ---
-      - name: Build Storybook
-        run: npm run build:storybook
-
-      # --- Infrastructure Checks ---
-      - name: Install infrastructure dependencies
-        working-directory: ./infrastructure
-        run: npm ci
-
-      - name: Build infrastructure
-        working-directory: ./infrastructure
-        run: npm run build
-
-      - name: Run infrastructure tests with coverage
-        working-directory: ./infrastructure
         run: npm run test:coverage
 
-      - name: Create infrastructure .env file
-        working-directory: ./infrastructure
-        run: |
-          echo "${{ vars.CDK_ENV_DEV }}" > .env
+      # --- Web Package Checks ---
+      # --- Storybook Checks ---
+      - name: Build Storybook
+        run: npm run build:storybook -w packages/web
 
+      # --- Infrastructure Package Checks ---
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -80,16 +70,19 @@ jobs:
           role-session-name: ci-react-starter
           aws-region: ${{ vars.AWS_REGION }}
 
-      - name: Synthesize CDK stacks
-        working-directory: ./infrastructure
-        run: npm run synth
+      - name: Synthesize AWS CDK stacks
+        run: npm run synth -w packages/infra
 
-      # Final Step: Clean up sensitive infrastructure files
+      # --- Final Step: Clean up sensitive files ---
       - name: Clean up sensitive files
         if: always()
-        working-directory: ./infrastructure
         run: |
           echo "🧹 Cleaning up sensitive files..."
-          rm -f .env
-          rm -rf cdk.out
+          rm -f packages/web/.env
+          rm -rf packages/web/dist
+          rm -rf packages/web/storybook-static
+          rm -f packages/infra/.env
+          rm -rf packages/infra/dist
+          rm -rf packages/infra/cdk.out
+          rm -rf packages/shared/dist
           echo "✅ Sensitive files cleaned up"

@@ -126,7 +126,7 @@ When using the application, you may sign in with any of the JSON Placeholder [Us
 
 ### AI-Assisted Coding
 
-- **GitHub Copilot instructions** (`copilot-instructions.md`) providing comprehensive guidance for agentic AI coding
+- **Agentic coding instructions** are built in with the GitHub Copilot instructions file pointing to the industry standard `AGENTS.md` file housing all agentic coding instructions
 - **Project-specific coding standards** documented for AI assistants including TypeScript conventions, React patterns, and testing practices
 - **Architecture and file organization** guidance enabling AI agents to generate consistent, maintainable code
 - **Tool restrictions and best practices** defined for AI-assisted code generation, refactoring, and documentation
@@ -174,7 +174,7 @@ The infrastructure technology stack includes:
 
 This repository uses [trunk-based development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development). The latest code is located on the `main` branch. The `main` branch is always ready for deployment.
 
-Features are developed on branches named `feature/NNNNN-feature-name` or `NNNNN-feature-name` which are created from the `main` branch. The feature name used in the branch contains an issue identifier or a short name, e.g. `feature/123-do-something`.
+Features are developed on branches named `feature/NNNNN-feature-name` or `NNNNN-feature-name` which are created from the `main` branch. The feature name used in the branch contains an issue identifier or a short name, e.g. `feature/123-do-something` or `123-do-something`.
 
 Releases are created on branches named `release/MM.mm.pp` which are created from the `main` branch. The release name follows the [semantic versioning](https://semver.org/) specification.
 
@@ -193,6 +193,49 @@ This project uses [GitHub Issues](https://github.com/leanstacks/react-starter/is
 The project includes configuration files for the [Prettier](https://prettier.io/docs/en/configuration.html) and [EditorConfig](https://editorconfig.org/) code formatters. This allows all project contributors to share the same code formatting rules.
 
 Adjust the configuration as desired.
+
+## Monorepo Structure
+
+This project is organized as a **TypeScript monorepo** using npm workspaces, enabling modular development, shared type definitions, and coordinated deployments across frontend, backend, and infrastructure concerns.
+
+### Packages
+
+The monorepo consists of three primary packages:
+
+#### **`packages/web`** — React Frontend Application
+
+The client-side application built with React 19, TypeScript, and Vite. This package contains all UI components, pages, routing, state management, and API integration logic. It leverages the `shared` package for common types, schemas, and components.
+
+- **Technology:** React, Vite, React Router DOM, TanStack Query, Axios, React Hook Form, Tailwind CSS, shadcn/ui
+- **Structure:** Organized by feature domains with co-located tests (`*.test.tsx`), hooks, and utilities
+- **Key Responsibilities:** UI rendering, form handling, API client interactions, client-side routing, theme management
+
+#### **`packages/shared`** — Common Types, Schemas & Components
+
+A library package providing the single source of truth for data models, validation schemas, and reusable UI components. Both the frontend (`web`) and infrastructure (`infra`) packages depend on `shared` to ensure consistent type definitions across the application.
+
+- **Technology:** TypeScript, Zod, shadcn/ui
+- **Structure:** Organized by concern: models (interfaces/types), schemas (Zod validators), components (UI library), utilities (pure functions)
+- **Key Responsibilities:** Type definitions, schema validation, shared component library, utility functions
+
+#### **`packages/infra`** — AWS CDK Infrastructure as Code
+
+Infrastructure provisioning and deployment automation using AWS CDK. This package defines all cloud resources (CloudFront, S3, Route53, etc.) and handles environment-specific configurations. It does not execute application logic but references compiled frontend artifacts and shared configuration schemas.
+
+- **Technology:** AWS CDK, TypeScript, Zod
+- **Structure:** Organized by AWS resource type with stacks and validation utilities
+- **Key Responsibilities:** Infrastructure stack definitions, deployment automation, resource tagging, environment configuration
+
+### Workspace Dependencies
+
+```
+web ──→ shared
+infra ──→ shared
+```
+
+The `web` and `infra` packages both depend on `shared` for common types and schemas, but maintain independence from each other. This architecture enables parallel development, independent testing, and clear separation of concerns across frontend and infrastructure concerns.
+
+See [AGENTS.md](./AGENTS.md) for comprehensive architectural guidelines, coding standards, and operational workflows across all packages.
 
 ## Installation
 
@@ -259,37 +302,6 @@ Many of the scripts leverage the [Vite CLI](https://vitejs.dev/guide/cli.html) o
 
 In the project base directory, the following commands are available to run.
 
-### `npm run dev`
-
-Runs the app in the development mode.
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
-
-The page will reload when source files are saved.
-
-### `npm test`
-
-Executes the unit tests once. See the Vitest documentation about [running tests](https://vitest.dev/guide/cli.html) for more information.
-
-### `npm run test:coverage`
-
-Executes the unit tests once, producing a code coverage report.
-
-### `npm run test:watch`
-
-Launches the test runner in the interactive watch mode.
-
-### `npm run test:ci`
-
-Executes the test runner in `CI` mode and produces a coverage report. With `CI` mode enabled, the test runner executes all tests one time silently and prints a summary report to the console. A code coverage report is printed to the console immediately following the test summary.
-
-A detailed test coverage report is created in the `./coverage` directory. Additional report formats, for example a JSON summary report, are produced which may be injested by external reporting tools.
-
-> **NOTE:** This is the command which should be utilized by CI/CD platforms.
-
-### `npm run test:ui`
-
-Executes the tests and opens the [Vitest UI](https://vitest.dev/guide/ui) to view and interact with the unit tests.
-
 ### `npm run build`
 
 Builds the app for production to the `dist` folder.
@@ -313,11 +325,26 @@ Runs the eslint static code analysis and prints the results to the console.
 
 Runs the eslint static code analysis and updates source code to fix problems.
 
-## `npm run storybook`
+### `npm test`
+
+Executes the unit tests once. See the Vitest documentation about [running tests](https://vitest.dev/guide/cli.html) for more information.
+
+### `npm run test:coverage`
+
+Executes the unit tests once, producing a code coverage report.
+
+### `npm run dev -w packages/web`
+
+Runs the app in the development mode.
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+The page will reload when source files are saved.
+
+### `npm run storybook -w packages/web`
 
 Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
-## `npm run build:storybook`
+### `npm run build:storybook -w packages/web`
 
 Build a static version the [Storybook][storybook] UI which may be deployed to a CDN or HTTP server.
 

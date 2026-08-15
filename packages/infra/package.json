@@ -1,0 +1,26 @@
+{
+  "name": "@react-starter/infra",
+  "version": "1.8.0-alpha.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rimraf cdk.out coverage dist",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "deploy:all": "cdk deploy --all --require-approval never",
+    "destroy": "cdk destroy",
+    "destroy:all": "cdk destroy --all --force",
+    "diff": "cdk diff",
+    "synth": "cdk synth",
+    "test": "vitest run --silent passed-only",
+    "test:coverage": "vitest run --coverage --silent passed-only"
+  },
+  "devDependencies": {
+    "aws-cdk": "2.1135.1",
+    "aws-cdk-lib": "2.264.0",
+    "constructs": "10.8.1",
+    "dotenv": "17.4.2"
+  },
+  "dependencies": {}
+}

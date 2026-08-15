@@ -5,11 +5,17 @@
 # Default owner for everything in the repository
 * @mwarman
 
-# Infrastructure as Code (AWS CDK)
-/infrastructure/ @mwarman
-
 # GitHub configuration and workflows
 /.github/ @mwarman
 
 # Documentation
 /docs/ @mwarman
+
+# Infrastructure as Code
+/packages/infra/ @mwarman
+
+# Shared Package
+/packages/shared/ @mwarman
+
+# Frontend Package
+/packages/web/ @mwarman
