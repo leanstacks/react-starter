@@ -1,7 +1,6 @@
 import { PropsWithClassName } from '@/common/utils/types';
 import { useSetSettings } from '@/common/api/useSetSettings';
 import { useSettings } from '@/common/hooks/useSettings';
-import { cn } from '@/common/utils/css';
 import Button from './Button';
 import FAIcon from '@/common/components/Icon/FAIcon';
 
@@ -20,7 +19,7 @@ const ThemeToggle = ({ className }: PropsWithClassName) => {
         <Button
           variant="text"
           size="icon"
-          className={cn('text-primary', className)}
+          className={className}
           title="Dark Mode"
           onClick={() => setSettings({ theme: 'dark' })}
           testId="button-theme-dark"
@@ -31,7 +30,7 @@ const ThemeToggle = ({ className }: PropsWithClassName) => {
         <Button
           variant="text"
           size="icon"
-          className={cn('text-primary', className)}
+          className={className}
           title="Light Mode"
           onClick={() => setSettings({ theme: 'light' })}
           testId="button-theme-light"
