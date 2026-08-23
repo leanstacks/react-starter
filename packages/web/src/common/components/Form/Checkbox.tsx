@@ -2,7 +2,7 @@ import { Control, FieldValues, Path, useController } from 'react-hook-form';
 import { cva } from 'class-variance-authority';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import Label from './Label';
 import FieldError from './FieldError';
 import HelpText from '../Text/HelpText';

@@ -1,4 +1,4 @@
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@/common/utils/types';
 
 /**

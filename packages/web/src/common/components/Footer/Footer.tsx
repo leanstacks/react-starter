@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import type { BaseComponentProps } from '@/common/utils/types';
 import Link from '@/common/components/Link/Link';
 

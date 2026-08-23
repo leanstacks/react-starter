@@ -3,7 +3,7 @@ import noop from 'lodash/noop';
 import { cva, VariantProps } from 'class-variance-authority';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import Backdrop from '../Backdrop/Backdrop';
 import Divider from '../Divider/Divider';
 import { default as CommonButton, ButtonProps as CommonButtonProps } from '../Button/Button';

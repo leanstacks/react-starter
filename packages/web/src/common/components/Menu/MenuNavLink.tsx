@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { PropsWithTestId } from '@/common/utils/types';
 import FAIcon, { FAIconProps } from '@/common/components/Icon/FAIcon';
 

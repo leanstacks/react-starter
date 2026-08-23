@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 
 /**
  * Properties for the `SearchResult` React component.

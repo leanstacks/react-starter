@@ -2,7 +2,7 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 import noop from 'lodash/noop';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@/common/utils/types';
 import Label from './Label';
 import FieldError from './FieldError';

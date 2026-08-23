@@ -1,6 +1,6 @@
 import { ChangeEvent, type JSX, useEffect, useRef } from 'react';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@/common/utils/types';
 import FAIcon from '@/common/components/Icon/FAIcon';
 

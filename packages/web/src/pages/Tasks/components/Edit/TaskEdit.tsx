@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import toNumber from 'lodash/toNumber';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@/common/utils/types';
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { useGetTask } from '@/pages/Tasks/api/useGetTask';
@@ -11,7 +11,7 @@ import { useToasts } from '@/common/hooks/useToasts';
 import { useUpdateTask } from '@/pages/Tasks/api/useUpdateTask';
 import TaskForm, { TaskFormValues } from '../Form/TaskForm';
 import Skeleton from '@/common/components/Loader/Skeleton';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * The `TaskEdit` component renders the layout for updating a Task including

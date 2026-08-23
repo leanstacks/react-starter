@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { render, screen } from '@/test/test-utils';
 
-import ErrorAlert from './ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 describe('ErrorAlert', () => {
   const descriptionValue = 'the description text';

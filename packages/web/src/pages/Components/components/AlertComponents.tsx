@@ -6,7 +6,7 @@ import { ComponentProperty } from '../model/components';
 import Table from '@/common/components/Table/Table';
 import CodeSnippet from '@/common/components/Text/CodeSnippet';
 import Heading from '@/common/components/Text/Heading';
-import { Alert, AlertDescription, AlertTitle } from '@/common/components/shadcn/alert';
+import { Alert, AlertDescription, AlertTitle } from '@react-starter/shared/components/shadcn/alert';
 
 /**
  * The `AlertComponents` React component renders a set of examples illustrating

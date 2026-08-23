@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { PropsWithTestId } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 
 /**
  * Define the component base and variant styles.

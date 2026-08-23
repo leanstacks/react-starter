@@ -2,7 +2,7 @@ import { HTMLAttributes } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 
 /**
  * Defines the types of heading elements.

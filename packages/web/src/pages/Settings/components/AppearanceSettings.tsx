@@ -1,4 +1,4 @@
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { PropsWithTestId } from '@/common/utils/types';
 import { useSettings } from '@/common/hooks/useSettings';
 import { useSetSettings } from '@/common/api/useSetSettings';

@@ -8,7 +8,7 @@ import { BaseComponentProps } from '@/common/utils/types';
 import Skeleton from '@/common/components/Loader/Skeleton';
 import TaskListItem from './TaskListItem';
 import Badge from '@/common/components/Badge/Badge';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * Type describes the possible sort order directions.

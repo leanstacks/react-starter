@@ -5,7 +5,7 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "../shared/src/styles/globals.css",
+    "css": "src/styles/globals.css",
     "baseColor": "mist",
     "cssVariables": true,
     "prefix": ""
@@ -13,9 +13,9 @@
   "iconLibrary": "lucide",
   "rtl": false,
   "aliases": {
-    "components": "@/common/components",
-    "hooks": "@/common/hooks",
-    "lib": "@/common/utils",
+    "components": "@react-starter/shared/components",
+    "lib": "@react-starter/shared/utils",
+    "hooks": "@react-starter/shared/hooks",
     "utils": "@react-starter/shared/utils/css",
     "ui": "@react-starter/shared/components/shadcn"
   },

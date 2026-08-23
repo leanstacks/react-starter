@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import ErrorAlert from '../ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 const meta = {
   title: 'Common/Alert/ErrorAlert',

@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import noop from 'lodash/noop';
 
 import { PropsWithTestId } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import Label from './Label';
 import FieldError from './FieldError';
 import HelpText from '../Text/HelpText';

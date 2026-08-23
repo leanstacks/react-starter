@@ -1,7 +1,7 @@
 import { AlertCircleIcon } from 'lucide-react';
 
-import { cn } from '@/common/utils/css';
-import { Alert, AlertDescription, AlertTitle } from '@/common/components/shadcn/alert';
+import { cn } from '@react-starter/shared/utils/css';
+import { Alert, AlertDescription, AlertTitle } from '@react-starter/shared/components/shadcn/alert';
 import { BaseComponentProps } from '@/common/utils/types';
 
 /**
@@ -16,7 +16,7 @@ export interface ErrorAlertProps extends BaseComponentProps {
  * The `ErrorAlert` component renders a bespoke `Alert` layout for error
  * messages.
  */
-const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
+export const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
   return (
     <Alert variant="destructive" className={cn(className)} data-testid={testId} {...props}>
       <AlertCircleIcon />
@@ -25,5 +25,3 @@ const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...
     </Alert>
   );
 };
-
-export default ErrorAlert;

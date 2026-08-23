@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@/common/utils/types';
 import { useSignin } from '../api/useSignin';
 import Input from '@/common/components/Form/Input';
 import Button from '@/common/components/Button/Button';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * Signin form values.

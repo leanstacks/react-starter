@@ -7,7 +7,7 @@ import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { useDeleteTask } from '@/pages/Tasks/api/useDeleteTask';
 import { useToasts } from '@/common/hooks/useToasts';
 import Dialog from '@/common/components/Dialog/Dialog';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * Properties for the `TaskDeleteDialog` component.

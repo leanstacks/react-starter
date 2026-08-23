@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@/common/utils/types';
 import { MenuProps } from '../Menu';
 import SideMenuHeader from './SideMenuHeader';

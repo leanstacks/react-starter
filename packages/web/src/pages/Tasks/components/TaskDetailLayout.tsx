@@ -8,7 +8,7 @@ import FAIcon from '@/common/components/Icon/FAIcon';
 import TaskDeleteDialog from './Delete/TaskDeleteDialog';
 import Button from '@/common/components/Button/Button';
 import TaskView from './View/TaskView';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * The `TaskDetailLayout` component renders a layout for viewing and maintaining

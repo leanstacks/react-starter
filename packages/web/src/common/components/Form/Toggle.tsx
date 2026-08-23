@@ -1,7 +1,7 @@
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import FAIcon from '../Icon/FAIcon';
 import Label from './Label';
 import FieldError from './FieldError';

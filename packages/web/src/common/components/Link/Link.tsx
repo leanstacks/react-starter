@@ -1,6 +1,6 @@
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import { PropsWithTestId } from '@/common/utils/types';
 
 /**

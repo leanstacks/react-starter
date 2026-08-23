@@ -2,7 +2,7 @@ import { createContext, PropsWithChildren, useContext, useState } from 'react';
 import noop from 'lodash/noop';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 import Backdrop from '../Backdrop/Backdrop';
 import Divider from '../Divider/Divider';
 

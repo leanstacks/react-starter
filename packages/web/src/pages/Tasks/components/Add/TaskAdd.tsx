@@ -7,7 +7,7 @@ import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
 import { useCreateTask } from '@/pages/Tasks/api/useCreateTask';
 import { BaseComponentProps } from '@/common/utils/types';
 import TaskForm, { TaskFormValues } from '../Form/TaskForm';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * The `TaskAdd` component renders the layout for creating a new Task including

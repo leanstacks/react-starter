@@ -42,7 +42,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { BaseComponentProps } from '@/common/utils/types';
-import { cn } from '@/common/utils/css';
+import { cn } from '@react-starter/shared/utils/css';
 
 /**
  * A union type of all Font Awesome icon names (without the `fa-` prefix)
