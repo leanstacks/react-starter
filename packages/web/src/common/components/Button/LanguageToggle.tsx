@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-import { PropsWithClassName } from '@/common/utils/types';
+import { PropsWithClassName } from '@react-starter/shared/types/components';
 import { StorageKey } from '@/common/utils/constants';
 import storage from '@/common/utils/storage';
-import FAIcon from '@/common/components/Icon/FAIcon';
-import DropdownMenu from '../Dropdown/DropdownMenu';
+import FAIcon from '@react-starter/shared/components/Icon/FAIcon';
+import DropdownMenu from '@react-starter/shared/components/Dropdown/DropdownMenu';
 
 /**
  * The `LanguageToggle` component renders a `Dropdown` which allows users

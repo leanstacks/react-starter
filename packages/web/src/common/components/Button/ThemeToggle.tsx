@@ -1,7 +1,7 @@
 import { PropsWithClassName } from '@/common/utils/types';
 import { useSetSettings } from '@/common/api/useSetSettings';
 import { useSettings } from '@/common/hooks/useSettings';
-import Button from './Button';
+import Button from '@react-starter/shared/components/Button/Button.js';
 import FAIcon from '@/common/components/Icon/FAIcon';
 
 /**
