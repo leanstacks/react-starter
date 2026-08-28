@@ -1,6 +1,6 @@
 import { PropsWithChildren, Suspense } from 'react';
 
-import Spinner from '@react-starter/shared/components/Loader/Spinner';
+import { Spinner } from '@react-starter/shared/components/shadcn/spinner';
 
 /**
  * The `LoaderSuspense` component renders an animated spinning loader. Typically used
@@ -11,9 +11,7 @@ const LoaderSuspense = ({ children }: PropsWithChildren) => {
     <Suspense
       fallback={
         <div className="flex h-[50vh] items-center justify-center" data-testid="loader-suspense-fallback">
-          <Spinner testId="loader-suspense-spinner">
-            <Spinner.Text>Loading...</Spinner.Text>
-          </Spinner>
+          <Spinner data-testid="loader-suspense-spinner">Loading...</Spinner>
         </div>
       }
     >
