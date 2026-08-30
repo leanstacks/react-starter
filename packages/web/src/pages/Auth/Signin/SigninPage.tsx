@@ -1,6 +1,6 @@
-import Page from '@/common/components/Content/Page';
-import Container from '@/common/components/Content/Container';
-import Heading from '@/common/components/Text/Heading';
+import Page from '@react-starter/shared/components/Content/Page';
+import Container from '@react-starter/shared/components/Content/Container';
+import Heading from '@react-starter/shared/components/Text/Heading';
 import SigninForm from './components/SigninForm';
 
 /**

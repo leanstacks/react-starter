@@ -1,17 +1,23 @@
 import { useTranslation } from 'react-i18next';
+import { Languages } from 'lucide-react';
 
-import { PropsWithClassName } from '@react-starter/shared/types/components';
 import { StorageKey } from '@/common/utils/constants';
 import storage from '@/common/utils/storage';
-import FAIcon from '@react-starter/shared/components/Icon/FAIcon';
-import DropdownMenu from '@react-starter/shared/components/Dropdown/DropdownMenu';
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+} from '@react-starter/shared/components/shadcn/dropdown-menu';
+import { Button } from '@react-starter/shared/components/shadcn/button';
 
 /**
  * The `LanguageToggle` component renders a `Dropdown` which allows users
  * to select the language in which they wish to view the application.
- * @param {PropsWithClassName} props - Component properties.
  */
-const LanguageToggle = ({ className }: PropsWithClassName) => {
+const LanguageToggle = () => {
   const { i18n } = useTranslation();
 
   /**
@@ -24,23 +30,26 @@ const LanguageToggle = ({ className }: PropsWithClassName) => {
   };
 
   return (
-    <DropdownMenu className={className} testId="dropdown-language">
-      <DropdownMenu.Trigger>
-        <FAIcon icon="language" size="lg" title="Select Language" />
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Content>
-        <DropdownMenu.Heading>Languages</DropdownMenu.Heading>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item onClick={() => setLanguage('en')} testId="dropdown-item-en">
-          English
-        </DropdownMenu.Item>
-        <DropdownMenu.Item onClick={() => setLanguage('fr')} testId="dropdown-item-fr">
-          French
-        </DropdownMenu.Item>
-        <DropdownMenu.Item onClick={() => setLanguage('es')} testId="dropdown-item-es">
-          Spanish
-        </DropdownMenu.Item>
-      </DropdownMenu.Content>
+    <DropdownMenu data-testid="dropdown-language">
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" title="Select Language" data-testid="button-language-menu-trigger">
+          <Languages aria-label="Select Language" data-testid="icon-language" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-32">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Languages</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => setLanguage('en')} data-testid="dropdown-item-en">
+            English
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setLanguage('fr')} data-testid="dropdown-item-fr">
+            French
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setLanguage('es')} data-testid="dropdown-item-es">
+            Spanish
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 };

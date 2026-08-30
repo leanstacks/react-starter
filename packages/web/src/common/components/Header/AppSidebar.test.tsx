@@ -8,7 +8,7 @@ import * as UseAuth from '@/common/hooks/useAuth';
 import * as UseGetCurrentUser from '@/common/api/useGetCurrentUser';
 import { userFixture1 } from '@/__fixtures__/users';
 
-import AppMenu from './AppMenu';
+import AppMenu from './AppSidebar';
 
 describe('AppMenu', () => {
   const useAuthSpy = vi.spyOn(UseAuth, 'useAuth');
