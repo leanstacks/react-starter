@@ -4,7 +4,6 @@ import { QueryClientProvider } from '@tanstack/react-query';
 
 import SettingsContextProvider from '@/common/providers/SettingsProvider';
 import AuthContextProvider from '@/common/providers/AuthProvider';
-import ToastsProvider from '@/common/providers/ToastsProvider';
 
 import { queryClient } from '../query-client';
 
@@ -20,9 +19,7 @@ const WithAllProviders = ({ children }: PropsWithChildren) => {
     <QueryClientProvider client={queryClient}>
       <SettingsContextProvider>
         <AuthContextProvider>
-          <ToastsProvider>
-            <MemoryRouter>{children}</MemoryRouter>
-          </ToastsProvider>
+          <MemoryRouter>{children}</MemoryRouter>
         </AuthContextProvider>
       </SettingsContextProvider>
     </QueryClientProvider>

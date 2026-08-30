@@ -1,14 +1,21 @@
-import { ColumnDef } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
+import Page from '@react-starter/shared/components/Content/Page';
+import Container from '@react-starter/shared/components/Content/Container';
+import Heading from '@react-starter/shared/components/Text/Heading';
+import { Card, CardContent } from '@react-starter/shared/components/shadcn/card';
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from '@react-starter/shared/components/shadcn/table';
+import { DateFormat } from '@react-starter/shared/utils/constants';
+
 import { config } from '@/common/utils/config';
-import Page from '@/common/components/Content/Page';
-import Container from '@/common/components/Content/Container';
-import Heading from '@/common/components/Text/Heading';
-import Card from '@/common/components/Card/Card';
-import Table from '@/common/components/Table/Table';
-import { DateFormat } from '@/common/utils/constants';
 
 /**
  * Represents a build info attribute entry.
@@ -63,18 +70,6 @@ const AboutPage = () => {
     },
   ];
 
-  // Define table columns
-  const columns: ColumnDef<BuildInfoAttribute>[] = [
-    {
-      accessorKey: 'label',
-      header: t('attribute', { ns: 'common' }),
-    },
-    {
-      accessorKey: 'value',
-      header: t('value', { ns: 'common' }),
-    },
-  ];
-
   return (
     <Page testId="page-about">
       <Container size="md">
@@ -84,7 +79,7 @@ const AboutPage = () => {
             <Heading level={1} className="text-4xl font-normal">
               {t('about', { ns: 'common' })}
             </Heading>
-            <p className="text-lg opacity-75">{t('aboutDescription', { ns: 'common' })}</p>
+            <p className="text-muted-foreground text-lg">{t('aboutDescription', { ns: 'common' })}</p>
           </div>
 
           {/* Build Information Section */}
@@ -93,9 +88,24 @@ const AboutPage = () => {
               {t('buildInformation', { ns: 'common' })}
             </Heading>
             <Card>
-              <Card.Body>
-                <Table data={buildInfoData} columns={columns} testId="table-build-info" />
-              </Card.Body>
+              <CardContent>
+                <Table data-testid="table-build-info">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t('attribute', { ns: 'common' })}</TableHead>
+                      <TableHead className="text-right">{t('value', { ns: 'common' })}</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {buildInfoData.map((item) => (
+                      <TableRow key={item.label}>
+                        <TableCell>{item.label}</TableCell>
+                        <TableCell className="text-right">{item.value}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
             </Card>
           </div>
         </div>
