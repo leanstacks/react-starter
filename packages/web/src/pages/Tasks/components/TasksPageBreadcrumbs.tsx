@@ -60,8 +60,10 @@ const TasksPageBreadcrumbs = ({ className, testId = 'page-tasks-breadcrumbs' }: 
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               {!!task && (
-                <BreadcrumbLink href={`/app/tasks/${task.id}`} data-testid={`${testId}-link-task`}>
-                  {task.title}
+                <BreadcrumbLink asChild>
+                  <Link to={`/app/tasks/${task.id}`} data-testid={`${testId}-link-task`}>
+                    {task.title}
+                  </Link>
                 </BreadcrumbLink>
               )}
               {isLoadingTask && <Skeleton className="h-4 w-30" data-testid={`${testId}-item-task-loader`} />}
