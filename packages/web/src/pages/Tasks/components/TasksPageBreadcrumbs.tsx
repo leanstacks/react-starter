@@ -1,10 +1,18 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import toNumber from 'lodash/toNumber';
 
-import type { BaseComponentProps } from '@/common/utils/types';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@react-starter/shared/components/shadcn/breadcrumb';
+import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
+
 import { useGetTask } from '../api/useGetTask';
-import Breadcrumbs from '@/common/components/Breadcrumbs/Breadcrumbs';
-import Skeleton from '@/common/components/Loader/Skeleton';
 
 /**
  * The `TasksPageBreadcrumbs` component renders the `Breadcrumbs` for the tasks
@@ -22,50 +30,54 @@ const TasksPageBreadcrumbs = ({ className, testId = 'page-tasks-breadcrumbs' }: 
   const { data: task, isLoading: isLoadingTask } = useGetTask({ taskId: toNumber(params.taskId) });
 
   return (
-    <Breadcrumbs className={className} testId={testId}>
-      <Breadcrumbs.List>
-        <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/" testId={`${testId}-link-home`}>
-            Home
-          </Breadcrumbs.Link>
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Separator />
-        <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/tasks" testId={`${testId}-link-tasks`}>
-            Tasks
-          </Breadcrumbs.Link>
-        </Breadcrumbs.Item>
+    <Breadcrumb className={className} data-testid={testId}>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link to="/" data-testid={`${testId}-link-home`}>
+              Home
+            </Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link to="/app/tasks" data-testid={`${testId}-link-tasks`}>
+              Tasks
+            </Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
         {hasTaskAdd && (
           <>
-            <Breadcrumbs.Separator />
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Page testId={`${testId}-page-task-add`}>Add</Breadcrumbs.Page>
-            </Breadcrumbs.Item>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage data-testid={`${testId}-page-task-add`}>Add</BreadcrumbPage>
+            </BreadcrumbItem>
           </>
         )}
         {hasTask && (
           <>
-            <Breadcrumbs.Separator />
-            <Breadcrumbs.Item>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
               {!!task && (
-                <Breadcrumbs.Link to={`/app/tasks/${task.id}`} testId={`${testId}-link-task`}>
+                <BreadcrumbLink href={`/app/tasks/${task.id}`} data-testid={`${testId}-link-task`}>
                   {task.title}
-                </Breadcrumbs.Link>
+                </BreadcrumbLink>
               )}
-              {isLoadingTask && <Skeleton className="h-4 w-30" testId={`${testId}-item-task-loader`} />}
-            </Breadcrumbs.Item>
+              {isLoadingTask && <Skeleton className="h-4 w-30" data-testid={`${testId}-item-task-loader`} />}
+            </BreadcrumbItem>
           </>
         )}
         {hasTaskEdit && (
           <>
-            <Breadcrumbs.Separator />
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Page testId={`${testId}-page-task-edit`}>Edit</Breadcrumbs.Page>
-            </Breadcrumbs.Item>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage data-testid={`${testId}-page-task-edit`}>Edit</BreadcrumbPage>
+            </BreadcrumbItem>
           </>
         )}
-      </Breadcrumbs.List>
-    </Breadcrumbs>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 };
 

@@ -3,12 +3,13 @@ import { filter } from 'lodash';
 import { orderBy as order } from 'lodash';
 import { times } from 'lodash';
 
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
+import { Badge } from '@react-starter/shared/components/shadcn/badge';
+import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
+
 import { Task, useGetUserTasks } from '@/pages/Tasks/api/useGetUserTasks';
-import { BaseComponentProps } from '@/common/utils/types';
-import Skeleton from '@/common/components/Loader/Skeleton';
 import TaskListItem from './TaskListItem';
-import Badge from '@/common/components/Badge/Badge';
-import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
 
 /**
  * Type describes the possible sort order directions.
@@ -71,7 +72,7 @@ const TaskList = ({
             {title}
           </h2>
           {showBadge && !isLoading && (
-            <Badge className="self-start" size="sm" testId={`${testId}-heading-badge`}>
+            <Badge className="self-start" data-testid={`${testId}-heading-badge`}>
               {orderedTasks.length}
             </Badge>
           )}

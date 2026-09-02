@@ -4,9 +4,10 @@ import colors from 'tailwindcss/colors';
 import { useTranslation } from 'react-i18next';
 
 import { cn } from '@react-starter/shared/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import DonutChart, { DonutChartData, DonutChartProps } from '@react-starter/shared/components/Chart/DonutChart';
+
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
-import DonutChart, { DonutChartData, DonutChartProps } from '@/common/components/Chart/DonutChart';
 
 /**
  * Properties for the `TaskStatusDonutChart` component.

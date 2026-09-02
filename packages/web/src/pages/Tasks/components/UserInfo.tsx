@@ -1,8 +1,11 @@
+import { Link2, Mail, Phone } from 'lucide-react';
+
+import type { BaseComponentProps } from '@react-starter/shared/types/components';
+import { Card, CardContent } from '@react-starter/shared/components/shadcn/card';
+import { Avatar, AvatarFallback } from '@react-starter/shared/components/shadcn/avatar';
+import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
+
 import { useGetUser } from '@/common/api/useGetUser';
-import type { BaseComponentProps } from '@/common/utils/types';
-import Avatar from '@/common/components/Icon/Avatar';
-import Skeleton from '@/common/components/Loader/Skeleton';
-import FAIcon from '@/common/components/Icon/FAIcon';
 
 /**
  * Properties for the `UserInfo` component.
@@ -22,41 +25,48 @@ const UserInfo = ({ className, testId = 'user-info', userId }: UserInfoProps) =>
   const { data: user, isLoading } = useGetUser({ userId });
 
   return (
-    <div className={className} data-testid={testId}>
+    <Card className={className} data-testid={testId}>
       {isLoading && (
-        <div data-testid={`${testId}-loading`}>
-          <Skeleton className="mb-2 h-6 w-80" />
-          <Skeleton className="h-4 w-full" />
-        </div>
+        <CardContent data-testid={`${testId}-loading`}>
+          <div className="flex items-center gap-2">
+            <Skeleton className="size-8 rounded-full" />
+            <div className="flex-1">
+              <Skeleton className="mb-2 h-5 w-1/2 sm:w-1/4" />
+              <Skeleton className="h-4 w-full md:w-3/5" />
+            </div>
+          </div>
+        </CardContent>
       )}
 
       {user && (
-        <div data-testid={`${testId}-content`}>
+        <CardContent data-testid={`${testId}-content`}>
           <div className="flex items-center gap-2">
-            <Avatar value={user.name} className="shrink-0 rounded-full" testId={`${testId}-avatar`} />
+            <Avatar data-testid={`${testId}-avatar`}>
+              <AvatarFallback>{user.name[0]}</AvatarFallback>
+            </Avatar>
 
             <div className="flex flex-col gap-1">
               <div className="font-bold">{user.name}</div>
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs opacity-75">
                 <div className="flex items-center gap-1">
-                  <FAIcon icon="envelope" />
+                  <Mail size={16} />
                   {user.email}
                 </div>
                 <div className="flex items-center gap-1">
-                  <FAIcon icon="phone" />
+                  <Phone size={16} />
                   {user.phone}
                 </div>
                 <div className="flex items-center gap-1">
-                  <FAIcon icon="link" />
+                  <Link2 size={16} />
                   {user.website}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </CardContent>
       )}
-    </div>
+    </Card>
   );
 };
 
