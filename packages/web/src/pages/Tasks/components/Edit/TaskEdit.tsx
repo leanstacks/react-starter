@@ -4,14 +4,16 @@ import toNumber from 'lodash/toNumber';
 import { useTranslation } from 'react-i18next';
 
 import { cn } from '@react-starter/shared/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import { toast } from '@react-starter/shared/components/shadcn/sonner';
+import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
+import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
+
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { useGetTask } from '@/pages/Tasks/api/useGetTask';
-import { useToasts } from '@/common/hooks/useToasts';
 import { useUpdateTask } from '@/pages/Tasks/api/useUpdateTask';
-import TaskForm, { TaskFormValues } from '../Form/TaskForm';
-import Skeleton from '@/common/components/Loader/Skeleton';
-import { ErrorAlert } from '@/common/components/Alert/ErrorAlert';
+import TaskForm, { TaskFormValues } from '@/pages/Tasks/components/Form/TaskForm';
+import Heading from '@react-starter/shared/components/Text/Heading';
 
 /**
  * The `TaskEdit` component renders the layout for updating a Task including
@@ -22,7 +24,6 @@ const TaskEdit = ({ className, testId = 'task-edit' }: BaseComponentProps) => {
   const [taskUpdateError, setTaskUpdateError] = useState('');
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { createToast } = useToasts();
   const { taskId } = useParams();
   const { data: task, error: taskFetchError, isLoading } = useGetTask({ taskId: toNumber(taskId) });
   const { mutate: updateTask } = useUpdateTask();
@@ -46,11 +47,7 @@ const TaskEdit = ({ className, testId = 'task-edit' }: BaseComponentProps) => {
         { task: updatedTask },
         {
           onSuccess: () => {
-            createToast({
-              text: t('updatedTask', { ns: 'tasks' }),
-              isAutoDismiss: true,
-              variant: 'success',
-            });
+            toast(t('updatedTask', { ns: 'tasks' }));
             navigate(-1);
           },
           onError: (err) => {
@@ -67,10 +64,12 @@ const TaskEdit = ({ className, testId = 'task-edit' }: BaseComponentProps) => {
   return (
     <div className={cn(className)} data-testid={testId}>
       {/* heading */}
-      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">{t('editTask', { ns: 'tasks' })}</h2>
+      <Heading level={2} className="mb-4">
+        {t('editTask', { ns: 'tasks' })}
+      </Heading>
 
       {/* loading state */}
-      {isLoading && <Skeleton className="h-10" testId={`${testId}-loading`} />}
+      {isLoading && <Skeleton className="h-10" data-testid={`${testId}-loading`} />}
 
       {/* error state */}
       {!!taskFetchError && (

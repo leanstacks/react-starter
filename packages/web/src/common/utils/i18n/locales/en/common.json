@@ -18,7 +18,8 @@
   },
   "label": {
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "saving": "Saving..."
   },
   "letsGetStarted": "Let's get started",
   "privacy": "Privacy",

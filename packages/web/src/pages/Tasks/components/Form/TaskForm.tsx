@@ -1,14 +1,23 @@
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Square, SquareCheckBig } from 'lucide-react';
 
 import { cn } from '@react-starter/shared/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from '@react-starter/shared/components/shadcn/field';
+import { Input } from '@react-starter/shared/components/shadcn/input';
+import { Button } from '@react-starter/shared/components/shadcn/button';
+import { Toggle } from '@react-starter/shared/components/shadcn/toggle';
+
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
-import Input from '@/common/components/Form/Input';
-import Button from '@/common/components/Button/Button';
-import Toggle from '@/common/components/Form/Toggle';
 
 /**
  * Task form values.
@@ -48,13 +57,13 @@ const TaskForm = ({ className, onCancel, onSubmit, task, testId = 'task-form' }:
       .string()
       .min(1, { message: t('validation.required') })
       .max(100, { message: t('validation.max', { count: 100 }) }),
-    completed: z.boolean().default(false),
+    completed: z.boolean(),
   });
 
   /**
    * Initializes management of the form.
    */
-  const { control, formState, handleSubmit } = useForm({
+  const { control, formState, handleSubmit } = useForm<TaskFormValues>({
     defaultValues: {
       userId: task?.userId || 0,
       title: task?.title || '',
@@ -65,53 +74,79 @@ const TaskForm = ({ className, onCancel, onSubmit, task, testId = 'task-form' }:
   });
 
   return (
-    <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
+    <div className={cn('max-w-lg', className)} data-testid={testId}>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <Input
-          control={control}
-          name="title"
-          label={t('label.title', { ns: 'tasks' })}
-          className="mb-4"
-          autoFocus
-          autoComplete="off"
-          maxLength={100}
-          required
-          disabled={formState.isSubmitting}
-          testId={`${testId}-input-title`}
-        />
+        <FieldGroup>
+          <Controller
+            control={control}
+            name="title"
+            render={({ field, fieldState }) => (
+              <Field>
+                <FieldLabel>{t('label.title', { ns: 'tasks' })}</FieldLabel>
+                <Input
+                  {...field}
+                  autoFocus
+                  autoComplete="off"
+                  maxLength={100}
+                  required
+                  disabled={formState.isSubmitting}
+                  data-testid={`${testId}-input-title`}
+                />
+                <FieldDescription>Enter a brief description of the task.</FieldDescription>
+                {fieldState?.error && <FieldError>{fieldState.error.message}</FieldError>}
+              </Field>
+            )}
+          />
 
-        <Toggle
-          control={control}
-          name="completed"
-          label={t('label.completed', { ns: 'tasks' })}
-          className="mb-4"
-          disabled={formState.isSubmitting}
-          testId={`${testId}-input-completed`}
-        />
+          <Controller
+            control={control}
+            name="completed"
+            render={({ field, fieldState }) => (
+              <Field>
+                <FieldLabel>{t('label.completed', { ns: 'tasks' })}</FieldLabel>
+                <Toggle
+                  variant="outline"
+                  className="w-fit!"
+                  aria-label="Toggle task completion status"
+                  pressed={field.value}
+                  onPressedChange={(pressed) => field.onChange(pressed)}
+                  disabled={formState.isSubmitting}
+                  data-testid={`${testId}-input-completed`}
+                >
+                  <Square className="group-data-[state=on]/toggle:hidden" />
+                  <span className="group-data-[state=on]/toggle:hidden">Todo</span>
+                  <SquareCheckBig className="group-data-[state=off]/toggle:hidden" />
+                  <span className="group-data-[state=off]/toggle:hidden">Done</span>
+                </Toggle>
+                {fieldState?.error && <FieldError>{fieldState.error.message}</FieldError>}
+              </Field>
+            )}
+          />
 
-        <div className="my-8 flex items-center gap-4">
-          <Button
-            type="button"
-            variant="outline"
-            className="w-1/2 sm:w-40"
-            onClick={onCancel}
-            disabled={formState.isSubmitting}
-            aria-label={t('label.cancel')}
-            testId={`${testId}-button-cancel`}
-          >
-            {t('label.cancel')}
-          </Button>
+          <div className="flex flex-col justify-end gap-8 sm:flex-row sm:gap-4">
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full sm:w-40"
+              onClick={onCancel}
+              disabled={formState.isSubmitting}
+              aria-label={t('label.cancel')}
+              data-testid={`${testId}-button-cancel`}
+            >
+              {t('label.cancel')}
+            </Button>
 
-          <Button
-            type="submit"
-            className="w-1/2 sm:w-40"
-            disabled={formState.isSubmitting || !formState.isDirty}
-            aria-label={t('label.save')}
-            testId={`${testId}-button-submit`}
-          >
-            {t('label.save')}
-          </Button>
-        </div>
+            <Button
+              type="submit"
+              className="w-full sm:w-40"
+              disabled={formState.isSubmitting || !formState.isDirty}
+              aria-label={t('label.save')}
+              data-testid={`${testId}-button-submit`}
+            >
+              {formState.isSubmitting ? t('label.saving') : t('label.save')}
+            </Button>
+          </div>
+        </FieldGroup>
       </form>
     </div>
   );

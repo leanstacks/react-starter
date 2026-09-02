@@ -53,7 +53,9 @@ export const TaskDeleteDialog = ({ children, task, testId = 'dialog-task-delete'
 
   return (
     <Dialog>
-      <DialogTrigger data-testid={`${testId}-trigger`}>{children}</DialogTrigger>
+      <DialogTrigger data-testid={`${testId}-trigger`} asChild>
+        {children}
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Are you sure?</DialogTitle>
