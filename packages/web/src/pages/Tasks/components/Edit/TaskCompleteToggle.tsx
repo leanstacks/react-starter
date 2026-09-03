@@ -22,7 +22,7 @@ interface TaskCompleteToggleProps extends BaseComponentProps {
  * to toggle the value of the Task `complete` attribute.
  * @param {TaskCompleteToggleProps} props - Component properties.
  */
-const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
+export const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
   const { t } = useTranslation();
   const { mutate: updateTask, isPending } = useUpdateTask();
 
@@ -61,5 +61,3 @@ const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }
     </Button>
   );
 };
-
-export default TaskCompleteToggle;

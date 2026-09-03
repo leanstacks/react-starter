@@ -10,7 +10,7 @@ import { Button } from '@react-starter/shared/components/shadcn/button';
  * to toggle between light and dark themes.
  * @param {PropsWithClassName} [props] - Component properties, `PropsWithClassName`.
  */
-const ThemeToggle = ({ className }: PropsWithClassName) => {
+export const ThemeToggle = ({ className }: PropsWithClassName) => {
   const settings = useSettings();
   const { mutate: setSettings } = useSetSettings();
 
@@ -42,5 +42,3 @@ const ThemeToggle = ({ className }: PropsWithClassName) => {
     </>
   );
 };
-
-export default ThemeToggle;

@@ -1,6 +1,6 @@
 import colors from 'tailwindcss/colors';
 
-import { DonutChartData } from '@/common/components/Chart/DonutChart';
+import { DonutChartData } from '@react-starter/shared/components/Chart/DonutChart';
 
 export const donutChartDataFixture: DonutChartData[] = [
   {

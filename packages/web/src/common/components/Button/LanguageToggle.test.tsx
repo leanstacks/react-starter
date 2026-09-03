@@ -5,7 +5,7 @@ import { StorageKey } from '@/common/utils/constants';
 import { render, screen } from '@/test/test-utils';
 import storage from '@/common/utils/storage';
 
-import LanguageToggle from './LanguageToggle';
+import { LanguageToggle } from './LanguageToggle';
 
 // mock select functions from react-i18next
 const mockChangeLanguage = vi.fn();
@@ -27,15 +27,6 @@ describe('LanguageToggle', () => {
 
     // ASSERT
     expect(screen.getByTestId('dropdown-language')).toBeDefined();
-  });
-
-  it('should use custom className', async () => {
-    // ARRANGE
-    render(<LanguageToggle className="custom-className" />);
-    await screen.findByTestId('dropdown-language');
-
-    // ASSERT
-    expect(screen.getByTestId('dropdown-language').classList).toContain('custom-className');
   });
 
   it('should set language to English', async () => {

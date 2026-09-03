@@ -3,10 +3,9 @@ import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from '@/test/test-utils';
 import { todosFixture } from '@/__fixtures__/todos';
-import { ToastsContextValue } from '@/common/providers/ToastsContext';
-import * as UseToasts from '@/common/hooks/useToasts';
+import * as sonner from '@react-starter/shared/components/shadcn/sonner';
 
-import TaskDeleteDialog from './TaskDeleteDialog';
+import { TaskDeleteDialog } from './TaskDeleteDialog';
 
 describe('TaskDeleteDialog', () => {
   it('should render successfully', async () => {
@@ -51,12 +50,9 @@ describe('TaskDeleteDialog', () => {
     // ARRANGE
     const user = userEvent.setup();
     const task = todosFixture[0];
-    const mockCreateToast = vi.fn();
-    const useToastsSpy = vi.spyOn(UseToasts, 'useToasts');
-    useToastsSpy.mockReturnValue({
-      createToast: mockCreateToast,
-      toasts: [],
-    } as unknown as ToastsContextValue);
+    const mockToast = vi.fn();
+    const toastSpy = vi.spyOn(sonner, 'toast');
+    toastSpy.mockImplementation(mockToast);
 
     render(
       <TaskDeleteDialog task={task} testId="dialog">
@@ -69,7 +65,7 @@ describe('TaskDeleteDialog', () => {
     await user.click(screen.getByTestId('dialog-button-delete'));
 
     // ASSERT
-    expect(mockCreateToast).toHaveBeenCalled();
+    expect(mockToast).toHaveBeenCalled();
   });
 
   it('should display error when there is a problem deleting task', async () => {

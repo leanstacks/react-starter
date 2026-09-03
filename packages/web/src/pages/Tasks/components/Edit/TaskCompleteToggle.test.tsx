@@ -1,26 +1,22 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
+import * as sonner from '@react-starter/shared/components/shadcn/sonner';
 import { render, screen, waitFor } from '@/test/test-utils';
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { todosFixture } from '@/__fixtures__/todos';
-import * as UseToasts from '@/common/hooks/useToasts';
 
-import TaskCompleteToggle from './TaskCompleteToggle';
+import { TaskCompleteToggle } from './TaskCompleteToggle';
 
 describe('TaskCompleteToggle', () => {
   const incompleteTask: Task = { ...todosFixture[0], completed: false };
   const completeTask: Task = { ...todosFixture[0], completed: true };
 
-  const useToastsSpy = vi.spyOn(UseToasts, 'useToasts');
-  const mockCreateToast = vi.fn();
+  const toastSpy = vi.spyOn(sonner, 'toast');
+  const mockToast = vi.fn();
 
   beforeEach(() => {
-    useToastsSpy.mockReturnValue({
-      createToast: mockCreateToast,
-      removeToast: vi.fn(),
-      toasts: [],
-    });
+    toastSpy.mockImplementation(mockToast);
   });
 
   it('should render successfully', async () => {
@@ -82,15 +78,11 @@ describe('TaskCompleteToggle', () => {
 
     // ACT
     await user.click(screen.getByTestId('toggle-task-complete'));
-    await waitFor(() => expect(mockCreateToast).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mockToast).toHaveBeenCalledOnce());
 
     // ASSERT
-    expect(mockCreateToast).toHaveBeenCalledOnce();
-    expect(mockCreateToast).toHaveBeenCalledWith({
-      text: 'Marked task complete',
-      isAutoDismiss: true,
-      variant: 'success',
-    });
+    expect(mockToast).toHaveBeenCalledOnce();
+    expect(mockToast).toHaveBeenCalledWith('Marked task complete');
   });
 
   it('should toggle task incomplete when clicked', async () => {
@@ -103,15 +95,11 @@ describe('TaskCompleteToggle', () => {
 
     // ACT
     await user.click(screen.getByTestId('toggle-task-complete'));
-    await waitFor(() => expect(mockCreateToast).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mockToast).toHaveBeenCalledOnce());
 
     // ASSERT
-    expect(mockCreateToast).toHaveBeenCalledOnce();
-    expect(mockCreateToast).toHaveBeenCalledWith({
-      text: 'Marked task incomplete',
-      isAutoDismiss: true,
-      variant: 'success',
-    });
+    expect(mockToast).toHaveBeenCalledOnce();
+    expect(mockToast).toHaveBeenCalledWith('Marked task incomplete');
   });
 
   it('should toggle icon on hover', async () => {

@@ -6,8 +6,8 @@ import { ButtonGroup } from '@react-starter/shared/components/shadcn/button-grou
 import logo from '@/assets/img/logo.png';
 import { useAuth } from '@/common/hooks/useAuth';
 import { AppSidebarTrigger } from '@/common/components/Header/AppSidebarTrigger';
-import ThemeToggle from '@/common/components/Button/ThemeToggle';
-import LanguageToggle from '@/common/components/Button/LanguageToggle';
+import { ThemeToggle } from '@/common/components/Button/ThemeToggle';
+import { LanguageToggle } from '@/common/components/Button/LanguageToggle';
 
 /**
  * The `Header` React component renders a top navigation bar for pages.

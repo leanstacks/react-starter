@@ -17,7 +17,7 @@ import { Button } from '@react-starter/shared/components/shadcn/button';
  * The `LanguageToggle` component renders a `Dropdown` which allows users
  * to select the language in which they wish to view the application.
  */
-const LanguageToggle = () => {
+export const LanguageToggle = () => {
   const { i18n } = useTranslation();
 
   /**
@@ -53,5 +53,3 @@ const LanguageToggle = () => {
     </DropdownMenu>
   );
 };
-
-export default LanguageToggle;

@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { describe, expect, it } from 'vitest';
 
 import { render, screen } from '@/test/test-utils';
-const Text = lazy(() => import('@/common/components/Text/Text'));
+const Text = lazy(() => import('@react-starter/shared/components/Text/Text'));
 
 import { withSuspense } from './suspense';
 

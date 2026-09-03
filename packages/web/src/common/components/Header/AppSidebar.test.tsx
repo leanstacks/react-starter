@@ -8,9 +8,9 @@ import * as UseAuth from '@/common/hooks/useAuth';
 import * as UseGetCurrentUser from '@/common/api/useGetCurrentUser';
 import { userFixture1 } from '@/__fixtures__/users';
 
-import AppMenu from './AppSidebar';
+import { AppSidebar } from './AppSidebar';
 
-describe('AppMenu', () => {
+describe('AppSidebar', () => {
   const useAuthSpy = vi.spyOn(UseAuth, 'useAuth');
   const useGetCurrentUserSpy = vi.spyOn(UseGetCurrentUser, 'useGetCurrentUser');
 
@@ -26,34 +26,16 @@ describe('AppMenu', () => {
 
   it('should render successfully', async () => {
     // ARRANGE
-    render(<AppMenu />);
+    render(<AppSidebar />);
     await screen.findByTestId('menu-app');
 
     // ASSERT
     expect(screen.getByTestId('menu-app')).toBeDefined();
   });
 
-  it('should use custom testId', async () => {
-    // ARRANGE
-    render(<AppMenu testId="custom-testid" />);
-    await screen.findByTestId('custom-testid');
-
-    // ASSERT
-    expect(screen.getByTestId('custom-testid')).toBeDefined();
-  });
-
-  it('should use custom className', async () => {
-    // ARRANGE
-    render(<AppMenu className="custom-class" />);
-    await screen.findByTestId('menu-app');
-
-    // ASSERT
-    expect(screen.getByTestId('menu-app').classList).toContain('custom-class');
-  });
-
   it('should render authenticated content', async () => {
     // ARRANGE
-    render(<AppMenu />);
+    render(<AppSidebar />);
     await screen.findByTestId('menu-app');
 
     // ASSERT
@@ -70,7 +52,7 @@ describe('AppMenu', () => {
     useGetCurrentUserSpy.mockReturnValue({
       data: undefined,
     } as unknown as UseQueryResult<User>);
-    render(<AppMenu />);
+    render(<AppSidebar />);
     await screen.findByTestId('menu-app');
 
     // ASSERT

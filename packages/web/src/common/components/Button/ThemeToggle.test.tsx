@@ -8,7 +8,7 @@ import * as UseSettings from '@/common/hooks/useSettings';
 import * as UseSetSettings from '@/common/api/useSetSettings';
 import { settingsFixture } from '@/__fixtures__/settings';
 
-import ThemeToggle from './ThemeToggle';
+import { ThemeToggle } from './ThemeToggle';
 
 describe('ThemeToggle', () => {
   const useSettingsSpy = vi.spyOn(UseSettings, 'useSettings');

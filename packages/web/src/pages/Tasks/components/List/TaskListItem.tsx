@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { BaseComponentProps } from '@react-starter/shared/types/components';
 
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
-import TaskCompleteToggle from '@/pages/Tasks/components/Edit/TaskCompleteToggle';
+import { TaskCompleteToggle } from '@/pages/Tasks/components/Edit/TaskCompleteToggle';
 
 /**
  * Properties for the `TaskListItem` component.
