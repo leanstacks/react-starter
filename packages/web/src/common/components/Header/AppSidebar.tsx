@@ -1,5 +1,6 @@
 import { Info, LogIn, LogOut, Sliders, UserPlus, ListChecks, Plus } from 'lucide-react';
 
+import { PropsWithTestId } from '@react-starter/shared/types/components';
 import { cn } from '@react-starter/shared/utils/css';
 import {
   Sidebar,
@@ -21,14 +22,14 @@ import { useAuth } from '@/common/hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 /**
- * The `AppSidebar` component a `SideMenu` which contains application menu
- * items. The `AppSidebar` is typically rendered at small media breakpoints.
+ * The `AppSidebar` component is a shadcn `Sidebar` which contains application menu
+ * items.
  */
-export const AppSidebar = () => {
+export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <Sidebar side="left" collapsible="offcanvas" data-testid="app-sidebar">
+    <Sidebar side="left" collapsible="offcanvas" data-testid={testId}>
       <SidebarHeader className="flex flex-row items-center p-4">
         <img src={logo} alt="Logo" height="32" width="32" />
         <span className="font-bold">React Starter</span>
@@ -56,7 +57,7 @@ export const AppSidebar = () => {
               </SidebarMenuItem>
               <SidebarMenuItem className={cn({ hidden: !isAuthenticated })}>
                 <SidebarMenuButton asChild>
-                  <Link to="/auth/signout">
+                  <Link to="/auth/signout" data-testid={`${testId}-sign-out-button`}>
                     <LogOut />
                     <span>Sign Out</span>
                   </Link>
