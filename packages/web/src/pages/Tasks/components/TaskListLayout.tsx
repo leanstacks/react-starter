@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@react-starter/shared/
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
 import { useGetUserTasks } from '@/pages/Tasks/api/useGetUserTasks';
 import TaskList from '@/pages/Tasks/components/List/TaskList';
-import TaskStatusDonutChart from '@/pages/Tasks/components/Chart/TaskStatusDonutChart';
+import { TaskStatusDonutChart } from '@/pages/Tasks/components/Chart/TaskStatusDonutChart';
 
 /**
  * The `TaskListLayout` component renders the layout for all tasks for a

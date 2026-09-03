@@ -24,7 +24,7 @@ export interface TaskStatusDonutChartProps extends BaseComponentProps, Omit<Donu
  * the relative count of incomplete and complete tasks.
  * @param {TaskStatusDonutChartProps} props - Component properties.
  */
-const TaskStatusDonutChart = ({
+export const TaskStatusDonutChart = ({
   tasks,
   className,
   height = 56,
@@ -71,5 +71,3 @@ const TaskStatusDonutChart = ({
     return false;
   }
 };
-
-export default TaskStatusDonutChart;
