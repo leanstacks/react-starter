@@ -9,10 +9,18 @@ import * as UseGetCurrentUser from '@/common/api/useGetCurrentUser';
 import { userFixture1 } from '@/__fixtures__/users';
 
 import { AppSidebar } from './AppSidebar';
+import { SidebarProvider } from '@react-starter/shared/components/shadcn/sidebar';
+
+// Mock the use-mobile hook to avoid matchMedia issues in tests
+vi.mock('@react-starter/shared/hooks/use-mobile', () => ({
+  useIsMobile: () => false,
+}));
 
 describe('AppSidebar', () => {
   const useAuthSpy = vi.spyOn(UseAuth, 'useAuth');
   const useGetCurrentUserSpy = vi.spyOn(UseGetCurrentUser, 'useGetCurrentUser');
+
+  const renderWrapper = (children: React.ReactNode) => render(<SidebarProvider>{children}</SidebarProvider>);
 
   beforeEach(() => {
     queryClient.clear();
@@ -26,22 +34,23 @@ describe('AppSidebar', () => {
 
   it('should render successfully', async () => {
     // ARRANGE
-    render(<AppSidebar />);
-    await screen.findByTestId('menu-app');
+    renderWrapper(<AppSidebar />);
+    await screen.findByTestId('app-sidebar');
 
     // ASSERT
-    expect(screen.getByTestId('menu-app')).toBeDefined();
+    expect(screen.getByTestId('app-sidebar')).toBeDefined();
   });
 
   it('should render authenticated content', async () => {
     // ARRANGE
-    render(<AppSidebar />);
-    await screen.findByTestId('menu-app');
+    renderWrapper(<AppSidebar />);
+    await screen.findByTestId('app-sidebar');
 
     // ASSERT
-    expect(screen.getByTestId('menu-app')).toBeDefined();
-    expect(screen.getByText(userFixture1.name)).toBeDefined();
+    expect(screen.getByTestId('app-sidebar')).toBeDefined();
     expect(screen.getByText('Sign Out')).toBeDefined();
+    expect(screen.getByText('Settings')).toBeDefined();
+    expect(screen.getByText('Tasks')).toBeDefined();
   });
 
   it('should render unauthenticated content', async () => {
@@ -52,13 +61,13 @@ describe('AppSidebar', () => {
     useGetCurrentUserSpy.mockReturnValue({
       data: undefined,
     } as unknown as UseQueryResult<User>);
-    render(<AppSidebar />);
-    await screen.findByTestId('menu-app');
+    renderWrapper(<AppSidebar />);
+    await screen.findByTestId('app-sidebar');
 
     // ASSERT
-    expect(screen.getByTestId('menu-app')).toBeDefined();
+    expect(screen.getByTestId('app-sidebar')).toBeDefined();
     expect(screen.getByAltText('Logo')).toBeDefined();
     expect(screen.getByText(/^Sign In$/i)).toBeDefined();
-    expect(screen.getByText(/Sign Up/i)).toBeDefined();
+    expect(screen.getByText(/Create Account/i)).toBeDefined();
   });
 });

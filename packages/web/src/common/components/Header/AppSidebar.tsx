@@ -28,7 +28,7 @@ export const AppSidebar = () => {
   const { isAuthenticated } = useAuth();
 
   return (
-    <Sidebar side="left" collapsible="offcanvas">
+    <Sidebar side="left" collapsible="offcanvas" data-testid="app-sidebar">
       <SidebarHeader className="flex flex-row items-center p-4">
         <img src={logo} alt="Logo" height="32" width="32" />
         <span className="font-bold">React Starter</span>
