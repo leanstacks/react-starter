@@ -23,18 +23,19 @@ describe('LanguageToggle', () => {
   it('should render successfully', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    await screen.findByTestId('button-language-menu-trigger');
 
     // ASSERT
-    expect(screen.getByTestId('dropdown-language')).toBeDefined();
+    expect(screen.getByTestId('button-language-menu-trigger')).toBeDefined();
   });
 
   it('should set language to English', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    const menuTrigger = await screen.findByTestId('button-language-menu-trigger');
 
     // ACT
+    await userEvent.click(menuTrigger);
     await userEvent.click(screen.getByTestId('dropdown-item-en'));
 
     // ASSERT
@@ -45,9 +46,10 @@ describe('LanguageToggle', () => {
   it('should set language to French', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    const menuTrigger = await screen.findByTestId('button-language-menu-trigger');
 
     // ACT
+    await userEvent.click(menuTrigger);
     await userEvent.click(screen.getByTestId('dropdown-item-fr'));
 
     // ASSERT
@@ -58,9 +60,10 @@ describe('LanguageToggle', () => {
   it('should set language to Spanish', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    const menuTrigger = await screen.findByTestId('button-language-menu-trigger');
 
     // ACT
+    await userEvent.click(menuTrigger);
     await userEvent.click(screen.getByTestId('dropdown-item-es'));
 
     // ASSERT
