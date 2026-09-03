@@ -42,7 +42,7 @@ describe('ThemeToggle', () => {
 
     // ASSERT
     expect(screen.getByTestId('button-theme-dark')).toBeDefined();
-    expect(screen.getByTestId('icon-dark-mode')).toHaveAttribute('data-icon', 'moon');
+    expect(screen.getByTestId('icon-dark-mode')).toHaveClass('lucide-moon');
   });
 
   it('should render light mode icon', async () => {
@@ -56,7 +56,7 @@ describe('ThemeToggle', () => {
 
     // ASSERT
     expect(screen.getByTestId('button-theme-light')).toBeDefined();
-    expect(screen.getByTestId('icon-light-mode')).toHaveAttribute('data-icon', 'sun');
+    expect(screen.getByTestId('icon-light-mode')).toHaveClass('lucide-sun');
   });
 
   it('should set dark theme when clicked', async () => {
