@@ -1,6 +1,6 @@
 # shadcn Components Guide
 
-This guide provides information about using and configuring shadcn/ui components in the React Starter project.
+This guide provides information about using and configuring shadcn/ui components in the React Starter monorepo.
 
 ## Overview
 
@@ -10,11 +10,28 @@ Unlike traditional component libraries, shadcn/ui provides high-quality, unstyle
 
 ---
 
+## Monorepo Structure
+
+In this monorepo, shadcn/ui components are managed in the **`packages/shared`** workspace. The shared package serves as the centralized location for all reusable UI components, hooks, types, and utilities that are consumed by the `packages/web` frontend application.
+
+- **Component Installation**: `packages/shared/src/components/shadcn/`
+- **Component Wrappers**: `packages/shared/src/components/`
+- **Shared Styling**: `packages/shared/src/styles/globals.css`
+- **Web Component Aliases**: Web package imports components via `@react-starter/shared` workspace package name
+
+---
+
 ## Configuration
 
-### shadcn Configuration File
+### shadcn Configuration Files
 
-shadcn is configured via the `components.json` file in the root directory. This file controls component installation, styling, and import aliases.
+shadcn is configured via `components.json` files in two packages:
+
+#### 1. Shared Package Configuration
+
+Located at: `packages/shared/components.json`
+
+This is the primary configuration where shadcn components are installed.
 
 ```json
 {
@@ -24,35 +41,66 @@ shadcn is configured via the `components.json` file in the root directory. This 
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "src/index.css",
-    "baseColor": "neutral",
+    "css": "src/styles/globals.css",
+    "baseColor": "mist",
     "cssVariables": true,
     "prefix": ""
   },
   "iconLibrary": "lucide",
   "rtl": false,
   "aliases": {
-    "components": "src/common/components",
-    "utils": "src/common/utils/css",
-    "ui": "src/common/components/shadcn",
-    "lib": "src/common/utils",
-    "hooks": "src/common/hooks"
+    "components": "@react-starter/shared/components",
+    "lib": "@react-starter/shared/utils",
+    "hooks": "@react-starter/shared/hooks",
+    "utils": "@react-starter/shared/utils/css",
+    "ui": "@react-starter/shared/components/shadcn"
   }
 }
 ```
 
-#### Key Configuration Details
+#### 2. Web Package Configuration
+
+Located at: `packages/web/components.json`
+
+The web package configuration references the shared package for shadcn components and styling.
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "radix-nova",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "../shared/src/styles/globals.css",
+    "baseColor": "mist",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/common/components",
+    "hooks": "@/common/hooks",
+    "lib": "@/common/utils",
+    "utils": "@react-starter/shared/utils/css",
+    "ui": "@react-starter/shared/components/shadcn"
+  }
+}
+```
+
+### Key Configuration Details
 
 | Property                | Value           | Description                               |
 | ----------------------- | --------------- | ----------------------------------------- |
 | `style`                 | `radix-nova`    | The design style to use for components    |
 | `rsc`                   | `false`         | React Server Components are not enabled   |
 | `tsx`                   | `true`          | Components are generated in TypeScript    |
-| `tailwind.css`          | `src/index.css` | Main Tailwind CSS entry point             |
+| `tailwind.css`          | Shared location | Main Tailwind CSS entry point (shared)    |
 | `tailwind.cssVariables` | `true`          | CSS variables are used for theming        |
-| `tailwind.baseColor`    | `neutral`       | Base color palette for the theme          |
+| `tailwind.baseColor`    | `mist`          | Base color palette for the theme          |
 | `iconLibrary`           | `lucide`        | Icon library to use (Lucide icons)        |
-| `aliases`               | See below       | Import path aliases for organized imports |
+| `aliases`               | See above       | Import path aliases for organized imports |
 
 ---
 
@@ -60,20 +108,22 @@ shadcn is configured via the `components.json` file in the root directory. This 
 
 ### CSS Variables System
 
-shadcn components use CSS custom properties (variables) for theming. All styling variables are defined in `src/index.css` using the OKLCH color model for a modern, perceptually-uniform color space.
+shadcn components use CSS custom properties (variables) for theming. All styling variables are centralized in `packages/shared/src/styles/globals.css` using the OKLCH color model for a modern, perceptually-uniform color space.
 
 #### Light Mode Variables
 
 ```css
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --secondary: oklch(0.97 0 0);
+  --foreground: oklch(0.148 0.004 228.8);
+  --primary: oklch(0.488 0.243 264.376);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
   --destructive: oklch(0.577 0.245 27.325);
-  --ring: oklch(0.708 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --ring: oklch(0.723 0.014 214.4);
+  --border: oklch(0.925 0.005 214.3);
+  --input: oklch(0.925 0.005 214.3);
   /* ... additional variables ... */
 }
 ```
@@ -82,23 +132,25 @@ shadcn components use CSS custom properties (variables) for theming. All styling
 
 ```css
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --secondary: oklch(0.269 0 0);
+  --background: oklch(0.148 0.004 228.8);
+  --foreground: oklch(0.987 0.002 197.1);
+  --primary: oklch(0.424 0.199 265.638);
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
   /* ... additional variables ... */
 }
 ```
 
 ### Customizing Component Styles
 
-Components can be customized by modifying CSS variables:
+Components can be customized by modifying CSS variables in `packages/shared/src/styles/globals.css`:
 
 1. **Update the CSS variable value:**
 
    ```css
    :root {
-     --primary: oklch(0.205 0 0); /* Current value */
+     --primary: oklch(0.488 0.243 264.376); /* Current value */
      --primary: oklch(0.5 0.2 35); /* New value */
    }
    ```
@@ -106,12 +158,12 @@ Components can be customized by modifying CSS variables:
 2. **Override component-specific styles in component files:**
 
    ```typescript
-   // src/common/components/Button/Button.tsx
-   import { Button as ShadcnButton } from 'common/components/shadcn/button';
+   // packages/shared/src/components/Alert/ErrorAlert.tsx
+   import { Alert as ShadcnAlert } from '@react-starter/shared/components/shadcn/alert';
 
-   export const Button = (props) => {
+   export const Alert = (props) => {
      return (
-       <ShadcnButton
+       <ShadcnAlert
          className="custom-class"
          {...props}
        />
@@ -161,27 +213,32 @@ Six dedicated chart colors (`--chart-1` through `--chart-5`) are provided for da
 
 ### Add Components
 
-The `add` command installs new shadcn components into your project.
+The `add` command installs new shadcn components into the shared package.
+
+**Run commands from the `packages/shared` directory:**
 
 ```bash
+cd packages/shared
 npx shadcn@latest add <component-name>
 ```
 
 **Example: Install Button Component**
 
 ```bash
+cd packages/shared
 npx shadcn@latest add button
 ```
 
 This command:
 
-- Installs the Button component to `src/common/components/shadcn/button.tsx`
-- Adds all required dependencies to `package.json`
+- Installs the Button component to `packages/shared/src/components/shadcn/button.tsx`
+- Adds all required dependencies to `packages/shared/package.json`
 - Verifies Tailwind CSS compatibility
 
 **Install Multiple Components**
 
 ```bash
+cd packages/shared
 npx shadcn@latest add button input label dialog
 ```
 
@@ -194,12 +251,14 @@ For a full list of available components, visit the [shadcn/ui components library
 The `docs` command opens component documentation in your browser.
 
 ```bash
+cd packages/shared
 npx shadcn@latest docs <component-name>
 ```
 
 **Example: View Button Documentation**
 
 ```bash
+cd packages/shared
 npx shadcn@latest docs button
 ```
 
@@ -215,12 +274,14 @@ This opens the official shadcn/ui documentation for the Button component, includ
 The `info` command displays component details including dependencies, installation status, and file location.
 
 ```bash
+cd packages/shared
 npx shadcn@latest info <component-name>
 ```
 
 **Example: Get Button Info**
 
 ```bash
+cd packages/shared
 npx shadcn@latest info button
 ```
 
@@ -229,7 +290,7 @@ Output example:
 ```
 Component: Button
 Status: Installed
-Location: src/common/components/shadcn/button.tsx
+Location: packages/shared/src/components/shadcn/button.tsx
 Dependencies: clsx, class-variance-authority
 ```
 
@@ -239,13 +300,39 @@ Dependencies: clsx, class-variance-authority
 
 ### Component Placement
 
-- **UI Components**: Read-only shadcn components are installed in `src/common/components/shadcn/`
-- **Wrapper Components**: Create wrapper components in `src/common/components/` that extend shadcn functionality
-- **Page Components**: Import shadcn and wrapper components in `src/pages/*/components/`
+The monorepo follows a clear separation of concerns for component organization:
+
+**In `packages/shared`:**
+
+- **UI Components**: Read-only shadcn components are installed in `packages/shared/src/components/shadcn/`
+- **Wrapper Components**: Create wrapper/extension components in `packages/shared/src/components/` that extend shadcn functionality for reuse
+- **Shared Hooks**: Feature-isolated or reusable hooks in `packages/shared/src/hooks/`
+- **Shared Types**: Unified type definitions in `packages/shared/src/types/`
+
+**In `packages/web`:**
+
+- **Common Components**: App-wide wrapper components in `packages/web/src/common/components/` (when specific to web, not shared)
+- **Page Components**: Feature-specific components in `packages/web/src/pages/*/components/`
+- **Web-specific Hooks**: App-wide utility hooks in `packages/web/src/common/hooks/`
+
+### Importing Shared Components in Web
+
+When using shared components in the web package, import using the workspace package name:
+
+```typescript
+// In packages/web/src/...
+
+// ✅ Correct: Use workspace package name
+import { ErrorAlert } from '@react-starter/shared/components/Alert';
+import { useMobile } from '@react-starter/shared/hooks/use-mobile';
+
+// ❌ Incorrect: Do not use relative imports
+import { ErrorAlert } from '../../../shared/src/components/Alert';
+```
 
 ### Wrapping shadcn Components
 
-**Only wrap shadcn components when you need to adjust their behavior.** For style, variant, or CVA configuration changes, modify the component directly in `src/common/components/shadcn/` instead. This keeps base components clean and centralizes visual variants in one place.
+**Only wrap shadcn components when you need to adjust their behavior.** For style, variant, or CVA configuration changes, modify the component directly in `packages/shared/src/components/shadcn/` instead. This keeps base components clean and centralizes visual variants in one place.
 
 #### Example: Alert Components
 
@@ -253,7 +340,7 @@ The project provides a great example of this pattern with the Alert components:
 
 **When NOT to Wrap — Modify Variants/Styles Directly:**
 
-The base [shadcn Alert component](src/common/components/shadcn/alert.tsx) defines all visual variants (default, destructive, success, warning) and style configurations directly using CVA:
+The base [shadcn Alert component](../../packages/shared/src/components/shadcn/alert.tsx) defines all visual variants (default, destructive, success, warning) and style configurations directly using CVA:
 
 ```typescript
 const alertVariants = cva('group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 ...', {
@@ -275,7 +362,7 @@ Style and variant adjustments stay here, not in wrapper components.
 
 **When to Wrap — Add Behavior/Functionality:**
 
-The [ErrorAlert wrapper](src/common/components/Alert/ErrorAlert.tsx) extends the Alert for a specific use case by adding optional title handling and structured error presentation:
+The [ErrorAlert wrapper](../../packages/shared/src/components/Alert/ErrorAlert.tsx) extends the Alert for a specific use case by adding optional title handling and structured error presentation:
 
 ```typescript
 const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
@@ -295,8 +382,8 @@ This wrapper adds behavior-specific logic while reusing the base Alert's styles 
 
 Follow this approach for all shadcn components:
 
-- **Modify the shadcn component** (`src/common/components/shadcn/*.tsx`) for all visual customizations, variants, and CVA configuration
-- **Create a wrapper** (`src/common/components/ComponentName/*.tsx`) only when adding behavior, functionality, or context-specific logic
+- **Modify the shadcn component** (`packages/shared/src/components/shadcn/*.tsx`) for all visual customizations, variants, and CVA configuration
+- **Create a wrapper** (`packages/shared/src/components/ComponentName/*.tsx`) only when adding behavior, functionality, or context-specific logic
 
 ### Testing shadcn Components
 
@@ -318,7 +405,7 @@ When testing components that use shadcn:
 3. **Test with appropriate providers** (Theme, Query Client, etc.):
 
    ```typescript
-   import { WithAllProviders } from '@/test/wrappers';
+   import { WithAllProviders } from '@react-starter/web/test/wrappers';
 
    render(<MyComponent />, { wrapper: WithAllProviders });
    ```
@@ -327,35 +414,38 @@ When testing components that use shadcn:
 
 ## Common Workflows
 
-### Adding a New Component
+### Adding a New Component to Shared
 
-1. **Install the component using the CLI:**
+1. **Navigate to the shared package and install the component using the CLI:**
 
    ```bash
+   cd packages/shared
    npx shadcn@latest add dialog
    ```
 
 2. **View the documentation:**
 
    ```bash
+   cd packages/shared
    npx shadcn@latest docs dialog
    ```
 
 3. **Create a wrapper component** (if needed):
 
    ```typescript
-   // src/common/components/Dialog/Dialog.tsx
-   import { Dialog, DialogContent, DialogTrigger } from 'common/components/shadcn/dialog';
+   // packages/shared/src/components/Dialog/Dialog.tsx
+   import { Dialog, DialogContent, DialogTrigger } from '@react-starter/shared/components/shadcn/dialog';
 
    export { Dialog, DialogContent, DialogTrigger };
    ```
 
-4. **Use in your app:**
+4. **Use in the web app:**
 
    ```typescript
-   import { Dialog, DialogContent, DialogTrigger } from '@/components/Dialog';
+   // packages/web/src/pages/tasks/components/TaskDialog.tsx
+   import { Dialog, DialogContent, DialogTrigger } from '@react-starter/shared/components/Dialog';
 
-   export function MyDialog() {
+   export function TaskDialog() {
      return (
        <Dialog>
          <DialogTrigger>Open Dialog</DialogTrigger>
@@ -371,7 +461,7 @@ When testing components that use shadcn:
 ### Customizing Component Appearance
 
 1. **Identify the CSS variable** used by the component (check component source)
-2. **Update the variable** in `src/index.css`:
+2. **Update the variable** in `packages/shared/src/styles/globals.css`:
 
    ```css
    :root {
@@ -380,6 +470,10 @@ When testing components that use shadcn:
    ```
 
 3. **Test changes** by running the development server
+
+   ```bash
+   npm run dev -w packages/web
+   ```
 
 ---
 
