@@ -101,7 +101,7 @@ When using the application, you may sign in with any of the JSON Placeholder [Us
 
 - **Vitest** as the core unit testing framework with V8 code coverage support
 - **React Testing Library** for user-centric component testing (prefer testing behaviors over implementation)
-- **Mock Service Worker (MSW)** for seamless API mocking in both tests and Storybook
+- **Mock Service Worker (MSW)** for seamless API mocking in tests
 - **Co-located test files** (`.test.ts`, `.test.tsx`) adjacent to source for easy maintenance and discovery
 - **80% minimum code coverage** requirement ensuring testability and reliability
 - **Test utilities and helpers** (`test-utils.tsx`) for consistent test setup and common operations
@@ -118,7 +118,6 @@ When using the application, you may sign in with any of the JSON Placeholder [Us
 
 ### Documentation & Developer Experience
 
-- **Storybook UI** for isolated component development, documentation, and visual testing
 - **Inline code comments** explaining complex logic and architectural decisions
 - **Project documentation** guides covering configuration, infrastructure, shadcn/ui setup, and more
 - **Type definitions** and JSDoc comments for better IDE intellisense and developer handoff
@@ -161,14 +160,12 @@ The application development technology stack includes:
 - Vitest - core unit test framework
 - React Testing Library - user-centric UI component testing
 - Mock Service Worker - API mocking
-- Storybook - UI component visualization and documentation
 - TypeScript - the TypeScript language
 
 The infrastructure technology stack includes:
 
 - AWS CDK - framework for provisioning AWS cloud infrastructure
 - Zod - schema based validation
-- Jest: unit test framework
 
 ### Repository
 
@@ -228,9 +225,13 @@ Infrastructure provisioning and deployment automation using AWS CDK. This packag
 
 ### Workspace Dependencies
 
-```
-web ──→ shared
-infra ──→ shared
+```mermaid
+---
+title: Package Dependencies
+---
+flowchart TD
+  web --- shared
+  infra --- shared
 ```
 
 The `web` and `infra` packages both depend on `shared` for common types and schemas, but maintain independence from each other. This architecture enables parallel development, independent testing, and clear separation of concerns across frontend and infrastructure concerns.
@@ -340,14 +341,6 @@ Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 The page will reload when source files are saved.
 
-### `npm run storybook -w packages/web`
-
-Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
-
-### `npm run build:storybook -w packages/web`
-
-Build a static version the [Storybook][storybook] UI which may be deployed to a CDN or HTTP server.
-
 ## Further Reading
 
 - [Project Documentation](./docs/README.md)
@@ -367,7 +360,6 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 - [React i18next][reacti18next]
 - [Recharts][recharts]
 - [React Testing Library][testing-library]
-- [Storybook][storybook]
 - [GitHub Actions][ghactions]
 
 [app]: https://react-starter.leanstacks.net/ 'React Starter Kit | LeanStacks'
@@ -388,6 +380,5 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 [ghactions]: https://docs.github.com/en/actions 'GitHub Actions'
 [reacti18next]: https://react.i18next.com/ 'React i18next'
 [reactspring]: https://www.react-spring.dev/ 'React Spring'
-[storybook]: https://storybook.js.org/ 'Storybook'
 [recharts]: https://recharts.org/ 'Recharts'
 [zod]: https://zod.dev/ 'Zod'
