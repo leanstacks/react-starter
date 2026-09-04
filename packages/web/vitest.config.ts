@@ -26,7 +26,6 @@ export default mergeConfig(
       coverage: {
         include: ['src/**/*.ts', 'src/**/*.tsx'],
         exclude: [
-          'storybook-static',
           '**/__fixtures__/**',
           '**/__mocks__/**',
           'src/**/main.tsx',
@@ -35,7 +34,6 @@ export default mergeConfig(
           'src/**/*.d.ts',
           'src/**/*.test.ts',
           'src/**/*.test.tsx',
-          'src/*.stories.*',
           'src/common/components/shadcn/**',
           'src/**/i18n/locales/**',
           ...coverageConfigDefaults.exclude,

@@ -484,6 +484,8 @@ When testing components that use shadcn:
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
 - [OKLCH Color Model](https://oklch.com/)
 
+<br/>
+
 ---
 
 :point_left: Return to [Documentation](./README.md).

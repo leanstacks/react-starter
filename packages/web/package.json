@@ -6,11 +6,9 @@
   "main": "./src/main.tsx",
   "scripts": {
     "build": "tsc --noEmit && vite build",
-    "build:storybook": "storybook build",
-    "clean": "rimraf coverage dist storybook-static",
+    "clean": "rimraf coverage dist",
     "dev": "vite --open",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
     "test": "vitest run --silent passed-only",
     "test:coverage": "vitest run --coverage --silent passed-only"
   },
@@ -39,18 +37,12 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "5.3.0",
-    "@storybook/addon-docs": "10.5.7",
-    "@storybook/addon-onboarding": "10.5.7",
-    "@storybook/addon-themes": "10.5.7",
-    "@storybook/react-vite": "10.5.7",
     "@tailwindcss/vite": "4.3.3",
     "@types/eslint__js": "8.42.3",
     "@types/lodash": "4.17.25",
     "@types/react-syntax-highlighter": "15.5.13",
     "@types/uuid": "10.0.0",
     "msw": "2.15.0",
-    "storybook": "10.5.7",
     "vite": "8.2.1"
   }
 }

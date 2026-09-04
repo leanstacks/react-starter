@@ -113,3 +113,9 @@ Test file placement:
 - **JSDoc comments:** Document all public exports
 - **Test coverage:** Maintain 70%+ coverage on all modified files
 - **Environment agnostic:** Do not include browser-specific (`window`, `document`) or Node.js-specific (`process`) code unless isolated in explicit type contexts
+
+<br/>
+
+---
+
+:point_left: Return to the project [README](../../README.md).

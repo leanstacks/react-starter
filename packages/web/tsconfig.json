@@ -10,5 +10,5 @@
       "@react-starter/shared/*": ["../shared/src/*"]
     }
   },
-  "include": ["src", ".storybook/**/*.{ts,tsx}"]
+  "include": ["src"]
 }
