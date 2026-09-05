@@ -11,6 +11,10 @@ A serverless, progressive, responsive starter user interface (UI) with React at 
 
 This project is licensed under the MIT License - see [LICENSE](./LICENSE) file for details.
 
+## Learn About This Project
+
+**New to this project?** Start with the [Project Overview](docs/OVERVIEW.md) — a comprehensive guide to the architecture, features, technology stack, and how to get started developing.
+
 ## Documentation
 
 For detailed guides and reference materials, see the [Project Documentation](docs/README.md).

@@ -4,10 +4,11 @@ Welcome to the project documentation for the React Starter project. This directo
 
 ## Table of Contents
 
-- [DevOps Guide](./DEVOPS_GUIDE.md): GitHub Actions workflows, CI/CD, and automation.
-- [Configuration Guide](./CONFIGURATION_GUIDE.md): Application and infrastructure configuration, environment variables, and validation.
-- [Infrastructure Guide](./INFRASTRUCTURE_GUIDE.md): AWS CDK Infrastructure as Code.
-- [shadcn Components Guide](./SHADCN_GUIDE.md): Using and configuring shadcn/ui components.
+- **[Project Overview](./OVERVIEW.md):** Begin here. A comprehensive guide to the project.
+- **[DevOps Guide](./DEVOPS_GUIDE.md):** GitHub Actions workflows, CI/CD, and automation.
+- **[Configuration Guide](./CONFIGURATION_GUIDE.md):** Application and infrastructure configuration, environment variables, and validation.
+- **[Infrastructure Guide](./INFRASTRUCTURE_GUIDE.md):** AWS CDK Infrastructure as Code.
+- **[shadcn Guide](./SHADCN_GUIDE.md):** Using and configuring shadcn/ui components.
 
 <br/>
 
