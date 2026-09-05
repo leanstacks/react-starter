@@ -6,7 +6,7 @@ import { todosFixture } from '@/__fixtures__/todos';
 import { userFixture1 } from '@/__fixtures__/users';
 import * as UseGetUser from '@/common/api/useGetUser';
 
-import TaskView from './TaskView';
+import { TaskView } from './TaskView';
 
 describe('TaskView', () => {
   it('should render successfully', async () => {

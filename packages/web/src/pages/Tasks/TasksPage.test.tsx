@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { UseQueryResult } from '@tanstack/react-query';
 
@@ -42,18 +41,5 @@ describe('TasksPage', () => {
 
     // ASSERT
     expect(screen.getByTestId('page-tasks-content')).toBeDefined();
-  });
-
-  it('should navigate when add button clicked', async () => {
-    // ARRANGE
-    const user = userEvent.setup();
-    render(<TasksPage />);
-    await screen.findByTestId('page-tasks');
-
-    // ACT
-    await user.click(screen.getByTestId('page-tasks-button-add'));
-
-    // ASSERT
-    expect(mockNavigate).toHaveBeenCalledWith('/app/tasks/add');
   });
 });

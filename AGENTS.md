@@ -59,8 +59,9 @@ Definition of Done)       coverage floors)         or unified scripts)
 │   │   ├── src/
 │   │   │   ├── components/         # Reusable UI components
 │   │   │   │   └── shadcn/         # Atomic shadcn/ui components (DO NOT modify internals)
-│   │   │   ├── models/             # Unified Type & Interface definitions (e.g., Task.ts)
-│   │   │   ├── schemas/            # Common Zod verification schemas
+│   │   │   ├── hooks/              # Reusable React hooks
+│   │   │   ├── types/              # Unified Type & Interface definitions (e.g., Task.ts) and Zod schemas
+│   │   │   ├── stypes/             # Common CSS styles
 │   │   │   └── utils/              # Universal helper functions
 │   │   ├── package.json
 │   │   └── tsconfig.json
@@ -80,7 +81,7 @@ Definition of Done)       coverage floors)         or unified scripts)
 │       │   │       ├── delete/
 │       │   │       ├── hooks/      # Feature-isolated API/State hooks (e.g., useGetTasks.ts)
 │       │   │       └── utils/      # Feature-isolated pure utility logic
-│       │   ├── globals.css         # Global styles and Tailwind variables
+│       │   ├── index.css           # App-specific CSS styles which extend the shared global styles (optional)
 │       │   └── main.tsx            # Web application entrypoint
 │       ├── package.json
 │       └── tsconfig.json
@@ -105,19 +106,19 @@ Definition of Done)       coverage floors)         or unified scripts)
 
 You are authorized to execute the following shell commands to validate your work. Do not use unlisted tools, invent flags, or circumvent the root workspace manager.
 
-| Task                     | Command                                                               | Scope                                       |
-| ------------------------ | --------------------------------------------------------------------- | ------------------------------------------- |
-| **Install Dependencies** | `npm install`                                                         | Root Project (Updates lockfile)             |
-| **Scoped Installation**  | `npm install <package> -w <workspace-name>`                           | Installs dependency into specific package   |
-| **Run All Unit Tests**   | `npm test --workspaces`                                               | Comprehensive Repo Testing (Vitest)         |
-| **Run Frontend Tests**   | `npm run test -w packages/web` or `npm run test -w @monorepo/web`     | Frontend Component/Hook Validation          |
-| **Run API Lambda Tests** | `npm run test -w packages/api` or `npm run test -w @monorepo/api`     | Lambda Handler Validation                   |
-| **Run Infra Tests**      | `npm run test -w packages/infra` or `npm run test -w @monorepo/infra` | Infrastructure Stack Validation             |
-| **Check Code Coverage**  | `npm run test:coverage --workspaces`                                  | Global Multi-Package Coverage Review        |
-| **Lint Entire Codebase** | `npm run lint`                                                        | Full Monorepo Linting & Formatting Analysis |
-| **Format Code**          | `npx run format`                                                      | Global Prettier/Formatter execution         |
-| **Add shadcn Component** | `npx shadcn@latest add [component]`                                   | Executed inside `packages/shared` directory |
-| **CDK Synthesize**       | `npm run cdk synth -w packages/infra`                                 | AWS CDK Infrastructure Validation           |
+| Task                     | Command                                                                      | Scope                                       |
+| ------------------------ | ---------------------------------------------------------------------------- | ------------------------------------------- |
+| **Install Dependencies** | `npm install`                                                                | Root Project (Updates lockfile)             |
+| **Scoped Installation**  | `npm install <package> -w <workspace-name>`                                  | Installs dependency into specific package   |
+| **Run All Unit Tests**   | `npm test --workspaces`                                                      | Comprehensive Repo Testing (Vitest)         |
+| **Run Frontend Tests**   | `npm run test -w packages/web` or `npm run test -w @react-starter/web`       | Frontend Component/Hook Validation          |
+| **Run API Lambda Tests** | `npm run test -w packages/shared` or `npm run test -w @react-starter/shared` | Shared UI components, hooks, utils, etc.    |
+| **Run Infra Tests**      | `npm run test -w packages/infra` or `npm run test -w @react-starter/infra`   | Infrastructure Stack Validation             |
+| **Check Code Coverage**  | `npm run test:coverage --workspaces`                                         | Global Multi-Package Coverage Review        |
+| **Lint Entire Codebase** | `npm run lint`                                                               | Full Monorepo Linting & Formatting Analysis |
+| **Format Code**          | `npx run format`                                                             | Global Prettier/Formatter execution         |
+| **Add shadcn Component** | `npx shadcn@latest add [component]`                                          | Executed inside `packages/shared` directory |
+| **CDK Synthesize**       | `npm run cdk synth -w packages/infra`                                        | AWS CDK Infrastructure Validation           |
 
 ---
 
@@ -138,21 +139,22 @@ You are authorized to execute the following shell commands to validate your work
 - **PascalCase for React Components:** React component files must use `PascalCase`. Example: `TaskCard.tsx`, `SearchForm.tsx`, `Modal.tsx`.
 - **Test File Colocation:** Test files follow the same naming convention as their source file, with `.test` suffix. Example: `document.test.ts`, `useGetTasks.test.ts`, `TaskCard.test.tsx`.
 
-### Frontend React Component Layout (`packages/web`)
+### Web Package Standards (`packages/web`)
 
 - Write components as **Arrow Functions** using explicit functional component patterns (`const MyComponent: React.FC<Props> = ...`).
-- Always use **Default Exports** for page components and standard UI components.
+- Use `export default` for page components to support lazy loading. Use plain `export` for standard UI components.
 - Enforce code splitting by leveraging route-level `lazy()` and `Suspense` operations in routing definitions.
 - **Component Testing Hooks:** Always inject a `data-testid` attribute or accept a `testId` prop on components to ensure reliable test selection. The `testId` prop must default to the component's name written in `kebab-case`.
-- **Styling & UI Systems (shadcn/ui & Tailwind):** Use **Tailwind CSS** classes natively. Apply thematic alterations through CSS variables via `packages/web/src/index.css`. Use `class-variance-authority` (CVA) within `packages/web/src/common/utils/css.ts` when handling multi-variant components.
-- **shadcn Rule:** Never modify underlying code files inside `packages/web/src/common/components/shadcn/` by hand. If behavior adjustments are required, write a wrapper component around them. Scaffold new ones using the authorized CLI command.
+- **Styling & UI Systems (shadcn/ui & Tailwind):** Use **Tailwind CSS** classes natively. Apply thematic alterations through CSS variables via `packages/web/src/index.css`. Use `class-variance-authority` (CVA) within `packages/shared/src/utils/css.ts` when handling multi-variant components.
 
-### Shared Workspace Standards (`packages/shared`)
+### Shared UI Package Standards (`packages/shared`)
 
 - **Single Source of Truth:** Place common structural interfaces, data models, and Zod validation schemas inside this package so they can be consumed symmetrically by `packages/web` (frontend forms/state) and future packages.
+- **shadcn Rule:** Never modify underlying code files inside `packages/shared/src/components/shadcn/` by hand. If behavior adjustments are required, write a wrapper component around them. Scaffold new ones using the authorized CLI command.
 - **Environment Agnosticism:** Code within `packages/shared` must be pure and free of browser-specific (`window`, `document`) or Node.js runtime-specific (`process.env`) assumptions unless strictly isolated into explicit type contexts.
+- **Styling & UI Systems (shadcn/ui & Tailwind):** Use **Tailwind CSS** classes natively. Apply thematic alterations through CSS variables via `packages/shared/src/styles/global.css`. Use `class-variance-authority` (CVA) within `packages/shared/src/utils/css.ts` when handling multi-variant components.
 
-### Infrastructure (`packages/infra`)
+### Infrastructure Package Standards (`packages/infra`)
 
 - **AWS CDK Isolation:** Keep the `packages/infra/` directory entirely decoupled from front-end runtime mechanics and backend business logic. It reads built lambda artifacts or source file paths but does not execute backend logic.
 - **Configuration Security:** Use **dotenv** in conjunction with **Zod** to rigorously validate infrastructure environment configurations and parameters prefixed with `CDK_`.

@@ -1,5 +1,5 @@
-import { afterAll, afterEach, beforeAll } from 'vitest';
 import '@testing-library/jest-dom/vitest';
+import { afterAll, afterEach, beforeAll } from 'vitest';
 
 import { server } from './src/test/mocks/server';
 import { queryClient } from './src/test/query-client';

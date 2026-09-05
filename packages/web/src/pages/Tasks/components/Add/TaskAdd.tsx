@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { useToasts } from '@/common/hooks/useToasts';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import { toast } from '@react-starter/shared/components/shadcn/sonner';
+import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
+
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
 import { useCreateTask } from '@/pages/Tasks/api/useCreateTask';
-import { BaseComponentProps } from '@/common/utils/types';
-import TaskForm, { TaskFormValues } from '../Form/TaskForm';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import TaskForm, { TaskFormValues } from '@/pages/Tasks/components/Form/TaskForm';
+import Heading from '@react-starter/shared/components/Text/Heading';
 
 /**
  * The `TaskAdd` component renders the layout for creating a new Task including
@@ -18,7 +20,6 @@ const TaskAdd = ({ className, testId = 'task-add' }: BaseComponentProps) => {
   const [taskCreateError, setTaskCreateError] = useState('');
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { createToast } = useToasts();
   const { data: user } = useGetCurrentUser();
   const { mutate: createTask } = useCreateTask();
 
@@ -40,11 +41,7 @@ const TaskAdd = ({ className, testId = 'task-add' }: BaseComponentProps) => {
         { task: data },
         {
           onSuccess: () => {
-            createToast({
-              text: t('createdTask', { ns: 'tasks' }),
-              isAutoDismiss: true,
-              variant: 'success',
-            });
+            toast(t('createdTask', { ns: 'tasks' }));
             navigate(-1);
           },
           onError: (err) => {
@@ -61,7 +58,9 @@ const TaskAdd = ({ className, testId = 'task-add' }: BaseComponentProps) => {
   return (
     <div className={className} data-testid={testId}>
       {/* heading */}
-      <h2 className="mb-8 border-b border-neutral-500/10 pb-1 text-lg font-bold">{t('addTask', { ns: 'tasks' })}</h2>
+      <Heading level={2} className="mb-4">
+        {t('addTask', { ns: 'tasks' })}
+      </Heading>
 
       {/* error state */}
       {!!taskCreateError && (

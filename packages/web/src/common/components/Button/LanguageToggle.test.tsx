@@ -5,7 +5,7 @@ import { StorageKey } from '@/common/utils/constants';
 import { render, screen } from '@/test/test-utils';
 import storage from '@/common/utils/storage';
 
-import LanguageToggle from './LanguageToggle';
+import { LanguageToggle } from './LanguageToggle';
 
 // mock select functions from react-i18next
 const mockChangeLanguage = vi.fn();
@@ -23,27 +23,19 @@ describe('LanguageToggle', () => {
   it('should render successfully', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    await screen.findByTestId('button-language-menu-trigger');
 
     // ASSERT
-    expect(screen.getByTestId('dropdown-language')).toBeDefined();
-  });
-
-  it('should use custom className', async () => {
-    // ARRANGE
-    render(<LanguageToggle className="custom-className" />);
-    await screen.findByTestId('dropdown-language');
-
-    // ASSERT
-    expect(screen.getByTestId('dropdown-language').classList).toContain('custom-className');
+    expect(screen.getByTestId('button-language-menu-trigger')).toBeDefined();
   });
 
   it('should set language to English', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    const menuTrigger = await screen.findByTestId('button-language-menu-trigger');
 
     // ACT
+    await userEvent.click(menuTrigger);
     await userEvent.click(screen.getByTestId('dropdown-item-en'));
 
     // ASSERT
@@ -54,9 +46,10 @@ describe('LanguageToggle', () => {
   it('should set language to French', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    const menuTrigger = await screen.findByTestId('button-language-menu-trigger');
 
     // ACT
+    await userEvent.click(menuTrigger);
     await userEvent.click(screen.getByTestId('dropdown-item-fr'));
 
     // ASSERT
@@ -67,9 +60,10 @@ describe('LanguageToggle', () => {
   it('should set language to Spanish', async () => {
     // ARRANGE
     render(<LanguageToggle />);
-    await screen.findByTestId('dropdown-language');
+    const menuTrigger = await screen.findByTestId('button-language-menu-trigger');
 
     // ACT
+    await userEvent.click(menuTrigger);
     await userEvent.click(screen.getByTestId('dropdown-item-es'));
 
     // ASSERT

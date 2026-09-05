@@ -57,10 +57,9 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
   7. Check code formatting (`npm run format:check`)
   8. Build application (`npm run build` - builds all packages)
   9. Run unit tests with coverage across all packages (`npm run test:coverage`)
-  10. Build Storybook for web package (`npm run build:storybook -w packages/web`)
-  11. Configure AWS credentials using OIDC (role: `AWS_ROLE_ARN_DEV`)
-  12. Synthesize CDK stacks for infra package (`npm run synth -w packages/infra`)
-  13. Clean up sensitive files (`.env` in `packages/web/` and `packages/infra/`, build artifacts)
+  10. Configure AWS credentials using OIDC (role: `AWS_ROLE_ARN_DEV`)
+  11. Synthesize CDK stacks for infra package (`npm run synth -w packages/infra`)
+  12. Clean up sensitive files (`.env` in `packages/web/` and `packages/infra/`, build artifacts)
 - **Importance:** Ensures that all code merged into `main` passes linting, formatting, builds successfully, is covered by tests, and that the AWS CDK infrastructure code is valid and synthesizes correctly. This prevents broken or low-quality code from being merged and keeps the main branch stable.
 
 ### Code Quality Workflow (`code-quality.yml`)
@@ -167,14 +166,13 @@ The project uses GitHub Actions for CI/CD. Below is a detailed description of ea
      - Environment code and workflow information
   5. Create infrastructure `.env` file in `packages/infra/` with environment variables
   6. Build all packages (`npm run build`)
-  7. Build Storybook for web package (`npm run build:storybook -w packages/web`)
-  8. Configure AWS credentials using OIDC (no long-lived credentials)
-  9. Bootstrap CDK (checks if CDKToolkit stack exists, skips if already bootstrapped):
+  7. Configure AWS credentials using OIDC (no long-lived credentials)
+  8. Bootstrap CDK (checks if CDKToolkit stack exists, skips if already bootstrapped):
      - Attempts to describe CDKToolkit CloudFormation stack
      - Runs `npx cdk bootstrap` only if not already bootstrapped
-  10. Synthesize CDK stacks for infra package (`npm run synth -w packages/infra`)
-  11. Deploy CDK stacks for infra package (`npm run deploy:all -w packages/infra` with auto-approval)
-  12. Clean up sensitive files (`.env` files and build artifacts in all packages)
+  9. Synthesize CDK stacks for infra package (`npm run synth -w packages/infra`)
+  10. Deploy CDK stacks for infra package (`npm run deploy:all -w packages/infra` with auto-approval)
+  11. Clean up sensitive files (`.env` files and build artifacts in all packages)
 - **Build Metadata:** The following environment variables are injected at build time (accessible in the React app as `import.meta.env.*`):
   - `VITE_BUILD_DATE` - Build date (UTC, format: YYYY-MM-DD)
   - `VITE_BUILD_TIME` - Build time (UTC, format: HH:MM:SS)
@@ -241,4 +239,4 @@ Production deployments are manually controlled through GitHub releases, providin
 
 ---
 
-If you have questions or need help, reach out to your team or check the documentation above.
+:point_left: Return to [Documentation](./README.md).

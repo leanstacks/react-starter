@@ -11,6 +11,10 @@ A serverless, progressive, responsive starter user interface (UI) with React at 
 
 This project is licensed under the MIT License - see [LICENSE](./LICENSE) file for details.
 
+## Learn About This Project
+
+**New to this project?** Start with the [Project Overview](docs/OVERVIEW.md) — a comprehensive guide to the architecture, features, technology stack, and how to get started developing.
+
 ## Documentation
 
 For detailed guides and reference materials, see the [Project Documentation](docs/README.md).
@@ -101,7 +105,7 @@ When using the application, you may sign in with any of the JSON Placeholder [Us
 
 - **Vitest** as the core unit testing framework with V8 code coverage support
 - **React Testing Library** for user-centric component testing (prefer testing behaviors over implementation)
-- **Mock Service Worker (MSW)** for seamless API mocking in both tests and Storybook
+- **Mock Service Worker (MSW)** for seamless API mocking in tests
 - **Co-located test files** (`.test.ts`, `.test.tsx`) adjacent to source for easy maintenance and discovery
 - **80% minimum code coverage** requirement ensuring testability and reliability
 - **Test utilities and helpers** (`test-utils.tsx`) for consistent test setup and common operations
@@ -118,7 +122,6 @@ When using the application, you may sign in with any of the JSON Placeholder [Us
 
 ### Documentation & Developer Experience
 
-- **Storybook UI** for isolated component development, documentation, and visual testing
 - **Inline code comments** explaining complex logic and architectural decisions
 - **Project documentation** guides covering configuration, infrastructure, shadcn/ui setup, and more
 - **Type definitions** and JSDoc comments for better IDE intellisense and developer handoff
@@ -161,14 +164,12 @@ The application development technology stack includes:
 - Vitest - core unit test framework
 - React Testing Library - user-centric UI component testing
 - Mock Service Worker - API mocking
-- Storybook - UI component visualization and documentation
 - TypeScript - the TypeScript language
 
 The infrastructure technology stack includes:
 
 - AWS CDK - framework for provisioning AWS cloud infrastructure
 - Zod - schema based validation
-- Jest: unit test framework
 
 ### Repository
 
@@ -228,9 +229,13 @@ Infrastructure provisioning and deployment automation using AWS CDK. This packag
 
 ### Workspace Dependencies
 
-```
-web ──→ shared
-infra ──→ shared
+```mermaid
+---
+title: Package Dependencies
+---
+flowchart TD
+  web --- shared
+  infra --- shared
 ```
 
 The `web` and `infra` packages both depend on `shared` for common types and schemas, but maintain independence from each other. This architecture enables parallel development, independent testing, and clear separation of concerns across frontend and infrastructure concerns.
@@ -239,58 +244,7 @@ See [AGENTS.md](./AGENTS.md) for comprehensive architectural guidelines, coding 
 
 ## Installation
 
-### Prerequistes
-
-It is strongly recommended that you install Node Version Manager, [`nvm`][nvm]. Node Version Manager simplifies working on multiple projects with different versions of Node.js.
-
-### Clone the Repository
-
-Open the [repository][repo] in a browser. Follow the instructions to clone the repository to your local machine.
-
-### Install Node
-
-Open a terminal window and navigate to the project base directory. Issue the following command to install the version of Node and NPM used by the application:
-
-```bash
-# If you already have this version of Node, simply switch to it...
-nvm use
-
-# If you do NOT have this version of Node, install it...
-nvm install
-```
-
-Node Version Manager inspects the `.nvmrc` file in the project base directory and uses or installs the specified version of Node and the Node Package Manager, npm.
-
-### Install the Dependencies
-
-To install the project dependencies, issue the following commands at a terminal prompt in the project base directory:
-
-```bash
-# Switch to the project node version...
-nvm use
-
-# Install project dependencies
-npm install
-```
-
-### After Installation
-
-The installation is now complete! You may open the project in your favorite source code editor (we recommend [Visual Studio Code](https://code.visualstudio.com/)).
-
-We recommend the following VS Code extensions:
-
-- Prettier - Code formatter (required)
-- Tailwind CSS IntelliSense (required)
-- GitHub Copilot (recommended)
-- ESLint (recommended)
-- Indent Rainbow (optional)
-- GitLens (optional)
-- Dotenv Official +Vault (optional)
-- GitHub Actions (optional)
-
-Install the _Prettier_ extension to ensure that all project participants' contributions are formatted using the same rules. The extension leverages project-specific rules found in the `.prettierrc` file in the project base directory.
-
-The _Tailwind CSS IntelliSense_ extension is a must-have companion in all projects using Tailwind. The extension ensures that Tailwind CSS classes are named and ordered correctly and flags any conflicting classes.
+For detailed instructions to install and run this project on your local machine, see the [Local Setup Guide](./docs/LOCAL_SETUP.md).
 
 ## Configuration
 
@@ -340,14 +294,6 @@ Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 The page will reload when source files are saved.
 
-### `npm run storybook -w packages/web`
-
-Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
-
-### `npm run build:storybook -w packages/web`
-
-Build a static version the [Storybook][storybook] UI which may be deployed to a CDN or HTTP server.
-
 ## Further Reading
 
 - [Project Documentation](./docs/README.md)
@@ -367,7 +313,6 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 - [React i18next][reacti18next]
 - [Recharts][recharts]
 - [React Testing Library][testing-library]
-- [Storybook][storybook]
 - [GitHub Actions][ghactions]
 
 [app]: https://react-starter.leanstacks.net/ 'React Starter Kit | LeanStacks'
@@ -388,6 +333,5 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 [ghactions]: https://docs.github.com/en/actions 'GitHub Actions'
 [reacti18next]: https://react.i18next.com/ 'React i18next'
 [reactspring]: https://www.react-spring.dev/ 'React Spring'
-[storybook]: https://storybook.js.org/ 'Storybook'
 [recharts]: https://recharts.org/ 'Recharts'
 [zod]: https://zod.dev/ 'Zod'

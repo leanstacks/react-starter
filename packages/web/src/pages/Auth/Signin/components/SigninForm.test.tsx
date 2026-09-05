@@ -50,8 +50,8 @@ describe('SigninForm', () => {
     await screen.findByTestId('form-signin');
 
     // ACT
-    await user.type(screen.getByLabelText('Username'), 'Bret');
-    await user.type(screen.getByLabelText('Password'), 'aB1!12345678');
+    await user.type(screen.getByTestId('form-signin-input-username'), 'Bret');
+    await user.type(screen.getByTestId('form-signin-input-password'), 'aB1!12345678');
     await user.click(screen.getByTestId('form-signin-button-submit'));
 
     // ASSERT
@@ -65,8 +65,8 @@ describe('SigninForm', () => {
     await screen.findByTestId('form-signin');
 
     // ACT
-    await user.type(screen.getByLabelText('Username'), 'NotAUser');
-    await user.type(screen.getByLabelText('Password'), 'aB1!12345678');
+    await user.type(screen.getByTestId('form-signin-input-username'), 'NotAUser');
+    await user.type(screen.getByTestId('form-signin-input-password'), 'aB1!12345678');
     await user.click(screen.getByTestId('form-signin-button-submit'));
     await screen.findByTestId('form-signin-error');
 

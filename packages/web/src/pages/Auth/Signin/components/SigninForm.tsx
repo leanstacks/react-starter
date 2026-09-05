@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { cn } from '@/common/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
-import { useSignin } from '../api/useSignin';
-import Input from '@/common/components/Form/Input';
-import Button from '@/common/components/Button/Button';
-import ErrorAlert from '@/common/components/Alert/ErrorAlert';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
+import {
+  FieldGroup,
+  Field,
+  FieldLabel,
+  FieldDescription,
+  FieldError,
+} from '@react-starter/shared/components/shadcn/field';
+import { Input } from '@react-starter/shared/components/shadcn/input';
+import { Button } from '@react-starter/shared/components/shadcn/button';
+
+import { useSignin } from '@/pages/Auth/Signin/api/useSignin';
 
 /**
  * Signin form values.
@@ -73,47 +80,69 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps) =
   };
 
   return (
-    <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
+    <div className={className} data-testid={testId}>
       {error && (
-        <ErrorAlert title="Authentication failed" description={error} className="mb-4" testId={`${testId}-error`} />
+        <ErrorAlert title="Authentication failed" description={error} className="my-4" testId={`${testId}-error`} />
       )}
 
       <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
-        <Input
-          control={control}
-          name="username"
-          label="Username"
-          supportingText="Use any username from {JSON}Placeholder, e.g. Kamren or Samantha."
-          className="mb-4"
-          autoFocus
-          autoComplete="off"
-          maxLength={30}
-          required
-          disabled={formState.isSubmitting}
-          testId={`${testId}-input-username`}
-        />
+        <FieldGroup>
+          <Controller
+            control={control}
+            name="username"
+            render={({ field, fieldState }) => (
+              <Field>
+                <FieldLabel>Username</FieldLabel>
+                <Input
+                  {...field}
+                  autoFocus
+                  autoComplete="off"
+                  maxLength={30}
+                  required
+                  disabled={formState.isSubmitting}
+                  data-testid={`${testId}-input-username`}
+                />
+                <FieldDescription>Use any username from JSON Placeholder, e.g. Kamren or Samantha.</FieldDescription>
+                {fieldState?.error && <FieldError>{fieldState.error.message}</FieldError>}
+              </Field>
+            )}
+          />
 
-        <Input
-          control={control}
-          type="password"
-          name="password"
-          label="Password"
-          className="mb-4"
-          autoComplete="off"
-          maxLength={30}
-          required
-          disabled={formState.isSubmitting}
-          testId={`${testId}-input-password`}
-        />
+          <Controller
+            control={control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <Field>
+                <FieldLabel>Password</FieldLabel>
+                <Input
+                  {...field}
+                  type="password"
+                  autoComplete="off"
+                  maxLength={30}
+                  required
+                  disabled={formState.isSubmitting}
+                  data-testid={`${testId}-input-password`}
+                />
+                <FieldDescription>Use any password from JSON Placeholder, e.g. "password".</FieldDescription>
+                {fieldState?.error && <FieldError>{fieldState.error.message}</FieldError>}
+              </Field>
+            )}
+          />
 
-        <Button
-          type="submit"
-          className="my-8 w-full sm:w-40"
-          disabled={formState.isSubmitting || !formState.isDirty}
-          testId={`${testId}-button-submit`}
-        >
-          Sign In
-        </Button>
+          <div className="mt-4 flex flex-col justify-end gap-8 sm:flex-row sm:gap-4">
+            <Button type="button" variant="outline" className="w-full sm:w-40" onClick={() => navigate('/')}>
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              className="w-full sm:w-40"
+              disabled={formState.isSubmitting || !formState.isDirty || !formState.isValid}
+              data-testid={`${testId}-button-submit`}
+            >
+              {formState.isSubmitting ? 'Signing In...' : 'Sign In'}
+            </Button>
+          </div>
+        </FieldGroup>
       </form>
     </div>
   );

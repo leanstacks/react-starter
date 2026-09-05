@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { Circle, CircleCheck } from 'lucide-react';
 
-import { cn } from '@/common/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import { Button } from '@react-starter/shared/components/shadcn/button';
+import { toast } from '@react-starter/shared/components/shadcn/sonner';
+
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { useUpdateTask } from '@/pages/Tasks/api/useUpdateTask';
-import { useToasts } from '@/common/hooks/useToasts';
-import FAIcon from '@/common/components/Icon/FAIcon';
-import Button from '@/common/components/Button/Button';
 
 /**
  * Propeties for the `TaskCompleteToggle` component.
@@ -23,15 +22,11 @@ interface TaskCompleteToggleProps extends BaseComponentProps {
  * to toggle the value of the Task `complete` attribute.
  * @param {TaskCompleteToggleProps} props - Component properties.
  */
-const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
-  const [isHovering, setIsHovering] = useState(false);
+export const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
   const { t } = useTranslation();
   const { mutate: updateTask, isPending } = useUpdateTask();
-  const { createToast } = useToasts();
 
   const buttonTitle = task.completed ? t('markIncomplete', { ns: 'tasks' }) : t('markComplete', { ns: 'tasks' });
-
-  const showCompleted = (task.completed && !isHovering) || (!task.completed && isHovering);
 
   /**
    * Actions to perform when the task complete toggle button is clicked.
@@ -46,11 +41,7 @@ const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }
       },
       {
         onSuccess: (data) => {
-          createToast({
-            text: data.completed ? t('markedComplete', { ns: 'tasks' }) : t('markedIncomplete', { ns: 'tasks' }),
-            isAutoDismiss: true,
-            variant: 'success',
-          });
+          toast(data.completed ? t('markedComplete', { ns: 'tasks' }) : t('markedIncomplete', { ns: 'tasks' }));
         },
       },
     );
@@ -58,23 +49,15 @@ const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }
 
   return (
     <Button
-      className={cn('contents border-none!', className)}
-      variant="text"
+      className={className}
+      variant="ghost"
       size="icon"
       title={buttonTitle}
-      onClick={handleButtonClick}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      onClick={() => handleButtonClick()}
       disabled={isPending}
       data-testid={testId}
     >
-      <FAIcon
-        icon={showCompleted ? 'circleCheck' : 'circleRegular'}
-        className={cn({ 'text-green-600': showCompleted })}
-        testId={`${testId}-icon`}
-      />
+      {task.completed ? <CircleCheck data-testid={`${testId}-icon`} /> : <Circle data-testid={`${testId}-icon`} />}
     </Button>
   );
 };
-
-export default TaskCompleteToggle;

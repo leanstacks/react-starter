@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { BaseComponentProps } from '@/common/utils/types';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { useSettings } from '@/common/hooks/useSettings';
 
 /**

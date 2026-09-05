@@ -8,14 +8,7 @@ import { defineConfig } from 'eslint/config';
  */
 export default defineConfig([
   {
-    ignores: [
-      '**/cdk.out/**',
-      '**/coverage/**',
-      '**/dist/**',
-      '**/node_modules/**',
-      '**/shadcn/*.tsx',
-      '**/storybook-static/**',
-    ],
+    ignores: ['**/cdk.out/**', '**/coverage/**', '**/dist/**', '**/node_modules/**', '**/shadcn/*.tsx'],
   },
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],

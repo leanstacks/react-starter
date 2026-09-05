@@ -5,7 +5,7 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "src/index.css",
+    "css": "../shared/src/styles/globals.css",
     "baseColor": "mist",
     "cssVariables": true,
     "prefix": ""
@@ -13,11 +13,11 @@
   "iconLibrary": "lucide",
   "rtl": false,
   "aliases": {
-    "components": "src/common/components",
-    "utils": "src/common/utils/css",
-    "ui": "src/common/components/shadcn",
-    "lib": "src/common/utils",
-    "hooks": "src/common/hooks"
+    "components": "@/common/components",
+    "hooks": "@/common/hooks",
+    "lib": "@/common/utils",
+    "utils": "@react-starter/shared/utils/css",
+    "ui": "@react-starter/shared/components/shadcn"
   },
   "menuColor": "default",
   "menuAccent": "subtle",

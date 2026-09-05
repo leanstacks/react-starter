@@ -1,8 +1,9 @@
-import { cn } from '@/common/utils/css';
-import { PropsWithTestId } from '@/common/utils/types';
+import { cn } from '@react-starter/shared/utils/css';
+import { PropsWithTestId } from '@react-starter/shared/types/components';
+
 import { useSettings } from '@/common/hooks/useSettings';
 import { useSetSettings } from '@/common/api/useSetSettings';
-import SettingsHeading from './SettingsHeading';
+import Heading from '@react-starter/shared/components/Text/Heading';
 
 /**
  * The `AppearanceSettings` React component renders a set of controls to
@@ -16,7 +17,9 @@ const AppearanceSettings = ({ testId = 'settings-appearance' }: PropsWithTestId)
 
   return (
     <div data-testid={testId}>
-      <SettingsHeading testId={`${testId}-settings-heading`}>Theme</SettingsHeading>
+      <Heading testId={`${testId}-settings-heading`} level={1} className="mb-4">
+        Theme
+      </Heading>
 
       <div className="my-4 text-sm">Choose how the application looks to you.</div>
 

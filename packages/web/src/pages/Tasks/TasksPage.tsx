@@ -1,17 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Plus } from 'lucide-react';
 
-import type { PropsWithTestId } from '@/common/utils/types';
+import type { PropsWithTestId } from '@react-starter/shared/types/components';
+import Page from '@react-starter/shared/components/Content/Page';
+import Container from '@react-starter/shared/components/Content/Container';
+import Heading from '@react-starter/shared/components/Text/Heading';
+import { Button } from '@react-starter/shared/components/shadcn/button';
+
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
-import Page from '@/common/components/Content/Page';
-import Container from '@/common/components/Content/Container';
-import Heading from '@/common/components/Text/Heading';
-import TasksPageBreadcrumbs from './components/TasksPageBreadcrumbs';
-import UserInfo from './components/UserInfo';
-import Card from '@/common/components/Card/Card';
-import FAIcon from '@/common/components/Icon/FAIcon';
-import Button from '@/common/components/Button/Button';
+import TasksPageBreadcrumbs from '@/pages/Tasks/components/TasksPageBreadcrumbs';
 
 /**
  * The `TasksPage` component renders the layout for the tasks family of pages.
@@ -20,36 +18,27 @@ import Button from '@/common/components/Button/Button';
  */
 const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const { data: currentUser } = useGetCurrentUser();
 
   return (
     <Page testId={testId}>
-      <Container className="my-4 min-h-[75vh]">
-        <TasksPageBreadcrumbs className="mb-4" />
+      <Container size="lg" className="min-h-[75vh]">
+        <TasksPageBreadcrumbs className="my-4" />
 
         {/* page heading */}
-        <div className="mb-4 flex items-center justify-between border-b border-neutral-500/50 pb-2">
+        <div className="my-8 flex items-center justify-between border-b pb-2">
           <Heading level={1}>{t('tasks', { ns: 'tasks' })}</Heading>
           <div className="flex items-center gap-4">
-            <Button
-              variant="text"
-              size="icon"
-              title="Add task"
-              onClick={() => navigate('/app/tasks/add')}
-              data-testid={`${testId}-button-add`}
-            >
-              <FAIcon icon="plus" size="lg" fixedWidth />
+            <Button variant="outline" size="icon" aria-label="Add Task" data-testid={`${testId}-button-add`} asChild>
+              <Link to="/app/tasks/add" aria-label="Add Task">
+                <Plus />
+              </Link>
             </Button>
           </div>
         </div>
 
         {currentUser && (
           <div data-testid={`${testId}-content`}>
-            <Card className="mb-4">
-              <UserInfo userId={currentUser.id} />
-            </Card>
-
             <Outlet />
           </div>
         )}

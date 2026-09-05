@@ -3,10 +3,11 @@ import { filter, reject } from 'lodash';
 import colors from 'tailwindcss/colors';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/common/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
+import { cn } from '@react-starter/shared/utils/css';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import DonutChart, { DonutChartData, DonutChartProps } from '@react-starter/shared/components/Chart/DonutChart';
+
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
-import DonutChart, { DonutChartData, DonutChartProps } from '@/common/components/Chart/DonutChart';
 
 /**
  * Properties for the `TaskStatusDonutChart` component.
@@ -23,7 +24,7 @@ export interface TaskStatusDonutChartProps extends BaseComponentProps, Omit<Donu
  * the relative count of incomplete and complete tasks.
  * @param {TaskStatusDonutChartProps} props - Component properties.
  */
-const TaskStatusDonutChart = ({
+export const TaskStatusDonutChart = ({
   tasks,
   className,
   height = 56,
@@ -70,5 +71,3 @@ const TaskStatusDonutChart = ({
     return false;
   }
 };
-
-export default TaskStatusDonutChart;

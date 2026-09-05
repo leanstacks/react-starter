@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import LoaderSuspense from '@/common/components/Loader/LoaderSuspense';
+import LoaderSuspense from '@react-starter/shared/components/Loader/LoaderSuspense';
 
 /**
  * Helper function which wraps the supplied `children` with the `LoaderSuspense`

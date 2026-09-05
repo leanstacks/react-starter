@@ -154,3 +154,9 @@ Production builds are optimized for performance:
 - Environment-specific configuration via Vite
 
 Output is in the `dist/` directory.
+
+<br/>
+
+---
+
+:point_left: Return to the main project [README](../../README.md).
