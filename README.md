@@ -244,58 +244,7 @@ See [AGENTS.md](./AGENTS.md) for comprehensive architectural guidelines, coding 
 
 ## Installation
 
-### Prerequistes
-
-It is strongly recommended that you install Node Version Manager, [`nvm`][nvm]. Node Version Manager simplifies working on multiple projects with different versions of Node.js.
-
-### Clone the Repository
-
-Open the [repository][repo] in a browser. Follow the instructions to clone the repository to your local machine.
-
-### Install Node
-
-Open a terminal window and navigate to the project base directory. Issue the following command to install the version of Node and NPM used by the application:
-
-```bash
-# If you already have this version of Node, simply switch to it...
-nvm use
-
-# If you do NOT have this version of Node, install it...
-nvm install
-```
-
-Node Version Manager inspects the `.nvmrc` file in the project base directory and uses or installs the specified version of Node and the Node Package Manager, npm.
-
-### Install the Dependencies
-
-To install the project dependencies, issue the following commands at a terminal prompt in the project base directory:
-
-```bash
-# Switch to the project node version...
-nvm use
-
-# Install project dependencies
-npm install
-```
-
-### After Installation
-
-The installation is now complete! You may open the project in your favorite source code editor (we recommend [Visual Studio Code](https://code.visualstudio.com/)).
-
-We recommend the following VS Code extensions:
-
-- Prettier - Code formatter (required)
-- Tailwind CSS IntelliSense (required)
-- GitHub Copilot (recommended)
-- ESLint (recommended)
-- Indent Rainbow (optional)
-- GitLens (optional)
-- Dotenv Official +Vault (optional)
-- GitHub Actions (optional)
-
-Install the _Prettier_ extension to ensure that all project participants' contributions are formatted using the same rules. The extension leverages project-specific rules found in the `.prettierrc` file in the project base directory.
-
-The _Tailwind CSS IntelliSense_ extension is a must-have companion in all projects using Tailwind. The extension ensures that Tailwind CSS classes are named and ordered correctly and flags any conflicting classes.
+For detailed instructions to install and run this project on your local machine, see the [Local Setup Guide](./docs/LOCAL_SETUP.md).
 
 ## Configuration
 

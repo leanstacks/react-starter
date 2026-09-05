@@ -9,9 +9,10 @@ This guide provides the necessary steps to configure, build, and run the React S
 3. [Environment Configuration](#3-environment-configuration)
 4. [Supporting Services](#4-supporting-services)
 5. [Installation & Build](#5-installation--build)
-6. [Running the Application](#6-running-the-application)
-7. [Testing Locally](#7-testing-locally)
-8. [Troubleshooting](#8-troubleshooting)
+6. [After Installation](#6-after-installation)
+7. [Running the Application](#7-running-the-application)
+8. [Testing Locally](#8-testing-locally)
+9. [Troubleshooting](#9-troubleshooting)
 
 ## 1. Prerequisites
 
@@ -160,7 +161,32 @@ Install all dependencies for the monorepo and build the shared package:
 
    The shared package is automatically built during the web development server startup if needed.
 
-## 6. Running the Application
+## 6. After Installation
+
+The installation is now complete! Open the project in your preferred code editor. We recommend [Visual Studio Code](https://code.visualstudio.com/).
+
+### Recommended VS Code Extensions
+
+We recommend installing the following VS Code extensions for an optimal development experience:
+
+#### Required Extensions
+
+- **[Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)** — Ensures that all project participants' contributions are formatted using the same rules. The extension leverages project-specific rules found in the `.prettierrc` file in the project base directory.
+- **[Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)** — A must-have companion for all projects using Tailwind. The extension ensures that Tailwind CSS classes are named and ordered correctly and flags any conflicting classes.
+
+#### Recommended Extensions
+
+- **[GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)** — AI-powered code completion and assistance
+- **[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)** — Real-time linting and code quality feedback
+
+#### Optional Extensions
+
+- **[Indent Rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)** — Visual indentation guides
+- **[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)** — Enhanced Git integration and history
+- **[Dotenv Official +Vault](https://marketplace.visualstudio.com/items?itemName=dotenv.dotenv)** — Syntax highlighting for `.env` files
+- **[GitHub Actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions)** — GitHub Actions workflow integration
+
+## 7. Running the Application
 
 Start the React Starter in development mode with hot-reload enabled:
 
@@ -193,7 +219,7 @@ Once the application is running, you should see:
 
 **Hot Reload in Action:** Modify any source file in `packages/web/src/` or `packages/shared/src/` and save. The browser should automatically refresh to show your changes without a full page reload.
 
-## 7. Testing Locally
+## 8. Testing Locally
 
 The project uses **Vitest** as the unified test runner and **React Testing Library** for component testing.
 
@@ -265,7 +291,7 @@ git add .
 git commit -m "your message"
 ```
 
-## 8. Troubleshooting
+## 9. Troubleshooting
 
 | Symptom / Error Message                                                            | Likely Cause                                               | Resolution                                                                                                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
