@@ -118,4 +118,4 @@ Test file placement:
 
 ---
 
-:point_left: Return to the project [README](../../README.md).
+:point_left: Return to the main project [README](../../README.md).
