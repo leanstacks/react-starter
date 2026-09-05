@@ -305,3 +305,9 @@ New developers should follow these steps to set up a development environment and
 - **Tailwind CSS Documentation:** https://tailwindcss.com/
 - **TanStack Query Documentation:** https://tanstack.com/query/latest/
 - **AWS CDK Documentation:** https://docs.aws.amazon.com/cdk/
+
+<br/>
+
+---
+
+:point_left: Return to [Documentation](./README.md).

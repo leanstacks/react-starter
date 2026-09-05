@@ -5,6 +5,7 @@ Welcome to the project documentation for the React Starter project. This directo
 ## Table of Contents
 
 - **[Project Overview](./OVERVIEW.md):** Begin here. A comprehensive guide to the project.
+- **[Local Setup Guide](./LOCAL_SETUP.md):** Configure, build, and run the project on your local development machine.
 - **[DevOps Guide](./DEVOPS_GUIDE.md):** GitHub Actions workflows, CI/CD, and automation.
 - **[Configuration Guide](./CONFIGURATION_GUIDE.md):** Application and infrastructure configuration, environment variables, and validation.
 - **[Infrastructure Guide](./INFRASTRUCTURE_GUIDE.md):** AWS CDK Infrastructure as Code.
