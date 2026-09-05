@@ -76,17 +76,13 @@ const AboutPage = () => {
         <div className="space-y-8 py-8">
           {/* Page Header */}
           <div className="space-y-4">
-            <Heading level={1} className="text-4xl font-normal">
-              {t('about', { ns: 'common' })}
-            </Heading>
+            <Heading level={1}>{t('about', { ns: 'common' })}</Heading>
             <p className="text-muted-foreground text-lg">{t('aboutDescription', { ns: 'common' })}</p>
           </div>
 
           {/* Build Information Section */}
           <div className="space-y-4">
-            <Heading level={2} className="text-2xl font-normal">
-              {t('buildInformation', { ns: 'common' })}
-            </Heading>
+            <Heading level={2}>{t('buildInformation', { ns: 'common' })}</Heading>
             <Card>
               <CardContent>
                 <Table data-testid="table-build-info">
