@@ -14,26 +14,26 @@ import { BaseComponentProps } from '@react-starter/shared/types/components';
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
 /**
- * Properties for the `CodeSnippet` React component.
+ * Properties for the `CodeBlock` React component.
  * @see {@link BaseComponentProps}
  * @see {@link SyntaxHighlighterProps}
  */
-export interface CodeSnippetProps extends BaseComponentProps, SyntaxHighlighterProps {
+export interface CodeBlockProps extends BaseComponentProps, SyntaxHighlighterProps {
   theme?: 'light' | 'dark';
 }
 
 /**
- * The `CodeSnippet` component renders a read only block which highlights
+ * The `CodeBlock` component renders a read only block which highlights
  * a small amount of application code such as JavaScript, JSX, or CSS.
- * @param {CodeSnippetProps} props - Component properties.
+ * @param {CodeBlockProps} props - Component properties.
  */
-const CodeSnippet = ({
+export const CodeBlock = ({
   children,
   className,
   testId = 'code-snippet',
   theme,
   ...highlighterProps
-}: CodeSnippetProps) => {
+}: CodeBlockProps) => {
   const style = theme === 'light' ? light : dark;
 
   return (
@@ -44,5 +44,3 @@ const CodeSnippet = ({
     </div>
   );
 };
-
-export default CodeSnippet;

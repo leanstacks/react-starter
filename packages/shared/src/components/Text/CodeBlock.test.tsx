@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import CodeSnippet from './CodeSnippet';
+import { CodeBlock } from './CodeBlock';
 
-describe('CodeSnippet', () => {
+describe('CodeBlock', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>">{`<></>`}</CodeSnippet>);
+    render(<CodeBlock code="<></>">{`<></>`}</CodeBlock>);
     await screen.findByTestId('code-snippet');
 
     // ASSERT
@@ -15,7 +15,7 @@ describe('CodeSnippet', () => {
 
   it('should use custom testId', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>" testId="custom-testId">{`<></>`}</CodeSnippet>);
+    render(<CodeBlock code="<></>" testId="custom-testId">{`<></>`}</CodeBlock>);
     await screen.findByTestId('custom-testId');
 
     // ASSERT
@@ -24,7 +24,7 @@ describe('CodeSnippet', () => {
 
   it('should use custom className', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>" className="custom-className">{`<></>`}</CodeSnippet>);
+    render(<CodeBlock code="<></>" className="custom-className">{`<></>`}</CodeBlock>);
     await screen.findByTestId('code-snippet');
 
     // ASSERT
@@ -33,7 +33,7 @@ describe('CodeSnippet', () => {
 
   it('should display code', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<div>content</div>">{`<div>content</div>`}</CodeSnippet>);
+    render(<CodeBlock code="<div>content</div>">{`<div>content</div>`}</CodeBlock>);
     await screen.findByTestId('code-snippet');
 
     // ASSERT
@@ -42,7 +42,7 @@ describe('CodeSnippet', () => {
 
   it('should use dark theme', async () => {
     // ARRANGE
-    render(<CodeSnippet code="<></>" theme="dark">{`<></>`}</CodeSnippet>);
+    render(<CodeBlock code="<></>" theme="dark">{`<></>`}</CodeBlock>);
     const codeElement = await screen.findByTestId('code-snippet');
 
     // ASSERT
