@@ -1,7 +1,14 @@
 import { useLocation } from 'react-router-dom';
 
-import { BaseComponentProps } from '@/common/utils/types';
-import Breadcrumbs from '@/common/components/Breadcrumbs/Breadcrumbs';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@react-starter/shared/components/shadcn/breadcrumb';
 
 /**
  * The `SettingsPageBreadcrumbs` component renders the `Breadcrumbs` for the settings
@@ -12,27 +19,27 @@ const SettingsPageBreadcrumbs = ({ className, testId = 'page-settings-breadcrumb
   const pathElements = location.pathname.split('/');
 
   return (
-    <Breadcrumbs className={className} testId={testId}>
-      <Breadcrumbs.List>
-        <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/">Home</Breadcrumbs.Link>
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Separator />
-        <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/settings">Settings</Breadcrumbs.Link>
-        </Breadcrumbs.Item>
+    <Breadcrumb className={className} data-testid={testId}>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/app/settings">Settings</BreadcrumbLink>
+        </BreadcrumbItem>
         {!!pathElements[3] && (
           <>
-            <Breadcrumbs.Separator />
-            <Breadcrumbs.Item>
-              <Breadcrumbs.Page className="capitalize" testId={`${testId}-page-${pathElements[3]}`}>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="capitalize" data-testid={`${testId}-page-${pathElements[3]}`}>
                 {pathElements[3].replace('-', ' ')}
-              </Breadcrumbs.Page>
-            </Breadcrumbs.Item>
+              </BreadcrumbPage>
+            </BreadcrumbItem>
           </>
         )}
-      </Breadcrumbs.List>
-    </Breadcrumbs>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 };
 

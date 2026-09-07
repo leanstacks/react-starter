@@ -33,10 +33,6 @@ __snapshots__
 *.sln
 *.sw?
 
-# Storybook
-storybook-static
-*storybook.log
-
 # dotenv environment variable files
 .env*
 !.env.example

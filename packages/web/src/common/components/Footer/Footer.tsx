@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/common/utils/css';
-import type { BaseComponentProps } from '@/common/utils/types';
-import Link from '@/common/components/Link/Link';
+import { cn } from '@react-starter/shared/utils/css';
+import type { BaseComponentProps } from '@react-starter/shared/types/components';
 
 /**
  * The `Footer` React component renders the standard page footer content used

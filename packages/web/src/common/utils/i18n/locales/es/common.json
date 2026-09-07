@@ -9,7 +9,8 @@
   },
   "label": {
     "cancel": "Cancelar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "saving": "Guardando..."
   },
   "letsGetStarted": "Empecemos",
   "privacy": "Privacidad",

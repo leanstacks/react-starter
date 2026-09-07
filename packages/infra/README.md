@@ -1,4 +1,4 @@
-# React Starter Infrastructure
+# @react-starter/infra
 
 AWS CDK infrastructure for the React Starter application.
 
@@ -13,6 +13,8 @@ AWS CDK infrastructure for the React Starter application.
 
 2. **Install dependencies:**
 
+   From the project base directory, install all project dependencies.
+
    ```bash
    npm install
    ```
@@ -25,24 +27,34 @@ AWS CDK infrastructure for the React Starter application.
    npx cdk bootstrap
    ```
 
-4. **Build main application:**
+4. **Build the project:**
+
+   From the project base directory, build the full project (includes all monorepo packages).
 
    ```bash
-   cd ..
    npm run build
-   cd infrastructure
    ```
 
 5. **Deploy:**
+
+   Deploy the project to the AWS account defined in your `packages/infra/.env` file.
+
    ```bash
    npm run deploy:all
+
+   OR, from the project base directory
+
+   npm run -w packages/infra deploy:all
    ```
 
-## Scripts
+## Available Pacakge Scripts
 
 - `npm run build` - Build TypeScript
-- `npm run deploy` - Deploy infrastructure
-- `npm run destroy` - Destroy infrastructure
+- `npm run clean` - Cleans up temporary files and directories
+- `npm run deploy` - Deploy infrastructure, useful for a single stack
+- `npm run deploy:all` - Deploys all infrastructure stacks
+- `npm run destroy` - Destroy infrastructure, useful for a single stack
+- `npm run destroy:all` - Destroys all infrastructure stacks
 - `npm run diff` - Preview changes
 - `npm run synth` - Synthesize CloudFormation
 - `npm run test` - Run infrastructure unit tests

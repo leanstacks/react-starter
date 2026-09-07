@@ -2,6 +2,8 @@ import { RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import { Toaster } from '@react-starter/shared/components/shadcn/sonner';
+
 import ErrorBoundary from '@/common/components/Errors/ErrorBoundary';
 import ErrorFallback from '@/common/components/Errors/ErrorFallback';
 import SettingsContextProvider from '@/common/providers/SettingsProvider';
@@ -9,7 +11,6 @@ import AxiosContextProvider from '@/common/providers/AxiosProvider';
 import { router } from '@/common/components/Router/Router';
 import Theme from '@/common/components/Theme/Theme';
 import AuthContextProvider from '@/common/providers/AuthProvider';
-import ToastsProvider from '@/common/providers/ToastsProvider';
 
 /**
  * React Query `QueryClient` and configuration.
@@ -28,7 +29,7 @@ const queryClient = new QueryClient({
  * The application. The outermost component of the React application
  * hierarchy. Declares application-wide providers.
  */
-function App() {
+export const App = () => {
   return (
     <div id="app" className="bg-background text-foreground min-h-screen" data-testid="app">
       <ErrorBoundary fallback={<ErrorFallback />}>
@@ -37,9 +38,8 @@ function App() {
             <Theme />
             <AuthContextProvider>
               <AxiosContextProvider>
-                <ToastsProvider>
-                  <RouterProvider router={router} />
-                </ToastsProvider>
+                <RouterProvider router={router} />
+                <Toaster />
               </AxiosContextProvider>
             </AuthContextProvider>
             <ReactQueryDevtools initialIsOpen={false} />
@@ -48,6 +48,4 @@ function App() {
       </ErrorBoundary>
     </div>
   );
-}
-
-export default App;
+};

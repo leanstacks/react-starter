@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
+import type { BaseComponentProps } from '@react-starter/shared/types/components';
+import { Card, CardHeader, CardTitle, CardContent } from '@react-starter/shared/components/shadcn/card';
+
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
 import { useGetUserTasks } from '@/pages/Tasks/api/useGetUserTasks';
-import type { BaseComponentProps } from '@/common/utils/types';
-import TaskList from './List/TaskList';
-import TaskStatusDonutChart from './Chart/TaskStatusDonutChart';
-import Card from '@/common/components/Card/Card';
+import TaskList from '@/pages/Tasks/components/List/TaskList';
+import { TaskStatusDonutChart } from '@/pages/Tasks/components/Chart/TaskStatusDonutChart';
 
 /**
  * The `TaskListLayout` component renders the layout for all tasks for a
@@ -23,13 +24,13 @@ const TaskListLayout = ({ className, testId = 'layout-task-list' }: BaseComponen
         <>
           <div className="mb-4 grid md:grid-cols-2 lg:grid-cols-3">
             {!!tasks && (
-              <Card testId={`${testId}-chart-status`}>
-                <Card.Header>
-                  <Card.Title className="text-md font-bold">{t('status-of-tasks', { ns: 'tasks' })}</Card.Title>
-                </Card.Header>
-                <Card.Body>
+              <Card data-testid={`${testId}-chart-status`}>
+                <CardHeader>
+                  <CardTitle className="text-md font-bold">{t('status-of-tasks', { ns: 'tasks' })}</CardTitle>
+                </CardHeader>
+                <CardContent>
                   <TaskStatusDonutChart tasks={tasks} width={160} />
-                </Card.Body>
+                </CardContent>
               </Card>
             )}
           </div>

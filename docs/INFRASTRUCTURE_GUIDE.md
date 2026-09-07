@@ -48,13 +48,12 @@ The React Starter frontend application is deployed on AWS using a modern, global
 3. **Security by Design**: Origin Access Control, SSL/TLS encryption, and security headers
 4. **Infrastructure as Code**: All infrastructure defined in AWS CDK with TypeScript
 5. **Multi-Environment**: Supports dev, qa, staging, and production environments
-6. **Optional Storybook CDN**: Separate CDN stack for component documentation if needed
 
 ## Infrastructure Components
 
 ### CDN Stack (`cdn-stack.ts`)
 
-**Purpose**: Deploys the compiled React application and optional Storybook documentation to a globally distributed content delivery network.
+**Purpose**: Deploys the compiled React application to a globally distributed content delivery network.
 
 **Key Resources**:
 
@@ -110,28 +109,6 @@ The stack exports the following values for each environment:
 - Data transfer out: $0.085/GB (varies by region)
 - Requests: $0.0075 per 10,000 requests
 - Default coverage: PRICE_CLASS_100 (uses cheapest edge locations only)
-
-### Optional: Storybook CDN Stack
-
-When `CDK_STORYBOOK_ASSET_PATH` is configured, a separate CDN stack is created for Storybook component documentation.
-
-**Configuration**:
-
-```bash
-# Storybook CDN configuration (optional)
-CDK_STORYBOOK_ASSET_PATH=../storybook-static
-CDK_STORYBOOK_DOMAIN_NAME=storybook.example.com
-CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:...
-CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC
-CDK_STORYBOOK_HOSTED_ZONE_NAME=example.com
-```
-
-**Use Cases**:
-
-- Isolated hosting of component documentation
-- Team design system reference
-- Accessible independent of main application deployment
-- Separate analytics and monitoring
 
 ## Deployment Process
 
@@ -203,10 +180,7 @@ CDK_STORYBOOK_HOSTED_ZONE_NAME=example.com
    # Deploy only the application CDN
    npm run deploy -- "*ui-cdn*"
 
-   # Deploy only Storybook CDN
-   npm run deploy -- "*storybook-cdn*"
-
-   # Deploy all stacks (UI + Storybook)
+   # Deploy all stacks
    npm run deploy:all
    ```
 
@@ -226,10 +200,6 @@ CDK automatically manages dependencies, but understand the logical order:
    - Creates CloudFront distribution
    - Uploads assets and invalidates cache
    - Creates Route 53 records (if domain configured)
-
-2. **Storybook CDN Stack** (optional): Deploys component documentation
-   - Independent deployment with same structure as UI CDN
-   - Can be created/updated/deleted separately
 
 ## Monorepo Architecture
 
@@ -314,18 +284,6 @@ All configuration uses environment variables prefixed with `CDK_`:
 | `CDK_HOSTED_ZONE_NAME` | Route 53 zone name       | -                      | No\*     |
 
 **Note:** `CDK_CERTIFICATE_ARN`, `CDK_HOSTED_ZONE_ID`, and `CDK_HOSTED_ZONE_NAME` are required only if using `CDK_DOMAIN_NAME`.
-
-#### Storybook CDN Variables (Optional)
-
-| Variable                         | Purpose                | Default                            | Required |
-| -------------------------------- | ---------------------- | ---------------------------------- | -------- |
-| `CDK_STORYBOOK_ASSET_PATH`       | Storybook build output | `../packages/web/storybook-static` | No       |
-| `CDK_STORYBOOK_DOMAIN_NAME`      | Custom domain          | -                                  | No       |
-| `CDK_STORYBOOK_CERTIFICATE_ARN`  | SSL certificate ARN    | -                                  | No\*     |
-| `CDK_STORYBOOK_HOSTED_ZONE_ID`   | Route 53 zone ID       | -                                  | No\*     |
-| `CDK_STORYBOOK_HOSTED_ZONE_NAME` | Route 53 zone name     | -                                  | No\*     |
-
-**Note:** If `CDK_STORYBOOK_ASSET_PATH` is provided, separate stacks are created for Storybook CDN.
 
 #### Resource Tagging Variables
 
@@ -659,4 +617,4 @@ npm run build -w @react-starter/web
 
 ---
 
-If you have questions or need help, reach out to your team or check the documentation above.
+:point_left: Return to [Documentation](./README.md).

@@ -1,26 +1,22 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
+import * as sonner from '@react-starter/shared/components/shadcn/sonner';
 import { render, screen, waitFor } from '@/test/test-utils';
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { todosFixture } from '@/__fixtures__/todos';
-import * as UseToasts from '@/common/hooks/useToasts';
 
-import TaskCompleteToggle from './TaskCompleteToggle';
+import { TaskCompleteToggle } from './TaskCompleteToggle';
 
 describe('TaskCompleteToggle', () => {
   const incompleteTask: Task = { ...todosFixture[0], completed: false };
   const completeTask: Task = { ...todosFixture[0], completed: true };
 
-  const useToastsSpy = vi.spyOn(UseToasts, 'useToasts');
-  const mockCreateToast = vi.fn();
+  const toastSpy = vi.spyOn(sonner, 'toast');
+  const mockToast = vi.fn();
 
   beforeEach(() => {
-    useToastsSpy.mockReturnValue({
-      createToast: mockCreateToast,
-      removeToast: vi.fn(),
-      toasts: [],
-    });
+    toastSpy.mockImplementation(mockToast);
   });
 
   it('should render successfully', async () => {
@@ -58,7 +54,7 @@ describe('TaskCompleteToggle', () => {
     // ASSERT
     expect(screen.getByTestId('toggle-task-complete')).toBeDefined();
     expect(screen.getByTestId('toggle-task-complete').title).toBe('Mark complete');
-    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveAttribute('data-icon', 'circle');
+    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveClass('lucide-circle');
   });
 
   it('should render complete task', async () => {
@@ -69,7 +65,7 @@ describe('TaskCompleteToggle', () => {
     // ASSERT
     expect(screen.getByTestId('toggle-task-complete')).toBeDefined();
     expect(screen.getByTestId('toggle-task-complete').title).toBe('Mark incomplete');
-    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveAttribute('data-icon', 'circle-check');
+    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveClass('lucide-circle-check');
   });
 
   it('should toggle task complete when clicked', async () => {
@@ -78,19 +74,15 @@ describe('TaskCompleteToggle', () => {
     render(<TaskCompleteToggle task={incompleteTask} />);
     await screen.findByTestId('toggle-task-complete');
     expect(screen.getByTestId('toggle-task-complete').title).toBe('Mark complete');
-    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveAttribute('data-icon', 'circle');
+    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveClass('lucide-circle');
 
     // ACT
     await user.click(screen.getByTestId('toggle-task-complete'));
-    await waitFor(() => expect(mockCreateToast).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mockToast).toHaveBeenCalledOnce());
 
     // ASSERT
-    expect(mockCreateToast).toHaveBeenCalledOnce();
-    expect(mockCreateToast).toHaveBeenCalledWith({
-      text: 'Marked task complete',
-      isAutoDismiss: true,
-      variant: 'success',
-    });
+    expect(mockToast).toHaveBeenCalledOnce();
+    expect(mockToast).toHaveBeenCalledWith('Marked task complete');
   });
 
   it('should toggle task incomplete when clicked', async () => {
@@ -99,42 +91,14 @@ describe('TaskCompleteToggle', () => {
     render(<TaskCompleteToggle task={completeTask} />);
     await screen.findByTestId('toggle-task-complete');
     expect(screen.getByTestId('toggle-task-complete').title).toBe('Mark incomplete');
-    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveAttribute('data-icon', 'circle-check');
+    expect(screen.getByTestId('toggle-task-complete-icon')).toHaveClass('lucide-circle-check');
 
     // ACT
     await user.click(screen.getByTestId('toggle-task-complete'));
-    await waitFor(() => expect(mockCreateToast).toHaveBeenCalledOnce());
+    await waitFor(() => expect(mockToast).toHaveBeenCalledOnce());
 
     // ASSERT
-    expect(mockCreateToast).toHaveBeenCalledOnce();
-    expect(mockCreateToast).toHaveBeenCalledWith({
-      text: 'Marked task incomplete',
-      isAutoDismiss: true,
-      variant: 'success',
-    });
-  });
-
-  it('should toggle icon on hover', async () => {
-    // ARRANGE
-    const user = userEvent.setup();
-    render(
-      <div data-testid="wrapper">
-        <TaskCompleteToggle task={incompleteTask} testId="component" />
-      </div>,
-    );
-    await screen.findByTestId('component');
-    expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle');
-
-    // ACT
-    await user.hover(screen.getByTestId('component'));
-
-    // ASSERT
-    expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle-check');
-
-    // ACT
-    await user.hover(screen.getByTestId('wrapper'));
-
-    // ASSERT
-    expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle');
+    expect(mockToast).toHaveBeenCalledOnce();
+    expect(mockToast).toHaveBeenCalledWith('Marked task incomplete');
   });
 });

@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/common/utils/css';
-import { BaseComponentProps } from '@/common/utils/types';
+import { cn } from '@react-starter/shared/utils/css';
+import { BaseComponentProps } from '@react-starter/shared/types/components';
+import { Badge } from '@react-starter/shared/components/shadcn/badge';
+import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
+
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { useGetUser } from '@/common/api/useGetUser';
-import Badge from '@/common/components/Badge/Badge';
-import Skeleton from '@/common/components/Loader/Skeleton';
 
 /**
  * Properties for the `TaskView` component.
@@ -21,7 +22,7 @@ interface TaskViewProps extends BaseComponentProps {
  * This component is for the read-only display of a single Task.
  * @param {TaskViewProps} props - Component properties.
  */
-const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps) => {
+export const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps) => {
   const { t } = useTranslation();
   const { data: user, isLoading: isLoadingUser, isError: isErrorUser } = useGetUser({ userId: task.userId });
 
@@ -37,7 +38,7 @@ const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps) => {
       <div className="mt-4">
         <div className="text-xs font-bold uppercase">Assignee</div>
         <div>
-          {isLoadingUser && <Skeleton className="h-4 w-40" testId={`${testId}-user-loading`} />}
+          {isLoadingUser && <Skeleton className="h-4 w-40" data-testid={`${testId}-user-loading`} />}
           {isErrorUser && <span data-testid={`${testId}-user-error`}>{t('unable-to-find-short')}</span>}
           {user && <span data-testid={`${testId}-user-name`}>{user.name}</span>}
         </div>
@@ -45,12 +46,10 @@ const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps) => {
 
       <div className="mt-4">
         <div className="text-xs font-bold uppercase">Status</div>
-        <Badge size="sm" className={cn('inline', { 'bg-blue-600!': task.completed })} testId={`${testId}-status`}>
+        <Badge className={cn({ 'bg-blue-600!': task.completed })} data-testid={`${testId}-status`}>
           {task.completed ? 'COMPLETE' : 'INCOMPLETE'}
         </Badge>
       </div>
     </div>
   );
 };
-
-export default TaskView;

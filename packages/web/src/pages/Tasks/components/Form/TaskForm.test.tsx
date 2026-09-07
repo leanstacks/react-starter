@@ -28,8 +28,8 @@ describe('TaskForm', () => {
 
     // ASSERT
     expect(screen.getByTestId('task-form')).toBeDefined();
-    expect(screen.getByTestId('task-form-input-title-input')).toHaveValue(task.title);
-    expect(screen.getByTestId('task-form-input-completed-icon-off')).toBeDefined();
+    expect(screen.getByTestId('task-form-input-title')).toHaveValue(task.title);
+    expect(screen.getByTestId('task-form-input-completed')).toHaveAttribute('data-state', 'off');
   });
 
   it('should call onCancel when cancelled', async () => {
@@ -62,7 +62,7 @@ describe('TaskForm', () => {
     await screen.findByTestId('task-form-button-submit');
 
     // ACT
-    await user.type(screen.getByTestId('task-form-input-title-input'), 'do this thing');
+    await user.type(screen.getByTestId('task-form-input-title'), 'do this thing');
     await user.click(screen.getByTestId('task-form-button-submit'));
 
     // ASSERT

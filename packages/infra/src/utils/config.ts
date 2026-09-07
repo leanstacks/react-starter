@@ -25,11 +25,6 @@ const configSchema = z.object({
   CDK_CERTIFICATE_ARN: z.string().optional(),
   CDK_HOSTED_ZONE_ID: z.string().optional(),
   CDK_HOSTED_ZONE_NAME: z.string().optional(),
-  CDK_STORYBOOK_ASSET_PATH: z.string().default('../storybook-static'),
-  CDK_STORYBOOK_DOMAIN_NAME: z.string().optional(),
-  CDK_STORYBOOK_CERTIFICATE_ARN: z.string().optional(),
-  CDK_STORYBOOK_HOSTED_ZONE_ID: z.string().optional(),
-  CDK_STORYBOOK_HOSTED_ZONE_NAME: z.string().optional(),
 });
 
 /**

@@ -167,24 +167,19 @@ The infrastructure configuration is managed through environment variables prefix
 
 The following environment variables are available for configuring the infrastructure:
 
-| Variable                         | Type   | Description                                                                   | Default                    | Required |
-| -------------------------------- | ------ | ----------------------------------------------------------------------------- | -------------------------- | -------- |
-| `CDK_APP_NAME`                   | string | Application name used in resource naming and tagging                          | `react-starter`            | No       |
-| `CDK_ENV`                        | enum   | Deployment environment: `dev`, `qa`, `prd`                                    | -                          | Yes      |
-| `CDK_ACCOUNT`                    | string | AWS account ID for deployment                                                 | Auto-detected from AWS CLI | No       |
-| `CDK_REGION`                     | string | AWS region for deployment (e.g., `us-east-1`)                                 | Auto-detected from AWS CLI | No       |
-| `CDK_OU`                         | string | Organizational Unit for resource tagging                                      | `unknown`                  | No       |
-| `CDK_OWNER`                      | string | Owner tag for resource tracking                                               | `unknown`                  | No       |
-| `CDK_ASSET_PATH`                 | string | Path to application build artifacts (relative to packages/infra directory)    | `../web/dist`              | No       |
-| `CDK_DOMAIN_NAME`                | string | Custom domain name for the application CDN (e.g., `app.example.com`)          | -                          | No       |
-| `CDK_CERTIFICATE_ARN`            | string | ACM certificate ARN for custom domain (must be in `us-east-1` for CloudFront) | -                          | No       |
-| `CDK_HOSTED_ZONE_ID`             | string | Route53 hosted zone ID for DNS records                                        | -                          | No       |
-| `CDK_HOSTED_ZONE_NAME`           | string | Route53 hosted zone name (e.g., `example.com`)                                | -                          | No       |
-| `CDK_STORYBOOK_ASSET_PATH`       | string | Path to Storybook build artifacts (relative to packages/infra directory)      | `../web/storybook-static`  | No       |
-| `CDK_STORYBOOK_DOMAIN_NAME`      | string | Custom domain name for Storybook CDN                                          | -                          | No       |
-| `CDK_STORYBOOK_CERTIFICATE_ARN`  | string | ACM certificate ARN for Storybook custom domain                               | -                          | No       |
-| `CDK_STORYBOOK_HOSTED_ZONE_ID`   | string | Route53 hosted zone ID for Storybook DNS records                              | -                          | No       |
-| `CDK_STORYBOOK_HOSTED_ZONE_NAME` | string | Route53 hosted zone name for Storybook                                        | -                          | No       |
+| Variable               | Type   | Description                                                                   | Default                    | Required |
+| ---------------------- | ------ | ----------------------------------------------------------------------------- | -------------------------- | -------- |
+| `CDK_APP_NAME`         | string | Application name used in resource naming and tagging                          | `react-starter`            | No       |
+| `CDK_ENV`              | enum   | Deployment environment: `dev`, `qa`, `prd`                                    | -                          | Yes      |
+| `CDK_ACCOUNT`          | string | AWS account ID for deployment                                                 | Auto-detected from AWS CLI | No       |
+| `CDK_REGION`           | string | AWS region for deployment (e.g., `us-east-1`)                                 | Auto-detected from AWS CLI | No       |
+| `CDK_OU`               | string | Organizational Unit for resource tagging                                      | `unknown`                  | No       |
+| `CDK_OWNER`            | string | Owner tag for resource tracking                                               | `unknown`                  | No       |
+| `CDK_ASSET_PATH`       | string | Path to application build artifacts (relative to packages/infra directory)    | `../web/dist`              | No       |
+| `CDK_DOMAIN_NAME`      | string | Custom domain name for the application CDN (e.g., `app.example.com`)          | -                          | No       |
+| `CDK_CERTIFICATE_ARN`  | string | ACM certificate ARN for custom domain (must be in `us-east-1` for CloudFront) | -                          | No       |
+| `CDK_HOSTED_ZONE_ID`   | string | Route53 hosted zone ID for DNS records                                        | -                          | No       |
+| `CDK_HOSTED_ZONE_NAME` | string | Route53 hosted zone name (e.g., `example.com`)                                | -                          | No       |
 
 ### Setup
 
@@ -273,13 +268,6 @@ CDK_DOMAIN_NAME=react-starter.dev.example.com
 CDK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_HOSTED_ZONE_ID=Z1234567890ABC
 CDK_HOSTED_ZONE_NAME=dev.example.com
-
-### Storybook CDN Configuration ###
-CDK_STORYBOOK_ASSET_PATH=../web/storybook-static
-CDK_STORYBOOK_DOMAIN_NAME=react-starter-storybook.dev.example.com
-CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC
-CDK_STORYBOOK_HOSTED_ZONE_NAME=dev.example.com
 ```
 
 #### QA Environment
@@ -302,12 +290,6 @@ CDK_DOMAIN_NAME=react-starter.qa.example.com
 CDK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_HOSTED_ZONE_ID=Z1234567890ABC
 CDK_HOSTED_ZONE_NAME=qa.example.com
-
-CDK_STORYBOOK_ASSET_PATH=../web/storybook-static
-CDK_STORYBOOK_DOMAIN_NAME=react-starter-storybook.qa.example.com
-CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC
-CDK_STORYBOOK_HOSTED_ZONE_NAME=qa.example.com
 ```
 
 #### Production Environment
@@ -330,12 +312,6 @@ CDK_DOMAIN_NAME=react-starter.example.com
 CDK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 CDK_HOSTED_ZONE_ID=Z1234567890ABC
 CDK_HOSTED_ZONE_NAME=example.com
-
-CDK_STORYBOOK_ASSET_PATH=../web/storybook-static
-CDK_STORYBOOK_DOMAIN_NAME=react-starter-storybook.example.com
-CDK_STORYBOOK_CERTIFICATE_ARN=arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-CDK_STORYBOOK_HOSTED_ZONE_ID=Z1234567890ABC
-CDK_STORYBOOK_HOSTED_ZONE_NAME=example.com
 ```
 
 ### AWS Account and Region
@@ -509,4 +485,4 @@ Ensure all required configuration variables are set as the correct type.
 
 ---
 
-For more information about this project, see the main [README](../README.md) or visit the [documentation](./README.md).
+:point_left: Return to [Documentation](./README.md).

@@ -83,8 +83,8 @@ describe('TaskEdit', () => {
     await screen.findByTestId('task-form-button-submit');
 
     // ACT
-    await user.clear(screen.getByTestId('task-form-input-title-input'));
-    await user.type(screen.getByTestId('task-form-input-title-input'), 'updated title');
+    await user.clear(screen.getByTestId('task-form-input-title'));
+    await user.type(screen.getByTestId('task-form-input-title'), 'updated title');
     await user.click(screen.getByTestId('task-form-button-submit'));
     await waitFor(() => expect(mockNavigate).toHaveBeenCalledExactlyOnceWith(-1));
 
@@ -99,13 +99,13 @@ describe('TaskEdit', () => {
     await screen.findByTestId('task-form-button-submit');
 
     // ACT
-    await user.clear(screen.getByTestId('task-form-input-title-input'));
-    await user.type(screen.getByTestId('task-form-input-title-input'), '500');
+    await user.clear(screen.getByTestId('task-form-input-title'));
+    await user.type(screen.getByTestId('task-form-input-title'), '500');
     await user.click(screen.getByTestId('task-form-button-submit'));
     await waitFor(() => expect(screen.getByTestId('task-edit-error-update')).toBeDefined());
 
     // ASSERT
-    expect(screen.getByTestId('task-form-input-title-input')).toHaveValue('500');
+    expect(screen.getByTestId('task-form-input-title')).toHaveValue('500');
     expect(mockNavigate).not.toHaveBeenCalled();
     expect(screen.getByTestId('task-edit-error-update')).toBeDefined();
   });
