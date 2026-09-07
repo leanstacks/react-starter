@@ -63,15 +63,31 @@ const TaskForm = ({ className, onCancel, onSubmit, task, testId = 'task-form' }:
   /**
    * Initializes management of the form.
    */
-  const { control, formState, handleSubmit } = useForm<TaskFormValues>({
+  const { control, formState, handleSubmit, reset } = useForm<TaskFormValues>({
     defaultValues: {
       userId: task?.userId || 0,
       title: task?.title || '',
       completed: task?.completed || false,
     },
-    mode: 'all',
+    mode: 'onSubmit',
     resolver: zodResolver(schema),
   });
+
+  /**
+   * Handles the cancellation of the form. Prevents the default button behavior, stops event
+   * propagation, resets the form, and invokes the cancellation callback.
+   * @param e - A React mouse event triggered by clicking the cancel button.
+   */
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    // Prevent the default button behavior and stop the event from propagating further.
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Reset the form to its initial state.
+    reset();
+    // Invoke the cancellation callback.
+    onCancel();
+  };
 
   return (
     <div className={cn('max-w-lg', className)} data-testid={testId}>
@@ -128,7 +144,7 @@ const TaskForm = ({ className, onCancel, onSubmit, task, testId = 'task-form' }:
               type="button"
               variant="outline"
               className="w-full sm:w-40"
-              onClick={onCancel}
+              onClick={handleCancel}
               disabled={formState.isSubmitting}
               aria-label={t('label.cancel')}
               data-testid={`${testId}-button-cancel`}
