@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import { donutChartDataFixture } from '@react-starter/shared/__fixtures__/charts';
 
-import DonutChart from './DonutChart';
+import { DonutChart } from './DonutChart';
 
 describe('DonutChart', () => {
   it('should render successfully', async () => {

@@ -7,7 +7,7 @@ import { BaseComponentProps } from '@react-starter/shared/types/components';
 /**
  * Properties for the `ErrorAlert` component.
  */
-export interface ErrorAlertProps extends BaseComponentProps {
+interface ErrorAlertProps extends BaseComponentProps {
   title?: string;
   description: string;
 }
@@ -16,7 +16,7 @@ export interface ErrorAlertProps extends BaseComponentProps {
  * The `ErrorAlert` component renders a bespoke `Alert` layout for error
  * messages.
  */
-export const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
+const ErrorAlert = ({ className, description, testId = 'alert-error', title, ...props }: ErrorAlertProps) => {
   return (
     <Alert variant="destructive" className={cn(className)} data-testid={testId} {...props}>
       <AlertCircleIcon />
@@ -25,3 +25,5 @@ export const ErrorAlert = ({ className, description, testId = 'alert-error', tit
     </Alert>
   );
 };
+
+export { ErrorAlert };

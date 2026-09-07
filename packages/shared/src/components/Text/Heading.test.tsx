@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 
 import { render, screen } from '@testing-library/react';
 
-import Heading from './Heading';
+import { Heading } from './Heading';
 
 describe('Heading', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Heading />);
+    render(<Heading data-testid="heading" />);
     await screen.findByTestId('heading');
 
     // ASSERT
@@ -16,7 +16,7 @@ describe('Heading', () => {
 
   it('should use default level value', async () => {
     // ARRANGE
-    render(<Heading />);
+    render(<Heading data-testid="heading" />);
     await screen.findByTestId('heading');
 
     // ASSERT
@@ -25,7 +25,7 @@ describe('Heading', () => {
 
   it('should use specific level value', async () => {
     // ARRANGE
-    render(<Heading level={1} />);
+    render(<Heading level={1} data-testid="heading" />);
     await screen.findByTestId('heading');
 
     // ASSERT

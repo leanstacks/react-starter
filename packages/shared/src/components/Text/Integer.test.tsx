@@ -3,31 +3,21 @@ import { render, screen } from '@testing-library/react';
 
 import { SignDisplay, Unit, UnitDisplay } from '@react-starter/shared/utils/constants';
 
-import Integer from './Integer';
+import { Integer } from './Integer';
 
 describe('Integer', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Integer value={1000} />);
+    render(<Integer value={1000} data-testid="integer" />);
     await screen.findByTestId('integer');
 
     // ASSERT
     expect(screen.getByTestId('integer')).toBeDefined();
   });
 
-  it('should use custom test ID', async () => {
-    // ARRANGE
-    render(<Integer value={1000} testId="custom-testid" />);
-    await screen.findByTestId('custom-testid');
-
-    // ASSERT
-    expect(screen.queryByTestId('integer')).toBeNull();
-    expect(screen.getByTestId('custom-testid')).toBeDefined();
-  });
-
   it('should use classes from className property', async () => {
     // ARRANGE
-    render(<Integer value={1000} className="custom-class" />);
+    render(<Integer value={1000} className="custom-class" data-testid="integer" />);
     await screen.findByTestId('integer');
 
     // ASSERT
@@ -36,7 +26,7 @@ describe('Integer', () => {
 
   it('should render decimal value as integer', async () => {
     // ARRANGE
-    render(<Integer value={1000.1234} />);
+    render(<Integer value={1000.1234} data-testid="integer" />);
     await screen.findByTestId('integer');
 
     // ASSERT
@@ -45,7 +35,7 @@ describe('Integer', () => {
 
   it('should render integer with units', async () => {
     // ARRANGE
-    render(<Integer value={1000} unit={Unit.Centimeter} />);
+    render(<Integer value={1000} unit={Unit.Centimeter} data-testid="integer" />);
     await screen.findByTestId('integer');
 
     // ASSERT
@@ -54,7 +44,7 @@ describe('Integer', () => {
 
   it('should render integer with units and unit display', async () => {
     // ARRANGE
-    render(<Integer value={1000} unit={Unit.Centimeter} unitDisplay={UnitDisplay.Narrow} />);
+    render(<Integer value={1000} unit={Unit.Centimeter} unitDisplay={UnitDisplay.Narrow} data-testid="integer" />);
     await screen.findByTestId('integer');
 
     // ASSERT
@@ -65,9 +55,9 @@ describe('Integer', () => {
     // ARRANGE
     render(
       <div>
-        <Integer testId="positive" value={1000} signDisplay={SignDisplay.Always} />
-        <Integer testId="negative" value={-1000} signDisplay={SignDisplay.Always} />
-        <Integer testId="zero" value={0} signDisplay={SignDisplay.Always} />
+        <Integer data-testid="positive" value={1000} signDisplay={SignDisplay.Always} />
+        <Integer data-testid="negative" value={-1000} signDisplay={SignDisplay.Always} />
+        <Integer data-testid="zero" value={0} signDisplay={SignDisplay.Always} />
       </div>,
     );
     await screen.findByTestId('zero');
@@ -82,9 +72,9 @@ describe('Integer', () => {
     // ARRANGE
     render(
       <div>
-        <Integer testId="positive" value={1000} signDisplay={SignDisplay.Auto} />
-        <Integer testId="negative" value={-1000} signDisplay={SignDisplay.Auto} />
-        <Integer testId="zero" value={0} signDisplay={SignDisplay.Auto} />
+        <Integer data-testid="positive" value={1000} signDisplay={SignDisplay.Auto} />
+        <Integer data-testid="negative" value={-1000} signDisplay={SignDisplay.Auto} />
+        <Integer data-testid="zero" value={0} signDisplay={SignDisplay.Auto} />
       </div>,
     );
     await screen.findByTestId('zero');
@@ -99,9 +89,9 @@ describe('Integer', () => {
     // ARRANGE
     render(
       <div>
-        <Integer testId="positive" value={1000} signDisplay={SignDisplay.Never} />
-        <Integer testId="negative" value={-1000} signDisplay={SignDisplay.Never} />
-        <Integer testId="zero" value={0} signDisplay={SignDisplay.Never} />
+        <Integer data-testid="positive" value={1000} signDisplay={SignDisplay.Never} />
+        <Integer data-testid="negative" value={-1000} signDisplay={SignDisplay.Never} />
+        <Integer data-testid="zero" value={0} signDisplay={SignDisplay.Never} />
       </div>,
     );
     await screen.findByTestId('zero');
@@ -116,9 +106,9 @@ describe('Integer', () => {
     // ARRANGE
     render(
       <div>
-        <Integer testId="positive" value={1000} signDisplay={SignDisplay.ExceptZero} />
-        <Integer testId="negative" value={-1000} signDisplay={SignDisplay.ExceptZero} />
-        <Integer testId="zero" value={0} signDisplay={SignDisplay.ExceptZero} />
+        <Integer data-testid="positive" value={1000} signDisplay={SignDisplay.ExceptZero} />
+        <Integer data-testid="negative" value={-1000} signDisplay={SignDisplay.ExceptZero} />
+        <Integer data-testid="zero" value={0} signDisplay={SignDisplay.ExceptZero} />
       </div>,
     );
     await screen.findByTestId('zero');

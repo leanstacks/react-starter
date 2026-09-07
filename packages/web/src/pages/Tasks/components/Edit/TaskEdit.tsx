@@ -13,7 +13,7 @@ import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 import { useGetTask } from '@/pages/Tasks/api/useGetTask';
 import { useUpdateTask } from '@/pages/Tasks/api/useUpdateTask';
 import TaskForm, { TaskFormValues } from '@/pages/Tasks/components/Form/TaskForm';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 
 /**
  * The `TaskEdit` component renders the layout for updating a Task including

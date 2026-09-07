@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 
 import { formatNumber } from '@react-starter/shared/utils/numbers';
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { SignDisplay, Unit, UnitDisplay } from '@react-starter/shared/utils/constants';
 
 /**
@@ -13,7 +12,7 @@ import { SignDisplay, Unit, UnitDisplay } from '@react-starter/shared/utils/cons
  * @see {@link BaseComponentProps}
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options NumberFormatOptions}
  */
-export interface IntegerProps extends BaseComponentProps {
+export interface IntegerProps extends React.ComponentProps<'span'> {
   signDisplay?: SignDisplay;
   unit?: Unit;
   unitDisplay?: UnitDisplay;
@@ -24,7 +23,7 @@ export interface IntegerProps extends BaseComponentProps {
  * The `Integer` React component formats and renders an integer number.
  * @param {IntegerProps} props - Component properties.
  */
-const Integer = ({ className, signDisplay, unit, unitDisplay, value, testId = 'integer' }: IntegerProps) => {
+const Integer = ({ signDisplay, unit, unitDisplay, value, ...props }: IntegerProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = { maximumFractionDigits: 0, signDisplay };
     // if formatting with units
@@ -40,11 +39,7 @@ const Integer = ({ className, signDisplay, unit, unitDisplay, value, testId = 'i
     return formatNumber(value, formatOptions);
   }, [value, signDisplay, unit, unitDisplay]);
 
-  return (
-    <span className={className} data-testid={testId}>
-      {val}
-    </span>
-  );
+  return <span {...props}>{val}</span>;
 };
 
-export default Integer;
+export { Integer };

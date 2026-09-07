@@ -3,9 +3,8 @@ import isToday from 'dayjs/plugin/isToday';
 import isTomorrow from 'dayjs/plugin/isTomorrow';
 import isYesterday from 'dayjs/plugin/isYesterday';
 
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { DateFormat } from '@react-starter/shared/utils/constants';
-import Date from '@react-starter/shared/components/Text/Date';
+import { Date, DateProps } from '@react-starter/shared/components/Text/Date';
 
 dayjs.extend(isToday);
 dayjs.extend(isTomorrow);
@@ -16,14 +15,12 @@ const TOMORROW = 'Tomorrow';
 const YESTERDAY = 'Yesterday';
 
 /**
- * Properties for the `DayOfTheWeek` component.
- * @param {string|number} date - The date value expressed as an ISO 8601 date string or as a number of milliseconds.
+ * Properties for the `DayOfTheWeek` component. Extends `DateProps`.
  * @param {boolean} [relative] - Optional. Indicates if the day of the week should be expressed relative to the current day, i.e. `Yesterday`, `Today`, `Tomorrow`.
- * @see {@link BaseComponentProps}
+ * @see {@link DateProps}
  * @see {@link https://en.wikipedia.org/wiki/ISO_8601 | ISO 8601}
  */
-export interface DayOfTheWeekProps extends BaseComponentProps {
-  date: string | number;
+interface DayOfTheWeekProps extends DateProps {
   relative?: boolean;
 }
 
@@ -32,7 +29,7 @@ export interface DayOfTheWeekProps extends BaseComponentProps {
  * e.g. `Monday`, for the supplied date value.
  * @param {DayOfTheWeekProps} props - Component properties, `DayOfTheWeekProps`.
  */
-const DayOfTheWeek = ({ className, date, relative = false, testId = 'day-of-the-week' }: DayOfTheWeekProps) => {
+const DayOfTheWeek = ({ date, relative = false, ...props }: DayOfTheWeekProps) => {
   if (relative) {
     let relativeDayOfTheWeek: string | null = null;
     const theDate = dayjs(date);
@@ -45,15 +42,11 @@ const DayOfTheWeek = ({ className, date, relative = false, testId = 'day-of-the-
     }
 
     if (relativeDayOfTheWeek) {
-      return (
-        <span className={className} data-testid={testId}>
-          {relativeDayOfTheWeek}
-        </span>
-      );
+      return <span {...props}>{relativeDayOfTheWeek}</span>;
     }
   }
 
-  return <Date date={date} format={DateFormat.DAY_OF_WEEK} className={className} testId={testId} />;
+  return <Date date={date} format={DateFormat.DAY_OF_WEEK} {...props} />;
 };
 
-export default DayOfTheWeek;
+export { DayOfTheWeek };

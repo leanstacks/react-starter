@@ -1,6 +1,6 @@
-import Page from '@react-starter/shared/components/Content/Page';
-import Container from '@react-starter/shared/components/Content/Container';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Page } from '@react-starter/shared/components/Content/Page';
+import { Container } from '@react-starter/shared/components/Content/Container';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 
 import SigninForm from '@/pages/Auth/Signin/components/SigninForm';
 
@@ -10,7 +10,7 @@ import SigninForm from '@/pages/Auth/Signin/components/SigninForm';
  */
 const SigninPage = () => {
   return (
-    <Page testId="page-signin">
+    <Page data-testid="page-signin">
       <Container size="sm" className="min-h-[50vh]">
         <Heading level={1} className="my-4">
           Sign In

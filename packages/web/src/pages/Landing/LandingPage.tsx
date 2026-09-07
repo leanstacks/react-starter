@@ -1,9 +1,9 @@
 import { Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import Page from '@react-starter/shared/components/Content/Page';
-import Container from '@react-starter/shared/components/Content/Container';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Page } from '@react-starter/shared/components/Content/Page';
+import { Container } from '@react-starter/shared/components/Content/Container';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 
 import { useAuth } from '@/common/hooks/useAuth';
 
@@ -23,7 +23,7 @@ const LandingPage = () => {
   }
 
   return (
-    <Page testId="page-landing">
+    <Page data-testid="page-landing">
       <Container size="lg" className="min-h-[50vh]">
         <Heading level={1} className="mt-32 mb-4 text-4xl font-normal md:mb-8 md:text-8xl">
           {t('letsGetStarted', { ns: 'common' })}

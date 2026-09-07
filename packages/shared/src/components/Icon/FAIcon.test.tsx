@@ -2,16 +2,16 @@ import { describe, expect, it } from 'vitest';
 
 import { render, screen } from '@testing-library/react';
 
-import FAIcon from './FAIcon';
+import { FAIcon } from './FAIcon';
 
 describe('FAIcon', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<FAIcon icon="xmark" />);
+    render(<FAIcon icon="chevronDown" />);
     await screen.findByTestId('fa-icon');
 
     // ASSERT
     expect(screen.getByTestId('fa-icon')).toBeDefined();
-    expect(screen.getByTestId('fa-icon')).toHaveAttribute('data-icon', 'xmark');
+    expect(screen.getByTestId('fa-icon')).toHaveAttribute('data-icon', 'chevron-down');
   });
 });

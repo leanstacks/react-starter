@@ -3,12 +3,12 @@ import { render, screen } from '@testing-library/react';
 
 import { SignDisplay, Unit, UnitDisplay } from '@react-starter/shared/utils/constants';
 
-import Decimal from './Decimal';
+import { Decimal } from './Decimal';
 
 describe('Decimal', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} />);
+    render(<Decimal value={3.1415} data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -17,7 +17,7 @@ describe('Decimal', () => {
 
   it('should use custom test ID', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} testId="custom-testid" />);
+    render(<Decimal value={3.1415} data-testid="custom-testid" />);
     await screen.findByTestId('custom-testid');
 
     // ASSERT
@@ -27,7 +27,7 @@ describe('Decimal', () => {
 
   it('should use classes from className property', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} className="custom-class" />);
+    render(<Decimal value={3.1415} className="custom-class" data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -36,7 +36,7 @@ describe('Decimal', () => {
 
   it('should render integer value as decimal', async () => {
     // ARRANGE
-    render(<Decimal value={3} minimumFractionDigits={1} />);
+    render(<Decimal value={3} minimumFractionDigits={1} data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -45,7 +45,7 @@ describe('Decimal', () => {
 
   it('should render decimal with units', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} unit={Unit.Centimeter} />);
+    render(<Decimal value={3.1415} unit={Unit.Centimeter} data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -54,7 +54,7 @@ describe('Decimal', () => {
 
   it('should render decimal with units and unit display', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} unit={Unit.Centimeter} unitDisplay={UnitDisplay.Narrow} />);
+    render(<Decimal value={3.1415} unit={Unit.Centimeter} unitDisplay={UnitDisplay.Narrow} data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -63,7 +63,7 @@ describe('Decimal', () => {
 
   it('should render with minimum fraction digits', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} minimumFractionDigits={6} />);
+    render(<Decimal value={3.1415} minimumFractionDigits={6} data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -72,7 +72,7 @@ describe('Decimal', () => {
 
   it('should render with maximum fraction digits', async () => {
     // ARRANGE
-    render(<Decimal value={3.1415} maximumFractionDigits={1} />);
+    render(<Decimal value={3.1415} maximumFractionDigits={1} data-testid="decimal" />);
     await screen.findByTestId('decimal');
 
     // ASSERT
@@ -83,9 +83,9 @@ describe('Decimal', () => {
     // ARRANGE
     render(
       <div>
-        <Decimal testId="positive" value={3.1415} signDisplay={SignDisplay.Always} />
-        <Decimal testId="negative" value={-3.1415} signDisplay={SignDisplay.Always} />
-        <Decimal testId="zero" value={0} signDisplay={SignDisplay.Always} />
+        <Decimal data-testid="positive" value={3.1415} signDisplay={SignDisplay.Always} />
+        <Decimal data-testid="negative" value={-3.1415} signDisplay={SignDisplay.Always} />
+        <Decimal data-testid="zero" value={0} signDisplay={SignDisplay.Always} />
       </div>,
     );
     await screen.findByTestId('zero');
@@ -100,9 +100,9 @@ describe('Decimal', () => {
     // ARRANGE
     render(
       <div>
-        <Decimal testId="positive" value={3.1415} signDisplay={SignDisplay.Auto} />
-        <Decimal testId="negative" value={-3.1415} signDisplay={SignDisplay.Auto} />
-        <Decimal testId="zero" value={0} signDisplay={SignDisplay.Auto} />
+        <Decimal data-testid="positive" value={3.1415} signDisplay={SignDisplay.Auto} />
+        <Decimal data-testid="negative" value={-3.1415} signDisplay={SignDisplay.Auto} />
+        <Decimal data-testid="zero" value={0} signDisplay={SignDisplay.Auto} />
       </div>,
     );
     await screen.findByTestId('zero');
@@ -116,9 +116,9 @@ describe('Decimal', () => {
     // ARRANGE
     render(
       <div>
-        <Decimal testId="positive" value={3.1415} signDisplay={SignDisplay.Never} />
-        <Decimal testId="negative" value={-3.1415} signDisplay={SignDisplay.Never} />
-        <Decimal testId="zero" value={0} signDisplay={SignDisplay.Never} />
+        <Decimal data-testid="positive" value={3.1415} signDisplay={SignDisplay.Never} />
+        <Decimal data-testid="negative" value={-3.1415} signDisplay={SignDisplay.Never} />
+        <Decimal data-testid="zero" value={0} signDisplay={SignDisplay.Never} />
       </div>,
     );
     await screen.findByTestId('zero');
@@ -133,9 +133,9 @@ describe('Decimal', () => {
     // ARRANGE
     render(
       <div>
-        <Decimal testId="positive" value={3.1415} signDisplay={SignDisplay.ExceptZero} />
-        <Decimal testId="negative" value={-3.1415} signDisplay={SignDisplay.ExceptZero} />
-        <Decimal testId="zero" value={0} signDisplay={SignDisplay.ExceptZero} />
+        <Decimal data-testid="positive" value={3.1415} signDisplay={SignDisplay.ExceptZero} />
+        <Decimal data-testid="negative" value={-3.1415} signDisplay={SignDisplay.ExceptZero} />
+        <Decimal data-testid="zero" value={0} signDisplay={SignDisplay.ExceptZero} />
       </div>,
     );
     await screen.findByTestId('zero');

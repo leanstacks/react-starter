@@ -1,32 +1,22 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Currency from './Currency';
+import { Currency } from './Currency';
 import { CurrencyCode, CurrencyDisplay, CurrencySign } from '@react-starter/shared/utils/constants';
 
 describe('Currency', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Currency value={19.99} />);
+    render(<Currency value={19.99} data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT
     expect(screen.getByTestId('currency')).toBeDefined();
   });
 
-  it('should use custom test ID', async () => {
-    // ARRANGE
-    render(<Currency value={19.99} testId="custom-testid" />);
-    await screen.findByTestId('custom-testid');
-
-    // ASSERT
-    expect(screen.queryByTestId('currency')).toBeNull();
-    expect(screen.getByTestId('custom-testid')).toBeDefined();
-  });
-
   it('should use classes from className property', async () => {
     // ARRANGE
-    render(<Currency value={19.99} className="custom-class" />);
+    render(<Currency value={19.99} className="custom-class" data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT
@@ -35,7 +25,7 @@ describe('Currency', () => {
 
   it('should use default currency code', async () => {
     // ARRANGE
-    render(<Currency value={19.99} />);
+    render(<Currency value={19.99} data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT
@@ -44,7 +34,7 @@ describe('Currency', () => {
 
   it('should use specified currency code', async () => {
     // ARRANGE
-    render(<Currency value={19.99} currency={CurrencyCode.CAD} />);
+    render(<Currency value={19.99} currency={CurrencyCode.CAD} data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT
@@ -53,7 +43,7 @@ describe('Currency', () => {
 
   it('should use default currency display', async () => {
     // ARRANGE
-    render(<Currency value={19.99} currency={CurrencyCode.CAD} />);
+    render(<Currency value={19.99} currency={CurrencyCode.CAD} data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT
@@ -62,7 +52,14 @@ describe('Currency', () => {
 
   it('should use specified currency display', async () => {
     // ARRANGE
-    render(<Currency value={19.99} currency={CurrencyCode.CAD} currencyDisplay={CurrencyDisplay.Name} />);
+    render(
+      <Currency
+        value={19.99}
+        currency={CurrencyCode.CAD}
+        currencyDisplay={CurrencyDisplay.Name}
+        data-testid="currency"
+      />,
+    );
     await screen.findByTestId('currency');
 
     // ASSERT
@@ -71,7 +68,7 @@ describe('Currency', () => {
 
   it('should use default currency sign', async () => {
     // ARRANGE
-    render(<Currency value={-19.99} />);
+    render(<Currency value={-19.99} data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT
@@ -80,7 +77,7 @@ describe('Currency', () => {
 
   it('should use accounting currency sign', async () => {
     // ARRANGE
-    render(<Currency value={-19.99} currencySign={CurrencySign.Accounting} />);
+    render(<Currency value={-19.99} currencySign={CurrencySign.Accounting} data-testid="currency" />);
     await screen.findByTestId('currency');
 
     // ASSERT

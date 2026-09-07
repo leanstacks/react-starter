@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Plus } from 'lucide-react';
 
 import type { PropsWithTestId } from '@react-starter/shared/types/components';
-import Page from '@react-starter/shared/components/Content/Page';
-import Container from '@react-starter/shared/components/Content/Container';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Page } from '@react-starter/shared/components/Content/Page';
+import { Container } from '@react-starter/shared/components/Content/Container';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 import { Button } from '@react-starter/shared/components/shadcn/button';
 
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
@@ -21,7 +21,7 @@ const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId) => {
   const { data: currentUser } = useGetCurrentUser();
 
   return (
-    <Page testId={testId}>
+    <Page data-testid={testId}>
       <Container size="lg" className="min-h-[75vh]">
         <TasksPageBreadcrumbs className="my-4" />
 

@@ -2,14 +2,14 @@ import { lazy } from 'react';
 import { describe, expect, it } from 'vitest';
 
 import { render, screen } from '@/test/test-utils';
-const Text = lazy(() => import('@react-starter/shared/components/Text/Text'));
+const AboutPage = lazy(() => import('@/pages/About/AboutPage'));
 
 import { withSuspense } from './suspense';
 
 describe('withSuspense', () => {
   it('should return LoaderSuspense', async () => {
     // ARRANGE
-    render(withSuspense(<Text testId="lazy-component">Test</Text>));
+    render(withSuspense(<AboutPage />));
     await screen.findByTestId('loader-suspense-fallback');
 
     // ASSERT

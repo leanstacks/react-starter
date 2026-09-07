@@ -1,23 +1,11 @@
-import { PropsWithChildren } from 'react';
-
 import { cn } from '@react-starter/shared/utils/css';
-import { BaseComponentProps } from '@react-starter/shared/types/components';
-
-/**
- * Properties for the `Page` React component.
- */
-export interface PageProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Page` component renders a responsive, styled wrapper for a page of content
  * ensuring consistent spacing at various breakpoints.
  */
-const Page = ({ children, className, testId = 'page' }: PageProps) => {
-  return (
-    <div className={cn('px-2 sm:px-8', className)} data-testid={testId}>
-      {children}
-    </div>
-  );
+const Page = ({ className, ...props }: React.ComponentProps<'div'>) => {
+  return <div className={cn('px-2 sm:px-8', className)} {...props} />;
 };
 
-export default Page;
+export { Page };

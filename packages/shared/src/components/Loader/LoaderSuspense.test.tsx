@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 const Text = lazy(() => import('@react-starter/shared/components/Text/Text'));
 
-import LoaderSuspense from './LoaderSuspense';
+import { LoaderSuspense } from './LoaderSuspense';
 
 describe('LoaderSuspense', () => {
   it('should render successfully', async () => {

@@ -6,7 +6,7 @@ import { BaseComponentProps } from '@react-starter/shared/types/components';
  * Describes a single piece of data for a `DonutChart` used to create a single
  * slice of the chart.
  */
-export type DonutChartData = Pick<CellProps, 'fill'> & {
+type DonutChartData = Pick<CellProps, 'fill'> & {
   name: string;
   value: number;
 };
@@ -18,7 +18,7 @@ export type DonutChartData = Pick<CellProps, 'fill'> & {
  * @see {@link PieProps}
  * @see {@link PieProps}
  */
-export interface DonutChartProps
+interface DonutChartProps
   extends BaseComponentProps, Pick<PieProps, 'height' | 'innerRadius' | 'outerRadius' | 'paddingAngle' | 'width'> {
   data: DonutChartData[];
 }
@@ -55,4 +55,4 @@ const DonutChart = ({
   );
 };
 
-export default DonutChart;
+export { DonutChart, type DonutChartProps, type DonutChartData };

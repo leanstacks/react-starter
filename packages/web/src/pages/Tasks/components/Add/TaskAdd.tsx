@@ -9,7 +9,7 @@ import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
 import { useCreateTask } from '@/pages/Tasks/api/useCreateTask';
 import TaskForm, { TaskFormValues } from '@/pages/Tasks/components/Form/TaskForm';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 
 /**
  * The `TaskAdd` component renders the layout for creating a new Task including

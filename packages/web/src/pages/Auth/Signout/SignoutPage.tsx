@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Page from '@react-starter/shared/components/Content/Page';
-import Container from '@react-starter/shared/components/Content/Container';
+import { Page } from '@react-starter/shared/components/Content/Page';
+import { Container } from '@react-starter/shared/components/Content/Container';
 import { Empty, EmptyDescription, EmptyMedia, EmptyTitle } from '@react-starter/shared/components/shadcn/empty';
 import { Spinner } from '@react-starter/shared/components/shadcn/spinner';
 
@@ -28,7 +28,7 @@ const SignoutPage = () => {
   }, [signout, navigate]);
 
   return (
-    <Page testId="page-signout">
+    <Page data-testid="page-signout">
       <Container size="sm" className="h-[75vh]">
         <div className="flex h-full items-center justify-center gap-4 text-2xl">
           <Empty>

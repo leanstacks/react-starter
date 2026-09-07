@@ -30,11 +30,6 @@ const columnsVariants = cva('grid grid-cols-1', {
 });
 
 /**
- * Properties for the `Columns` component.
- */
-export interface ColumnsProps extends BaseComponentProps, PropsWithChildren, VariantProps<typeof columnsVariants> {}
-
-/**
  * The `Columns` component renders a responsive grid column layout. Use the 
  * `layout` property to specify the number of columns and their relative widths.
  * Use the `gap` property to specify the spacing between columns.
@@ -43,36 +38,32 @@ export interface ColumnsProps extends BaseComponentProps, PropsWithChildren, Var
  * 
  * **Example:**
  * ```
-  <Columns layout="1-3" gap="lg" className="my-6">
-    <Columns.Column testId="page-menu">
+  <Columns layout="1-3" gap="lg" className="my-6" data-testid="columns">
+    <Column data-testid="page-menu">
       <MenuNavLink to="appearance" icon="paintbrush" styleActive>
         Appearance
       </MenuNavLink>
-    </Columns.Column>
-    <Columns.Column testId="page-content">
+    </Column>
+    <Column data-testid="page-content">
       <Outlet />
-    </Columns.Column>
+    </Column>
   </Columns>
  * ```
  */
-const Columns = ({ children, className, gap = 'md', layout = '1-1', testId = 'columns' }: ColumnsProps) => {
-  return (
-    <div className={cn(columnsVariants({ gap, layout, className }))} data-testid={testId}>
-      {children}
-    </div>
-  );
+const Columns = ({
+  className,
+  gap = 'md',
+  layout = '1-1',
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof columnsVariants>) => {
+  return <div className={cn(columnsVariants({ gap, layout, className }))} {...props} />;
 };
 
 /**
  * The `Column` component renders an individual column.
  */
-const Column = ({ children, className, testId = 'column' }: BaseComponentProps & PropsWithChildren) => {
-  return (
-    <div className={cn(className)} data-testid={testId}>
-      {children}
-    </div>
-  );
+const Column = ({ className, ...props }: BaseComponentProps & PropsWithChildren) => {
+  return <div className={cn(className)} {...props} />;
 };
-Columns.Column = Column;
 
-export default Columns;
+export { Columns, Column };

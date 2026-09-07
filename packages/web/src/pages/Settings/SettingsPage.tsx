@@ -1,9 +1,9 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Palette } from 'lucide-react';
 
-import Page from '@react-starter/shared/components/Content/Page';
-import Columns from '@react-starter/shared/components/Content/Columns';
-import Container from '@react-starter/shared/components/Content/Container';
+import { Page } from '@react-starter/shared/components/Content/Page';
+import { Columns, Column } from '@react-starter/shared/components/Content/Columns';
+import { Container } from '@react-starter/shared/components/Content/Container';
 import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
 import { Avatar, AvatarFallback } from '@react-starter/shared/components/shadcn/avatar';
 
@@ -19,7 +19,7 @@ const SettingsPage = () => {
   const { data: user } = useGetCurrentUser();
 
   return (
-    <Page testId="page-settings">
+    <Page data-testid="page-settings">
       <Container size="lg" className="min-h-[50vh]">
         <SettingsPageBreadcrumbs className="my-4" />
 
@@ -39,7 +39,7 @@ const SettingsPage = () => {
         )}
 
         <Columns layout="1-3" gap="lg" className="my-6">
-          <Columns.Column testId="page-settings-menu">
+          <Column data-testid="page-settings-menu">
             <nav role="navigation">
               <ul className="*:not-last:mb-1">
                 <li>
@@ -52,10 +52,10 @@ const SettingsPage = () => {
                 </li>
               </ul>
             </nav>
-          </Columns.Column>
-          <Columns.Column testId="page-settings-content">
+          </Column>
+          <Column data-testid="page-settings-content">
             <Outlet />
-          </Columns.Column>
+          </Column>
         </Columns>
       </Container>
     </Page>

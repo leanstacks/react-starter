@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { DateFormat } from '@react-starter/shared/utils/constants';
 
 /**
@@ -10,7 +9,7 @@ import { DateFormat } from '@react-starter/shared/utils/constants';
  * @see {@link BaseComponentProps}
  * @see {@link https://en.wikipedia.org/wiki/ISO_8601 | ISO 8601}
  */
-export interface DateProps extends BaseComponentProps {
+export interface DateProps extends React.ComponentProps<'span'> {
   date: string | number;
   format?: DateFormat;
 }
@@ -20,12 +19,8 @@ export interface DateProps extends BaseComponentProps {
  * property to apply a pattern to format the date.
  * @param {Date} props - Component properties, `DateProps`.
  */
-const Date = ({ className, date, testId = 'date', format = DateFormat.DATE }: DateProps) => {
-  return (
-    <span className={className} data-testid={testId}>
-      {dayjs(date).format(format)}
-    </span>
-  );
+const Date = ({ date, format = DateFormat.DATE, ...props }: DateProps) => {
+  return <span {...props}>{dayjs(date).format(format)}</span>;
 };
 
-export default Date;
+export { Date };

@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { SignDisplay } from '@react-starter/shared/utils/constants';
 import { formatNumber } from '@react-starter/shared/utils/numbers';
 
@@ -13,7 +12,7 @@ import { formatNumber } from '@react-starter/shared/utils/numbers';
  * @see {@link BaseComponentProps}
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options NumberFormatOptions}
  */
-export interface PercentProps extends BaseComponentProps {
+interface PercentProps extends React.ComponentProps<'span'> {
   maximumFractionDigits?: number;
   minimumFractionDigits?: number;
   signDisplay?: SignDisplay;
@@ -24,14 +23,7 @@ export interface PercentProps extends BaseComponentProps {
  * The `Percent` React component formats and renders a percent value.
  * @param {PercentProps} props - Component properties.
  */
-const Percent = ({
-  className,
-  maximumFractionDigits,
-  minimumFractionDigits,
-  signDisplay,
-  value,
-  testId = 'percent',
-}: PercentProps) => {
+const Percent = ({ maximumFractionDigits, minimumFractionDigits, signDisplay, value, ...props }: PercentProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = {
       style: 'percent',
@@ -42,11 +34,7 @@ const Percent = ({
     return formatNumber(value, formatOptions);
   }, [value, maximumFractionDigits, minimumFractionDigits, signDisplay]);
 
-  return (
-    <span className={className} data-testid={testId}>
-      {val}
-    </span>
-  );
+  return <span {...props}>{val}</span>;
 };
 
-export default Percent;
+export { Percent };

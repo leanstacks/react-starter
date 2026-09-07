@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import dayjs from 'dayjs';
 
-import Page from '@react-starter/shared/components/Content/Page';
-import Container from '@react-starter/shared/components/Content/Container';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Page } from '@react-starter/shared/components/Content/Page';
+import { Container } from '@react-starter/shared/components/Content/Container';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 import { Card, CardContent } from '@react-starter/shared/components/shadcn/card';
 import {
   Table,
@@ -71,7 +71,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <Page testId="page-about">
+    <Page data-testid="page-about">
       <Container size="md">
         <div className="space-y-8 py-8">
           {/* Page Header */}

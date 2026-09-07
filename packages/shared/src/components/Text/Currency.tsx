@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import { CurrencyCode, CurrencyDisplay, CurrencySign } from '@react-starter/shared/utils/constants';
 import { formatNumber } from '@react-starter/shared/utils/numbers';
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 
 /**
  * Properties for the `Currency` component.
@@ -13,7 +12,7 @@ import { BaseComponentProps } from '@react-starter/shared/types/components';
  * @see {@link BaseComponentProps}
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options | NumberFormatOptions}
  */
-export interface CurrencyProps extends BaseComponentProps {
+interface CurrencyProps extends React.ComponentProps<'span'> {
   currency?: CurrencyCode;
   currencyDisplay?: CurrencyDisplay;
   currencySign?: CurrencySign;
@@ -24,14 +23,7 @@ export interface CurrencyProps extends BaseComponentProps {
  * The `Currency` React component formats and renders a currency value.
  * @param {CurrencyProps} props - Component properties.
  */
-const Currency = ({
-  className,
-  currency = CurrencyCode.USD,
-  currencyDisplay,
-  currencySign,
-  value,
-  testId = 'currency',
-}: CurrencyProps) => {
+const Currency = ({ currency = CurrencyCode.USD, currencyDisplay, currencySign, value, ...props }: CurrencyProps) => {
   const val = useMemo(() => {
     const formatOptions: Intl.NumberFormatOptions = {
       style: 'currency',
@@ -42,11 +34,7 @@ const Currency = ({
     return formatNumber(value, formatOptions);
   }, [value, currency, currencyDisplay, currencySign]);
 
-  return (
-    <span className={className} data-testid={testId}>
-      {val}
-    </span>
-  );
+  return <span {...props}>{val}</span>;
 };
 
-export default Currency;
+export { Currency };

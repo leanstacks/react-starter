@@ -3,31 +3,21 @@ import { render, screen } from '@testing-library/react';
 
 import { SignDisplay } from '@react-starter/shared/utils/constants';
 
-import Percent from './Percent';
+import { Percent } from './Percent';
 
 describe('Percent', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Percent value={0.12345678} />);
+    render(<Percent value={0.12345678} data-testid="percent" />);
     await screen.findByTestId('percent');
 
     // ASSERT
     expect(screen.getByTestId('percent')).toBeDefined();
   });
 
-  it('should use custom test ID', async () => {
-    // ARRANGE
-    render(<Percent value={0.12345678} testId="custom-testid" />);
-    await screen.findByTestId('custom-testid');
-
-    // ASSERT
-    expect(screen.queryByTestId('percent')).toBeNull();
-    expect(screen.getByTestId('custom-testid')).toBeDefined();
-  });
-
   it('should use classes from className property', async () => {
     // ARRANGE
-    render(<Percent value={0.12345678} className="custom-class" />);
+    render(<Percent value={0.12345678} className="custom-class" data-testid="percent" />);
     await screen.findByTestId('percent');
 
     // ASSERT
@@ -36,7 +26,7 @@ describe('Percent', () => {
 
   it('should show a minimum number of decimal places', async () => {
     // ARRANGE
-    render(<Percent value={0.12} minimumFractionDigits={2} />);
+    render(<Percent value={0.12} minimumFractionDigits={2} data-testid="percent" />);
     await screen.findByTestId('percent');
 
     // ASSERT
@@ -45,7 +35,7 @@ describe('Percent', () => {
 
   it('should show a maximum number of decimal places', async () => {
     // ARRANGE
-    render(<Percent value={0.12345678} maximumFractionDigits={2} />);
+    render(<Percent value={0.12345678} maximumFractionDigits={2} data-testid="percent" />);
     await screen.findByTestId('percent');
 
     // ASSERT
@@ -56,9 +46,9 @@ describe('Percent', () => {
     // ARRANGE
     render(
       <div>
-        <Percent testId="positive" value={0.12} signDisplay={SignDisplay.Always} />
-        <Percent testId="negative" value={-0.12} signDisplay={SignDisplay.Always} />
-        <Percent testId="zero" value={0} signDisplay={SignDisplay.Always} />
+        <Percent data-testid="positive" value={0.12} signDisplay={SignDisplay.Always} />
+        <Percent data-testid="negative" value={-0.12} signDisplay={SignDisplay.Always} />
+        <Percent data-testid="zero" value={0} signDisplay={SignDisplay.Always} />
       </div>,
     );
     await screen.findByTestId('zero');

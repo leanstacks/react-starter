@@ -20,4 +20,4 @@ const LoaderSuspense = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default LoaderSuspense;
+export { LoaderSuspense };

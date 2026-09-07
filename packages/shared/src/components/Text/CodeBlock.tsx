@@ -5,8 +5,6 @@ import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import light from 'react-syntax-highlighter/dist/esm/styles/prism/prism';
 import dark from 'react-syntax-highlighter/dist/esm/styles/prism/a11y-dark';
 
-import { BaseComponentProps } from '@react-starter/shared/types/components';
-
 /**
  * Register the TSX language for syntax highlighting.
  * To add more languages, import them above and register them here.
@@ -18,7 +16,7 @@ SyntaxHighlighter.registerLanguage('tsx', tsx);
  * @see {@link BaseComponentProps}
  * @see {@link SyntaxHighlighterProps}
  */
-export interface CodeBlockProps extends BaseComponentProps, SyntaxHighlighterProps {
+interface CodeBlockProps extends SyntaxHighlighterProps {
   theme?: 'light' | 'dark';
 }
 
@@ -27,20 +25,14 @@ export interface CodeBlockProps extends BaseComponentProps, SyntaxHighlighterPro
  * a small amount of application code such as JavaScript, JSX, or CSS.
  * @param {CodeBlockProps} props - Component properties.
  */
-export const CodeBlock = ({
-  children,
-  className,
-  testId = 'code-snippet',
-  theme,
-  ...highlighterProps
-}: CodeBlockProps) => {
+const CodeBlock = ({ className, theme, 'data-testid': dataTestId = 'code-snippet', ...props }: CodeBlockProps) => {
   const style = theme === 'light' ? light : dark;
 
   return (
-    <div className={className} data-testid={testId}>
-      <SyntaxHighlighter style={style} {...highlighterProps}>
-        {children}
-      </SyntaxHighlighter>
+    <div className={className} data-testid={dataTestId}>
+      <SyntaxHighlighter style={style} {...props} />
     </div>
   );
 };
+
+export { CodeBlock };

@@ -15,7 +15,7 @@ describe('CodeBlock', () => {
 
   it('should use custom testId', async () => {
     // ARRANGE
-    render(<CodeBlock code="<></>" testId="custom-testId">{`<></>`}</CodeBlock>);
+    render(<CodeBlock code="<></>" data-testid="custom-testId">{`<></>`}</CodeBlock>);
     await screen.findByTestId('custom-testId');
 
     // ASSERT

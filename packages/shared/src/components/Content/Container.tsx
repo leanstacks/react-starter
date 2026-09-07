@@ -1,8 +1,6 @@
-import { PropsWithChildren } from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from '@react-starter/shared/utils/css';
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 
 /**
  * Defines the `Container` component base and variant styles.
@@ -24,11 +22,6 @@ const containerVariants = cva('mx-auto container', {
 });
 
 /**
- * Properties for the `Container` component.
- */
-export interface ContainerProps extends BaseComponentProps, PropsWithChildren, VariantProps<typeof containerVariants> {}
-
-/**
  * The `Container` component renders a block which fixes the maximum width
  * of content to a breakpoint and centers the content within the viewport.
  * By default, a `Container` sets the maximum width of the content to the
@@ -39,18 +32,20 @@ export interface ContainerProps extends BaseComponentProps, PropsWithChildren, V
  * 
  * **Example:**
  * ```
-  <Container className="my-4 min-h-[50vh]">
-    <Heading level={1}>Page Title</Heading>
-    <div>lorem ipsum</div>
-  </Container>
+  <Page>
+    <Container size="lg">
+      <Heading level={1}>Page Title</Heading>
+      <div>lorem ipsum</div>
+    </Container>
+  </Page>
  * ```
  */
-const Container = ({ children, className, size = 'default', testId = 'container' }: ContainerProps) => {
-  return (
-    <div className={cn(containerVariants({ size, className }))} data-testid={testId}>
-      {children}
-    </div>
-  );
+const Container = ({
+  className,
+  size = 'default',
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof containerVariants>) => {
+  return <div className={cn(containerVariants({ size, className }))} {...props} />;
 };
 
-export default Container;
+export { Container };

@@ -2,31 +2,21 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { DateFormat } from '@react-starter/shared/utils/constants';
-import Date from './Date';
+import { Date } from './Date';
 
 describe('Date', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Date date={0} />);
+    render(<Date date={0} data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT
     expect(screen.getByTestId('date')).toBeDefined();
   });
 
-  it('should use custom testID', async () => {
-    // ARRANGE
-    render(<Date date={0} testId="custom-testid" />);
-    await screen.findByTestId('custom-testid');
-
-    // ASSERT
-    expect(screen.queryByTestId('date')).toBeNull();
-    expect(screen.getByTestId('custom-testid')).toBeDefined();
-  });
-
   it('should use classes from className property', async () => {
     // ARRANGE
-    render(<Date date={0} className="custom-class" />);
+    render(<Date date={0} className="custom-class" data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT
@@ -34,7 +24,7 @@ describe('Date', () => {
   });
   it('should render format Date successfully', async () => {
     // ARRANGE
-    render(<Date date={0} format={DateFormat.DATE} />);
+    render(<Date date={0} format={DateFormat.DATE} data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT
@@ -43,8 +33,8 @@ describe('Date', () => {
 
   it('should render format DayOfWeek successfully', async () => {
     // ARRANGE
-    render(<Date date={0} format={DateFormat.DAY_OF_WEEK} />);
-    await screen.findAllByTestId('date');
+    render(<Date date={0} format={DateFormat.DAY_OF_WEEK} data-testid="date" />);
+    await screen.findByTestId('date');
 
     // ASSERT
     expect(screen.getByTestId('date')).toBeDefined();
@@ -52,7 +42,7 @@ describe('Date', () => {
 
   it('should render format HoursAndMinutes successfully', async () => {
     // ARRANGE
-    render(<Date date={0} format={DateFormat.HOURS_AND_MINUTES} />);
+    render(<Date date={0} format={DateFormat.HOURS_AND_MINUTES} data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT
@@ -61,7 +51,7 @@ describe('Date', () => {
 
   it('should render format Time successfully', async () => {
     // ARRANGE
-    render(<Date date={0} format={DateFormat.TIME} />);
+    render(<Date date={0} format={DateFormat.TIME} data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT
@@ -70,7 +60,7 @@ describe('Date', () => {
 
   it('should render format Timestamp successfully', async () => {
     // ARRANGE
-    render(<Date date={0} format={DateFormat.TIMESTAMP} />);
+    render(<Date date={0} format={DateFormat.TIMESTAMP} data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT
@@ -79,7 +69,7 @@ describe('Date', () => {
 
   it('should render format TimestampShort successfully', async () => {
     // ARRANGE
-    render(<Date date={0} format={DateFormat.TIMESTAMP_SHORT} />);
+    render(<Date date={0} format={DateFormat.TIMESTAMP_SHORT} data-testid="date" />);
     await screen.findByTestId('date');
 
     // ASSERT

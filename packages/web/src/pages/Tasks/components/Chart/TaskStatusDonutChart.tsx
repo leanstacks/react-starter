@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@react-starter/shared/types/components';
-import DonutChart, { DonutChartData, DonutChartProps } from '@react-starter/shared/components/Chart/DonutChart';
+import { DonutChart, DonutChartData, DonutChartProps } from '@react-starter/shared/components/Chart/DonutChart';
 
 import { Task } from '@/pages/Tasks/api/useGetUserTasks';
 

@@ -3,7 +3,7 @@ import { PropsWithTestId } from '@react-starter/shared/types/components';
 
 import { useSettings } from '@/common/hooks/useSettings';
 import { useSetSettings } from '@/common/api/useSetSettings';
-import Heading from '@react-starter/shared/components/Text/Heading';
+import { Heading } from '@react-starter/shared/components/Text/Heading';
 
 /**
  * The `AppearanceSettings` React component renders a set of controls to
@@ -17,7 +17,7 @@ const AppearanceSettings = ({ testId = 'settings-appearance' }: PropsWithTestId)
 
   return (
     <div data-testid={testId}>
-      <Heading testId={`${testId}-settings-heading`} level={1} className="mb-4">
+      <Heading data-testid={`${testId}-settings-heading`} level={1} className="mb-4">
         Theme
       </Heading>
 

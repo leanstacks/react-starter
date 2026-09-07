@@ -2,15 +2,15 @@ import { describe, expect, it } from 'vitest';
 
 import { render, screen } from '@testing-library/react';
 
-import Columns from './Columns';
+import { Columns, Column } from './Columns';
 
 describe('Columns', () => {
   it('should render successfully', async () => {
     // ARRANGE
     render(
-      <Columns>
-        <Columns.Column>One</Columns.Column>
-        <Columns.Column>Two</Columns.Column>
+      <Columns data-testid="columns">
+        <Column data-testid="column">One</Column>
+        <Column data-testid="column">Two</Column>
       </Columns>,
     );
     await screen.findByTestId('columns');
