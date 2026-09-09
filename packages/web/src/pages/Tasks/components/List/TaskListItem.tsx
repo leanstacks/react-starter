@@ -57,17 +57,17 @@ const TaskListItem = ({ task, ...props }: TaskListItemProps) => {
       </ItemContent>
       <ItemActions>
         <DropdownMenu>
-          <DropdownMenuTrigger aria-label="Task actions">
+          <DropdownMenuTrigger className="cursor-pointer" aria-label="Task actions">
             <EllipsisVertical size={16} />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="min-w-40">
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem className="cursor-pointer" asChild>
               <Link to={`${task.id}`}>
                 <Eye />
                 View
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem className="cursor-pointer" asChild>
               <Link to={`${task.id}/edit`}>
                 <Edit />
                 Edit
@@ -75,13 +75,17 @@ const TaskListItem = ({ task, ...props }: TaskListItemProps) => {
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             {!task.completed && (
-              <DropdownMenuItem onClick={handleToggleComplete} disabled={isPendingUpdateTask}>
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={handleToggleComplete}
+                disabled={isPendingUpdateTask}
+              >
                 <CircleCheckBig />
                 Mark Complete
               </DropdownMenuItem>
             )}
             {task.completed && (
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem className="cursor-pointer" asChild>
                 <Button variant="ghost" size="xs" onClick={handleToggleComplete} disabled={isPendingUpdateTask}>
                   <Circle />
                   Mark Incomplete
@@ -89,7 +93,11 @@ const TaskListItem = ({ task, ...props }: TaskListItemProps) => {
               </DropdownMenuItem>
             )}
             <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive" onClick={() => setIsTaskDeleteDialogOpen(true)}>
+            <DropdownMenuItem
+              className="cursor-pointer"
+              variant="destructive"
+              onClick={() => setIsTaskDeleteDialogOpen(true)}
+            >
               {/* <TaskDeleteDialog task={task}>Dialog trigger</TaskDeleteDialog> */}
               <Trash />
               Delete

@@ -55,7 +55,7 @@ const TaskListLayout = ({ ...props }: React.ComponentProps<'div'>) => {
       {completeTasks?.length > 0 && (
         <Accordion type="single" collapsible className="my-8">
           <AccordionItem value="complete-tasks">
-            <AccordionTrigger data-testid="task-list-complete-trigger">
+            <AccordionTrigger data-testid="task-list-complete-trigger" className="cursor-pointer">
               {t('status.complete', { ns: 'tasks' })}
             </AccordionTrigger>
             <AccordionContent>

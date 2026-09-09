@@ -1,6 +1,7 @@
 import { Moon, Sun } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from '@react-starter/shared/utils/css';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@react-starter/shared/components/shadcn/tooltip';
 import { Button } from '@react-starter/shared/components/shadcn/button';
 
@@ -24,7 +25,7 @@ export const ThemeToggle = ({ className }: Pick<React.ComponentProps<typeof Butt
           <Button
             variant="outline"
             size="icon"
-            className={className}
+            className={cn('cursor-pointer', className)}
             aria-label={t('theme.switch-dark')}
             onClick={() => setSettings({ theme: 'dark' })}
             data-testid="button-theme-dark"
@@ -35,7 +36,7 @@ export const ThemeToggle = ({ className }: Pick<React.ComponentProps<typeof Butt
           <Button
             variant="outline"
             size="icon"
-            className={className}
+            className={cn('cursor-pointer', className)}
             aria-label={t('theme.switch-light')}
             onClick={() => setSettings({ theme: 'light' })}
             data-testid="button-theme-light"

@@ -24,7 +24,7 @@ export const AppSidebarTrigger = ({ className, onClick, ...props }: React.Compon
           data-slot="sidebar-trigger"
           variant="outline"
           size="icon"
-          className={cn(className)}
+          className={cn('cursor-pointer', className)}
           onClick={(event) => {
             onClick?.(event);
             toggleSidebar();
