@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 
+import { TooltipProvider } from '@react-starter/shared/components/shadcn/tooltip';
 import SettingsContextProvider from '@/common/providers/SettingsProvider';
 import AuthContextProvider from '@/common/providers/AuthProvider';
 
@@ -34,7 +35,9 @@ const AllProvidersExceptRouter = ({ children }: PropsWithChildren) => {
   return (
     <QueryClientProvider client={queryClient}>
       <SettingsContextProvider>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <AuthContextProvider>
+          <TooltipProvider>{children}</TooltipProvider>
+        </AuthContextProvider>
       </SettingsContextProvider>
     </QueryClientProvider>
   );

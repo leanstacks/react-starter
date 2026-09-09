@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 
+import { TooltipProvider } from '@react-starter/shared/components/shadcn/tooltip';
 import SettingsContextProvider from '@/common/providers/SettingsProvider';
 import AuthContextProvider from '@/common/providers/AuthProvider';
 
@@ -19,7 +20,9 @@ const WithAllProviders = ({ children }: PropsWithChildren) => {
     <QueryClientProvider client={queryClient}>
       <SettingsContextProvider>
         <AuthContextProvider>
-          <MemoryRouter>{children}</MemoryRouter>
+          <TooltipProvider>
+            <MemoryRouter>{children}</MemoryRouter>
+          </TooltipProvider>
         </AuthContextProvider>
       </SettingsContextProvider>
     </QueryClientProvider>
