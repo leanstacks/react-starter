@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
 } from '@react-starter/shared/components/shadcn/dropdown-menu';
 import { Button } from '@react-starter/shared/components/shadcn/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@react-starter/shared/components/shadcn/tooltip';
 
 /**
  * The `LanguageToggle` component renders a `Dropdown` which allows users
@@ -31,12 +32,17 @@ export const LanguageToggle = () => {
 
   return (
     <DropdownMenu data-testid="dropdown-language">
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" title="Select Language" data-testid="button-language-menu-trigger">
-          <Languages aria-label="Select Language" data-testid="icon-language" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="icon" title="Select Language" data-testid="button-language-menu-trigger">
+              <Languages aria-label="Select Language" data-testid="icon-language" />
+            </Button>
+          </DropdownMenuTrigger>
+        </TooltipTrigger>
+        <TooltipContent>Select Language</TooltipContent>
+      </Tooltip>
+      <DropdownMenuContent align="end" className="w-32" onCloseAutoFocus={(e) => e.preventDefault()}>
         <DropdownMenuGroup>
           <DropdownMenuLabel>Languages</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => setLanguage('en')} data-testid="dropdown-item-en">
