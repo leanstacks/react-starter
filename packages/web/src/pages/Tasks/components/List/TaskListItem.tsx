@@ -57,7 +57,7 @@ const TaskListItem = ({ task, ...props }: TaskListItemProps) => {
       </ItemContent>
       <ItemActions>
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger aria-label="Task actions">
             <EllipsisVertical size={16} />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="min-w-40">
