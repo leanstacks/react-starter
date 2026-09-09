@@ -5,7 +5,7 @@ import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { Button } from '@react-starter/shared/components/shadcn/button';
 import { toast } from '@react-starter/shared/components/shadcn/sonner';
 
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { useUpdateTask } from '@/pages/Tasks/api/useUpdateTask';
 
 /**

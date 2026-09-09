@@ -4,7 +4,7 @@ import find from 'lodash/find';
 
 import { usersFixture } from '@/__fixtures__/users';
 import { todosFixture } from '@/__fixtures__/todos';
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 
 export const handlers = [
   http.get('https://jsonplaceholder.typicode.com/users', () => {

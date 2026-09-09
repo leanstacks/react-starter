@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { renderHook, waitFor } from '@/test/test-utils';
 import { queryClient } from '@/test/query-client';
-import { Task } from './useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { QueryKey } from '@/common/utils/constants';
 import { todosFixture } from '@/__fixtures__/todos';
 

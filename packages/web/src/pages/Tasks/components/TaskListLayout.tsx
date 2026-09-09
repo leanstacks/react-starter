@@ -1,59 +1,68 @@
 import { useTranslation } from 'react-i18next';
+import { filter } from 'lodash';
 
-import type { BaseComponentProps } from '@react-starter/shared/types/components';
-import { Card, CardHeader, CardTitle, CardContent } from '@react-starter/shared/components/shadcn/card';
+import { cn } from '@react-starter/shared/utils/css';
+import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
+import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@react-starter/shared/components/shadcn/accordion';
 
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
 import { useGetUserTasks } from '@/pages/Tasks/api/useGetUserTasks';
-import TaskList from '@/pages/Tasks/components/List/TaskList';
-import { TaskStatusDonutChart } from '@/pages/Tasks/components/Chart/TaskStatusDonutChart';
+import { TaskList } from '@/pages/Tasks/components/List/TaskList';
 
 /**
- * The `TaskListLayout` component renders the layout for all tasks for a
- * single `User`.
- * @param {BaseComponentProps} props - Component properties.
+ * The `TaskListLayout` component renders the layout for all tasks for a single `User`.
  */
-const TaskListLayout = ({ className, testId = 'layout-task-list' }: BaseComponentProps) => {
+const TaskListLayout = ({ ...props }: React.ComponentProps<'div'>) => {
   const { t } = useTranslation();
   const { data: currentUser } = useGetCurrentUser();
-  const { data: tasks } = useGetUserTasks({ userId: currentUser?.id });
+  const { data: tasks, isLoading, error } = useGetUserTasks({ userId: currentUser?.id });
 
+  // Filter tasks into incomplete and complete categories.
+  const incompleteTasks = filter(tasks, { completed: false });
+  const completeTasks = filter(tasks, { completed: true });
+
+  // Show loading state while fetching tasks.
+  if (isLoading) {
+    return (
+      <div className={cn(props.className, 'space-y-2')} data-testid="task-list-loading">
+        <Skeleton className="h-10" />
+        <Skeleton className="h-10" />
+        <Skeleton className="h-10" />
+      </div>
+    );
+  }
+
+  // Show error state if there was an error fetching tasks.
+  if (error) {
+    return (
+      <div data-testid="task-list-error">
+        <ErrorAlert title={t('error-loading-tasks', { ns: 'tasks' })} description={error?.message} />
+      </div>
+    );
+  }
+
+  // Render the task list layout once tasks are successfully fetched.
   return (
-    <div className={className} data-testid={testId}>
-      {!!currentUser && (
-        <>
-          <div className="mb-4 grid md:grid-cols-2 lg:grid-cols-3">
-            {!!tasks && (
-              <Card data-testid={`${testId}-chart-status`}>
-                <CardHeader>
-                  <CardTitle className="text-md font-bold">{t('status-of-tasks', { ns: 'tasks' })}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <TaskStatusDonutChart tasks={tasks} width={160} />
-                </CardContent>
-              </Card>
-            )}
-          </div>
+    <div {...props}>
+      <TaskList tasks={incompleteTasks} className="my-8" data-testid="task-list-incomplete" />
 
-          <TaskList
-            className="mb-4"
-            userId={currentUser.id}
-            filterBy={{ completed: false }}
-            orderBy={['title']}
-            showBadge
-            title={t('status.incomplete', { ns: 'tasks' })}
-            testId={`${testId}-list-incomplete`}
-          />
-
-          <TaskList
-            userId={currentUser.id}
-            filterBy={{ completed: true }}
-            orderBy={['title']}
-            showBadge
-            title={t('status.complete', { ns: 'tasks' })}
-            testId={`${testId}-list-complete`}
-          />
-        </>
+      {completeTasks?.length > 0 && (
+        <Accordion type="single" collapsible className="my-8">
+          <AccordionItem value="complete-tasks">
+            <AccordionTrigger data-testid="task-list-complete-trigger">
+              {t('status.complete', { ns: 'tasks' })}
+            </AccordionTrigger>
+            <AccordionContent>
+              <TaskList tasks={completeTasks} data-testid="task-list-complete" />
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       )}
     </div>
   );

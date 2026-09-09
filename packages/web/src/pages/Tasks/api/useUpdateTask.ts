@@ -3,7 +3,7 @@ import reject from 'lodash/reject';
 
 import { QueryKey } from '@/common/utils/constants';
 import { config } from '@/common/utils/config';
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { useAxios } from '@/common/hooks/useAxios';
 
 /**

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import reject from 'lodash/reject';
 
-import { Task } from './useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { useAxios } from '@/common/hooks/useAxios';
 import { QueryKey } from '@/common/utils/constants';
 import { config } from '@/common/utils/config';

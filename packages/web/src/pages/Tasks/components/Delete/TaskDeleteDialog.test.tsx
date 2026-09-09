@@ -1,12 +1,20 @@
 import { describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
+import { toast } from 'sonner';
 
 import { render, screen } from '@/test/test-utils';
 import { todosFixture } from '@/__fixtures__/todos';
-import * as sonner from '@react-starter/shared/components/shadcn/sonner';
+import { Button } from '@react-starter/shared/components/shadcn/button';
 
 import { TaskDeleteDialog } from './TaskDeleteDialog';
-import { Button } from '@react-starter/shared/components/shadcn/button';
+
+vi.mock('sonner', () => ({
+  toast: {
+    promise: vi.fn((promise, _data) => {
+      return { unwrap: () => promise };
+    }),
+  },
+}));
 
 describe('TaskDeleteDialog', () => {
   it('should render successfully', async () => {
@@ -15,9 +23,11 @@ describe('TaskDeleteDialog', () => {
     const task = todosFixture[0];
     render(
       <div>
-        <TaskDeleteDialog task={task} testId="dialog">
-          <Button data-testid="dialog-trigger">Open</Button>
-        </TaskDeleteDialog>
+        <TaskDeleteDialog
+          task={task}
+          data-testid="dialog"
+          trigger={<Button data-testid="dialog-trigger">Open</Button>}
+        />
       </div>,
     );
 
@@ -35,9 +45,11 @@ describe('TaskDeleteDialog', () => {
     const task = todosFixture[0];
     render(
       <div>
-        <TaskDeleteDialog task={task} testId="dialog">
-          <Button data-testid="dialog-trigger">Open</Button>
-        </TaskDeleteDialog>
+        <TaskDeleteDialog
+          task={task}
+          data-testid="dialog"
+          trigger={<Button data-testid="dialog-trigger">Open</Button>}
+        />
       </div>,
     );
 
@@ -49,7 +61,7 @@ describe('TaskDeleteDialog', () => {
     expect(screen.getByRole('dialog')).toBeDefined();
 
     // ACT - CLICK CANCEL BUTTON
-    const cancelButton = await screen.getByTestId('dialog-button-cancel');
+    const cancelButton = await screen.getByTestId(`task-delete-dialog-button-cancel-${task.id}`);
     await user.click(cancelButton);
 
     // ASSERT - DIALOG IS CLOSED
@@ -60,15 +72,14 @@ describe('TaskDeleteDialog', () => {
     // ARRANGE
     const user = userEvent.setup();
     const task = todosFixture[0];
-    const mockToast = vi.fn();
-    const toastSpy = vi.spyOn(sonner, 'toast');
-    toastSpy.mockImplementation(mockToast);
 
     render(
       <div>
-        <TaskDeleteDialog task={task} testId="dialog">
-          <Button data-testid="dialog-trigger">Open</Button>
-        </TaskDeleteDialog>
+        <TaskDeleteDialog
+          task={task}
+          data-testid="dialog"
+          trigger={<Button data-testid="dialog-trigger">Open</Button>}
+        />
       </div>,
     );
 
@@ -80,11 +91,11 @@ describe('TaskDeleteDialog', () => {
     expect(screen.getByRole('dialog')).toBeDefined();
 
     // ACT - CLICK DELETE BUTTON
-    const deleteButton = await screen.getByTestId('dialog-button-delete');
+    const deleteButton = await screen.getByTestId(`task-delete-dialog-button-delete-${task.id}`);
     await user.click(deleteButton);
 
     // ASSERT - TOAST IS CALLED
-    expect(mockToast).toHaveBeenCalled();
+    expect(toast.promise).toHaveBeenCalled();
   });
 
   it('should display error when there is a problem deleting task', async () => {
@@ -94,9 +105,11 @@ describe('TaskDeleteDialog', () => {
 
     render(
       <div>
-        <TaskDeleteDialog task={task} testId="dialog">
-          <Button data-testid="dialog-trigger">Open</Button>
-        </TaskDeleteDialog>
+        <TaskDeleteDialog
+          task={task}
+          data-testid="dialog"
+          trigger={<Button data-testid="dialog-trigger">Open</Button>}
+        />
       </div>,
     );
 
@@ -108,10 +121,10 @@ describe('TaskDeleteDialog', () => {
     expect(screen.getByRole('dialog')).toBeDefined();
 
     // ACT - CLICK DELETE BUTTON
-    const deleteButton = await screen.getByTestId('dialog-button-delete');
+    const deleteButton = screen.getByTestId(`task-delete-dialog-button-delete-${task.id}`);
     await user.click(deleteButton);
 
     // ASSERT - ERROR IS SHOWN
-    expect(screen.getByTestId('dialog-error')).toBeDefined();
+    expect(screen.getByTestId(`task-delete-dialog-error-${task.id}`)).toBeDefined();
   });
 });
