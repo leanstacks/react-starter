@@ -13,7 +13,7 @@ vi.mock('react-i18next', async () => {
   const original = await vi.importActual('react-i18next');
   return {
     ...original,
-    useTranslation: () => ({ i18n: { changeLanguage: mockChangeLanguage } }),
+    useTranslation: () => ({ i18n: { changeLanguage: mockChangeLanguage }, t: vi.fn() }),
   };
 });
 

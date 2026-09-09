@@ -24,8 +24,13 @@
   "letsGetStarted": "Let's get started",
   "privacy": "Privacy",
   "privacyPolicy": "Privacy policy",
+  "select-language": "Select language",
   "terms": "Terms",
   "termsAndConditions": "Terms and conditions",
+  "theme": {
+    "switch-light": "Switch to light mode",
+    "switch-dark": "Switch to dark mode"
+  },
   "validation": {
     "max_one": "Must be at most {{count}} character. ",
     "max_other": "Must be at most {{count}} characters. ",

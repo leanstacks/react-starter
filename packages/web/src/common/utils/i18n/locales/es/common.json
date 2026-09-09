@@ -15,8 +15,13 @@
   "letsGetStarted": "Empecemos",
   "privacy": "Privacidad",
   "privacyPolicy": "Política de privacidad",
+  "select-language": "Seleccionar idioma",
   "terms": "Términos",
   "termsAndConditions": "Términos y condiciones",
+  "theme": {
+    "switch-light": "Cambiar a modo claro",
+    "switch-dark": "Cambiar a modo oscuro"
+  },
   "validation": {
     "max_one": "Debe tener como máximo {{count}} caracter. ",
     "max_other": "Debe tener como máximo {{count}} caracteres. ",

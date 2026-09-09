@@ -19,7 +19,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@react-starter/shared/c
  * to select the language in which they wish to view the application.
  */
 export const LanguageToggle = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   /**
    * Set the application-wide langague code used for i18n.
@@ -35,12 +35,17 @@ export const LanguageToggle = () => {
       <Tooltip>
         <TooltipTrigger asChild>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="icon" title="Select Language" data-testid="button-language-menu-trigger">
-              <Languages aria-label="Select Language" data-testid="icon-language" />
+            <Button
+              variant="outline"
+              size="icon"
+              aria-label={t('select-language')}
+              data-testid="button-language-menu-trigger"
+            >
+              <Languages data-testid="icon-language" />
             </Button>
           </DropdownMenuTrigger>
         </TooltipTrigger>
-        <TooltipContent>Select Language</TooltipContent>
+        <TooltipContent>{t('select-language')}</TooltipContent>
       </Tooltip>
       <DropdownMenuContent align="end" className="w-32" onCloseAutoFocus={(e) => e.preventDefault()}>
         <DropdownMenuGroup>
