@@ -25,6 +25,19 @@
   "privacy": "Privacy",
   "privacyPolicy": "Privacy policy",
   "select-language": "Select language",
+  "sidebar": {
+    "about": "About",
+    "account": "Account",
+    "account-create": "Create account",
+    "my-stuff": "My Stuff",
+    "settings": "Settings",
+    "sign-in": "Sign in",
+    "sign-out": "Sign out",
+    "task-add": "Add a task",
+    "tasks": "Tasks",
+    "toggle-close": "Close menu",
+    "toggle-open": "Open menu"
+  },
   "terms": "Terms",
   "termsAndConditions": "Terms and conditions",
   "theme": {
