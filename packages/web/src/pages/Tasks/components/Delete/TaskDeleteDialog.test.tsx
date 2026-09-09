@@ -11,6 +11,10 @@ import { TaskDeleteDialog } from './TaskDeleteDialog';
 vi.mock('sonner', () => ({
   toast: {
     promise: vi.fn((promise, _data) => {
+      // Ensure the promise is caught to prevent unhandled rejection in tests
+      promise.catch(() => {
+        // Silently catch errors - they're handled by the component
+      });
       return { unwrap: () => promise };
     }),
   },

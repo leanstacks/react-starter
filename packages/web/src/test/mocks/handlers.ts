@@ -67,6 +67,6 @@ export const handlers = [
     if (todo) {
       return new HttpResponse(null, { status: 200 });
     }
-    return new HttpResponse(null, { status: 500 });
+    return new HttpResponse(null, { status: 404 });
   }),
 ];
