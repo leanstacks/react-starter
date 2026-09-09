@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { LogIn } from 'lucide-react';
 
 import { PropsWithTestId } from '@react-starter/shared/types/components';
 import { ButtonGroup } from '@react-starter/shared/components/shadcn/button-group';
+import { Button } from '@react-starter/shared/components/shadcn/button';
 
 import logo from '@/assets/img/logo.png';
 import { useAuth } from '@/common/hooks/useAuth';
@@ -15,6 +18,7 @@ import { LanguageToggle } from '@/common/components/Button/LanguageToggle';
  */
 const Header = ({ testId = 'header' }: PropsWithTestId) => {
   const { isAuthenticated } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <header className="flex h-16 items-center justify-between border-b px-4 shadow-xs" data-testid={testId}>
@@ -32,6 +36,16 @@ const Header = ({ testId = 'header' }: PropsWithTestId) => {
           <ButtonGroup>
             <ThemeToggle />
           </ButtonGroup>
+          {!isAuthenticated && (
+            <ButtonGroup>
+              <Button variant="outline" asChild>
+                <Link to="/auth/signin">
+                  <LogIn />
+                  {t('sidebar.sign-in')}
+                </Link>
+              </Button>
+            </ButtonGroup>
+          )}
         </ButtonGroup>
       </div>
     </header>
