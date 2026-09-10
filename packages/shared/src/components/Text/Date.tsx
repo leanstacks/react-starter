@@ -9,7 +9,7 @@ import { DateFormat } from '@react-starter/shared/utils/constants';
  * @see {@link https://en.wikipedia.org/wiki/ISO_8601 | ISO 8601}
  */
 export interface DateProps extends React.ComponentProps<'span'> {
-  date: string | number;
+  date: string | number | Date;
   formatStr?: string;
 }
 

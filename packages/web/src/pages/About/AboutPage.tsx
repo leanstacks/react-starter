@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { parseISO } from 'date-fns';
 
 import { Page } from '@react-starter/shared/components/Content/Page';
 import { Container } from '@react-starter/shared/components/Content/Container';
@@ -38,7 +39,7 @@ const AboutPage = () => {
   const buildInfoData: BuildInfoAttribute[] = [
     {
       label: t('buildDate', { ns: 'common' }),
-      value: <Date date={config.VITE_BUILD_DATE} formatStr={DateFormat.DATE} />,
+      value: <Date date={parseISO(config.VITE_BUILD_DATE)} formatStr={DateFormat.DATE} />,
     },
     {
       label: t('buildTime', { ns: 'common' }),
