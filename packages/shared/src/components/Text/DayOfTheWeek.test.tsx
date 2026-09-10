@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import dayjs from 'dayjs';
+import { addDays, subDays } from 'date-fns';
 
 import { DayOfTheWeek } from './DayOfTheWeek';
 
@@ -34,7 +34,7 @@ describe('DayOfTheWeek', () => {
 
   it('should render relative Tomorrow', async () => {
     // ARRANGE
-    const tomorrow = dayjs().add(1, 'day');
+    const tomorrow = addDays(new Date(), 1);
     render(<DayOfTheWeek date={tomorrow.toISOString()} relative data-testid="day-of-the-week" />);
     await screen.findByTestId('day-of-the-week');
 
@@ -44,7 +44,7 @@ describe('DayOfTheWeek', () => {
 
   it('should render relative Yesterday', async () => {
     // ARRANGE
-    const yesterday = dayjs().subtract(1, 'day');
+    const yesterday = subDays(new Date(), 1);
     render(<DayOfTheWeek date={yesterday.toISOString()} relative data-testid="day-of-the-week" />);
     await screen.findByTestId('day-of-the-week');
 
@@ -54,7 +54,7 @@ describe('DayOfTheWeek', () => {
 
   it('should render relative day of the week', async () => {
     // ARRANGE
-    const dow = dayjs('09/01/2023');
+    const dow = new Date('09/01/2023');
     render(<DayOfTheWeek date={dow.toISOString()} relative data-testid="day-of-the-week" />);
     await screen.findByTestId('day-of-the-week');
 

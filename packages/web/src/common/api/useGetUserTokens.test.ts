@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import dayjs from 'dayjs';
+import { addHours } from 'date-fns';
 
 import { renderHook, waitFor } from '@/test/test-utils';
 import WithQueryClientProvider from '@/test/wrappers/WithQueryClientProvider';
@@ -14,7 +14,7 @@ describe('useGetTokens', () => {
   beforeEach(() => {
     const token: UserTokens = {
       ...userTokensFixture,
-      expires_at: dayjs().add(1, 'hours').toISOString(),
+      expires_at: addHours(new Date(), 1).toISOString(),
     };
     getItemSpy.mockReturnValue(token);
   });
@@ -35,7 +35,7 @@ describe('useGetTokens', () => {
     // ARRANGE
     const token: UserTokens = {
       ...userTokensFixture,
-      expires_at: dayjs('2024-01-01').toISOString(),
+      expires_at: new Date('2024-01-01').toISOString(),
     };
     getItemSpy.mockReturnValue(token);
     // use a specific wrapper to avoid test side effects from "AuthProvider"

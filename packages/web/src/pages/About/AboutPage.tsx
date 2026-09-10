@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import dayjs from 'dayjs';
+import { parseISO } from 'date-fns';
 
 import { Page } from '@react-starter/shared/components/Content/Page';
 import { Container } from '@react-starter/shared/components/Content/Container';
@@ -13,6 +13,7 @@ import {
   TableBody,
   TableCell,
 } from '@react-starter/shared/components/shadcn/table';
+import { Date } from '@react-starter/shared/components/Text/Date';
 import { DateFormat } from '@react-starter/shared/utils/constants';
 
 import { config } from '@/common/utils/config';
@@ -22,7 +23,7 @@ import { config } from '@/common/utils/config';
  */
 interface BuildInfoAttribute {
   label: string;
-  value: string;
+  value: React.ReactNode;
 }
 
 /**
@@ -38,7 +39,7 @@ const AboutPage = () => {
   const buildInfoData: BuildInfoAttribute[] = [
     {
       label: t('buildDate', { ns: 'common' }),
-      value: dayjs(config.VITE_BUILD_DATE).format(DateFormat.DATE),
+      value: <Date date={parseISO(config.VITE_BUILD_DATE)} formatStr={DateFormat.DATE} />,
     },
     {
       label: t('buildTime', { ns: 'common' }),
@@ -46,7 +47,7 @@ const AboutPage = () => {
     },
     {
       label: t('buildTimestamp', { ns: 'common' }),
-      value: dayjs(config.VITE_BUILD_TS).format(DateFormat.TIMESTAMP),
+      value: <Date date={config.VITE_BUILD_TS} formatStr={DateFormat.TIMESTAMP} />,
     },
     {
       label: t('commitSha', { ns: 'common' }),

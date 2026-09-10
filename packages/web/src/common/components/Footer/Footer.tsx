@@ -1,25 +1,22 @@
-import dayjs from 'dayjs';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-import { cn } from '@react-starter/shared/utils/css';
-import type { BaseComponentProps } from '@react-starter/shared/types/components';
+import { Link } from 'react-router-dom';
+import { cn } from 'cn';
 
 /**
  * The `Footer` React component renders the standard page footer content used
  * throughout the application.
- * @param {FooterProps} props - Component properties, `FooterProps`.
- * @see {@link FooterProps}
+ * @param {React.ComponentProps<'footer'>} props - Component properties, including `className` and other
+ * standard footer attributes.
  */
-const Footer = ({ className, testId = 'footer' }: BaseComponentProps) => {
+const Footer = ({ className, ...props }: React.ComponentProps<'footer'>) => {
   const { t } = useTranslation();
-  const year = dayjs().format('YYYY');
+  const year = new Date().getFullYear();
 
   return (
-    <footer className={cn('px-4 pt-16 pb-8', className)} data-testid={testId}>
-      <div className="flex flex-wrap items-center justify-center text-xs">
-        <div className="mx-2">&copy; {year} LeanStacks</div>
-        <div className="mx-2">
+    <footer className={cn('px-4 pt-16 pb-8', className)} {...props}>
+      <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
+        <div>&copy; {year} LeanStacks</div>
+        <div>
           <Link
             to="https://leanstacks.net/privacy.html"
             title={t('privacyPolicy', { ns: 'common' })}
@@ -29,7 +26,7 @@ const Footer = ({ className, testId = 'footer' }: BaseComponentProps) => {
             {t('privacy', { ns: 'common' })}
           </Link>
         </div>
-        <div className="mx-2">
+        <div>
           <Link
             to="https://leanstacks.net/terms.html"
             title={t('termsAndConditions', { ns: 'common' })}

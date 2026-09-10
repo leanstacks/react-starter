@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import dayjs from 'dayjs';
 import find from 'lodash/find';
+import { addHours } from 'date-fns';
 
 import { User } from '@/common/api/useGetUser';
 import { UserTokens } from '@/common/api/useGetUserTokens';
@@ -40,7 +40,7 @@ export const useSignin = () => {
       storage.setJsonItem(StorageKey.User, user);
 
       // simlate the creation of authentication tokens
-      const expires_at = dayjs().add(1, 'hour').toISOString();
+      const expires_at = addHours(new Date(), 1).toISOString();
       const tokens: UserTokens = {
         access_token: 'access-token',
         id_token: 'id-token',

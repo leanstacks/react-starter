@@ -1,5 +1,5 @@
 import { UseQueryOptions, UseQueryResult, useQuery } from '@tanstack/react-query';
-import dayjs from 'dayjs';
+import { isBefore } from 'date-fns';
 
 import { QueryKey, StorageKey } from '@/common/utils/constants';
 import storage from '@/common/utils/storage';
@@ -35,8 +35,8 @@ export const useGetUserTokens = (options?: Partial<UseQueryOptions<UserTokens>>)
 
       if (storedTokens) {
         // tokens found
-        const now = dayjs();
-        if (now.isBefore(storedTokens.expires_at)) {
+        const now = new Date();
+        if (isBefore(now, new Date(storedTokens.expires_at))) {
           // tokens not expired
           return resolve(storedTokens);
         } else {

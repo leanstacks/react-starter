@@ -1,14 +1,7 @@
-import dayjs from 'dayjs';
-import isToday from 'dayjs/plugin/isToday';
-import isTomorrow from 'dayjs/plugin/isTomorrow';
-import isYesterday from 'dayjs/plugin/isYesterday';
+import { isToday, isTomorrow, isYesterday } from 'date-fns';
 
 import { DateFormat } from '@react-starter/shared/utils/constants';
 import { Date, DateProps } from '@react-starter/shared/components/Text/Date';
-
-dayjs.extend(isToday);
-dayjs.extend(isTomorrow);
-dayjs.extend(isYesterday);
 
 const TODAY = 'Today';
 const TOMORROW = 'Tomorrow';
@@ -32,12 +25,11 @@ interface DayOfTheWeekProps extends DateProps {
 const DayOfTheWeek = ({ date, relative = false, ...props }: DayOfTheWeekProps) => {
   if (relative) {
     let relativeDayOfTheWeek: string | null = null;
-    const theDate = dayjs(date);
-    if (theDate.isYesterday()) {
+    if (isYesterday(date)) {
       relativeDayOfTheWeek = YESTERDAY;
-    } else if (theDate.isToday()) {
+    } else if (isToday(date)) {
       relativeDayOfTheWeek = TODAY;
-    } else if (theDate.isTomorrow()) {
+    } else if (isTomorrow(date)) {
       relativeDayOfTheWeek = TOMORROW;
     }
 
@@ -46,7 +38,7 @@ const DayOfTheWeek = ({ date, relative = false, ...props }: DayOfTheWeekProps) =
     }
   }
 
-  return <Date date={date} format={DateFormat.DAY_OF_WEEK} {...props} />;
+  return <Date date={date} formatStr={DateFormat.DAY_OF_WEEK} {...props} />;
 };
 
 export { DayOfTheWeek };
