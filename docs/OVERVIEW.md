@@ -217,22 +217,24 @@ This is a **frontend-only application** with no server-side event system. All st
 
 ### Runtime Dependencies (Production)
 
-| Package                    | Purpose                             | Version |
-| -------------------------- | ----------------------------------- | ------- |
-| `react`                    | UI component library                | 19.2.8+ |
-| `react-dom`                | React DOM rendering                 | 19.2.8+ |
-| `react-router-dom`         | Declarative routing and navigation  | 7.18.2+ |
-| `@tanstack/react-query`    | Server state management and caching | Latest  |
-| `axios`                    | HTTP client for API requests        | Latest  |
-| `react-hook-form`          | Performant form state management    | Latest  |
-| `zod`                      | TypeScript-first schema validation  | 4.4.3+  |
-| `tailwindcss`              | Utility-first CSS framework         | Latest  |
-| `shadcn/ui`                | Accessible component library        | Latest  |
-| `class-variance-authority` | Type-safe component variants        | 0.7.1+  |
-| `lucide-react`             | Icon component library              | Latest  |
-| `react-i18next`            | Internationalization framework      | Latest  |
-| `@tanstack/react-table`    | Headless table component            | Latest  |
-| `recharts`                 | Composable charting library         | Latest  |
+| Package                    | Purpose                                                               | Version |
+| -------------------------- | --------------------------------------------------------------------- | ------- |
+| `react`                    | UI component library                                                  | Latest  |
+| `react-dom`                | React DOM rendering                                                   | Latest  |
+| `react-router-dom`         | Declarative routing and navigation                                    | Latest  |
+| `@tanstack/react-query`    | Server state management and caching                                   | Latest  |
+| `axios`                    | HTTP client for API requests                                          | Latest  |
+| `react-hook-form`          | Performant form state management                                      | Latest  |
+| `zod`                      | TypeScript-first schema validation                                    | Latest  |
+| `tailwindcss`              | Utility-first CSS framework                                           | Latest  |
+| `shadcn/ui`                | Accessible component library                                          | Latest  |
+| `class-variance-authority` | Type-safe component variants                                          | latest  |
+| `lucide-react`             | Icon component library                                                | Latest  |
+| `react-i18next`            | Internationalization framework                                        | Latest  |
+| `@tanstack/react-table`    | Headless table component                                              | Latest  |
+| `recharts`                 | Composable charting library                                           | Latest  |
+| `date-fns`                 | Date utility library                                                  | Latest  |
+| `lodash`                   | Modular utility functions for arrays, numbers, objects, strings, etc. | Latest  |
 
 ### Development Dependencies (Build & Test)
 

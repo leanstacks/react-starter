@@ -154,7 +154,7 @@ The application production technology stack includes:
 - React i18next - internationalization
 - Zod - schema based validation
 - Lodash - utility functions
-- DayJS - date and time utility functions
+- date-fns - date and time utility functions
 - TanStack Table - advanced tables and datagrids
 - Recharts - composable charting library for React
 
