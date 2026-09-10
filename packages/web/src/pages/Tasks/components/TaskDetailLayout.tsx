@@ -51,11 +51,15 @@ const TaskDetailLayout = ({ className, testId = 'layout-task-detail' }: BaseComp
             </Button>
           )}
           {task && (
-            <TaskDeleteDialog task={task}>
-              <Button variant="ghost" size="icon" aria-label="delete task">
-                <Trash />
-              </Button>
-            </TaskDeleteDialog>
+            <TaskDeleteDialog
+              task={task}
+              trigger={
+                <Button variant="ghost" size="icon" aria-label="delete task">
+                  <Trash />
+                </Button>
+              }
+              onSuccess={() => navigate(-1)}
+            />
           )}
           <Button
             variant="ghost"

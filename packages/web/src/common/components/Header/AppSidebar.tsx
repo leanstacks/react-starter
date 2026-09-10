@@ -1,4 +1,5 @@
 import { Info, LogIn, LogOut, Sliders, UserPlus, ListChecks, Plus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { PropsWithTestId } from '@react-starter/shared/types/components';
 import { cn } from '@react-starter/shared/utils/css';
@@ -27,6 +28,7 @@ import { Link } from 'react-router-dom';
  */
 export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
   const { isAuthenticated } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <Sidebar side="left" collapsible="offcanvas" data-testid={testId}>
@@ -36,14 +38,14 @@ export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Account</SidebarGroupLabel>
+          <SidebarGroupLabel>{t('sidebar.account')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem className={cn({ hidden: isAuthenticated })}>
                 <SidebarMenuButton asChild>
                   <Link to="/auth/signin">
                     <LogIn />
-                    <span>Sign In</span>
+                    <span>{t('sidebar.sign-in')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -51,7 +53,7 @@ export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
                 <SidebarMenuButton asChild>
                   <Link to="/auth/signin">
                     <UserPlus />
-                    <span>Create Account</span>
+                    <span>{t('sidebar.account-create')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -59,7 +61,7 @@ export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
                 <SidebarMenuButton asChild>
                   <Link to="/auth/signout" data-testid={`${testId}-sign-out-button`}>
                     <LogOut />
-                    <span>Sign Out</span>
+                    <span>{t('sidebar.sign-out')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -67,7 +69,7 @@ export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
                 <SidebarMenuButton asChild>
                   <Link to="/app/settings">
                     <Sliders />
-                    <span>Settings</span>
+                    <span>{t('sidebar.settings')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -76,19 +78,19 @@ export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
         </SidebarGroup>
         <SidebarSeparator className={cn({ hidden: !isAuthenticated })} />
         <SidebarGroup className={cn({ hidden: !isAuthenticated })}>
-          <SidebarGroupLabel>My Stuff</SidebarGroupLabel>
+          <SidebarGroupLabel>{t('sidebar.my-stuff')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link to="/app/tasks">
                     <ListChecks />
-                    <span>Tasks</span>
+                    <span>{t('sidebar.tasks')}</span>
                   </Link>
                 </SidebarMenuButton>
                 <SidebarMenuAction asChild>
                   <Link to="/app/tasks/add">
-                    <Plus /> <span className="sr-only">Add Task</span>
+                    <Plus /> <span className="sr-only">{t('sidebar.add-task')}</span>
                   </Link>
                 </SidebarMenuAction>
               </SidebarMenuItem>
@@ -103,7 +105,7 @@ export const AppSidebar = ({ testId = 'app-sidebar' }: PropsWithTestId) => {
                 <SidebarMenuButton asChild>
                   <Link to="/pub/about">
                     <Info />
-                    <span>About</span>
+                    <span>{t('sidebar.about')}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

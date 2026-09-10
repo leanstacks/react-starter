@@ -48,7 +48,7 @@ describe('AppSidebar', () => {
 
     // ASSERT
     expect(screen.getByTestId('app-sidebar')).toBeDefined();
-    expect(screen.getByText('Sign Out')).toBeDefined();
+    expect(screen.getByText(/Sign out/i)).toBeDefined();
     expect(screen.getByText('Settings')).toBeDefined();
     expect(screen.getByText('Tasks')).toBeDefined();
   });

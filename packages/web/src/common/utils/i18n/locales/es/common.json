@@ -15,8 +15,26 @@
   "letsGetStarted": "Empecemos",
   "privacy": "Privacidad",
   "privacyPolicy": "Política de privacidad",
+  "select-language": "Seleccionar idioma",
+  "sidebar": {
+    "about": "Acerca de",
+    "account": "Cuenta",
+    "account-create": "Crear cuenta",
+    "my-stuff": "Mis cosas",
+    "settings": "Configuración",
+    "sign-in": "Iniciar sesión",
+    "sign-out": "Cerrar sesión",
+    "task-add": "Agregar una tarea",
+    "tasks": "Tareas",
+    "toggle-close": "Cerrar menú",
+    "toggle-open": "Abrir menú"
+  },
   "terms": "Términos",
   "termsAndConditions": "Términos y condiciones",
+  "theme": {
+    "switch-light": "Cambiar a modo claro",
+    "switch-dark": "Cambiar a modo oscuro"
+  },
   "validation": {
     "max_one": "Debe tener como máximo {{count}} caracter. ",
     "max_other": "Debe tener como máximo {{count}} caracteres. ",

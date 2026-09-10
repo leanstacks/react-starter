@@ -12,13 +12,14 @@ import {
   DropdownMenuItem,
 } from '@react-starter/shared/components/shadcn/dropdown-menu';
 import { Button } from '@react-starter/shared/components/shadcn/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@react-starter/shared/components/shadcn/tooltip';
 
 /**
  * The `LanguageToggle` component renders a `Dropdown` which allows users
  * to select the language in which they wish to view the application.
  */
 export const LanguageToggle = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   /**
    * Set the application-wide langague code used for i18n.
@@ -31,21 +32,32 @@ export const LanguageToggle = () => {
 
   return (
     <DropdownMenu data-testid="dropdown-language">
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" title="Select Language" data-testid="button-language-menu-trigger">
-          <Languages aria-label="Select Language" data-testid="icon-language" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="cursor-pointer"
+              aria-label={t('select-language')}
+              data-testid="button-language-menu-trigger"
+            >
+              <Languages data-testid="icon-language" />
+            </Button>
+          </DropdownMenuTrigger>
+        </TooltipTrigger>
+        <TooltipContent>{t('select-language')}</TooltipContent>
+      </Tooltip>
+      <DropdownMenuContent align="end" className="w-32" onCloseAutoFocus={(e) => e.preventDefault()}>
         <DropdownMenuGroup>
           <DropdownMenuLabel>Languages</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => setLanguage('en')} data-testid="dropdown-item-en">
+          <DropdownMenuItem className="cursor-pointer" onClick={() => setLanguage('en')} data-testid="dropdown-item-en">
             English
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setLanguage('fr')} data-testid="dropdown-item-fr">
+          <DropdownMenuItem className="cursor-pointer" onClick={() => setLanguage('fr')} data-testid="dropdown-item-fr">
             French
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setLanguage('es')} data-testid="dropdown-item-es">
+          <DropdownMenuItem className="cursor-pointer" onClick={() => setLanguage('es')} data-testid="dropdown-item-es">
             Spanish
           </DropdownMenuItem>
         </DropdownMenuGroup>

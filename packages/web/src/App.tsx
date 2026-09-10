@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { Toaster } from '@react-starter/shared/components/shadcn/sonner';
+import { TooltipProvider } from '@react-starter/shared/components/shadcn/tooltip';
 
 import ErrorBoundary from '@/common/components/Errors/ErrorBoundary';
 import ErrorFallback from '@/common/components/Errors/ErrorFallback';
@@ -29,7 +30,7 @@ const queryClient = new QueryClient({
  * The application. The outermost component of the React application
  * hierarchy. Declares application-wide providers.
  */
-export const App = () => {
+const App = () => {
   return (
     <div id="app" className="bg-background text-foreground min-h-screen" data-testid="app">
       <ErrorBoundary fallback={<ErrorFallback />}>
@@ -38,8 +39,10 @@ export const App = () => {
             <Theme />
             <AuthContextProvider>
               <AxiosContextProvider>
-                <RouterProvider router={router} />
-                <Toaster />
+                <TooltipProvider>
+                  <RouterProvider router={router} />
+                  <Toaster />
+                </TooltipProvider>
               </AxiosContextProvider>
             </AuthContextProvider>
             <ReactQueryDevtools initialIsOpen={false} />
@@ -49,3 +52,5 @@ export const App = () => {
     </div>
   );
 };
+
+export { App };

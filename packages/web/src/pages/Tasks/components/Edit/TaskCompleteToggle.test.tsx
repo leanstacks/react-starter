@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import * as sonner from '@react-starter/shared/components/shadcn/sonner';
 import { render, screen, waitFor } from '@/test/test-utils';
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { todosFixture } from '@/__fixtures__/todos';
 
 import { TaskCompleteToggle } from './TaskCompleteToggle';

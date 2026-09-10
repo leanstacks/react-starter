@@ -9,7 +9,7 @@ import { toast } from '@react-starter/shared/components/shadcn/sonner';
 import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
 import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
 
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { useGetTask } from '@/pages/Tasks/api/useGetTask';
 import { useUpdateTask } from '@/pages/Tasks/api/useUpdateTask';
 import TaskForm, { TaskFormValues } from '@/pages/Tasks/components/Form/TaskForm';

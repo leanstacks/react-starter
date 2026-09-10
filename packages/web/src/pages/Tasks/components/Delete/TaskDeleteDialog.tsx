@@ -1,8 +1,5 @@
-import { PropsWithChildren } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { BaseComponentProps } from '@react-starter/shared/types/components';
 import {
   Dialog,
   DialogClose,
@@ -16,46 +13,64 @@ import {
 import { toast } from '@react-starter/shared/components/shadcn/sonner';
 import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
 
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { useDeleteTask } from '@/pages/Tasks/api/useDeleteTask';
 import { Button } from '@react-starter/shared/components/shadcn/button';
 
 /**
  * Properties for the `TaskDeleteDialog` component.
  */
-interface TaskDeleteDialogProps extends BaseComponentProps, PropsWithChildren {
+interface TaskDeleteDialogProps extends React.ComponentProps<typeof Dialog> {
   task: Task;
+  trigger?: React.ReactNode;
+  onSuccess?: () => void;
 }
 
 /**
- * The `TaskDeleteDialog` renders a dialog prompting for deletion confirmation
- * of a `Task`.
+ * The `TaskDeleteDialog` is a confirmation dialog for the deletion of a `Task`.
+ *
+ * It may be used either with a trigger element or programmatically controlled via the `open` prop.
+ *
+ * *Example trigger usage:*
+ * ```tsx
+ * <TaskDeleteDialog task={task} trigger={<Button>Delete Task</Button>} />
+ * ```
+ *
+ * *Example programmatic usage:*
+ * ```tsx
+ * <TaskDeleteDialog task={task} open={isOpen} onOpenChange={setIsOpen} />
+ * ```
  */
-export const TaskDeleteDialog = ({ children, task, testId = 'dialog-task-delete' }: TaskDeleteDialogProps) => {
+const TaskDeleteDialog = ({ onSuccess, task, trigger, ...props }: TaskDeleteDialogProps) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const { mutate: deleteTask, isPending, error } = useDeleteTask();
+  const { mutateAsync: deleteTaskAsync, isPending, error } = useDeleteTask();
 
   /**
    * Performs task deletion.
    */
   const doDelete = () => {
-    deleteTask(
+    const deleteTaskPromise = deleteTaskAsync(
       { task },
       {
         onSuccess: () => {
-          toast('Task deleted.');
-          navigate(-1);
+          onSuccess?.();
         },
       },
     );
+    toast.promise(deleteTaskPromise, {
+      loading: 'Deleting task...',
+      success: 'Task deleted.',
+      error: (err) => `Failed to delete task. Detail: ${err.message}`,
+    });
   };
 
   return (
-    <Dialog>
-      <DialogTrigger data-testid={`${testId}-trigger`} asChild>
-        {children}
-      </DialogTrigger>
+    <Dialog {...props}>
+      {trigger && (
+        <DialogTrigger data-testid={`task-delete-dialog-trigger-${task.id}`} asChild>
+          {trigger}
+        </DialogTrigger>
+      )}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Are you sure?</DialogTitle>
@@ -66,7 +81,7 @@ export const TaskDeleteDialog = ({ children, task, testId = 'dialog-task-delete'
             <ErrorAlert
               description={`${t('errors.unable-to-process')} ${error.message}`}
               className="mb-4"
-              testId={`${testId}-error`}
+              testId={`task-delete-dialog-error-${task.id}`}
             />
           )}
           <div>
@@ -75,7 +90,11 @@ export const TaskDeleteDialog = ({ children, task, testId = 'dialog-task-delete'
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="secondary" disabled={isPending} data-testid={`${testId}-button-cancel`}>
+            <Button
+              variant="secondary"
+              disabled={isPending}
+              data-testid={`task-delete-dialog-button-cancel-${task.id}`}
+            >
               Cancel
             </Button>
           </DialogClose>
@@ -83,7 +102,7 @@ export const TaskDeleteDialog = ({ children, task, testId = 'dialog-task-delete'
             variant="destructive"
             onClick={() => doDelete()}
             disabled={isPending}
-            data-testid={`${testId}-button-delete`}
+            data-testid={`task-delete-dialog-button-delete-${task.id}`}
           >
             Delete
           </Button>
@@ -92,3 +111,5 @@ export const TaskDeleteDialog = ({ children, task, testId = 'dialog-task-delete'
     </Dialog>
   );
 };
+
+export { TaskDeleteDialog };

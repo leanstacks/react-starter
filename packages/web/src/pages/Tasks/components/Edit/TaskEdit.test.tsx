@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
 import { render, screen, waitFor } from '@/test/test-utils';
@@ -8,19 +8,17 @@ import TaskEdit from './TaskEdit';
 const mockNavigate = vi.fn();
 let taskId = '1';
 
-describe('TaskEdit', () => {
-  beforeEach(() => {
-    // mock select functions from react-router-dom
-    vi.mock('react-router-dom', async () => {
-      const original = await vi.importActual('react-router-dom');
-      return {
-        ...original,
-        useNavigate: () => mockNavigate,
-        useParams: () => ({ taskId }),
-      };
-    });
-  });
+// mock select functions from react-router-dom
+vi.mock('react-router-dom', async () => {
+  const original = await vi.importActual('react-router-dom');
+  return {
+    ...original,
+    useNavigate: () => mockNavigate,
+    useParams: () => ({ taskId }),
+  };
+});
 
+describe('TaskEdit', () => {
   afterEach(() => {
     taskId = '1';
   });

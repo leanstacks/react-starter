@@ -5,7 +5,7 @@ import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { Badge } from '@react-starter/shared/components/shadcn/badge';
 import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
 
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 import { useGetUser } from '@/common/api/useGetUser';
 
 /**

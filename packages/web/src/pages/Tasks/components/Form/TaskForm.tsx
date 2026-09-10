@@ -17,7 +17,7 @@ import { Input } from '@react-starter/shared/components/shadcn/input';
 import { Button } from '@react-starter/shared/components/shadcn/button';
 import { Toggle } from '@react-starter/shared/components/shadcn/toggle';
 
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 
 /**
  * Task form values.

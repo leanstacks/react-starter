@@ -25,7 +25,12 @@ export default mergeConfig(
       include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
       coverage: {
         include: ['src/**/*.ts', 'src/**/*.tsx'],
-        exclude: ['src/components/shadcn/**', ...coverageConfigDefaults.exclude],
+        exclude: [
+          'src/components/shadcn/**',
+          'src/utils/css.ts',
+          'src/hooks/use-mobile.ts',
+          ...coverageConfigDefaults.exclude,
+        ],
       },
     },
   }),

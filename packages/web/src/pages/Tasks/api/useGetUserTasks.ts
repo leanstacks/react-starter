@@ -3,16 +3,7 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { useAxios } from '@/common/hooks/useAxios';
 import { QueryKey } from '@/common/utils/constants';
 import { config } from '@/common/utils/config';
-
-/**
- * The `Task` type.
- */
-export type Task = {
-  id: number;
-  userId: number;
-  title: string;
-  completed: boolean;
-};
+import type { Task } from '@/common/types/task';
 
 /**
  * The request properties for `useGetUserTasks`.

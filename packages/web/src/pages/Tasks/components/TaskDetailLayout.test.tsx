@@ -4,7 +4,7 @@ import { UseQueryResult } from '@tanstack/react-query';
 
 import { render, screen } from '@/test/test-utils';
 import * as UseGetTask from '@/pages/Tasks/api/useGetTask';
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import { Task } from '@/common/types/task';
 
 import TaskDetailLayout from './TaskDetailLayout';
 

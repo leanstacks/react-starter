@@ -10,6 +10,8 @@
   "markIncomplete": "Mark incomplete",
   "markedComplete": "Marked task complete",
   "markedIncomplete": "Marked task incomplete",
+  "marking-complete": "Marking task complete...",
+  "marking-incomplete": "Marking task incomplete...",
   "status": {
     "complete": "Complete",
     "incomplete": "Incomplete"
@@ -18,5 +20,6 @@
   "task": "Task",
   "tasks": "Tasks",
   "tasks-empty": "Nothing to do. Create a task to get started.",
-  "updatedTask": "Task updated."
+  "updatedTask": "Task updated.",
+  "update-failed": "Failed to update task. Detail: {{message}}"
 }

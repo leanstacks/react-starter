@@ -7,7 +7,7 @@ import { cn } from '@react-starter/shared/utils/css';
 import { BaseComponentProps } from '@react-starter/shared/types/components';
 import { DonutChart, DonutChartData, DonutChartProps } from '@react-starter/shared/components/Chart/DonutChart';
 
-import { Task } from '@/pages/Tasks/api/useGetUserTasks';
+import type { Task } from '@/common/types/task';
 
 /**
  * Properties for the `TaskStatusDonutChart` component.

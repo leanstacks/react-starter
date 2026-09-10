@@ -1,107 +1,44 @@
-import { useTranslation } from 'react-i18next';
-import { filter } from 'lodash';
-import { orderBy as order } from 'lodash';
-import { times } from 'lodash';
+import { Flame } from 'lucide-react';
 
-import { BaseComponentProps } from '@react-starter/shared/types/components';
-import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
-import { Badge } from '@react-starter/shared/components/shadcn/badge';
-import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
+import { ItemGroup } from '@react-starter/shared/components/shadcn/item';
+import { Empty, EmptyMedia, EmptyTitle, EmptyDescription } from '@react-starter/shared/components/shadcn/empty';
 
-import { Task, useGetUserTasks } from '@/pages/Tasks/api/useGetUserTasks';
-import TaskListItem from './TaskListItem';
-
-/**
- * Type describes the possible sort order directions.
- */
-type OrderDir = 'asc' | 'desc';
-
-/**
- * Type describing all possible keys of a `Task` object.
- */
-type TaskKey = keyof Task;
+import type { Task } from '@/common/types/task';
+import { TaskListItem } from '@/pages/Tasks/components/List/TaskListItem';
 
 /**
  * Properties for the `TaskList` component.
- * @param filterBy - Optional. Object containing criteria to filter the displayed Tasks.
- * @param orderBy - Optional. Array of Task attributes to sort the displayed Tasks.
- * @param orderDir - Optional. Array of order directions to apply to the `orderBy`.
- * @param showBadge - Optional. Indicates if task count badge should be shown.
- * @param title - Optional. List title text.
- * @param userId - A `User` identifier whose tasks are to be shown.
- * @see {@link BaseComponentProps}
  */
-interface TaskListProps extends BaseComponentProps {
-  filterBy?: Partial<Task>;
-  orderBy?: TaskKey[];
-  orderDir?: OrderDir[];
-  showBadge?: boolean;
-  title?: string;
-  userId: number;
+interface TaskListProps extends React.ComponentProps<'div'> {
+  tasks?: Task[];
 }
 
 /**
- * The `TaskList` component renders a list of `Task` items.  The list may be filtered
- * and ordered using properties.
+ * The `TaskList` component renders a list of `Task` items.
  * @param {TaskListProps} props - Component properties.
  */
-const TaskList = ({
-  className,
-  filterBy = {},
-  orderBy = [],
-  orderDir = [],
-  showBadge = false,
-  testId = 'list-task',
-  title,
-  userId,
-}: TaskListProps) => {
-  const { t } = useTranslation();
-  const { data: tasks, isLoading, isError } = useGetUserTasks({ userId });
+const TaskList = ({ tasks = [], ...props }: TaskListProps) => {
+  // Return null if there are no tasks to display.
+  if (tasks.length === 0) {
+    return (
+      <Empty data-testid="task-list-empty">
+        <EmptyMedia>
+          <Flame size={64} className="text-amber-600" />
+        </EmptyMedia>
+        <EmptyTitle>You're on fire!</EmptyTitle>
+        <EmptyDescription>You have no tasks at the moment. Keep up the great work!</EmptyDescription>
+      </Empty>
+    );
+  }
 
-  const filteredTasks = filter(tasks, filterBy);
-
-  const orderedTasks = order(filteredTasks, orderBy, orderDir);
-
-  const isEmpty = !isLoading && (!orderedTasks || orderedTasks?.length === 0);
-
+  // Render the list of tasks.
   return (
-    <div className={className} data-testid={testId}>
-      {!!title && (
-        <div className="flex items-center gap-2" data-testid={`${testId}-heading`}>
-          <h2 className="text-lg font-bold" data-testid={`${testId}-heading-title`}>
-            {title}
-          </h2>
-          {showBadge && !isLoading && (
-            <Badge className="self-start" data-testid={`${testId}-heading-badge`}>
-              {orderedTasks.length}
-            </Badge>
-          )}
-        </div>
-      )}
-
-      {isError && (
-        <ErrorAlert description={t('errors.unable-to-retrieve')} className="mb-4" testId={`${testId}-error`} />
-      )}
-
-      {isLoading && (
-        <div data-testid={`${testId}-loading`}>
-          {times(3, (index) => (
-            <Skeleton key={`loader-${index}`} className="mb-2 h-6" />
-          ))}
-        </div>
-      )}
-
-      {isEmpty && <div data-testid={`${testId}-empty`}>{t('tasks-empty', { ns: 'tasks' })}</div>}
-
-      {orderedTasks && (
-        <div data-testid={`${testId}-content`}>
-          {orderedTasks.map((task, index) => (
-            <TaskListItem key={`task-${index}`} task={task} />
-          ))}
-        </div>
-      )}
-    </div>
+    <ItemGroup {...props}>
+      {tasks.map((task) => (
+        <TaskListItem key={`task-${task.id}`} task={task} data-testid={`task-item-${task.id}`} />
+      ))}
+    </ItemGroup>
   );
 };
 
-export default TaskList;
+export { TaskList };
