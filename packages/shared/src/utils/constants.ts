@@ -36,12 +36,12 @@ export enum CurrencySign {
  * The `DateFormat` enumerates patterns for formatting dates.
  */
 export enum DateFormat {
-  DATE = 'MM/DD/YYYY',
-  DAY_OF_WEEK = 'dddd',
-  HOURS_AND_MINUTES = 'H[h] mm[m]',
-  TIME = 'h:mma',
-  TIMESTAMP_SHORT = 'h:mma ddd MMM D',
-  TIMESTAMP = 'dddd MMMM D [at] h:mma',
+  DATE = 'MM/dd/yyyy',
+  DAY_OF_WEEK = 'EEEE',
+  HOURS_AND_MINUTES = "H'h' mm'm'",
+  TIME = 'H:mmb',
+  TIMESTAMP_SHORT = 'h:mmb EEE MMM d',
+  TIMESTAMP = "EEEE MMMM d 'at' h:mmb",
 }
 
 /**

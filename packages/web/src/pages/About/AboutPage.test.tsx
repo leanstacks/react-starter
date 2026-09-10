@@ -75,7 +75,7 @@ describe('AboutPage', () => {
     await screen.findByTestId('table-build-info');
 
     // ASSERT
-    expect(screen.getByText('07/22/2026')).toBeDefined();
+    expect(screen.getByText('07/21/2026')).toBeDefined();
   });
 
   it('should display build time in the table', async () => {
