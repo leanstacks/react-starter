@@ -10,6 +10,8 @@
   "markIncomplete": "Márcalo como incompleto",
   "markedComplete": "Tarea marcada completada",
   "markedIncomplete": "Tarea marcada como incompleta",
+  "marking-complete": "Marcando la tarea como completada...",
+  "marking-incomplete": "Marcando la tarea como incompleta...",
   "status": {
     "complete": "Completo",
     "incomplete": "Incompleto"
@@ -18,5 +20,6 @@
   "task": "Tarea",
   "tasks": "Tareas",
   "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar.",
-  "updatedTask": "Tarea actualizada."
+  "updatedTask": "Tarea actualizada.",
+  "update-failed": "Error al actualizar la tarea. Detalle: {{message}}"
 }

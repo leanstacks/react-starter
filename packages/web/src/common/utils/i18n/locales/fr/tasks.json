@@ -10,6 +10,8 @@
   "markIncomplete": "Marquez-le comme incomplet",
   "markedComplete": "Tâche marquée terminée",
   "markedIncomplete": "Tâche marquée incomplète",
+  "marking-complete": "Marquage de la tâche comme terminée...",
+  "marking-incomplete": "Marquage de la tâche comme incomplète...",
   "status": {
     "complete": "Complet",
     "incomplete": "Incomplet"
@@ -18,5 +20,6 @@
   "task": "Tâche",
   "tasks": "Tâches",
   "tasks-empty": "Rien à faire. Créez une tâche pour commencer.",
-  "updatedTask": "Tâche mise à jour."
+  "updatedTask": "Tâche mise à jour.",
+  "update-failed": "Échec de la mise à jour de la tâche. Détail : {{message}}"
 }
