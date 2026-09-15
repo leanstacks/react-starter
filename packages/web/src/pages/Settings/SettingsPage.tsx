@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { Palette } from 'lucide-react';
 
 import { Page } from '@react-starter/shared/components/Content/Page';
@@ -8,7 +8,7 @@ import { Skeleton } from '@react-starter/shared/components/shadcn/skeleton';
 import { Avatar, AvatarFallback } from '@react-starter/shared/components/shadcn/avatar';
 
 import { useGetCurrentUser } from '@/common/api/useGetCurrentUser';
-import SettingsPageBreadcrumbs from '@/pages/Settings/components/SettingsPageBreadcrumbs';
+import { SettingsPageBreadcrumbs } from '@/pages/Settings/components/SettingsPageBreadcrumbs';
 import { Button } from '@react-starter/shared/components/shadcn/button';
 
 /**
@@ -44,10 +44,10 @@ const SettingsPage = () => {
               <ul className="*:not-last:mb-1">
                 <li>
                   <Button variant="ghost" className="w-full justify-start" asChild>
-                    <Link to="appearance" aria-label="Appearance Settings">
+                    <NavLink to="appearance" aria-label="Appearance Settings">
                       <Palette />
                       Appearance
-                    </Link>
+                    </NavLink>
                   </Button>
                 </li>
               </ul>

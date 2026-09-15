@@ -32,7 +32,10 @@ const SettingsPageBreadcrumbs = ({ className, testId = 'page-settings-breadcrumb
           <>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage className="capitalize" data-testid={`${testId}-page-${pathElements[3]}`}>
+              <BreadcrumbPage
+                className="max-w-40 truncate capitalize"
+                data-testid={`${testId}-page-${pathElements[3]}`}
+              >
                 {pathElements[3].replace('-', ' ')}
               </BreadcrumbPage>
             </BreadcrumbItem>
@@ -43,4 +46,4 @@ const SettingsPageBreadcrumbs = ({ className, testId = 'page-settings-breadcrumb
   );
 };
 
-export default SettingsPageBreadcrumbs;
+export { SettingsPageBreadcrumbs };

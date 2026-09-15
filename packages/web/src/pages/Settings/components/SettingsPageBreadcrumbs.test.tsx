@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { render, screen } from '@/test/test-utils';
 
-import SettingsPageBreadcrumbs from './SettingsPageBreadcrumbs';
+import { SettingsPageBreadcrumbs } from './SettingsPageBreadcrumbs';
 
 describe('SettingsPageBreadcrumbs', () => {
   it('should render successfully', async () => {
