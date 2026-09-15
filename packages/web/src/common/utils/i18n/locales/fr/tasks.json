@@ -1,15 +1,25 @@
 {
-  "addTask": "Créer une nouvelle tâche",
-  "editTask": "Modifier la tâche",
-  "label": {
-    "title": "Titre",
-    "completed": "Est complet"
+  "add-task": "Créer une nouvelle tâche",
+  "create-task": "Créer la tâche",
+  "created-task": "Tâche créée.",
+  "delete-task": "Supprimer la tâche",
+  "edit-task": "Modifier la tâche",
+  "errors": {
+    "not-found": "Non trouvé",
+    "unable-to-find-task": "Nous ne pouvons pas trouver la tâche que vous avez demandée."
   },
-  "createdTask": "Tâche créée.",
-  "markComplete": "Marquez-le comme terminé",
-  "markIncomplete": "Marquez-le comme incomplet",
-  "markedComplete": "Tâche marquée terminée",
-  "markedIncomplete": "Tâche marquée incomplète",
+  "go-back-to-task-list": "Retour à la liste des tâches",
+  "label": {
+    "assignee": "Assigné à",
+    "completed": "Est complet",
+    "status": "Statut",
+    "title": "Titre"
+  },
+  "list-tasks": "Lister les tâches",
+  "mark-complete": "Marquez-le comme terminé",
+  "mark-incomplete": "Marquez-le comme incomplet",
+  "marked-complete": "Tâche marquée terminée",
+  "marked-incomplete": "Tâche marquée incomplète",
   "marking-complete": "Marquage de la tâche comme terminée...",
   "marking-incomplete": "Marquage de la tâche comme incomplète...",
   "status": {
@@ -20,6 +30,6 @@
   "task": "Tâche",
   "tasks": "Tâches",
   "tasks-empty": "Rien à faire. Créez une tâche pour commencer.",
-  "updatedTask": "Tâche mise à jour.",
+  "updated-task": "Tâche mise à jour.",
   "update-failed": "Échec de la mise à jour de la tâche. Détail : {{message}}"
 }
