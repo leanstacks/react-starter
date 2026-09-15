@@ -44,7 +44,7 @@ const TaskListItem = ({ task, ...props }: TaskListItemProps) => {
     const updateTaskPromise = updateTaskAsync({ task: taskData });
     toast.promise(updateTaskPromise, {
       loading: isComplete ? t('marking-complete', { ns: 'tasks' }) : t('marking-incomplete', { ns: 'tasks' }),
-      success: isComplete ? t('markedComplete', { ns: 'tasks' }) : t('markedIncomplete', { ns: 'tasks' }),
+      success: isComplete ? t('marked-complete', { ns: 'tasks' }) : t('marked-incomplete', { ns: 'tasks' }),
       error: (error) => t('update-failed', { ns: 'tasks', message: error.message }),
     });
   };

@@ -22,11 +22,11 @@ interface TaskCompleteToggleProps extends BaseComponentProps {
  * to toggle the value of the Task `complete` attribute.
  * @param {TaskCompleteToggleProps} props - Component properties.
  */
-export const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
+const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-complete' }: TaskCompleteToggleProps) => {
   const { t } = useTranslation();
   const { mutate: updateTask, isPending } = useUpdateTask();
 
-  const buttonTitle = task.completed ? t('markIncomplete', { ns: 'tasks' }) : t('markComplete', { ns: 'tasks' });
+  const buttonTitle = task.completed ? t('mark-incomplete', { ns: 'tasks' }) : t('mark-complete', { ns: 'tasks' });
 
   /**
    * Actions to perform when the task complete toggle button is clicked.
@@ -41,7 +41,7 @@ export const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-comp
       },
       {
         onSuccess: (data) => {
-          toast(data.completed ? t('markedComplete', { ns: 'tasks' }) : t('markedIncomplete', { ns: 'tasks' }));
+          toast(data.completed ? t('marked-complete', { ns: 'tasks' }) : t('marked-incomplete', { ns: 'tasks' }));
         },
       },
     );
@@ -61,3 +61,5 @@ export const TaskCompleteToggle = ({ className, task, testId = 'toggle-task-comp
     </Button>
   );
 };
+
+export { TaskCompleteToggle };

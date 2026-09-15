@@ -26,11 +26,11 @@ describe('TaskView', () => {
       isLoading: true,
       isError: false,
     } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskView task={todosFixture[0]} testId="component" />);
-    await screen.findByTestId('component-user-loading');
+    render(<TaskView task={todosFixture[0]} />);
+    const loading = await screen.findByTestId('task-view-user-loading');
 
     // ASSERT
-    expect(screen.getByTestId('component-user-loading')).toBeDefined();
+    expect(loading).toBeDefined();
   });
 
   it('should show user error state', async () => {
@@ -41,11 +41,11 @@ describe('TaskView', () => {
       isLoading: false,
       isError: true,
     } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskView task={todosFixture[0]} testId="component" />);
-    await screen.findByTestId('component-user-error');
+    render(<TaskView task={todosFixture[0]} />);
+    const error = await screen.findByTestId('task-view-user-error');
 
     // ASSERT
-    expect(screen.getByTestId('component-user-error')).toBeDefined();
+    expect(error).toBeDefined();
   });
 
   it('should show user content', async () => {
@@ -56,11 +56,11 @@ describe('TaskView', () => {
       isLoading: false,
       isError: false,
     } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskView task={todosFixture[0]} testId="component" />);
-    await screen.findByTestId('component-user-name');
+    render(<TaskView task={todosFixture[0]} />);
+    const userName = await screen.findByTestId('task-view-user-name');
 
     // ASSERT
-    expect(screen.getByTestId('component-user-name')).toHaveTextContent(userFixture1.name);
+    expect(userName).toHaveTextContent(userFixture1.name);
   });
 
   it('should show complete task', async () => {
@@ -71,11 +71,11 @@ describe('TaskView', () => {
       isLoading: false,
       isError: false,
     } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskView task={{ ...todosFixture[0], completed: true }} testId="component" />);
-    await screen.findByTestId('component-status');
+    render(<TaskView task={{ ...todosFixture[0], completed: true }} />);
+    const status = await screen.findByTestId('task-view-status');
 
     // ASSERT
-    expect(screen.getByTestId('component-status')).toHaveTextContent(/^COMPLETE$/);
+    expect(status).toHaveTextContent(/^COMPLETE$/i);
   });
 
   it('should show incomplete task', async () => {
@@ -86,10 +86,10 @@ describe('TaskView', () => {
       isLoading: false,
       isError: false,
     } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskView task={{ ...todosFixture[0], completed: false }} testId="component" />);
-    await screen.findByTestId('component-status');
+    render(<TaskView task={{ ...todosFixture[0], completed: false }} />);
+    const status = await screen.findByTestId('task-view-status');
 
     // ASSERT
-    expect(screen.getByTestId('component-status')).toHaveTextContent(/^INCOMPLETE$/);
+    expect(status).toHaveTextContent(/^INCOMPLETE$/i);
   });
 });

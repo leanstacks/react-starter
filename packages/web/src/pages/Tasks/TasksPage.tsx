@@ -5,7 +5,7 @@ import { Page } from '@react-starter/shared/components/Content/Page';
 import { Container } from '@react-starter/shared/components/Content/Container';
 import { Heading } from '@react-starter/shared/components/Text/Heading';
 
-import TasksPageBreadcrumbs from '@/pages/Tasks/components/TasksPageBreadcrumbs';
+import { TasksPageBreadcrumbs } from '@/pages/Tasks/components/TasksPageBreadcrumbs';
 import { AddTaskButton } from '@/pages/Tasks/components/Add/AddTaskButton';
 
 /**

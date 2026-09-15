@@ -10,6 +10,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from '@react-starter/shared/components/shadcn/dialog';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@react-starter/shared/components/shadcn/tooltip';
 import { toast } from '@react-starter/shared/components/shadcn/sonner';
 import { ErrorAlert } from '@react-starter/shared/components/Alert/ErrorAlert';
 
@@ -67,9 +68,14 @@ const TaskDeleteDialog = ({ onSuccess, task, trigger, ...props }: TaskDeleteDial
   return (
     <Dialog {...props}>
       {trigger && (
-        <DialogTrigger data-testid={`task-delete-dialog-trigger-${task.id}`} asChild>
-          {trigger}
-        </DialogTrigger>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <DialogTrigger data-testid={`task-delete-dialog-trigger-${task.id}`} asChild>
+              {trigger}
+            </DialogTrigger>
+          </TooltipTrigger>
+          <TooltipContent>{t('delete-task', { ns: 'tasks' })}</TooltipContent>
+        </Tooltip>
       )}
       <DialogContent>
         <DialogHeader>

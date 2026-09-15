@@ -16,13 +16,13 @@ const AddTaskButton = ({ ...props }: React.ComponentProps<typeof Button>) => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button variant="outline" size="icon" aria-label={t('addTask', { ns: 'tasks' })} {...props}>
+        <Button variant="outline" size="icon" aria-label={t('add-task', { ns: 'tasks' })} {...props}>
           <Link to="/app/tasks/add">
             <Plus />
           </Link>
         </Button>
       </TooltipTrigger>
-      <TooltipContent>{t('addTask', { ns: 'tasks' })}</TooltipContent>
+      <TooltipContent>{t('add-task', { ns: 'tasks' })}</TooltipContent>
     </Tooltip>
   );
 };
