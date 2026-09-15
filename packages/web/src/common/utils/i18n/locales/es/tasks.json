@@ -1,15 +1,25 @@
 {
-  "addTask": "Crear una nueva tarea",
-  "editTask": "Editar tarea",
-  "label": {
-    "title": "Título",
-    "completed": "Está completo"
+  "add-task": "Crear una nueva tarea",
+  "create-task": "Crear tarea",
+  "created-task": "Tarea creada.",
+  "delete-task": "Eliminar tarea",
+  "edit-task": "Editar tarea",
+  "errors": {
+    "not-found": "No encontrado",
+    "unable-to-find-task": "No podemos encontrar la tarea que solicitaste."
   },
-  "createdTask": "Tarea creada.",
-  "markComplete": "Márcalo completo",
-  "markIncomplete": "Márcalo como incompleto",
-  "markedComplete": "Tarea marcada completada",
-  "markedIncomplete": "Tarea marcada como incompleta",
+  "go-back-to-task-list": "Volver a la lista de tareas",
+  "label": {
+    "assignee": "Asignado a",
+    "completed": "Está completo",
+    "status": "Estado",
+    "title": "Título"
+  },
+  "list-tasks": "Listar tareas",
+  "mark-complete": "Márcalo completo",
+  "mark-incomplete": "Márcalo como incompleto",
+  "marked-complete": "Tarea marcada completada",
+  "marked-incomplete": "Tarea marcada como incompleta",
   "marking-complete": "Marcando la tarea como completada...",
   "marking-incomplete": "Marcando la tarea como incompleta...",
   "status": {
@@ -20,6 +30,7 @@
   "task": "Tarea",
   "tasks": "Tareas",
   "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar.",
-  "updatedTask": "Tarea actualizada.",
-  "update-failed": "Error al actualizar la tarea. Detalle: {{message}}"
+  "updated-task": "Tarea actualizada.",
+  "update-failed": "Error al actualizar la tarea. Detalle: {{message}}",
+  "view-task": "Ver tarea"
 }

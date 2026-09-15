@@ -47,7 +47,7 @@ const TaskEdit = ({ className, testId = 'task-edit' }: BaseComponentProps) => {
         { task: updatedTask },
         {
           onSuccess: () => {
-            toast(t('updatedTask', { ns: 'tasks' }));
+            toast(t('updated-task', { ns: 'tasks' }));
             navigate(-1);
           },
           onError: (err) => {
@@ -65,7 +65,7 @@ const TaskEdit = ({ className, testId = 'task-edit' }: BaseComponentProps) => {
     <div className={cn(className)} data-testid={testId}>
       {/* heading */}
       <Heading level={2} className="mb-4">
-        {t('editTask', { ns: 'tasks' })}
+        {t('edit-task', { ns: 'tasks' })}
       </Heading>
 
       {/* loading state */}

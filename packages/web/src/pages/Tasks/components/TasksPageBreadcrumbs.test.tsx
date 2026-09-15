@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { render, screen } from '@/test/test-utils';
 
-import TasksPageBreadcrumbs from './TasksPageBreadcrumbs';
+import { TasksPageBreadcrumbs } from './TasksPageBreadcrumbs';
 
 describe('TasksPageBreadcrumbs', () => {
   it('should render successfully', async () => {

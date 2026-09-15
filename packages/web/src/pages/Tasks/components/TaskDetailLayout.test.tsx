@@ -37,11 +37,11 @@ describe('TaskDetailLayout', () => {
 
   it('should display a task', async () => {
     // ARRANGE
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-task-view');
+    render(<TaskDetailLayout data-testid="layout-task-detail" />);
+    await screen.findByTestId('layout-task-detail');
 
     // ASSERT
-    expect(screen.getByTestId('component-task-view')).toBeDefined();
+    expect(screen.getByTestId('task-view')).toBeDefined();
   });
 
   it('should display task error', async () => {
@@ -52,11 +52,11 @@ describe('TaskDetailLayout', () => {
       error: new Error(),
       isLoading: false,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-error-task');
+    render(<TaskDetailLayout data-testid="layout-task-detail" />);
+    await screen.findByTestId('layout-task-detail-error');
 
     // ASSERT
-    expect(screen.getByTestId('component-error-task')).toBeDefined();
+    expect(screen.getByTestId('layout-task-detail-error')).toBeDefined();
   });
 
   it('should render loading state', async () => {
@@ -67,21 +67,21 @@ describe('TaskDetailLayout', () => {
       error: undefined,
       isLoading: true,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-loading');
+    render(<TaskDetailLayout data-testid="layout-task-detail" />);
+    await screen.findByTestId('layout-task-detail-loading');
 
     // ASSERT
-    expect(screen.getByTestId('component-loading')).toBeDefined();
+    expect(screen.getByTestId('layout-task-detail-loading')).toBeDefined();
   });
 
   it('should navigate back using close button', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-button-close');
+    render(<TaskDetailLayout data-testid="layout-task-detail" />);
+    const closeButton = await screen.findByTestId('layout-task-detail-button-close');
 
     // ACT
-    await user.click(screen.getByTestId('component-button-close'));
+    await user.click(closeButton);
 
     // ASSERT
     expect(mockNavigate).toHaveBeenCalledTimes(1);
@@ -91,11 +91,11 @@ describe('TaskDetailLayout', () => {
   it('should navigate to edit', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-button-edit');
+    render(<TaskDetailLayout data-testid="layout-task-detail" />);
+    await screen.findByTestId('layout-task-detail-button-edit');
 
     // ACT
-    await user.click(screen.getByTestId('component-button-edit'));
+    await user.click(screen.getByTestId('layout-task-detail-button-edit'));
 
     // ASSERT
     expect(mockNavigate).toHaveBeenCalledTimes(1);

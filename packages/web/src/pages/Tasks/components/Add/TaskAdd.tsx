@@ -41,7 +41,7 @@ const TaskAdd = ({ className, testId = 'task-add' }: BaseComponentProps) => {
         { task: data },
         {
           onSuccess: () => {
-            toast(t('createdTask', { ns: 'tasks' }));
+            toast(t('created-task', { ns: 'tasks' }));
             navigate(-1);
           },
           onError: (err) => {
@@ -59,7 +59,7 @@ const TaskAdd = ({ className, testId = 'task-add' }: BaseComponentProps) => {
     <div className={className} data-testid={testId}>
       {/* heading */}
       <Heading level={2} className="mb-4">
-        {t('addTask', { ns: 'tasks' })}
+        {t('add-task', { ns: 'tasks' })}
       </Heading>
 
       {/* error state */}

@@ -61,7 +61,7 @@ const TasksPageBreadcrumbs = ({ className, testId = 'page-tasks-breadcrumbs' }: 
             <BreadcrumbItem>
               {!!task && (
                 <BreadcrumbLink asChild>
-                  <Link to={`/app/tasks/${task.id}`} data-testid={`${testId}-link-task`}>
+                  <Link to={`/app/tasks/${task.id}`} className="max-w-40 truncate" data-testid={`${testId}-link-task`}>
                     {task.title}
                   </Link>
                 </BreadcrumbLink>
@@ -83,4 +83,4 @@ const TasksPageBreadcrumbs = ({ className, testId = 'page-tasks-breadcrumbs' }: 
   );
 };
 
-export default TasksPageBreadcrumbs;
+export { TasksPageBreadcrumbs };

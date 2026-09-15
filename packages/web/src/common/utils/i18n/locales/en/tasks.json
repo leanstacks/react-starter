@@ -1,15 +1,25 @@
 {
-  "addTask": "Add a new task",
-  "editTask": "Edit task",
-  "label": {
-    "title": "Title",
-    "completed": "Is complete"
+  "add-task": "Add a new task",
+  "create-task": "Create task",
+  "created-task": "Task created.",
+  "delete-task": "Delete task",
+  "edit-task": "Edit task",
+  "errors": {
+    "not-found": "Not found",
+    "unable-to-find-task": "We're unable to find the task you requested."
   },
-  "createdTask": "Task created.",
-  "markComplete": "Mark complete",
-  "markIncomplete": "Mark incomplete",
-  "markedComplete": "Marked task complete",
-  "markedIncomplete": "Marked task incomplete",
+  "go-back-to-task-list": "Go back to task list",
+  "label": {
+    "assignee": "Assignee",
+    "completed": "Is complete",
+    "status": "Status",
+    "title": "Title"
+  },
+  "list-tasks": "List tasks",
+  "mark-complete": "Mark complete",
+  "mark-incomplete": "Mark incomplete",
+  "marked-complete": "Marked task complete",
+  "marked-incomplete": "Marked task incomplete",
   "marking-complete": "Marking task complete...",
   "marking-incomplete": "Marking task incomplete...",
   "status": {
@@ -20,6 +30,7 @@
   "task": "Task",
   "tasks": "Tasks",
   "tasks-empty": "Nothing to do. Create a task to get started.",
-  "updatedTask": "Task updated.",
-  "update-failed": "Failed to update task. Detail: {{message}}"
+  "updated-task": "Task updated.",
+  "update-failed": "Failed to update task. Detail: {{message}}",
+  "view-task": "View task"
 }
