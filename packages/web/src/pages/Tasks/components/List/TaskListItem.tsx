@@ -53,7 +53,9 @@ const TaskListItem = ({ task, ...props }: TaskListItemProps) => {
     <Item variant="outline" size="xs" className="hover:bg-muted/50 hover:border-transparent" {...props}>
       <ItemMedia variant="icon">{task.completed ? <CircleCheckBig /> : <Circle />}</ItemMedia>
       <ItemContent>
-        <ItemTitle>{task.title}</ItemTitle>
+        <Link to={`${task.id}`} aria-label={t('view-task', { ns: 'tasks' })}>
+          <ItemTitle>{task.title}</ItemTitle>
+        </Link>
       </ItemContent>
       <ItemActions>
         <DropdownMenu>

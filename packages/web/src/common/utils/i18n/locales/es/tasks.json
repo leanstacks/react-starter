@@ -31,5 +31,6 @@
   "tasks": "Tareas",
   "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar.",
   "updated-task": "Tarea actualizada.",
-  "update-failed": "Error al actualizar la tarea. Detalle: {{message}}"
+  "update-failed": "Error al actualizar la tarea. Detalle: {{message}}",
+  "view-task": "Ver tarea"
 }

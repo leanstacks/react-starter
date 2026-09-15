@@ -31,5 +31,6 @@
   "tasks": "Tasks",
   "tasks-empty": "Nothing to do. Create a task to get started.",
   "updated-task": "Task updated.",
-  "update-failed": "Failed to update task. Detail: {{message}}"
+  "update-failed": "Failed to update task. Detail: {{message}}",
+  "view-task": "View task"
 }
