@@ -1,6 +1,6 @@
 {
   "name": "react-starter",
-  "version": "1.8.0-alpha.1",
+  "version": "1.8.0",
   "description": "A starter project for React applications using a curated technology stack for optimal performance, reliability, and maintainability.",
   "keywords": [
     "react",
