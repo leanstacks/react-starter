@@ -1,6 +1,6 @@
 {
   "name": "@react-starter/shared",
-  "version": "1.8.0-alpha.1",
+  "version": "1.8.0",
   "private": true,
   "type": "module",
   "exports": {
