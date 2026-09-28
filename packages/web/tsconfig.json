@@ -10,5 +10,5 @@
       "@react-starter/shared/*": ["../shared/src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "vitest.setup.ts"]
 }
